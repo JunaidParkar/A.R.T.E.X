@@ -1,0 +1,17 @@
+import os
+
+
+LOCALAPPDATA = os.environ['LOCALAPPDATA']
+LOCALFOLDER = f"{LOCALAPPDATA}\\Zubia"
+
+CONFIG_FOLDER = f"{LOCALFOLDER}\\Community"
+CONFIG_FILE = f"{CONFIG_FOLDER}\\Config.json"
+
+CHAT_FOLDER = f"{LOCALFOLDER}\\Database\\Chats"
+CHAT_DATA = f"{CHAT_FOLDER}\\Chats.json"
+
+TRAIN_DATA_FOLDER = f"{LOCALFOLDER}\\Database\\Train"
+TRAIN_DATA_FILE = f"{TRAIN_DATA_FOLDER}\\TrainedData.pth"
+
+INTENTS_FOLDER = f"{LOCALFOLDER}\\Dataset"
+INTENTS_FILE = f"{INTENTS_FOLDER}\\Intents.json"

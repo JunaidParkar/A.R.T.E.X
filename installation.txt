@@ -1,0 +1,40 @@
+INSTALLATION OF PYTHON AND DEPENDENCIES:
+    Step 1 :- Download python from https://www.python.org/
+    Step 2 :- Install python by giving all the requested permission (Remember to check all the checkboxes shown while installation and most importantly check the checkbox which says Add "python to path" in initial installation stage)
+    Step 3 :- Open the directory where you have installed Zubia and open cmd in same directory.
+    Step 4 :- Paste the following command and hit enter and just wait until the process completes. Command: pip install pyttsx3 speechrecognition torch numpy nltk wikipedia googletrans pywhatkit wikipedia selenium pyqt5 pyqt5-tools opencv-python wmi
+    Step 5 :- In cmd enter the following command and hit enter after each command
+              Command 1: python
+              Command 2: import nltk
+              Command 3: nltk.download("punkt")
+              Command 4: exit()
+    Step 6 :- Restart your computer
+
+ZUBIA INSTALLATION GUIDE:
+    Step 1 :- Press windows button on keyboard
+    Step 2 :- Type environment variables and hit enter
+    Step 3 :- Click Environment variables in computer name section
+    Step 4 :- Under user variables which is the top most.Below that table press "New" 
+    Step 5 :- In Variable name type "Zubia". Remember Z is in caps lock, all alphabets are case sensitive.
+    Step 6 :- In Variable value just paste the path where you have installed Zubia and hit ok
+    Step 7 :- Again it hit ok and again sam
+
+VOICE SETUP 
+    STEP 1: Navigate to windows setting. Search for speech and navigate for speech setting. Select language English (India). Below select Microsoft Zira in voices section. If the options for English (United States) and voice of Zira is not avavilable, then in windows setting navigate to Time and Language. Then navigate to Language and region. From here Add language English (United States). After download click for install by checking all the chexckBoxes. After doing so just RESTART your PC and perform above step.
+    STEP 2: If Zira voice still not available then just follow these steps listed on https://www.thewindowsclub.com/unlock-extra-text-to-speech-voices-in-windows
+    STEP 3: Now just restart your PC
+    STEP 4: Now run setUp.py and choose option for set voice i.e option number 1. If everything is fine it will automatically fetch voice.
+    STEP 5: Experiment with all the other values in voice to get better speech output as your requirement or keep it as default. Remember not to change index of voice in config file.
+    STEP 6: If you have made any changes in config file manually the just run setUp and select option number 5 in order to load it.
+
+
+SETUP TO RUN ZUBIA ON WINDOWS STARTUP (WHEN YOU START YOUR PC):
+    Step 1 :- Press (win + r) or press windows and type run and hit enter
+    Step 2 :- In run app enter "shell:startup" without inverted commas and hit enter and File manager will be opened in a directory
+    Step 3 :- Copy zubiaStartUp.py file to that directory which is opened in Step 2.
+    Step 4 :- Restart your computer
+
+
+NOTE:
+    1. Always run setup for initializing the changes you made to any file
+    2. Stay updated on github for new releases with more improvement features

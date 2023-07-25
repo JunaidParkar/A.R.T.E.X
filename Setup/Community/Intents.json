@@ -1,0 +1,24 @@
+{
+  "intents": [
+    {
+      "tag": "open",
+      "patterns": ["open", "launch", "start", "visit"],
+      "responses": ["open"]
+    },
+    {
+      "tag": "whatsapp",
+      "patterns": ["whatsapp", "message"],
+      "responses": ["whatsapp"]
+    },
+    {
+      "tag": "exit",
+      "patterns": ["exit"],
+      "responses": ["exit"]
+    },
+    {
+      "tag": "sleep",
+      "patterns": ["sleep"],
+      "responses": ["sleep"]
+    }
+  ]
+}

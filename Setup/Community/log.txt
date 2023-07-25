@@ -1,0 +1,94 @@
+[07/23/2023, 00:15:51] Root folder already present
+[07/23/2023, 00:15:51] Dataset folder already present
+[07/23/2023, 00:15:51] Specs folder already present
+[07/23/2023, 00:15:51] Copying dataset to local folder
+[07/23/2023, 00:15:51] Copied dataset to local folder
+[07/23/2023, 00:15:51] Writing specs data
+[07/23/2023, 00:15:51] Written specs data
+[07/23/2023, 02:00:37] Setting up voice
+[07/23/2023, 02:00:37] setup voice successful
+[07/23/2023, 02:01:02] Setting up voice
+[07/23/2023, 02:01:02] setup voice successful
+[07/23/2023, 02:01:38] Setting up voice
+[07/23/2023, 02:01:38] setup voice successful
+[07/23/2023, 02:03:31] Setting up voice
+[07/23/2023, 02:03:31] Voice not found
+[07/23/2023, 02:03:46] Setting up voice
+[07/23/2023, 02:03:46] setup voice successful
+[07/23/2023, 02:03:53] Setting up voice
+[07/23/2023, 02:03:53] setup voice successful
+[07/23/2023, 02:04:03] Setting up voice
+[07/23/2023, 02:04:03] Voice not found
+[07/23/2023, 02:04:11] Setting up voice
+[07/23/2023, 02:04:11] Voice not found
+[07/23/2023, 02:04:14] Setting up voice
+[07/23/2023, 02:04:14] setup voice successful
+[07/24/2023, 01:19:44] Root folder already present
+[07/24/2023, 01:19:44] Dataset folder already present
+[07/24/2023, 01:19:44] Specs folder already present
+[07/24/2023, 01:19:44] Database folder already present
+[07/24/2023, 01:20:04] Root folder already present
+[07/24/2023, 01:20:04] Dataset folder already present
+[07/24/2023, 01:20:04] Specs folder already present
+[07/24/2023, 01:20:04] Database folder already present
+[07/24/2023, 01:22:12] Root folder already present
+[07/24/2023, 01:22:12] Dataset folder already present
+[07/24/2023, 01:22:12] Specs folder already present
+[07/24/2023, 01:22:12] Database folder already present
+[07/24/2023, 01:40:17] Root folder already present
+[07/24/2023, 01:40:17] Dataset folder already present
+[07/24/2023, 01:40:17] Specs folder already present
+[07/24/2023, 01:40:17] Database folder already present
+[07/24/2023, 01:40:23] Root folder already present
+[07/24/2023, 01:40:23] Dataset folder already present
+[07/24/2023, 01:40:23] Specs folder already present
+[07/24/2023, 01:40:23] Database folder already present
+[07/24/2023, 01:40:26] Setting up voice
+[07/24/2023, 01:40:26] setup voice successful
+[07/24/2023, 01:40:31] Copying training data
+[07/24/2023, 01:40:31] Copied training data
+[07/24/2023, 01:40:39] Training data
+[07/24/2023, 01:41:17] Trained data
+[07/24/2023, 01:41:23] API stored successfully
+[07/24/2023, 14:54:16] Root folder already present
+[07/24/2023, 14:54:16] Dataset folder already present
+[07/24/2023, 14:54:16] Specs folder already present
+[07/24/2023, 14:54:16] Database folder already present
+[07/24/2023, 14:54:20] Setting up voice
+[07/24/2023, 14:54:20] setup voice successful
+[07/24/2023, 16:01:13] Root folder already present
+[07/24/2023, 16:01:13] Dataset folder already present
+[07/24/2023, 16:01:13] Specs folder already present
+[07/24/2023, 16:01:13] Database folder already present
+[07/24/2023, 16:01:16] Copying training data
+[07/24/2023, 16:01:16] Copied training data
+[07/24/2023, 16:07:24] Root folder already present
+[07/24/2023, 16:07:24] Dataset folder already present
+[07/24/2023, 16:07:24] Specs folder already present
+[07/24/2023, 16:07:24] Database folder already present
+[07/24/2023, 16:07:24] Chats folder created
+[07/24/2023, 16:07:24] Train folder created
+[07/24/2023, 16:19:08] Root folder already present
+[07/24/2023, 16:19:08] Dataset folder already present
+[07/24/2023, 16:19:08] Specs folder already present
+[07/24/2023, 16:19:08] Database folder already present
+[07/24/2023, 16:19:08] Chats folder already present
+[07/24/2023, 16:19:08] Train folder already present
+[07/24/2023, 16:19:12] Copying training data
+[07/24/2023, 16:19:12] Copied training data
+[07/24/2023, 17:49:48] Root folder already present
+[07/24/2023, 17:49:48] Dataset folder already present
+[07/24/2023, 17:49:48] Specs folder already present
+[07/24/2023, 17:49:48] Database folder already present
+[07/24/2023, 17:49:48] Chats folder already present
+[07/24/2023, 17:49:48] Train folder already present
+[07/24/2023, 17:49:50] Copying training data
+[07/24/2023, 17:49:50] Copied training data
+[07/24/2023, 17:53:44] Root folder already present
+[07/24/2023, 17:53:44] Dataset folder already present
+[07/24/2023, 17:53:44] Specs folder already present
+[07/24/2023, 17:53:44] Database folder already present
+[07/24/2023, 17:53:44] Chats folder already present
+[07/24/2023, 17:53:44] Train folder already present
+[07/24/2023, 17:53:46] Copying training data
+[07/24/2023, 17:53:46] Copied training data
