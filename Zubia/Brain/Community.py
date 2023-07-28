@@ -1,6 +1,8 @@
 import json
 import os
 import requests
+import datetime
+import Zubia.Brain.Paths as fp
  
 def checkInternet():
     try:
@@ -43,3 +45,19 @@ def writeDataInFile(data, filename):
     else:
         with open(filename, 'w') as file:
             json.dump(data, file, indent=4)
+
+
+
+def verifyLog(path):
+    if os.path.isfile(path):
+        pass
+    else:
+        with open(path, "w") as f:
+            f.close()
+
+
+def writeSetupLog(text):
+    verifyLog(fp.LOG_SETUP)
+    with open(fp.LOG_SETUP, "ab+") as process:
+        process.write(f"[{datetime.datetime.now().strftime('%m/%d/%Y, %H:%M:%S')}] {text}\n".encode("utf-8"))
+        process.close()

@@ -1,4 +1,4 @@
-pip install pyttsx3 speechrecognition torch numpy nltk googletrans keyboard google.generativeai os json sys logging requests webbrowser pyautogui keyboard time random python-dotenv
+pip install pyttsx3 speechrecognition torch numpy nltk googletrans keyboard google.generativeai os json sys requests webbrowser pyautogui keyboard time random subprocess
 
 python
 import nltk

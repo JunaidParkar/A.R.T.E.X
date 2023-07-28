@@ -1,6 +1,13 @@
 import os
 import sys
-sys.path.append(os.environ.get('Zubia'))
+import subprocess
+if os.environ['Zubia'] is None:
+    os.environ["Zubia"] = os.getcwd()
+    try:
+        subprocess.run(['setx', "Zubia", os.getcwd()], check=True)
+        sys.exit()
+    except subprocess.CalledProcessError as e:
+        print(f"Error occurred while setting the environment variable: {e}")
 import Zubia.Brain.Paths as fp
 from Zubia.Body.Ear import listen
 from Zubia.Body.Mouth import speak

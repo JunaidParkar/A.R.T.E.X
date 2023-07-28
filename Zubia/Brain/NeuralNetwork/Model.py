@@ -29,10 +29,10 @@ def TasksExecutor(query):
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-    with open(fp.INTENTS_FILE,'r') as json_data:
+    with open(fp.LOCALDATA_INTENTS_FILE,'r') as json_data:
         intents = json.load(json_data)
 
-    FILE = fp.TRAIN_DATA_FILE
+    FILE = fp.TRAINED_DATA_FILE
     data = torch.load(FILE)
 
     input_size = data["input_size"]

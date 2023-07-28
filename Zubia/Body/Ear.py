@@ -5,7 +5,7 @@ import Zubia.Brain.Paths as fp
 
 def hear():
     try:
-        with open(fp.CONFIG_FILE, "r") as f:
+        with open(fp.LOCALDATA_CONFIG_FILE, "r") as f:
             micConfig = json.load(f)['microphone']
             r = sr.Recognizer()
             with sr.Microphone() as source:

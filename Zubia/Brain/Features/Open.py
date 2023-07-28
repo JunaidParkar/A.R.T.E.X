@@ -34,5 +34,3 @@ def openExe(query: str):
         sleep(1)
         keyboard.press('enter')
         return True
-
-# openExe("visit wikipedia.com")

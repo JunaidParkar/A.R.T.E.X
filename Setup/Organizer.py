@@ -4,7 +4,7 @@ import sys
 import shutil
 import pyttsx3
 sys.path.append(os.environ.get('Zubia'))
-import Setup.Paths as filePaths
+import Zubia.Brain.Paths as filePaths
 from Setup.Command import writeLogFile, updateCongif
 
 FOLDER_PATHS = [[filePaths.LOCALFOLDER, "Root"], [filePaths.DATASET_FOLDER, "Dataset"], [f"{filePaths.DATABASE_FOLDER}", "Database"], [f"{filePaths.CHAT_DATA_FOLDER}", "Chats"], [f"{filePaths.TRAINED_DATA_FOLDER}", "Train"], [f"{filePaths.LOCAL_COMMUNITY_FOLDER}", "Community"]]

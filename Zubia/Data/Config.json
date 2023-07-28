@@ -1,0 +1,15 @@
+{
+  "voice": {
+    "index": 2,
+    "rate": 135
+  },
+  "microphone": {
+    "pause_treshold": 1,
+    "min_listen_timer": 0,
+    "max__listen_timer": 8
+  },
+  "autoWakeUp": {
+    "zubia": "C:/Users/verix/Documents/xampp/htdocs/zubia/main.py"
+  },
+  "googleAI": "AIzaSyCugkzI-u_ANgaWBcDMyhDVyQUQv7zrGRg"
+}

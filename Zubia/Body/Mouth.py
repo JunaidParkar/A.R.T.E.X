@@ -10,7 +10,7 @@ import Zubia.Brain.Paths as fp
 
 def speak(text):
     try:
-        with open(fp.CONFIG_FILE) as f:
+        with open(fp.LOCALDATA_CONFIG_FILE) as f:
             voiceConfig = json.load(f)['voice']
             engine = pyttsx3.init()
             voices = engine.getProperty("voices")

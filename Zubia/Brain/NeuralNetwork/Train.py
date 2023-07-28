@@ -31,7 +31,7 @@ def TrainTasks():
             out = self.l3(out)
             return out
 
-    with open(fp.INTENTS_FILE,'r') as f:
+    with open(fp.LOCALDATA_INTENTS_FILE,'r') as f:
         intents = json.load(f)
 
     all_words = []
@@ -121,7 +121,7 @@ def TrainTasks():
     "tags":tags
     }
 
-    FILE = fp.TRAIN_DATA_FILE
+    FILE = fp.TRAINED_DATA_FILE
     torch.save(data,FILE)
 
     speak("Training completed succesfully")

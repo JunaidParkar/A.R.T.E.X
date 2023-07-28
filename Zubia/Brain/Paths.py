@@ -1,17 +1,26 @@
 import os
-
+import sys
+sys.path.append(os.environ.get('Zubia'))
 
 LOCALAPPDATA = os.environ['LOCALAPPDATA']
 LOCALFOLDER = f"{LOCALAPPDATA}\\Zubia"
 
-CONFIG_FOLDER = f"{LOCALFOLDER}\\Community"
-CONFIG_FILE = f"{CONFIG_FOLDER}\\Config.json"
+DATABASE_FOLDER = f"{LOCALFOLDER}\\Database"
 
-CHAT_FOLDER = f"{LOCALFOLDER}\\Database\\Chats"
-CHAT_DATA = f"{CHAT_FOLDER}\\Chats.json"
+CHAT_DATA_FOLDER = f"{DATABASE_FOLDER}\\Chats"
+CHAT_DATA_FILE = f"{CHAT_DATA_FOLDER}\\Chats.json"
 
-TRAIN_DATA_FOLDER = f"{LOCALFOLDER}\\Database\\Train"
-TRAIN_DATA_FILE = f"{TRAIN_DATA_FOLDER}\\TrainedData.pth"
+TRAINED_DATA_FOLDER = f"{DATABASE_FOLDER}\\Train"
+TRAINED_DATA_FILE = f"{TRAINED_DATA_FOLDER}\\TrainedData.pth"
 
-INTENTS_FOLDER = f"{LOCALFOLDER}\\Dataset"
-INTENTS_FILE = f"{INTENTS_FOLDER}\\Intents.json"
+LOCAL_COMMUNITY_FOLDER = f"{LOCALFOLDER}\\Community"
+LOCALDATA_CONFIG_FILE = f"{LOCAL_COMMUNITY_FOLDER}\\Config.json"
+SOFTWARE_CONFIG_FILE = f"{os.environ['Zubia']}\\Data\\Config.json"
+
+DATASET_FOLDER = f"{LOCALFOLDER}\\Dataset"
+LOCALDATA_INTENTS_FILE = f"{DATASET_FOLDER}\\Intents.json"
+SOFTWARE_INTENTS_FILE = f"{os.environ['Zubia']}\\Brain\\Datasets\\Intents.json"
+
+
+LOG_FOLDER = f"{LOCALFOLDER}\\Logs"
+LOG_SETUP = f"{LOG_FOLDER}\\log.txt"

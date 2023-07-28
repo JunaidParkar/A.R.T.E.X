@@ -1,4 +1,4 @@
-INSTALLATION OF PYTHON AND DEPENDENCIES:
+INSTALLATION OF PYTHON AND DEPENDENCIES: (SKIP IF YOU HAVE EXE VERSION)
     Step 1 :- Download python from https://www.python.org/
     Step 2 :- Install python by giving all the requested permission (Remember to check all the checkboxes shown while installation and most importantly check the checkbox which says Add "python to path" in initial installation stage)
     Step 3 :- Open the directory where you have installed Zubia and open cmd in same directory.
@@ -28,12 +28,24 @@ VOICE SETUP
     STEP 6: If you have made any changes in config file manually the just run setUp and select option number 5 in order to load it.
 
 
-SETUP TO RUN ZUBIA ON WINDOWS STARTUP (WHEN YOU START YOUR PC):
+SETUP TO RUN ZUBIA ON WINDOWS STARTUP (WHEN YOU START YOUR PC): (SKIP ALWAYS)
     Step 1 :- Press (win + r) or press windows and type run and hit enter
     Step 2 :- In run app enter "shell:startup" without inverted commas and hit enter and File manager will be opened in a directory
     Step 3 :- Copy zubiaStartUp.py file to that directory which is opened in Step 2.
     Step 4 :- Restart your computer
 
+
+STEPS TO GET GOOGLE AI API
+    Step 1 :- Visit https://makersuite.google.com/waitlist
+    Step 2 :- Select Country/region as yours else select India
+    Step 3 :- In profession select Student (compulsory)
+    Step 4 :- In intensd select "others"
+    Step 5 :- Wait for the time you get email from google regarding api
+    Step 6 :- After you revieve email from google visit the link i Step 1 again and as page load select on get started
+    Step 7 :- There will be 3 boxes, Click the Create button in box of Chat prompt (Compulsory)
+    Step 8 :- In your left hand side on screen there will be a key like icon click there
+    Step 9 :- Generate your API key there and copy it
+    Step 10 :- Run setup app and select option 5. It will ask to enter api key, paste your api key there and hit enter, Now you are good to use Zubia AI
 
 NOTE:
     1. Always run setup for initializing the changes you made to any file
