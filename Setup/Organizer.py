@@ -24,29 +24,29 @@ def manageChatFile():
             json.dump([], f)
             f.close()
 
-def setVoice():
-    writeLogFile("Setting up voice")
-    engine = pyttsx3.init()
-    voices = engine.getProperty('voices')
-    i = 0
-    voiceAvail = False
-    for voice in voices:
-        name = "Microsoft Zira Desktop - English (United States)"
-        if voice.name == name:
-            voiceAvail = True
-            break
-        else: 
-            voiceAvail = False
-        i = i + 1
-    if voiceAvail:
-        with open(filePaths.SOFTWARE_CONFIG_FILE, "r+") as f:
-                    voiceSett = json.load(f)
-                    voiceSett = voiceSett["voice"]
-                    voiceSett["index"] = i
-                    updateCongif("voice", voiceSett)
-        writeLogFile("setup voice successful")
-    else:
-        writeLogFile("Voice not found")
+# def setVoice():
+#     writeLogFile("Setting up voice")
+#     engine = pyttsx3.init()
+#     voices = engine.getProperty('voices')
+#     i = 0
+#     voiceAvail = False
+#     for voice in voices:
+#         name = "Microsoft Zira Desktop - English (United States)"
+#         if voice.name == name:
+#             voiceAvail = True
+#             break
+#         else: 
+#             voiceAvail = False
+#         i = i + 1
+#     if voiceAvail:
+#         with open(filePaths.SOFTWARE_CONFIG_FILE, "r+") as f:
+#                     voiceSett = json.load(f)
+#                     voiceSett = voiceSett["voice"]
+#                     voiceSett["index"] = i
+#                     updateCongif("voice", voiceSett)
+#         writeLogFile("setup voice successful")
+#     else:
+#         writeLogFile("Voice not found")
 
 def manageLocalDir():
     for folderPath in FOLDER_PATHS:

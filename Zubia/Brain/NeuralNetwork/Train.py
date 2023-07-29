@@ -10,7 +10,7 @@ import Zubia.Brain.Paths as fp
 from Zubia.Brain.NeuralNetwork.Base import bag_of_words, stem, tokenize
 from Zubia.Body.Mouth import speak
 
-def TrainTasks():
+def TrainAI():
 
     speak("Let me have some seconds to get trained")
 
@@ -125,5 +125,3 @@ def TrainTasks():
     torch.save(data,FILE)
 
     speak("Training completed succesfully")
-
-TrainTasks()
