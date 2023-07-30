@@ -1,13 +1,16 @@
 import os
+os.system("cls" if os.name == "nt" else "clear")
+os.system('title Zubia AI 1.0.1')
 import sys
 import subprocess
-if os.environ['Zubia'] is None:
+if os.environ.get("Zubia") is None:
     os.environ["Zubia"] = os.getcwd()
     try:
         subprocess.run(['setx', "Zubia", os.getcwd()], check=True)
-        sys.exit()
     except subprocess.CalledProcessError as e:
         print(f"Error occurred while setting the environment variable: {e}")
+from Zubia.Brain.Setup.Actions import setupManager
+setupManager()
 import Zubia.Brain.Paths as fp
 from Zubia.Body.Ear import listen
 from Zubia.Body.Mouth import speak

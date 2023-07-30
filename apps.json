@@ -1,0 +1,234 @@
+[
+    {
+        "name": "Git",
+        "path": "C:\\Users\\verix\\Documents\\git\\Git\\Git.exe"
+    },
+    {
+        "name": "HP Documentation",
+        "path": "CMD"
+    },
+    {
+        "name": "VLC media player",
+        "path": "C:\\Program Files\\VideoLAN\\VLC\\VLC media player.exe"
+    },
+    {
+        "name": "XAMPP",
+        "path": "C:\\Users\\verix\\Documents\\xampp\\XAMPP.exe"
+    },
+    {
+        "name": "Microsoft Visual C++ 2022 X64 Additional Runtime - 14.36.32532",
+        "path": "Microsoft Visual C++ 2022 X64 Additional Runtime - 14.36.32532.exe"
+    },
+    {
+        "name": "Python 3.11.4 Tcl/Tk Support (64-bit debug)",
+        "path": "Python 3.11.4 Tcl/Tk Support (64-bit debug).exe"
+    },
+    {
+        "name": "Python 3.11.4 Development Libraries (64-bit)",
+        "path": "Python 3.11.4 Development Libraries (64-bit).exe"
+    },
+    {
+        "name": "Python 3.11.4 Test Suite (64-bit symbols)",
+        "path": "Python 3.11.4 Test Suite (64-bit symbols).exe"
+    },
+    {
+        "name": "Python 3.11.4 Core Interpreter (64-bit symbols)",
+        "path": "Python 3.11.4 Core Interpreter (64-bit symbols).exe"
+    },
+    {
+        "name": "Microsoft Update Health Tools",
+        "path": "Microsoft Update Health Tools.exe"
+    },
+    {
+        "name": "Python 3.11.4 Test Suite (64-bit)",
+        "path": "Python 3.11.4 Test Suite (64-bit).exe"
+    },
+    {
+        "name": "Python 3.11.4 Tcl/Tk Support (64-bit symbols)",
+        "path": "Python 3.11.4 Tcl/Tk Support (64-bit symbols).exe"
+    },
+    {
+        "name": "Microsoft Visual Studio Installer",
+        "path": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\Installer\"\\Microsoft Visual Studio Installer.exe"
+    },
+    {
+        "name": "Python 3.11.4 Add to Path (64-bit)",
+        "path": "Python 3.11.4 Add to Path (64-bit).exe"
+    },
+    {
+        "name": "Python 3.11.4 Standard Library (64-bit)",
+        "path": "Python 3.11.4 Standard Library (64-bit).exe"
+    },
+    {
+        "name": "Python 3.11.4 Executables (64-bit symbols)",
+        "path": "Python 3.11.4 Executables (64-bit symbols).exe"
+    },
+    {
+        "name": "Python 3.11.4 Test Suite (64-bit debug)",
+        "path": "Python 3.11.4 Test Suite (64-bit debug).exe"
+    },
+    {
+        "name": "Python 3.11.4 Utility Scripts (64-bit)",
+        "path": "Python 3.11.4 Utility Scripts (64-bit).exe"
+    },
+    {
+        "name": "Python 3.11.4 Tcl/Tk Support (64-bit)",
+        "path": "Python 3.11.4 Tcl/Tk Support (64-bit).exe"
+    },
+    {
+        "name": "Python 3.11.4 Executables (64-bit debug)",
+        "path": "Python 3.11.4 Executables (64-bit debug).exe"
+    },
+    {
+        "name": "Microsoft Visual C++ 2019 X64 Debug Runtime - 14.29.30139",
+        "path": "Microsoft Visual C++ 2019 X64 Debug Runtime - 14.29.30139.exe"
+    },
+    {
+        "name": "Python 3.11.4 Development Libraries (64-bit debug)",
+        "path": "Python 3.11.4 Development Libraries (64-bit debug).exe"
+    },
+    {
+        "name": "NVIDIA Graphics Driver 526.56",
+        "path": "C:\\Program Files\\NVIDIA Corporation\\Installer2\\Display.Driver.{7A8C0283-E786-4960-A7CC-F65658F71D73}\\NVIDIA Graphics Driver 526.56.exe"
+    },
+    {
+        "name": "NVIDIA GeForce Experience 3.20.4.14",
+        "path": "C:\\Program Files\\NVIDIA Corporation\\Installer2\\Display.GFExperience.{FB5497F4-88AA-422D-ABAC-6F19EB4EF997}\\NVIDIA GeForce Experience 3.20.4.14.exe"
+    },
+    {
+        "name": "NVIDIA PhysX System Software 9.20.0221",
+        "path": "C:\\Program Files (x86)\\NVIDIA Corporation\\PhysX\\NVIDIA PhysX System Software 9.20.0221.exe"
+    },
+    {
+        "name": "NVIDIA SHIELD Streaming",
+        "path": "C:\\Program Files\\NVIDIA Corporation\\NvStreamSrv\\NVIDIA SHIELD Streaming.exe"
+    },
+    {
+        "name": "NVIDIA Install Application",
+        "path": "C:\\Program Files\\NVIDIA Corporation\\Installer2\\InstallerCore\\NVIDIA Install Application.exe"
+    },
+    {
+        "name": "NVIDIA ABHub",
+        "path": "C:\\Program Files\\NVIDIA Corporation\\Installer2\\NvAbHub.{EDD534AE-58E5-4C00-B517-34A5234D3DC6}\\NVIDIA ABHub.exe"
+    },
+    {
+        "name": "NVIDIA Backend",
+        "path": "C:\\Program Files (x86)\\NVIDIA Corporation\\Update Core\\NVIDIA Backend.exe"
+    },
+    {
+        "name": "NVIDIA Container",
+        "path": "C:\\Program Files\\NVIDIA Corporation\\NvContainer\\NVIDIA Container.exe"
+    },
+    {
+        "name": "NVIDIA TelemetryApi helper for NvContainer",
+        "path": "C:\\Program Files\\NVIDIA Corporation\\Installer2\\NvContainer.ContainerTelemetryApiHelper.{2359952D-4327-4985-AF1B-78A692C2E278}\\NVIDIA TelemetryApi helper for NvContainer.exe"
+    },
+    {
+        "name": "NVIDIA LocalSystem Container",
+        "path": "C:\\Program Files\\NVIDIA Corporation\\Installer2\\NvContainer.LocalSystem.{14B2EF95-8523-40E4-826C-85D4E0DF03E6}\\NVIDIA LocalSystem Container.exe"
+    },
+    {
+        "name": "NVIDIA Message Bus for NvContainer",
+        "path": "C:\\Program Files\\NVIDIA Corporation\\Installer2\\NvContainer.MessageBus.{7827A01C-8BCC-4BD4-B57B-A6D098C3A460}\\NVIDIA Message Bus for NvContainer.exe"
+    },
+    {
+        "name": "NVAPI Monitor plugin for NvContainer",
+        "path": "C:\\Program Files\\NVIDIA Corporation\\Installer2\\NvContainer.NvapiMonitor.{8E4188A6-FE4F-4086-B351-873B866F69EF}\\NVAPI Monitor plugin for NvContainer.exe"
+    },
+    {
+        "name": "NVIDIA NetworkService Container",
+        "path": "C:\\Program Files\\NVIDIA Corporation\\Installer2\\NvContainer.ServiceUser.{4AE92964-7272-4157-94BA-5A13F207FA5F}\\NVIDIA NetworkService Container.exe"
+    },
+    {
+        "name": "NVIDIA Session Container",
+        "path": "C:\\Program Files\\NVIDIA Corporation\\Installer2\\NvContainer.Session.{94DCC151-5446-416C-BC8B-B6A788EB80DF}\\NVIDIA Session Container.exe"
+    },
+    {
+        "name": "NVIDIA User Container",
+        "path": "C:\\Program Files\\NVIDIA Corporation\\Installer2\\NvContainer.User.{7CF6954C-06C1-4D7C-BDC3-C8EB4804B1D9}\\NVIDIA User Container.exe"
+    },
+    {
+        "name": "NvModuleTracker",
+        "path": "C:\\Program Files\\NVIDIA Corporation\\Installer2\\NvModuleTracker.Driver.{584E8860-FA76-4DB8-8F9D-A70E18281E23}\\NvModuleTracker.exe"
+    },
+    {
+        "name": "NVIDIA NodeJS",
+        "path": "C:\\Program Files (x86)\\NVIDIA Corporation\\NvNode\\NVIDIA NodeJS.exe"
+    },
+    {
+        "name": "NVIDIA Watchdog Plugin for NvContainer",
+        "path": "C:\\Program Files\\NVIDIA Corporation\\Installer2\\NvPlugin.Watchdog.{F0179AEF-08C5-4376-91B5-E32A95BEAB65}\\NVIDIA Watchdog Plugin for NvContainer.exe"
+    },
+    {
+        "name": "NVIDIA Telemetry Client",
+        "path": "C:\\Program Files\\NVIDIA Corporation\\NvTelemetry\\NVIDIA Telemetry Client.exe"
+    },
+    {
+        "name": "NVIDIA Virtual Host Controller",
+        "path": "C:\\Program Files\\NVIDIA Corporation\\Installer2\\NvVHCI.{694F265D-1439-4BAB-ABEA-DE53F61480CA}\\NVIDIA Virtual Host Controller.exe"
+    },
+    {
+        "name": "Nvidia Share",
+        "path": "C:\\Program Files\\NVIDIA Corporation\\Installer2\\OSC.{35CF9A97-8143-4EA0-9C6F-15B69DF48D70}\\Nvidia Share.exe"
+    },
+    {
+        "name": "NVIDIA ShadowPlay 3.20.4.14",
+        "path": "C:\\Program Files\\NVIDIA Corporation\\ShadowPlay\\NVIDIA ShadowPlay 3.20.4.14.exe"
+    },
+    {
+        "name": "NVIDIA SHIELD Wireless Controller Driver",
+        "path": "C:\\Program Files\\NVIDIA Corporation\\Installer2\\ShieldWirelessController.{0B39954D-45CB-4FCC-9576-EE2857E01888}\\NVIDIA SHIELD Wireless Controller Driver.exe"
+    },
+    {
+        "name": "NVIDIA Update Core",
+        "path": "C:\\Program Files\\NVIDIA Corporation\\Installer2\\Update.Core.{3A8665D2-7A16-46FB-9CCC-48E06B9F1BEB}\\NVIDIA Update Core.exe"
+    },
+    {
+        "name": "NVIDIA Virtual Audio 4.13.0.0",
+        "path": "C:\\Program Files\\NVIDIA Corporation\\Installer2\\VirtualAudio.Driver.{8EBF36C0-D345-44E2-B39F-23E87EE037AA}\\NVIDIA Virtual Audio 4.13.0.0.exe"
+    },
+    {
+        "name": "Python 3.11.4 Standard Library (64-bit debug)",
+        "path": "Python 3.11.4 Standard Library (64-bit debug).exe"
+    },
+    {
+        "name": "Microsoft Visual C++ 2022 X64 Minimum Runtime - 14.36.32532",
+        "path": "Microsoft Visual C++ 2022 X64 Minimum Runtime - 14.36.32532.exe"
+    },
+    {
+        "name": "Node.js",
+        "path": "Node.js.exe"
+    },
+    {
+        "name": "Python 3.11.4 pip Bootstrap (64-bit)",
+        "path": "Python 3.11.4 pip Bootstrap (64-bit).exe"
+    },
+    {
+        "name": "Python 3.11.4 Executables (64-bit)",
+        "path": "Python 3.11.4 Executables (64-bit).exe"
+    },
+    {
+        "name": "AMD Ryzen Master SDK",
+        "path": "C:\\Program Files\\AMD\\RyzenMasterSDK\\AMD Ryzen Master SDK.exe"
+    },
+    {
+        "name": "Python 3.11.4 Core Interpreter (64-bit debug)",
+        "path": "Python 3.11.4 Core Interpreter (64-bit debug).exe"
+    },
+    {
+        "name": "Python 3.11.4 Standard Library (64-bit symbols)",
+        "path": "Python 3.11.4 Standard Library (64-bit symbols).exe"
+    },
+    {
+        "name": "VMware Player",
+        "path": "VMware Player.exe"
+    },
+    {
+        "name": "Python 3.11.4 Documentation (64-bit)",
+        "path": "Python 3.11.4 Documentation (64-bit).exe"
+    },
+    {
+        "name": "Python 3.11.4 Core Interpreter (64-bit)",
+        "path": "Python 3.11.4 Core Interpreter (64-bit).exe"
+    }
+]

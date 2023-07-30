@@ -1,7 +1,7 @@
-import sys
-import os
+# import sys
+# import os
 
-sys.path.append(os.environ.get('Zubia'))
+# sys.path.append(os.environ.get('Zubia'))
 
 import pyttsx3
 import json

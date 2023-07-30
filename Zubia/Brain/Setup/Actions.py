@@ -2,6 +2,7 @@ import os
 import json
 import shutil
 import pyttsx3
+from winreg import ConnectRegistry, HKEY_LOCAL_MACHINE, OpenKeyEx, EnumKey, QueryValueEx
 import Zubia.Brain.Paths as fp
 from Zubia.Body.Hand import printData
 from Zubia.Brain.Community import writeSetupLog
@@ -79,6 +80,29 @@ def verifyConfig():
             writeSetupLog("Storing googleAI api successful")
     writeSetupLog("Checked config file for any remaining settings successful")
 
+def extractApps():
+    apps = []
+    reg_path = r'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall'
+    with ConnectRegistry(None, HKEY_LOCAL_MACHINE) as reg:
+        with OpenKeyEx(reg, reg_path) as key:
+            for i in range(0, 10000):
+                try:
+                    sub_key_name = EnumKey(key, i)
+                    with OpenKeyEx(key, sub_key_name) as sub_key:
+                        try:
+                            display_name, _ = QueryValueEx(sub_key, 'DisplayName')
+                            try:
+                                install_location, _ = QueryValueEx(sub_key, 'InstallLocation')
+                                app_path = os.path.join(install_location, display_name + '.exe')
+                            except FileNotFoundError:
+                                uninstall_string, _ = QueryValueEx(sub_key, 'UninstallString')
+                                app_path = uninstall_string.split(' ')[0]
+                            apps.append({'name': display_name, 'path': app_path})
+                        except FileNotFoundError:
+                            pass
+                except OSError:
+                    break
+    return apps
 
 def verifyFolderExistance(folder_path: str):
     if not os.path.exists(folder_path):
@@ -88,6 +112,7 @@ def verifyFolderExistance(folder_path: str):
 
 def verifyFileExistance(file_path: str):
     if not os.path.exists(file_path):
+        writeSetupLog(f"Creating file at {file_path}")
         if file_path == fp.LOCALDATA_CONFIG_FILE:
             verifyConfig()
             copyFile(fp.SOFTWARE_CONFIG_FILE, fp.LOCALDATA_CONFIG_FILE)
@@ -96,19 +121,18 @@ def verifyFileExistance(file_path: str):
         elif file_path == fp.TRAINED_DATA_FILE:
             TrainAI()
         elif file_path == fp.CHAT_DATA_FILE:
-            writeSetupLog("Creating chatting file")
             with open(fp.CHAT_DATA_FILE, "w") as f:
                 json.dump([], f)
                 f.close()
-            writeSetupLog("Created chatting file successfully")
         elif file_path == fp.LOG_SETUP:
             with open(file_path, 'w') as file:
                 file.close()
+        # elif file_path == fp.APPS_FILE:
+
         else:
-            writeSetupLog(f"Creating {file_path}")
             with open(file_path, 'w') as file:
                 file.close()
-            writeSetupLog(f"Created {file_path} successfully")
+        writeSetupLog(f"Creating file at {file_path}")
     elif file_path == fp.LOCALDATA_CONFIG_FILE:
         verifyConfig()
         copyFile(fp.SOFTWARE_CONFIG_FILE, fp.LOCALDATA_CONFIG_FILE)
@@ -126,3 +150,5 @@ def setupManager():
     verifyFileExistance(fp.CHAT_DATA_FILE)
     verifyFolderExistance(fp.TRAINED_DATA_FOLDER)
     verifyFileExistance(fp.TRAINED_DATA_FILE)
+    verifyFolderExistance(fp.APPS_FOLDER)
+    verifyFileExistance(fp.APPS_FILE)

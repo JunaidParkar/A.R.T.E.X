@@ -1,3 +1,9 @@
+# import sys
+# import os
+
+# sys.path.append(os.environ.get('Zubia'))
+
+
 import speech_recognition as sr
 from googletrans import Translator
 import json
@@ -9,15 +15,16 @@ def hear():
             micConfig = json.load(f)['microphone']
             r = sr.Recognizer()
             with sr.Microphone() as source:
-                print(": Listening....")
+                print("Listening....")
                 r.adjust_for_ambient_noise(source)
                 r.pause_threshold = micConfig['pause_treshold']
                 audio = r.listen(source, micConfig['min_listen_timer'], micConfig['max__listen_timer'])
             try:
-                print(": Recognizing...")
+                print("Recognizing...")
                 query = r.recognize_google(audio, language='hi-In')
             except :
                 return ""
+            f.close()
             return str(query).lower()
     except:
         print("Unable to load configuration file...")
@@ -34,5 +41,5 @@ def translateToEnglish(text):
 def listen() :
     query = hear()
     data = translateToEnglish(query)
-    print(f": Your Command : {data}\n")
+    print(f"Your Command : {data}\n")
     return data

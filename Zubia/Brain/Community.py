@@ -12,20 +12,20 @@ def checkInternet():
     except requests.ConnectionError:
         return False
 
-def handleDirectory(dirPath: str):
-    if os.path.isdir(dirPath):
-        print("existDir")
-    else:
-        os.mkdir(dirPath)
-        print("dirCreated")
+# def handleDirectory(dirPath: str):
+#     if os.path.isdir(dirPath):
+#         print("existDir")
+#     else:
+#         os.mkdir(dirPath)
+#         print("dirCreated")
 
-def handleFile(filePath: str):
-    if os.path.exists(filePath):
-        print("fileExist")
-    else:
-        with open(filePath, "w") as f:
-            f.close()
-        print("fileCreated")
+# def handleFile(filePath: str):
+#     if os.path.exists(filePath):
+#         print("fileExist")
+#     else:
+#         with open(filePath, "w") as f:
+#             f.close()
+#         print("fileCreated")
 
 def writeDataInFile(data, filename):
     if os.path.exists(filename):

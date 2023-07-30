@@ -10,16 +10,8 @@ INSTALLATION OF PYTHON AND DEPENDENCIES: (SKIP IF YOU HAVE EXE VERSION)
               Command 4: exit()
     Step 6 :- Restart your computer
 
-ZUBIA INSTALLATION GUIDE:
-    Step 1 :- Press windows button on keyboard
-    Step 2 :- Type environment variables and hit enter
-    Step 3 :- Click Environment variables in computer name section
-    Step 4 :- Under user variables which is the top most.Below that table press "New" 
-    Step 5 :- In Variable name type "Zubia". Remember Z is in caps lock, all alphabets are case sensitive.
-    Step 6 :- In Variable value just paste the path where you have installed Zubia and hit ok
-    Step 7 :- Again it hit ok and again sam
 
-VOICE SETUP 
+VOICE SETUP:
     STEP 1: Navigate to windows setting. Search for speech and navigate for speech setting. Select language English (India). Below select Microsoft Zira in voices section. If the options for English (United States) and voice of Zira is not avavilable, then in windows setting navigate to Time and Language. Then navigate to Language and region. From here Add language English (United States). After download click for install by checking all the chexckBoxes. After doing so just RESTART your PC and perform above step.
     STEP 2: If Zira voice still not available then just follow these steps listed on https://www.thewindowsclub.com/unlock-extra-text-to-speech-voices-in-windows
     STEP 3: Now just restart your PC
@@ -28,14 +20,21 @@ VOICE SETUP
     STEP 6: If you have made any changes in config file manually the just run setUp and select option number 5 in order to load it.
 
 
-SETUP TO RUN ZUBIA ON WINDOWS STARTUP (WHEN YOU START YOUR PC): (SKIP ALWAYS)
-    Step 1 :- Press (win + r) or press windows and type run and hit enter
-    Step 2 :- In run app enter "shell:startup" without inverted commas and hit enter and File manager will be opened in a directory
-    Step 3 :- Copy zubiaStartUp.py file to that directory which is opened in Step 2.
-    Step 4 :- Restart your computer
+STEPS TO ADD INSTALLED APPS TO AI DATABASE:
+    Step 1 :- Find the launcher exe path of the app you want to open via AI. If you don't know how to find the path then just visit https://youtu.be/T-lA4A9l_hQ
+    Step 2 :- Ask AI to add apps by saying "Add apps to database"
+    Step 3 :- Then it will ask to enter name of the app. Enter the name of app you want to add. Then hit Enter
+    Step 4 :- Then it will ask to enter the path of launcher. Enter the path and hit enter
+    Step 5 :- Again it will ask to enter name of app. If you want to add more apps then continue the same procedure else enter exit
 
 
-STEPS TO GET GOOGLE AI API
+STEPS TO DELETE APPS FROM AI DATABASE:
+    Step 1 :- Ask AI to delete app by saying "Remove apps from database"
+    Step 2 :- It will ask name of the app you want to delete. Enter the name of the app. (Remember the name of the app should be exactly same as name entered while adding app)
+    Step 3 :- If you want to exit deleting mode then just write exit and hit enter.
+
+
+STEPS TO GET GOOGLE AI API:
     Step 1 :- Visit https://makersuite.google.com/waitlist
     Step 2 :- Select Country/region as yours else select India
     Step 3 :- In profession select Student (compulsory)

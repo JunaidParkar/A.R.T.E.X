@@ -1,21 +1,12 @@
 import google.generativeai as palm
-import os
-import sys
 import json
-sys.path.append(os.environ.get('Zubia'))
 import Zubia.Brain.Paths as Filepaths
-from Zubia.Brain.Community import handleDirectory, handleFile
 
 with open(Filepaths.LOCALDATA_CONFIG_FILE, "r") as fpp:
   api = json.load(fpp)["googleAI"]
   fpp.close()
 
 palm.configure(api_key=api)
-
-def verifyChatFiles():
-  handleDirectory(Filepaths.CHAT_DATA_FOLDER)
-  handleFile(Filepaths.CHAT_DATA_FILE)
-verifyChatFiles()
 
 def saveChats(conv):
   with open(Filepaths.CHAT_DATA_FILE, 'w') as f:
