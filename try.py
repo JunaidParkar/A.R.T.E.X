@@ -1,37 +1,37 @@
-import json
 import os
-from winreg import ConnectRegistry, HKEY_LOCAL_MACHINE, OpenKeyEx, EnumKey, QueryValueEx
+import json
+import winreg
 
+def get_installed_app_names():
+    installed_apps = []
+    with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall") as key:
+        try:
+            index = 0
+            while True:
+                subkey_name = winreg.EnumKey(key, index)
+                with winreg.OpenKey(key, subkey_name) as subkey:
+                    try:
+                        app_name = winreg.QueryValueEx(subkey, "DisplayName")[0]
+                        installed_apps.append(app_name)
+                    except FileNotFoundError:
+                        pass
+                    except Exception as e:
+                        print(f"Error reading registry key: {e}")
+                index += 1
+        except OSError:
+            pass
 
+    return installed_apps
 
-def get_installed_apps():
-    apps = []
-    reg_path = r'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall'
-    with ConnectRegistry(None, HKEY_LOCAL_MACHINE) as reg:
-        with OpenKeyEx(reg, reg_path) as key:
-            for i in range(0, 10000):
-                try:
-                    sub_key_name = EnumKey(key, i)
-                    with OpenKeyEx(key, sub_key_name) as sub_key:
-                        try:
-                            display_name, _ = QueryValueEx(sub_key, 'DisplayName')
-                            try:
-                                install_location, _ = QueryValueEx(sub_key, 'InstallLocation')
-                                app_path = os.path.join(install_location, display_name + '.exe')
-                            except FileNotFoundError:
-                                uninstall_string, _ = QueryValueEx(sub_key, 'UninstallString')
-                                app_path = uninstall_string.split(' ')[0]
-                            apps.append({'name': display_name, 'path': app_path})
-                        except FileNotFoundError:
-                            pass
-                except OSError:
-                    break
-    return apps
+def save_to_json(apps_list, file_path):
+    with open(file_path, 'w') as json_file:
+        json.dump(apps_list, json_file, indent=4)
 
 def main():
-    apps = get_installed_apps()
-    with open('apps.json', 'w') as f:
-        json.dump(apps, f, indent=4)
+    apps_list = get_installed_app_names()
+    file_path = "installed_app_names.json"
+    save_to_json(apps_list, file_path)
+    print(f"List of installed app names has been saved to {file_path}")
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

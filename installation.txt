@@ -7,7 +7,8 @@ INSTALLATION OF PYTHON AND DEPENDENCIES: (SKIP IF YOU HAVE EXE VERSION)
               Command 1: python
               Command 2: import nltk
               Command 3: nltk.download("punkt")
-              Command 4: exit()
+              Command 4: nltk.download("stopwords")
+              Command 5: exit()
     Step 6 :- Restart your computer
 
 
