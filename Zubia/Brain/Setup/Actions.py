@@ -2,7 +2,7 @@ import os
 import json
 import shutil
 import pyttsx3
-from winreg import ConnectRegistry, HKEY_LOCAL_MACHINE, OpenKeyEx, EnumKey, QueryValueEx
+import winreg
 import Zubia.Brain.Paths as fp
 from Zubia.Body.Hand import printData
 from Zubia.Brain.Community import writeSetupLog
@@ -80,29 +80,36 @@ def verifyConfig():
             writeSetupLog("Storing googleAI api successful")
     writeSetupLog("Checked config file for any remaining settings successful")
 
-def extractApps():
-    apps = []
-    reg_path = r'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall'
-    with ConnectRegistry(None, HKEY_LOCAL_MACHINE) as reg:
-        with OpenKeyEx(reg, reg_path) as key:
-            for i in range(0, 10000):
-                try:
-                    sub_key_name = EnumKey(key, i)
-                    with OpenKeyEx(key, sub_key_name) as sub_key:
+def getInstalledApps():
+    writeSetupLog("Fetching installed apps")
+    installed_apps = []
+    try:
+        with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall") as key:
+            try:
+                index = 0
+                while True:
+                    subkey_name = winreg.EnumKey(key, index)
+                    with winreg.OpenKey(key, subkey_name) as subkey:
                         try:
-                            display_name, _ = QueryValueEx(sub_key, 'DisplayName')
-                            try:
-                                install_location, _ = QueryValueEx(sub_key, 'InstallLocation')
-                                app_path = os.path.join(install_location, display_name + '.exe')
-                            except FileNotFoundError:
-                                uninstall_string, _ = QueryValueEx(sub_key, 'UninstallString')
-                                app_path = uninstall_string.split(' ')[0]
-                            apps.append({'name': display_name, 'path': app_path})
+                            app_name = winreg.QueryValueEx(subkey, "DisplayName")[0]
+                            install_location = winreg.QueryValueEx(subkey, "InstallLocation")[0]
+                            if install_location and not app_name.lower().endswith('.exe'):
+                                installed_apps.append(app_name)
                         except FileNotFoundError:
-                            pass
-                except OSError:
-                    break
-    return apps
+                            writeSetupLog("An unknown error occured")
+                        except Exception as e:
+                            writeSetupLog(f"Error reading registry key: {e}")
+                    index += 1
+            except OSError:
+                writeSetupLog("Error while finding the registered apps")
+    except:
+        writeSetupLog("Unable to use windows registry")
+    if len(installed_apps) > 0:
+        with open(fp.APPS_FILE, 'w') as json_file:
+            json.dump(installed_apps, json_file, indent=4)
+            writeSetupLog("Fetched installed apps successfully")
+    else:
+        writeSetupLog("No installed apps fetched")
 
 def verifyFolderExistance(folder_path: str):
     if not os.path.exists(folder_path):
@@ -127,8 +134,8 @@ def verifyFileExistance(file_path: str):
         elif file_path == fp.LOG_SETUP:
             with open(file_path, 'w') as file:
                 file.close()
-        # elif file_path == fp.APPS_FILE:
-
+        elif file_path == fp.APPS_FILE:
+            getInstalledApps()
         else:
             with open(file_path, 'w') as file:
                 file.close()
@@ -141,14 +148,22 @@ def setupManager():
     verifyFolderExistance(fp.LOCALFOLDER)
     verifyFolderExistance(fp.LOG_FOLDER)
     verifyFileExistance(fp.LOG_SETUP)
+
     verifyFolderExistance(fp.LOCAL_COMMUNITY_FOLDER)
+    
     verifyFileExistance(fp.LOCALDATA_CONFIG_FILE)
+
     verifyFolderExistance(fp.DATASET_FOLDER)
+
     verifyFileExistance(fp.LOCALDATA_INTENTS_FILE)
+
     verifyFolderExistance(fp.DATABASE_FOLDER)
+
     verifyFolderExistance(fp.CHAT_DATA_FOLDER)
     verifyFileExistance(fp.CHAT_DATA_FILE)
+
     verifyFolderExistance(fp.TRAINED_DATA_FOLDER)
     verifyFileExistance(fp.TRAINED_DATA_FILE)
+
     verifyFolderExistance(fp.APPS_FOLDER)
     verifyFileExistance(fp.APPS_FILE)

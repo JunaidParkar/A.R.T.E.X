@@ -1,14 +1,16 @@
 import os
 import keyboard
 import pyautogui
+import string
 import webbrowser
 from time import sleep
 import os
 import sys
 sys.path.append(os.environ.get('Zubia'))
 from Zubia.Body.Mouth import speak
+from Zubia.Brain.NeuralNetwork.Model import appFinder
 
-def openExe(query: str):
+def launcher(query: str):
     query = str(query).lower()
 
     removableQuery = ["visit", "website", "open", "start", "launch"]
@@ -25,12 +27,24 @@ def openExe(query: str):
         webbrowser.open(link)
         return True
     elif "open" in query or "launch" in query or "start" in query:
-        for wod in removableQuery:
-            query = query.replace(wod, "")
-        speak(f"Opening {query}")
-        pyautogui.press('win')
-        sleep(1)
-        keyboard.write(query)
-        sleep(1)
-        keyboard.press('enter')
-        return True
+        try:
+            inValid = False
+            for char in query:
+                if char not in string.ascii_letters and char != " ":
+                    print(char)
+                    inValid = True
+            if inValid:
+                speak("Enter query properly by valid...")
+            else:
+                app_name = appFinder(str(query))
+                if app_name is False:
+                    speak("Your app is not installed...")
+                else:
+                    speak(f"opening {app_name}")
+                    pyautogui.press('win')
+                    sleep(1)
+                    keyboard.write(app_name)
+                    sleep(1)
+                    keyboard.press('enter')
+        except:
+            speak("Enter query properly by except...")

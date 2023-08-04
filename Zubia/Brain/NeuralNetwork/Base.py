@@ -2,6 +2,8 @@ import numpy as np
 import nltk
 from nltk.stem.porter import PorterStemmer
 
+# base for main ai
+
 Stemmer = PorterStemmer()
 
 def tokenize(sentence):
@@ -17,3 +19,30 @@ def bag_of_words(tokenized_sentence,words):
         if w in sentence_word:
             bag[idx] = 1
     return bag
+
+# base for apps Finder
+
+def appTokenizer(name: str):
+    token = name.lower().split(" ")
+    return token
+
+def wordsFilter(apps_list: list, query_app: list):
+    comm = []
+    for index, each_app in enumerate(apps_list):
+        wrd = []
+        for word in query_app:
+            if word.lower() in each_app:
+                wrd.append(word)
+        comm.append(wrd)
+    return comm
+
+def wordPercentageCalculator(tokenised_query: list, filtered_query: list):
+    query_length = len(tokenised_query)
+    percentile_list = []
+    for list in filtered_query:
+        list_length = len(list)
+        percentage = (list_length / query_length) * 100
+        percentile_list.append(percentage)
+    if all(num == 0 for num in percentile_list):
+        return [-1]
+    return percentile_list
