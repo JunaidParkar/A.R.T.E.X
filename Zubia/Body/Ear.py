@@ -21,7 +21,8 @@ def hear():
                 audio = r.listen(source, micConfig['min_listen_timer'], micConfig['max__listen_timer'])
             try:
                 print("Recognizing...")
-                query = r.recognize_google(audio, language='hi-In')
+                # query = r.recognize_google(audio, language='hi-In')
+                query = r.recognize_google(audio, language='en')
             except :
                 return ""
             f.close()
@@ -40,6 +41,6 @@ def translateToEnglish(text):
     
 def listen() :
     query = hear()
-    data = translateToEnglish(query)
-    print(f"Your Command : {data}\n")
-    return data
+    # data = translateToEnglish(query)
+    print(f"Your Command : {query}\n")
+    return query

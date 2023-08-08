@@ -16,21 +16,22 @@ from Zubia.Body.Ear import listen
 from Zubia.Body.Mouth import speak
 import Zubia.Brain.NeuralNetwork.Train
 from Zubia.Brain.Palm.Chat import chatBot
-from Zubia.Brain.Features.Open import launcher
+from Zubia.Brain.Features.AppOpener import openApp
 from Zubia.Brain.Community import checkInternet
 from Zubia.Brain.NeuralNetwork.Model import TasksExecutor
 
 while True:
 
-    query = input("type: ")
-    isInter = checkInternet()
-    if isInter:
-
+    # query = input("type: ")
+    query = listen()
+    # isInter = checkInternet()
+    # if isInter:
+    if len(query) > 3:
     
         if "open" in query or "message" in query or "start" in query or "visit" in query or "launch" in query or "exit" in query or "sleep mode" in query:
             task = TasksExecutor(query)
             if "open" in task:
-                launcher(query)
+                openApp(query)
             elif "exit" in task:
                 speak("Exiting please wait")
                 break
@@ -39,8 +40,8 @@ while True:
         else:
             resp = chatBot(query)
             speak(resp)
-    else:
-        speak("Please turn on the internet")
+    # else:
+    #     speak("Please turn on the internet")
 
     # if len(query) < 3:
     #     pass

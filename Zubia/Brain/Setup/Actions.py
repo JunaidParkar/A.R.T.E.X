@@ -17,6 +17,11 @@ def updateCongif(key: str, value: str):
         json.dump(data, f, indent=4)
         f.truncate()
 
+def moveFile(filepath: str, dest: str):
+    writeSetupLog(f"moving {filepath} to {dest}")
+    shutil.move(filepath, dest)
+    writeSetupLog(f"moved {filepath} to {dest}")
+
 def copyFile(file: str, dest: str):
     writeSetupLog(f"Copying {file} at {dest}")
     try:

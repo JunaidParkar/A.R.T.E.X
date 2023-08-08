@@ -1,4 +1,5 @@
-pip install pyttsx3 speechrecognition torch numpy nltk googletrans keyboard google.generativeai os json sys requests webbrowser pyautogui keyboard time random subprocess pyaudio selenium pyqt5 socket string
+pip install pyttsx3 speechrecognition torch numpy nltk googletrans keyboard google.generativeai os json sys requests webbrowser pyautogui keyboard time random subprocess pyaudio selenium pyqt5 socket string urlextract winreg urllib3 zipfile bs4
+
 
 python
 import nltk

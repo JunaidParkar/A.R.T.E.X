@@ -1,66 +1,64 @@
-import json
-import string
-from Zubia.Brain.NeuralNetwork.Model import appFinder
+import os
+import re
+import winreg
+import urllib.request
+from zipfile import ZipFile
 
-appFinder()
+def getChromePath():
+    try:
+        key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\chrome.exe')
+        chrome_path, _ = winreg.QueryValueEx(key, '')
+        return chrome_path
+    except:
+        # If an error occurs, return None
+        return None
 
-file_path = "./AppsList.json"
+def fetchChromeVersion(chrome_exe_path):
+    version = os.popen(f'"{chrome_exe_path}" --version').read().strip()
+    version = re.search(r'\d+\.\d+\.\d+\.\d+', version).group()
+    return version
 
-# def appTokenizer(name: str):
-#     token = name.lower().split(" ")
-#     return token
+def downloadChrome():
+    # Download the latest version of Chrome from the official website
+    chrome_installer_url = 'https://dl.google.com/chrome/install/latest/chrome_installer.exe'
+    chrome_installer_path = os.path.join(os.environ['TEMP'], 'chrome_installer.exe')
+    urllib.request.urlretrieve(chrome_installer_url, chrome_installer_path)
+    return chrome_installer_path
 
-# def wordsFilter(apps_list: list, query_app: list):
-#     comm = []
-#     for index, each_app in enumerate(apps_list):
-#         wrd = []
-#         for word in query_app:
-#             if word.lower() in each_app:
-#                 wrd.append(word)
-#         comm.append(wrd)
-#     return comm
+def chromeInstaller(chrome_installer_path):
+    # Install Chrome using the downloaded installer
+    os.system(f'start /wait "" "{chrome_installer_path}" /silent /install')
+    os.remove(chrome_installer_path)
 
-# def wordPercentageCalculator(tokenised_query: list, filtered_query: list):
-#     query_length = len(tokenised_query)
-#     percentile_list = []
-#     for list in filtered_query:
-#         list_length = len(list)
-#         percentage = (list_length / query_length) * 100
-#         percentile_list.append(percentage)
-#     if all(num == 0 for num in percentile_list):
-#         return [-1]
-#     return percentile_list
+def downloadChromeDriver(version):
+    # Download the ChromeDriver for the specified version of Chrome from the official website
+    major_version = version.split('.')[0]
+    chromedriver_url = f'https://chromedriver.storage.googleapis.com/LATEST_RELEASE_{major_version}'
+    chromedriver_version = urllib.request.urlopen(chromedriver_url).read().decode('utf-8').strip()
+    chromedriver_zip_url = f'https://chromedriver.storage.googleapis.com/{chromedriver_version}/chromedriver_win32.zip'
+    chromedriver_zip_path = os.path.join(os.environ['TEMP'], 'chromedriver.zip')
+    urllib.request.urlretrieve(chromedriver_zip_url, chromedriver_zip_path)
+    return chromedriver_zip_path
 
-# def getAppName(name: str):
-#     with open(file_path, 'r') as f:
-#         apps = json.load(f)
-#         tokenised_apps = []
-#         tokenised_query = appTokenizer(name)
-#         for app in apps:
-#             tokenised_apps.append(appTokenizer(app))
-#         filtered_word = wordsFilter(tokenised_apps, tokenised_query)
-#         percentile = wordPercentageCalculator(tokenised_query, filtered_word)
-#         if len(percentile) == 1 and percentile[0] == -1:
-#             return False
-#         else:
-#             maxIndex = percentile.index(max(percentile))
-#             return apps[maxIndex]
+def chromeDriverExtractor(chromedriver_zip_path, project_directory):
+    # Move ChromeDriver to the specified project directory by extracting the downloaded zip file
+    with ZipFile(chromedriver_zip_path, 'r') as zip_file:
+        zip_file.extractall(project_directory)
+    os.remove(chromedriver_zip_path)
 
-# while True:
-#     nme = input("Enter >> ")
-#     try:
-#         app_name = getAppName(str(nme))
-#         inValid = False
-#         for char in nme:
-#             if char not in string.ascii_letters and char != " ":
-#                 inValid = True
-#                 print(char)
-#         if inValid:
-#             print("Enter query properly...")
-#         else:
-#             if app_name is False:
-#                 print("Your app is not installed...")
-#             else:
-#                 print(f"opening {app_name}")
-#     except:
-#         print("Enter query properly...")
+# Get the path to the Chrome executable
+chrome_exe_path = getChromePath()
+
+# Check if Chrome is installed
+if not os.path.exists(chrome_exe_path):
+    # If Chrome is not installed, download and install it
+    chrome_installer_path = downloadChrome()
+    chromeInstaller(chrome_installer_path)
+
+# Get the version of Chrome installed
+version = fetchChromeVersion(chrome_exe_path)
+
+# Download and move the corresponding version of ChromeDriver to your project directory
+project_directory = 'C:\\path\\to\\your\\project\\directory'
+chromedriver_zip_path = downloadChromeDriver(version)
+chromeDriverExtractor(chromedriver_zip_path, project_directory)

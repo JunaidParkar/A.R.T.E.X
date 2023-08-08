@@ -75,15 +75,19 @@ def TasksExecutor(query):
 
 def appFinder(query: str):
     with open(fp.APPS_FILE, 'r') as f:
-        apps = json.load(f)
-        tokenised_apps = []
-        tokenised_query = appTokenizer(query)
-        for app in apps:
-            tokenised_apps.append(appTokenizer(app))
-        filtered_word = wordsFilter(tokenised_apps, tokenised_query)
-        percentile = wordPercentageCalculator(tokenised_query, filtered_word)
-        if len(percentile) == 1 and percentile[0] == -1:
-            return False
-        else:
-            maxIndex = percentile.index(max(percentile))
-            return apps[maxIndex]
+        with open(fp.APPS_USER_FILE, 'r') as uf:
+            apps = json.load(f)
+            userApps = json.load(uf)
+            for userApp in userApps:
+                apps.append(userApp)
+            tokenised_apps = []
+            tokenised_query = appTokenizer(query)
+            for app in apps:
+                tokenised_apps.append(appTokenizer(app))
+            filtered_word = wordsFilter(tokenised_apps, tokenised_query)
+            percentile = wordPercentageCalculator(tokenised_query, filtered_word)
+            if len(percentile) == 1 and percentile[0] == -1:
+                return False
+            else:
+                maxIndex = percentile.index(max(percentile))
+                return apps[maxIndex]

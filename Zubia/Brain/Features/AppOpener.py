@@ -10,23 +10,13 @@ sys.path.append(os.environ.get('Zubia'))
 from Zubia.Body.Mouth import speak
 from Zubia.Brain.NeuralNetwork.Model import appFinder
 
-def launcher(query: str):
+def openApp(query: str):
     query = str(query).lower()
 
     removableQuery = ["visit", "website", "open", "start", "launch"]
 
-    if "visit" in query:
-        for wd in removableQuery:
-            query = query.replace(wd, "")
-        if "." in query:
-            pass
-        else:
-            query = f"{query}.com"
-        speak(f"Visiting {query}")
-        link = f"http://www.{query}".replace(" ", "")
-        webbrowser.open(link)
-        return True
-    elif "open" in query or "launch" in query or "start" in query:
+    
+    if "open" in query or "launch" in query or "start" in query:
         try:
             inValid = False
             for char in query:
@@ -38,13 +28,13 @@ def launcher(query: str):
             else:
                 app_name = appFinder(str(query))
                 if app_name is False:
-                    speak("Your app is not installed...")
+                    speak("App you asked is not installed...")
                 else:
                     speak(f"opening {app_name}")
                     pyautogui.press('win')
-                    sleep(1)
+                    sleep(3)
                     keyboard.write(app_name)
-                    sleep(1)
+                    sleep(3)
                     keyboard.press('enter')
         except:
             speak("Enter query properly by except...")
