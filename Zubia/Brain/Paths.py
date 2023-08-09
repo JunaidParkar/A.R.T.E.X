@@ -23,6 +23,8 @@ DATASET_FOLDER = f"{LOCALFOLDER}\\Dataset"
 LOCALDATA_INTENTS_FILE = f"{DATASET_FOLDER}\\Intents.json"
 SOFTWARE_INTENTS_FILE = f"{os.environ['Zubia']}\\Zubia\\Brain\\Datasets\\Intents.json"
 
+CHROME_DRIVER_FOLDER = f"{LOCALFOLDER}\\Chrome"
+CHROME_DRIVER_FILE = f"{CHROME_DRIVER_FOLDER}\\Driver.exe"
 
 LOG_FOLDER = f"{LOCALFOLDER}\\Logs"
 LOG_SETUP = f"{LOG_FOLDER}\\log.txt"
