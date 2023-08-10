@@ -1,5 +1,7 @@
 import os
 
+TEMP_FOLDER = f"{os.environ.get('Zubia')}\\Zubia\\Temp"
+
 LOCALAPPDATA = os.environ['LOCALAPPDATA']
 LOCALFOLDER = f"{LOCALAPPDATA}\\Zubia"
 
