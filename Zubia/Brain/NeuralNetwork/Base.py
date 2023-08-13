@@ -22,10 +22,6 @@ def bag_of_words(tokenized_sentence,words):
 
 # base for apps Finder
 
-def appTokenizer(name: str):
-    token = name.lower().split(" ")
-    return token
-
 def wordsFilter(apps_list: list, query_app: list):
     comm = []
     for index, each_app in enumerate(apps_list):

@@ -6,7 +6,7 @@ import os
 import sys
 sys.path.append(os.environ.get('Zubia'))
 import Zubia.Brain.Paths as fp
-from Zubia.Brain.NeuralNetwork.Base import bag_of_words, tokenize, appTokenizer, wordsFilter, wordPercentageCalculator
+from Zubia.Brain.NeuralNetwork.Base import bag_of_words, tokenize, wordsFilter, wordPercentageCalculator
 
 def TasksExecutor(query):
 
@@ -81,9 +81,9 @@ def appFinder(query: str):
             for userApp in userApps:
                 apps.append(userApp)
             tokenised_apps = []
-            tokenised_query = appTokenizer(query)
+            tokenised_query = tokenize(query)
             for app in apps:
-                tokenised_apps.append(appTokenizer(app))
+                tokenised_apps.append(tokenize(app))
             filtered_word = wordsFilter(tokenised_apps, tokenised_query)
             percentile = wordPercentageCalculator(tokenised_query, filtered_word)
             if len(percentile) == 1 and percentile[0] == -1:
