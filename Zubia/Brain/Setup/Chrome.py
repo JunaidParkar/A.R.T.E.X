@@ -2,7 +2,6 @@ import os
 import sys
 sys.path.append(os.environ.get('Zubia'))
 import winreg
-import urllib3
 from Zubia.Brain.Paths import TEMP_FOLDER, CHROME_DRIVER_FILE
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -12,6 +11,12 @@ import shutil
 from Zubia.Brain.Links import getDriverLink, GET_LATEST_VERSION, DOWNLOAD_DRIVER, DOWNLOAD_TEST_DRIVER, GET_VERSION
 from Zubia.Brain.NeuralNetwork.Base import tokenize
 from Zubia.Brain.Errors import CHROME_ERROR
+
+def removeSeleniumBackups():
+    dirPaths = [f"C:\\Users\\{os.environ.get('USERNAME')}\\.cache\\selenium", f"C:\\Users\\{os.environ.get('USERNAME')}\\AppData\\Local\\Temp\\selenium", f"C:\\Users\\{os.environ.get('USERNAME')}\\AppData\\Roaming\\Temp\\selenium"]
+    for folder in dirPaths:
+        if os.path.isdir(folder):
+            shutil.rmtree(folder)
 
 def getChromePath():
     try:
@@ -31,42 +36,6 @@ def fetchChromeVersion():
     except Exception as e:
         print(f"An error occurred while fetching Chrome version: {e}")
         return None
-
-def download_chrome():
-    try:
-        print('Starting Chrome download')
-        chrome_installer_url = 'https://dl.google.com/chrome/install/latest/chrome_installer.exe'
-        chrome_installer_path = os.path.join(TEMP_FOLDER, 'chrome_installer.exe')
-        
-        http = urllib3.PoolManager()
-        response = http.request('GET', chrome_installer_url)
-        
-        if response.status == 200:
-            with open(chrome_installer_path, 'wb') as f:
-                f.write(response.data)
-            print(f'Chrome installer downloaded to {chrome_installer_path}')
-            return chrome_installer_path
-        else:
-            print(f'Failed to download Chrome installer. Status code: {response.status}')
-            return None
-    except Exception as e:
-        print(f'An error occurred while downloading')
-        return None
-
-def install_chrome(chrome_installer_path: str):
-    try:
-        print(f'Starting Chrome installation from {chrome_installer_path}')
-        return_code = os.system(f'start /wait "" "{chrome_installer_path}" /silent /install')
-        if return_code == 0:
-            os.remove(chrome_installer_path)
-            print('Chrome installation complete')
-            return True
-        else:
-            print('Chrome installation failed')
-            return False
-    except Exception:
-        print(f'An error occurred during Chrome installation')
-        return False
 
 def testDriver():
     if os.path.isfile(CHROME_DRIVER_FILE):
@@ -94,16 +63,13 @@ def downloadDriver(version: str):
         os.remove(chromedriver_path)
     try:
         if int(LatestVersionAvailable.split(".")[0]) < int(version.split(".")[0]):
-            print(1)
             print(getDriverLink(DOWNLOAD_TEST_DRIVER, version))
             downloadedDriver = requests.get(getDriverLink(DOWNLOAD_TEST_DRIVER, version))
         else:
-            print(2)
             availVersion = requests.get(getDriverLink(GET_VERSION, version)).text
             print(getDriverLink(DOWNLOAD_DRIVER, availVersion))
             downloadedDriver = requests.get(getDriverLink(DOWNLOAD_DRIVER, availVersion))
     except Exception as e:
-        print(e)
         return None
     with open(driverZipPath, 'wb') as f:
         f.write(downloadedDriver.content)
@@ -135,24 +101,10 @@ def downloadDriver(version: str):
         shutil.rmtree(chromedriver_path)
     return True
 
-def chromeSetUp():
+def checkChromeSetUp():
     path = getChromePath()
     if path is None:
-        print("Chrome cannot be detected. would you like to download it? reply in yes or no...")
-        reply1 = input(">> ")
-        reply1 = tokenize(reply1)
-        if "yes" in reply1:
-            installerPth = download_chrome()
-            if installerPth is None:
-                return None
-            else:
-                installed = install_chrome(installerPth)
-                if installed is False:
-                    return None
-                else:
-                    return True
-        else:
-            return None
+        return "Chrome cannot be detected. Plese download and install google chrome first. If already installed then kindly re-install in default location."
     else:
         return True
 

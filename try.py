@@ -1,14 +1,56 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
 import os
-from zipfile import ZipFile
-import shutil
-import requests
+import sys
+sys.path.append(os.environ.get('Zubia'))
+import winreg
 import urllib3
-from bs4 import BeautifulSoup
+from Zubia.Brain.Paths import TEMP_FOLDER, CHROME_DRIVER_FILE
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from zipfile import ZipFile
+import requests
+import shutil
 from Zubia.Brain.Links import getDriverLink, GET_LATEST_VERSION, DOWNLOAD_DRIVER, DOWNLOAD_TEST_DRIVER, GET_VERSION
-from Zubia.Brain.Paths import CHROME_DRIVER_FILE, TEMP_FOLDER
+from Zubia.Brain.NeuralNetwork.Base import tokenize
+from Zubia.Brain.Errors import CHROME_ERROR
+
+def removeSeleniumBackups():
+    dirPaths = [f"C:\\Users\\{os.environ.get('USERNAME')}\\.cache\\selenium", f"C:\\Users\\{os.environ.get('USERNAME')}\\AppData\\Local\\Temp\\selenium", f"C:\\Users\\{os.environ.get('USERNAME')}\\AppData\\Roaming\\Temp\\selenium"]
+    for folder in dirPaths:
+        if os.path.isdir(folder):
+            shutil.rmtree(folder)
+
+def getChromePath():
+    try:
+        key = winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r'SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\chrome.exe')
+        chrome_path, _ = winreg.QueryValueEx(key, '')
+        return chrome_path
+    except:
+        return None
+
+def fetchChromeVersion():
+    try:
+        driver = webdriver.Chrome()
+        browserVersion = driver.capabilities['browserVersion']
+        driverVersion = driver.capabilities["chrome"]["chromedriverVersion"].split(" ")[0]
+        driver.quit()
+        return browserVersion, driverVersion
+    except Exception as e:
+        print(f"An error occurred while fetching Chrome version: {e}")
+        return None
+
+def testDriver():
+    if os.path.isfile(CHROME_DRIVER_FILE):
+        try:
+            drivv = webdriver.Chrome(service=Service(executable_path=CHROME_DRIVER_FILE))
+            drivv.get("https://github.com/JunaidParkar")
+            drivv.quit()
+            return True
+        except Exception as e:
+            print(f"An error occurred: {e}")
+            print("WebDriver may not be supported or an issue occurred while testing.")
+            return False
+    else:
+        return None
 
 def downloadDriver(version: str):
     if not os.path.isdir(TEMP_FOLDER):
@@ -16,19 +58,20 @@ def downloadDriver(version: str):
     LatestVersionAvailable = requests.get(getDriverLink(GET_LATEST_VERSION)).text
     driverZipPath = os.path.join(TEMP_FOLDER, "driver.zip")
     chromedriver_path = os.path.join(TEMP_FOLDER, 'chromedriver.exe')
+    if os.path.isfile(driverZipPath):
+        os.remove(driverZipPath)
+    if os.path.isfile(chromedriver_path):
+        os.remove(chromedriver_path)
     try:
         if int(LatestVersionAvailable.split(".")[0]) < int(version.split(".")[0]):
-            print(1)
             print(getDriverLink(DOWNLOAD_TEST_DRIVER, version))
             downloadedDriver = requests.get(getDriverLink(DOWNLOAD_TEST_DRIVER, version))
         else:
-            print(2)
             availVersion = requests.get(getDriverLink(GET_VERSION, version)).text
             print(getDriverLink(DOWNLOAD_DRIVER, availVersion))
             downloadedDriver = requests.get(getDriverLink(DOWNLOAD_DRIVER, availVersion))
     except Exception as e:
-        print(e)
-        return
+        return None
     with open(driverZipPath, 'wb') as f:
         f.write(downloadedDriver.content)
         f.close()
@@ -48,61 +91,54 @@ def downloadDriver(version: str):
 
             if avail is False:
                 print("chromedriver.exe not found in the ZIP archive")
+                return None
     except:
         print("No zip file found...")
+        return None
         
     if os.path.isfile(driverZipPath):
         os.remove(driverZipPath)
     if os.path.isfile(chromedriver_path):
         shutil.rmtree(chromedriver_path)
+    return True
 
-# def validateDriver(driverVersion, browserVersion, driverPath = None):
-#     if driverVersion.split(".")[0] != browserVersion.split(".")[0]:
-#         if not driverPath is None:
-#             os.remove(driverPath)
+def chromeSetUp():
+    path = getChromePath()
+    if path is None:
+        print("Chrome cannot be detected. Plese download and install google chrome first. If already installed then kindly re-install in default location.")
+        return False
+    else:
+        return True
 
-# def test_chromedriver_compatibility(driver_path: str):
-#     print(driver_path)
-#     try:
-#         options = Options()
-#         options.binary_location = driver_path
-#         wdriver = webdriver.Chrome(options=options)
-#         print('Chrome and ChromeDriver are compatible')
-#         wdriver.quit()
-#         return True
-#     except Exception as e:
-#         print(f'Error: {e}')
-#         print('Chrome and ChromeDriver may not be compatible')
-#         return False
-
-# driver = webdriver.Chrome()
-# browserVersion = driver.capabilities['browserVersion']
-# driverVersion = driver.capabilities["chrome"]["chromedriverVersion"].split(" ")[0]
-# driver.quit()
-
-def testDriver():
-    import time
-    try:
-        drivv = webdriver.Chrome(service=Service(executable_path=CHROME_DRIVER_FILE))
-        drivv.get("https://github.com/JunaidParkar")
-        time.sleep(3)
-        drivv.quit()
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        print("WebDriver may not be supported or an issue occurred while testing.")
-
-
-
-# print(driverVersion)
-# test_chromedriver_compatibility(os.path.join(os.environ.get("Zubia"), "Driver.exe"))
-# download_chromedriver(driverVersion, os.path.join(os.environ.get("Zubia"), "Driver.exe"))
-# testDriver()
-# download_chromedriver(revision=browserVersion)
-# print(os.name)
-# downloadDriver("99.0.4844.51")
-# downloadDriver(driverVersion)
-while True:
-    print("hello")
-    testDriver()
-    import time
-    time.sleep(2)
+def driverSetup():
+    testing1 = testDriver()
+    if testing1 is False:
+        if os.path.isfile(CHROME_DRIVER_FILE):
+            os.remove(CHROME_DRIVER_FILE)
+    
+    if testing1 is None:
+        version = fetchChromeVersion()
+        if version is None:
+            return None
+        else:
+            driverDownloader = downloadDriver(version[1])
+            if driverDownloader is None:
+                return None
+            else:
+                testing2 = testDriver()
+                if testing2 is None:
+                    return None
+                elif testing2 is False:
+                    return None
+                else:
+                    return True
+                
+ptt = getChromePath()
+print(f"chrome path: {ptt}")
+if ptt != None:
+    ver = fetchChromeVersion()
+    print(f"chrome versions: {ver}")
+    drdown = downloadDriver(ver[1])
+    print(f"driver download: {drdown}")
+    if drdown is True:
+        testDriver()

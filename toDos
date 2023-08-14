@@ -5,3 +5,5 @@ create a forum website and provide link at
 After completing update default intents() in Zubia.Brain.Setup.Structure.py
 
 add function for {winget upgrade --all} command to update all apps installed in system
+
+before finalizing update voice configuration at very first step as it is important

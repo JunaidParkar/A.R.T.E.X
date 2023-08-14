@@ -9,8 +9,24 @@ if os.environ.get("Zubia") is None:
         subprocess.run(['setx', "Zubia", os.getcwd()], check=True)
     except subprocess.CalledProcessError as e:
         print(f"Error occurred while setting the environment variable: {e}")
+
+# setup starts
+
 from Zubia.Brain.Setup.Actions import setupManager
+from Zubia.Body.Mouth import speak
+from Zubia.Brain.Setup.Chrome import checkChromeSetUp, driverSetup, removeSeleniumBackups
+
+removeSeleniumBackups()
 setupManager()
+isChrome = checkChromeSetUp()
+if isChrome is True:
+    driverSetup()
+else:
+    speak(isChrome)
+    sys.exit()
+
+# main AI starts
+
 import Zubia.Brain.Paths as fp
 from Zubia.Body.Ear import listen
 from Zubia.Body.Mouth import speak

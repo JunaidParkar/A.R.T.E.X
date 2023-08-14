@@ -5,3 +5,7 @@ python
 import nltk
 nltk.download("punkt")
 exit()
+
+
+
+myenv\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome
