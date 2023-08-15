@@ -2,6 +2,7 @@ import os
 import sys
 sys.path.append(os.environ.get('Zubia'))
 import winreg
+import urllib3
 from Zubia.Brain.Paths import TEMP_FOLDER, CHROME_DRIVER_FILE
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -101,10 +102,11 @@ def downloadDriver(version: str):
         shutil.rmtree(chromedriver_path)
     return True
 
-def checkChromeSetUp():
+def chromeSetUp():
     path = getChromePath()
     if path is None:
-        return "Chrome cannot be detected. Plese download and install google chrome first. If already installed then kindly re-install in default location."
+        print("Chrome cannot be detected. Plese download and install google chrome first. If already installed then kindly re-install in default location.")
+        return False
     else:
         return True
 
@@ -130,3 +132,13 @@ def driverSetup():
                     return None
                 else:
                     return True
+                
+ptt = getChromePath()
+print(f"chrome path: {ptt}")
+if ptt != None:
+    ver = fetchChromeVersion()
+    print(f"chrome versions: {ver}")
+    drdown = downloadDriver(ver[1])
+    print(f"driver download: {drdown}")
+    if drdown is True:
+        testDriver()
