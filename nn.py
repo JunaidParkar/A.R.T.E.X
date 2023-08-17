@@ -70,3 +70,5 @@ def reset_password():
         print(f"Wrong password: {e}")
 
 login()
+# create_password()
+# reset_password()

@@ -1,6 +1,7 @@
 import os
 
-TEMP_FOLDER = f"{os.environ.get('Zubia')}\\Zubia\\Temp"
+ZUBIA = os.environ.get('Zubia')
+TEMP_FOLDER = f"{ZUBIA}\\Zubia\\Temp"
 
 LOCALAPPDATA = os.environ['LOCALAPPDATA']
 LOCALFOLDER = f"{LOCALAPPDATA}\\Zubia"
@@ -30,3 +31,6 @@ CHROME_DRIVER_FILE = f"{CHROME_DRIVER_FOLDER}\\Driver.exe"
 
 LOG_FOLDER = f"{LOCALFOLDER}\\Logs"
 LOG_SETUP = f"{LOG_FOLDER}\\log.txt"
+
+
+PRIVATE_1 = "Private1.bin"

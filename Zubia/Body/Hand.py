@@ -1,9 +1,8 @@
 def printData(data):
     print("")
     print(data)
-    print("")
 
-def tekeInput(label: str):
+def takeInput(label: str):
     printData(label)
     inp =  input(">> ")
     print("\n")
