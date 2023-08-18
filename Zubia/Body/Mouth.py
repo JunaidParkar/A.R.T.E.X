@@ -24,7 +24,7 @@ def speak(text):
                     voice_id = voices[voice_index].id
                     engine.setProperty("voice", voice_id)
                     engine.setProperty("rate", voiceConfig['rate'])
-                    printData(f"Zubia: {text}")
+                    printData(text)
                     engine.say(text)
                     engine.runAndWait()
                 else: 

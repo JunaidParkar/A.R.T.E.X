@@ -34,3 +34,5 @@ LOG_SETUP = f"{LOG_FOLDER}\\log.txt"
 
 
 PRIVATE_1 = "Private1.bin"
+PRIVATE_2 = "Private2.bin"
+PRIVATE_3 = "Private3.bin"

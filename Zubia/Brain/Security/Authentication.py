@@ -4,55 +4,81 @@ from cryptography.hazmat.backends import default_backend
 import getpass
 import os
 import sys
+import subprocess
 sys.path.append(os.environ.get('Zubia'))
-from Zubia.Brain.Paths import PRIVATE_1, TEMP_FOLDER
-from Zubia.Body.Hand import takeInput, printData
+from Zubia.Brain.Paths import TEMP_FOLDER, PRIVATE_1, PRIVATE_2, PRIVATE_3
+from Zubia.Body.Hand import takeInput, printData, printSimple
+from Zubia.Body.Mouth import speak
 
 pvt = os.path.join(os.path.split(TEMP_FOLDER)[0], "Brain", "Datasets", ".private")
 
 def validateFolder():
-    if not os.path.exists(pvt):  # Check if the folder exists and create if not
+    if not os.path.exists(pvt):
         os.makedirs(pvt)
+        subprocess.run(f"attrib +h {pvt}", shell=True, check=True)
 
-def create_password():
-    validateFolder()
-    password = getpass.getpass("Enter your password: ")
-    security_question = takeInput("Enter a security question:")
-    security_answer = takeInput("Enter the answer to the security question:")
-    salt = os.urandom(16)
+def deriveKey(salt, data):
     kdf = PBKDF2HMAC(
         algorithm=hashes.SHA256(),
         iterations=100000,
         salt=salt,
         length=32,
         backend=default_backend()
-    )
-    key = kdf.derive(password.encode())
-    with open(os.path.join(pvt, PRIVATE_1), "wb") as f:
-        f.write(salt + key + security_question.encode() + b'\n' + security_answer.encode())
-    print("Password created")
+        )
+    return kdf.derive(data.encode())
 
-def login():
+def verifyKey(salt, data, input):
     try:
-        validateFolder()
-        password = getpass.getpass("Enter your password: ")
-        with open(os.path.join(pvt, PRIVATE_1), "rb") as f:
-            data = f.read()
-            salt = data[:16]
-            key = data[16:48]  # Change index to accommodate new data
-            security_question = data[48:data.index(b'\n')]
-            security_answer = data[data.index(b'\n')+1:]
         kdf = PBKDF2HMAC(
             algorithm=hashes.SHA256(),
             iterations=100000,
             salt=salt,
             length=32,
             backend=default_backend()
-        )
-        kdf.verify(password.encode(), key)
-        print("Login successful")
+            )
+        kdf.verify(input.encode(), data)
+        return True
     except Exception as e:
-        print(f"Login failed: {e}")
+        return f"{input}: {e}"
+
+def create_password():
+    try:
+        password = getpass.getpass("Enter your password: ")
+        security_question = takeInput("Enter a security question:")
+        security_answer = takeInput("Enter the answer to the security question:")
+        salt = os.urandom(16)
+        passwordKey = deriveKey(salt, password)
+        quesKey = deriveKey(salt, security_question)
+        ansKey = deriveKey(salt, security_answer)
+        files = [PRIVATE_1, PRIVATE_2, PRIVATE_3]
+        data = [passwordKey, quesKey, ansKey]
+        for index, file in enumerate(files):
+            print(salt + data[index])
+            with open(os.path.join(pvt, file), "wb") as f:
+                f.write(salt + data[index])
+                f.close()
+        return True
+    except Exception as e:
+        return e
+
+def login(pd: str=None):
+    try:
+        validateFolder()
+        if pd is None:
+            password = getpass.getpass("Enter your password: ")
+        else:
+            password = pd
+        with open(os.path.join(pvt, PRIVATE_1), "rb") as f:
+            data = f.read()
+            salt = data[:16]
+            key = data[16:48]
+        verifiedLogin = verifyKey(salt, key, password)
+        if verifiedLogin is True:
+            return True
+        else:
+            return verifiedLogin
+    except Exception as e:
+        return e
 
 def reset_password():
     try:
@@ -61,92 +87,119 @@ def reset_password():
         with open(os.path.join(pvt, PRIVATE_1), "rb") as f:
             data = f.read()
             salt = data[:16]
-            key = data[16:48]  # Change index to accommodate new data
-            security_question = data[48:data.index(b'\n')]
-            security_answer = data[data.index(b'\n')+1:]
-        kdf = PBKDF2HMAC(
-            algorithm=hashes.SHA256(),
-            iterations=100000,
-            salt=salt,
-            length=32,
-            backend=default_backend()
-        )
-        kdf.verify(old_password.encode(), key)
-        new_password = getpass.getpass("Enter your new password: ")
-        new_salt = os.urandom(16)
-        new_kdf = PBKDF2HMAC(
-            algorithm=hashes.SHA256(),
-            iterations=100000,
-            salt=new_salt,
-            length=32,
-            backend=default_backend()
-        )
-        new_key = new_kdf.derive(new_password.encode())
-        with open(os.path.join(pvt, PRIVATE_1), "wb") as f:
-            f.write(new_salt + new_key + security_question + b'\n' + security_answer)
-        print("Password reset")
+            key = data[16:48]
+        oldPasswordVerified = verifyKey(salt, key, old_password)
+        if oldPasswordVerified is True:
+            new_password = getpass.getpass("Enter your new password: ")
+            new_salt = os.urandom(16)
+            new_key = deriveKey(new_salt, new_password)
+            with open(os.path.join(pvt, PRIVATE_1), "wb") as f:
+                f.write(new_salt + new_key)
+            return True
+        else:
+            return oldPasswordVerified
     except Exception as e:
-        print(f"Wrong password: {e}")
+        return e
 
 def forgot_password():
     try:
         validateFolder()
-        security_question = input("Enter your security question: ")
-        with open(os.path.join(pvt, PRIVATE_1), "rb") as f:
+        security_question = takeInput("Enter your security question: ")
+        security_answer = takeInput("Enter the answer to your security question: ")
+        with open(os.path.join(pvt, PRIVATE_2), "rb") as f:
             data = f.read()
-            saved_security_question = data[48:data.index(b'\n')]
-            saved_security_answer = data[data.index(b'\n')+1:]
-        if security_question.encode() == saved_security_question:
-            security_answer = input("Enter the answer to your security question: ")
-            if security_answer.encode() == saved_security_answer:
-                new_password = getpass.getpass("Enter your new password: ")
-                new_salt = os.urandom(16)
-                new_kdf = PBKDF2HMAC(
-                    algorithm=hashes.SHA256(),
-                    iterations=100000,
-                    salt=new_salt,
-                    length=32,
-                    backend=default_backend()
-                )
-                new_key = new_kdf.derive(new_password.encode())
-                with open(os.path.join(pvt, PRIVATE_1), "wb") as f:
-                    f.write(new_salt + new_key + saved_security_question + b'\n' + saved_security_answer)
-                print("Password reset successful")
-            else:
-                print("Incorrect security answer")
+            salt = data[:16]
+            saved_security_question = data[16:48]
+            questVerified = verifyKey(salt, saved_security_question, security_question)
+            if not questVerified is True:
+                return questVerified
+        with open(os.path.join(pvt, PRIVATE_3), "rb") as f:
+            data = f.read()
+            salt = data[:16]
+            saved_security_answer = data[16:48]
+            answerVerified = verifyKey(salt, saved_security_answer, security_answer)
+            if not answerVerified is True:
+                return answerVerified
+        speak("You need to reset your security answer and question during the process ahead. You have been proceed to set password...")
+        crt = create_password()
+        if crt is True:
+            return True
         else:
-            print("Incorrect security question")
+            return crt
     except Exception as e:
-        print(f"Password reset failed: {e}")
+        return e
+
+def isPasswordSet():
+    fp = os.path.join(pvt, PRIVATE_1)
+    fq = os.path.join(pvt, PRIVATE_2)
+    fa = os.path.join(pvt, PRIVATE_3)
+    if not os.path.isfile(fp):
+        return "Password not set"
+    elif not os.path.isfile(fq) or not os.path.isfile(fa):
+        return "Something wrong with security system. Kindly Reset your password."
+    return True
+
+def getOptions():
+    return ["Create password", "Log in", "Reset password", "Forgot password", "Exit"]
 
 def printOptions():
-    print("Authentication")
-    print("1. Create password")
-    print("2. Log In")
-    print("3. Reset password")
-    print("4. Forgot password")
-    print("5. Exit")
+    options = getOptions()
+    pws = isPasswordSet()
+    if pws is True:
+        opt = [options[1], options[2], options[3], options[4]]
+    else:
+        opt = [options[0]]
+    
+    if len(opt) == 1 and opt[0] == options[0]:
+        return "crt"
+    else:
+        printSimple("Authentication")
+        for index, option in enumerate(opt):
+            print(f"   {index + 1}: {option}")
+    return opt
 
 def Authenticate():
-    printOptions()
+    validateFolder()
+    options = getOptions()
+    opt = printOptions()
     while True:
         try:
-            choice = int(takeInput("Enter corresponding number...").strip())
-            if choice == 1:
-                create_password()
-            elif choice == 2:
-                login()
-            elif choice == 3:
-                reset_password()
-            elif choice == 4:
-                forgot_password()
-            elif choice == 5:
-                break
+            if opt == "crt":
+                create = create_password()
+                if create is True:
+                    speak("Successfully created your password. Now you can login")
+                    logIn = login()
+                    return logIn
+                else:
+                    return create
+            choice = int(takeInput(f"Enter only corresponding number. Eg: 1 for {opt[0]}"))
+            if choice <= len(opt):
+                action = opt[choice - 1]
+                if action == options[0]:
+                    create = create_password()
+                    if create is True:
+                        speak("Successfully created your password. Now you can login")
+                        logIn = login()
+                        return logIn
+                    else:
+                        return create
+                elif action == options[1]:
+                    logIn = login()
+                    return logIn
+                elif action == options[2]:
+                    reset = reset_password()
+                    if reset is True:
+                        speak("Password successfully reset. Please login again")
+                        logIn = login()
+                        return login
+                    else:
+                        return reset
+                elif action == options[3]:
+                    forgot = forgot_password()
+                    return forgot
+                elif action == options[4]:
+                    return "Exit"
             else:
-                printData("Invalid choice. Please enter a valid number.\n")
-                printOptions()
-        except ValueError:
-            printData("Please enter only a number\n")
-            printOptions()
-
-Authenticate()
+                speak("Enter appropriate option number.")
+        except Exception as e:
+            speak(f"Please enter option number {e}")

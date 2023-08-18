@@ -1,7 +1,6 @@
 import os
 os.system("cls" if os.name == "nt" else "clear")
 os.system('title Zubia AI 1.0.1')
-import sys
 import subprocess
 if os.environ.get("Zubia") is None:
     os.environ["Zubia"] = os.getcwd()
@@ -14,6 +13,20 @@ if os.environ.get("Zubia") is None:
 
 from Zubia.Brain.Setup.Actions import setupManager
 from Zubia.Body.Mouth import speak
+
+# authenticate
+
+import sys
+import time
+from Zubia.Brain.Security.Authentication import Authenticate
+auth = Authenticate()
+if auth is True:
+    speak("You are logged in")
+else:
+    speak(f"Exiting: {auth}")
+    time.sleep(1)
+    sys.exit()
+
 from Zubia.Brain.Setup.Chrome import checkChromeSetUp, driverSetup, removeSeleniumBackups
 
 removeSeleniumBackups()
