@@ -5,7 +5,7 @@ import random
 import os
 import sys
 sys.path.append(os.environ.get('Quantix'))
-import Quantix.Brain.Paths as fp
+from Quantix.Brain.Paths import LOCALDATA_INTENTS_FILE, TRAINED_DATA_FILE, APPS_FILE, APPS_USER_FILE
 from Quantix.Brain.NeuralNetwork.Base import bag_of_words, tokenize, wordsFilter, wordPercentageCalculator
 
 def TasksExecutor(query):
@@ -29,10 +29,10 @@ def TasksExecutor(query):
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-    with open(fp.LOCALDATA_INTENTS_FILE,'r') as json_data:
+    with open(LOCALDATA_INTENTS_FILE,'r') as json_data:
         intents = json.load(json_data)
 
-    FILE = fp.TRAINED_DATA_FILE
+    FILE = TRAINED_DATA_FILE
     data = torch.load(FILE)
 
     input_size = data["input_size"]
@@ -74,12 +74,14 @@ def TasksExecutor(query):
             
 
 def appFinder(query: str):
-    with open(fp.APPS_FILE, 'r') as f:
-        with open(fp.APPS_USER_FILE, 'r') as uf:
+    with open(APPS_FILE, 'r') as f:
+        # with open(APPS_USER_FILE, 'r') as uf:
             apps = json.load(f)
-            userApps = json.load(uf)
-            for userApp in userApps:
-                apps.append(userApp)
+            if apps is None:
+                apps = []
+            # userApps = json.load(uf)
+            # for userApp in userApps:
+            #     apps.append(userApp)
             tokenised_apps = []
             tokenised_query = tokenize(query)
             for app in apps:

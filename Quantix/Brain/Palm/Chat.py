@@ -42,18 +42,21 @@ context = "Be my friend and stay with me"
 messages = loadChats()
 
 def chatBot(input):
-  query = input
-  tempMsg = messages.copy()
-  tempMsg.append(query)
-  response = palm.chat(
-    **defaults,
-    context=context,
-    examples=examples,
-    messages=tempMsg
-  )
-  if response.last is not None:
-    messages.append(query)
-    messages.append(response.last)
-    tempMsg = []
-  saveChats(messages)
-  return response.last
+  try:
+    query = input
+    tempMsg = messages.copy()
+    tempMsg.append(query)
+    response = palm.chat(
+      **defaults,
+      context=context,
+      examples=examples,
+      messages=tempMsg
+    )
+    if response.last is not None:
+      messages.append(query)
+      messages.append(response.last)
+      tempMsg = []
+    saveChats(messages)
+    return response.last
+  except Exception as e:
+    return f"An error occured: {e}"

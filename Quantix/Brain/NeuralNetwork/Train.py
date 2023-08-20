@@ -6,7 +6,7 @@ import numpy as np
 import os
 import sys
 sys.path.append(os.environ.get('Quantix'))
-import Quantix.Brain.Paths as fp
+from Quantix.Brain.Paths import TRAINED_DATA_FILE, TRAINED_DATA_FOLDER, LOCALDATA_INTENTS_FILE
 from Quantix.Brain.NeuralNetwork.Base import bag_of_words, stem, tokenize
 from Quantix.Body.Mouth import speak
 
@@ -31,7 +31,7 @@ def TrainAI():
             out = self.l3(out)
             return out
 
-    with open(fp.LOCALDATA_INTENTS_FILE,'r') as f:
+    with open(LOCALDATA_INTENTS_FILE,'r') as f:
         intents = json.load(f)
 
     all_words = []
@@ -121,7 +121,8 @@ def TrainAI():
     "tags":tags
     }
 
-    FILE = fp.TRAINED_DATA_FILE
-    torch.save(data,FILE)
+    if not os.path.isdir(TRAINED_DATA_FOLDER):
+        os.mkdir(TRAINED_DATA_FOLDER)
+    torch.save(data,TRAINED_DATA_FILE)
 
     speak("Training completed succesfully")

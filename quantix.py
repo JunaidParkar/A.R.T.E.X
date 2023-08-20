@@ -15,8 +15,32 @@ if os.environ.get("Quantix") is None:
 
 # setup starts
 
-# from Quantix.Brain.Setup.Actions import setupManager
+from Quantix.Brain.Setup.Actions import logSetup, dirSetup, verifyConfig, verifyIntents, getInstalledApps
+
+logSetup()
+dirSetup()
+verifyConfig()
+verifyIntents()
+getInstalledApps()
+
 from Quantix.Body.Mouth import speak
+from Quantix.Brain.NeuralNetwork.Train import TrainAI
+
+TrainAI()
+
+# from Quantix.Brain.Community import checkInternet
+# checkInternet()
+
+# from Quantix.Brain.Setup.Chrome import checkChromeSetUp, driverSetup, removeSeleniumBackups
+
+# removeSeleniumBackups()
+# # setupManager()
+# isChrome = checkChromeSetUp()
+# if isChrome is True:
+#     driverSetup()
+# else:
+#     speak(isChrome)
+#     sys.exit()
 
 # authenticate
 
@@ -31,37 +55,26 @@ else:
     time.sleep(1)
     sys.exit()
 
-from Quantix.Brain.Setup.Chrome import checkChromeSetUp, driverSetup, removeSeleniumBackups
+from Quantix.Brain.Paths import REMINDER_FILE
 
-removeSeleniumBackups()
-# setupManager()
-isChrome = checkChromeSetUp()
-if isChrome is True:
-    driverSetup()
-else:
-    speak(isChrome)
-    sys.exit()
+subprocess.Popen(["python", REMINDER_FILE])
+speak("Please do not close the reminder window as it is a part of me...")
 
 # main AI starts
 
-import Quantix.Brain.Paths as fp
 from Quantix.Body.Ear import listen
 from Quantix.Body.Mouth import speak
-import Quantix.Brain.NeuralNetwork.Train
 from Quantix.Brain.Palm.Chat import chatBot
+from Quantix.Brain.Memory.Remind import addReminder
 from Quantix.Brain.Features.AppOpener import openApp
-from Quantix.Brain.Community import checkInternet
 from Quantix.Brain.NeuralNetwork.Model import TasksExecutor
 
-while True:
 
-    # query = input("type: ")
+while True:
     query = listen()
-    # isInter = checkInternet()
-    # if isInter:
     if len(query) > 3:
-    
-        if "open" in query or "message" in query or "start" in query or "visit" in query or "launch" in query or "exit" in query or "sleep mode" in query:
+        task = TasksExecutor(query)
+        if not task is None:
             task = TasksExecutor(query)
             if "open" in task:
                 openApp(query)
@@ -70,16 +83,8 @@ while True:
                 break
             elif "sleep" in task:
                 speak("Sleeping mode started. Wake me up by calling me...")
+            elif "reminder" in task:
+                addReminder()
         else:
             resp = chatBot(query)
             speak(resp)
-    # else:
-    #     speak("Please turn on the internet")
-
-    # if len(query) < 3:
-    #     pass
-    # elif "exit" in query:
-    #     break
-    # else:
-    #     resp = chatBot(query)
-    #     speak(resp)

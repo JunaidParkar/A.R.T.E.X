@@ -19,6 +19,11 @@
       "tag": "sleep",
       "patterns": ["sleep"],
       "responses": ["sleep"]
+    },
+    {
+      "tag": "reminder",
+      "patterns": ["remind", "reminder"],
+      "responses": ["reminder"]
     }
   ]
 }

@@ -2,30 +2,15 @@ import json
 import os
 import requests
 import datetime
-import Quantix.Brain.Paths as fp
+import pickle
+from Quantix.Brain.Paths import  TEMP_FOLDER, PRIVATE_4, LOG_FILE, LOG_FOLDER
  
 def checkInternet():
     try:
-        # Send a simple HTTP GET request to a known website (e.g., Google)
         response = requests.get("https://junaidparkar-f7e41.web.app", timeout=5)
         return response.status_code == 200
     except requests.ConnectionError:
         return False
-
-# def handleDirectory(dirPath: str):
-#     if os.path.isdir(dirPath):
-#         print("existDir")
-#     else:
-#         os.mkdir(dirPath)
-#         print("dirCreated")
-
-# def handleFile(filePath: str):
-#     if os.path.exists(filePath):
-#         print("fileExist")
-#     else:
-#         with open(filePath, "w") as f:
-#             f.close()
-#         print("fileCreated")
 
 def writeDataInFile(data, filename):
     if os.path.exists(filename):
@@ -49,15 +34,35 @@ def writeDataInFile(data, filename):
 
 
 def verifyLog(path):
-    if os.path.isfile(path):
-        pass
-    else:
+    if not os.path.isdir(LOG_FOLDER):
+        os.mkdir(LOG_FOLDER)
+    if not os.path.isfile(path):
         with open(path, "w") as f:
             f.close()
 
 
-def writeSetupLog(text):
-    verifyLog(fp.LOG_SETUP)
-    with open(fp.LOG_SETUP, "ab+") as process:
+def writeLog(text):
+    verifyLog(LOG_FILE)
+    with open(LOG_FILE, "ab+") as process:
         process.write(f"[{datetime.datetime.now().strftime('%m/%d/%Y, %H:%M:%S')}] {text}\n".encode("utf-8"))
         process.close()
+
+def rmpt():
+    pvt = os.path.join(os.path.split(TEMP_FOLDER)[0], "Brain", "Datasets", ".private")
+    fl = os.path.join(pvt, PRIVATE_4)
+    return fl
+
+def loadReminder():
+    try:
+        with open(rmpt(), 'rb') as fr:
+            reminder = pickle.load(fr)
+            if reminder is None:
+                reminder = []
+    except:
+        reminder = []
+    return reminder
+
+def saveReminder(data: list):
+    with open(rmpt(), 'wb') as fw:
+        pickle.dump(data, fw)
+        fw.close()

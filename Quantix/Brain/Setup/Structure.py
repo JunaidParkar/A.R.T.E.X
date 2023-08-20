@@ -1,7 +1,4 @@
 import os
-import json
-import shutil
-import pyttsx3
 import Quantix.Brain.Paths as fp
 from Quantix.Brain.Community import writeSetupLog
 
@@ -11,8 +8,8 @@ def defaultConfig():
     return {"voice": {"index": 0,"rate": 135 }, "microphone": {"pause_treshold": 1, "min_listen_timer": 0, "max__listen_timer": 8 }, "googleAI": ""}
 
 def defaultIntents():
-    return {"intents": [{"tag": "open", "patterns": ["open", "launch", "start", "visit"], "responses": ["open"]},  {"tag": "whatsapp", "patterns": ["whatsapp", "message"], "responses": ["whatsapp"]},  {"tag": "exit", "patterns": ["exit"], "responses": ["exit"]},  {"tag": "sleep", "patterns": ["sleep"], "responses": ["sleep"]  }]
-}
+    return { "intents": [{"tag": "open", "patterns": ["open", "launch", "start", "visit"], "responses": ["open"]},{"tag": "whatsapp", "patterns": ["whatsapp", "message"], "responses": ["whatsapp"]},{ "tag": "exit", "patterns": ["exit"], "responses": ["exit"]},{ "tag": "sleep", "patterns": ["sleep"], "responses": ["sleep"]},{ "tag": "reminder", "patterns": ["remind", "reminder"], "responses": ["reminder"]}]}
+
 
 
 def manageLocalDir():

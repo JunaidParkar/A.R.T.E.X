@@ -1,7 +1,7 @@
 import os
 
-Quantix = os.environ.get('Quantix')
-TEMP_FOLDER = f"{Quantix}\\Quantix\\Temp"
+QUANTIX = os.environ.get('Quantix')
+TEMP_FOLDER = f"{QUANTIX}\\Quantix\\Temp"
 
 LOCALAPPDATA = os.environ['LOCALAPPDATA']
 LOCALFOLDER = f"{LOCALAPPDATA}\\Quantix"
@@ -29,9 +29,10 @@ SOFTWARE_INTENTS_FILE = f"{os.environ['Quantix']}\\Quantix\\Brain\\Datasets\\Int
 CHROME_DRIVER_FOLDER = f"{LOCALFOLDER}\\Chrome"
 CHROME_DRIVER_FILE = f"{CHROME_DRIVER_FOLDER}\\Driver.exe"
 
-LOG_FOLDER = f"{LOCALFOLDER}\\Logs"
-LOG_SETUP = f"{LOG_FOLDER}\\log.txt"
+LOG_FOLDER = f"{QUANTIX}\\Logs"
+LOG_FILE = f"{LOG_FOLDER}\\log.txt"
 
+REMINDER_FILE = f"{QUANTIX}\\Quantix\\Brain\\Memory\\Reminder.py"
 
 PRIVATE_1 = "Auth.pkl"
 PRIVATE_2 = "Ques.pkl"

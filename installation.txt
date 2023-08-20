@@ -11,16 +11,6 @@ INSTALLATION OF PYTHON AND DEPENDENCIES: (SKIP IF YOU HAVE EXE VERSION)
               Command 5: exit()
     Step 6 :- Restart your computer
 
-
-VOICE SETUP:
-    STEP 1: Navigate to windows setting. Search for speech and navigate for speech setting. Select language English (India). Below select Microsoft Zira in voices section. If the options for English (United States) and voice of Zira is not avavilable, then in windows setting navigate to Time and Language. Then navigate to Language and region. From here Add language English (United States). After download click for install by checking all the chexckBoxes. After doing so just RESTART your PC and perform above step.
-    STEP 2: If Zira voice still not available then just follow these steps listed on https://www.thewindowsclub.com/unlock-extra-text-to-speech-voices-in-windows
-    STEP 3: Now just restart your PC
-    STEP 4: Now run setUp.py and choose option for set voice i.e option number 1. If everything is fine it will automatically fetch voice.
-    STEP 5: Experiment with all the other values in voice to get better speech output as your requirement or keep it as default. Remember not to change index of voice in config file.
-    STEP 6: If you have made any changes in config file manually the just run setUp and select option number 5 in order to load it.
-
-
 STEPS TO ADD INSTALLED APPS TO AI DATABASE:
     Step 1 :- Find the launcher exe path of the app you want to open via AI. If you don't know how to find the path then just visit https://youtu.be/T-lA4A9l_hQ
     Step 2 :- Ask AI to add apps by saying "Add apps to database"

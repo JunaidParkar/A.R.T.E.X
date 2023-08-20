@@ -11,7 +11,6 @@ def visitWebsite(query):
     extractor = URLExtract()
     urls = extractor.find_urls(query)
     if urls:
-        # If URLs are found, open the first URL in the default web browser
         speak(f"visiting {urls[0]}")
         webbrowser.open(urls[0])
     else:

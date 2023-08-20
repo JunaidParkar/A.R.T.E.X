@@ -2,8 +2,6 @@ import numpy as np
 import nltk
 from nltk.stem.porter import PorterStemmer
 
-# base for main ai
-
 Stemmer = PorterStemmer()
 
 def tokenize(sentence):
@@ -19,8 +17,6 @@ def bag_of_words(tokenized_sentence,words):
         if w in sentence_word:
             bag[idx] = 1
     return bag
-
-# base for apps Finder
 
 def wordsFilter(apps_list: list, query_app: list):
     comm = []
