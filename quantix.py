@@ -1,6 +1,6 @@
 import os
 os.system("cls" if os.name == "nt" else "clear")
-os.system('title Quantix AI 1.0.1')
+os.system('title Quantix AI 2.0.0')
 import subprocess
 import time
 
