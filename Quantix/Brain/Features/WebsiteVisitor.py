@@ -4,7 +4,6 @@ import sys
 sys.path.append(os.environ.get('Quantix'))
 from Quantix.Body.Mouth import speak
 from urlextract import URLExtract
-from selenium import webdriver
 
 def visitWebsite(query):
     removableQuery = ["visit", "website", "open", "start", "launch"]

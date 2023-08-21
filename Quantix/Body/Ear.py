@@ -2,7 +2,6 @@ import sys
 import os
 sys.path.append(os.environ.get('Quantix'))
 import speech_recognition as sr
-from googletrans import Translator
 import json
 import Quantix.Brain.Paths as fp
 from Quantix.Body.Hand import printSimple, printData

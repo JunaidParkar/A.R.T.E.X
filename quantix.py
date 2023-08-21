@@ -3,7 +3,8 @@ os.system("cls" if os.name == "nt" else "clear")
 os.system('title Quantix AI 1.0.1')
 import subprocess
 import time
-if os.environ.get("Quantix") is None:
+
+def setEnv():
     os.environ["Quantix"] = os.getcwd()
     try:
         subprocess.run(['setx', "Quantix", os.getcwd()], check=True)
@@ -13,11 +14,15 @@ if os.environ.get("Quantix") is None:
     except subprocess.CalledProcessError as e:
         print(f"Error occurred while setting the environment variable: {e}")
 
+if os.environ.get("Quantix") is None:
+    setEnv()
+if not os.environ.get("Quantix") == os.getcwd():
+    setEnv()
+
 # setup starts
 
-from Quantix.Brain.Setup.Actions import logSetup, dirSetup, verifyConfig, verifyIntents, getInstalledApps
+from Quantix.Brain.Setup.Actions import dirSetup, verifyConfig, verifyIntents, getInstalledApps
 
-logSetup()
 dirSetup()
 verifyConfig()
 verifyIntents()
@@ -45,7 +50,6 @@ TrainAI()
 # authenticate
 
 import sys
-import time
 from Quantix.Brain.Security.Authentication import Authenticate
 auth = Authenticate()
 if auth is True:

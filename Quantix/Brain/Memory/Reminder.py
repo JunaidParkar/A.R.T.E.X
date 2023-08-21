@@ -8,7 +8,6 @@ from Quantix.Brain.Community import loadReminder, saveReminder
 
 while True:
     rm = loadReminder()
-    print(rm)
     if len(rm) > 0 and not rm is None:
         for reminder in rm:
             hr, mn = int(datetime.datetime.now().time().hour), int(datetime.datetime.now().time().minute)

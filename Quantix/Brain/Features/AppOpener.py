@@ -2,7 +2,6 @@ import os
 import keyboard
 import pyautogui
 import string
-import webbrowser
 from time import sleep
 import os
 import sys

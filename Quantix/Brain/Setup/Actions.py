@@ -70,6 +70,7 @@ def verifyConfig():
             f.close()
             writeLog("Storing googleAI api successful")
     writeLog("Checked config file for any remaining settings successful")
+    copyFile(fp.SOFTWARE_CONFIG_FILE, fp.LOCALDATA_CONFIG_FILE)
 
 def verifyIntents():
     if not os.path.isfile(fp.LOCALDATA_INTENTS_FILE):
@@ -77,8 +78,7 @@ def verifyIntents():
             with open(fp.SOFTWARE_INTENTS_FILE, 'w') as ff:
                 ff.close()
         with open(fp.SOFTWARE_INTENTS_FILE, 'r+') as fff:
-            fff.write(" ")
-            json.dump(defaultIntents, fp.SOFTWARE_INTENTS_FILE)
+            json.dump(defaultIntents(), fff, indent=4)
             fff.close()
         copyFile(fp.SOFTWARE_INTENTS_FILE, fp.LOCALDATA_INTENTS_FILE)
 
@@ -132,6 +132,7 @@ def handleStructure(paths: list):
 
 def dirSetup():
     dirs = [
+        fp.LOCALFOLDER,
         fp.LOCAL_COMMUNITY_FOLDER,
         fp.DATASET_FOLDER,
         fp.DATABASE_FOLDER,
