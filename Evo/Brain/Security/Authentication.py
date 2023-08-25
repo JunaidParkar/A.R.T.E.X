@@ -5,10 +5,10 @@ import getpass
 import os
 import sys
 import subprocess
-sys.path.append(os.environ.get('Quantix'))
-from Quantix.Brain.Paths import TEMP_FOLDER, PRIVATE_1, PRIVATE_2, PRIVATE_3
-from Quantix.Body.Hand import takeInput, printSimple
-from Quantix.Body.Mouth import speak
+sys.path.append(os.environ.get('Evo'))
+from Evo.Brain.Paths import TEMP_FOLDER, PRIVATE_1, PRIVATE_2, PRIVATE_3
+from Evo.Body.Hand import takeInput, printSimple
+from Evo.Body.Mouth import speak
 
 pvt = os.path.join(os.path.split(TEMP_FOLDER)[0], "Brain", "Datasets", ".private")
 

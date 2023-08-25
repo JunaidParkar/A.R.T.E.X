@@ -1,12 +1,12 @@
 import os
 import sys
-sys.path.append(os.environ.get('Quantix'))
+sys.path.append(os.environ.get('Evo'))
 import re
 import datetime
-from Quantix.Body.Ear import listen
-from Quantix.Body.Mouth import speak
-from Quantix.Brain.NeuralNetwork.Base import tokenize
-from Quantix.Brain.Community import saveReminder, loadReminder
+from Evo.Body.Ear import listen
+from Evo.Body.Mouth import speak
+from Evo.Brain.NeuralNetwork.Base import tokenize
+from Evo.Brain.Community import saveReminder, loadReminder
 
 def verify_time_format(time_str):
     pattern = r'^(\d+) (hour|hours|minute|minutes) (\d+) (hour|hours|minute|minutes)$'

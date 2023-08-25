@@ -1,4 +1,3 @@
-.env
-quantixenv
+EvoEnv
 Driver.exe
 chromeDriver.exe

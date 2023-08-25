@@ -1,6 +1,6 @@
 def printData(data):
     print("")
-    print(f"Quantix: {data}")
+    print(f"Evo: {data}")
 
 def printSimple(data):
     print("")

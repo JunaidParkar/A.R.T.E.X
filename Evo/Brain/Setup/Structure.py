@@ -1,6 +1,6 @@
 import os
-import Quantix.Brain.Paths as fp
-from Quantix.Brain.Community import writeLog
+import Evo.Brain.Paths as fp
+from Evo.Brain.Community import writeLog
 
 FOLDER_PATHS = [[fp.LOCALFOLDER, "Root"], [fp.DATASET_FOLDER, "Dataset"], [f"{fp.DATABASE_FOLDER}", "Database"], [f"{fp.CHAT_DATA_FOLDER}", "Chats"], [f"{fp.TRAINED_DATA_FOLDER}", "Train"], [f"{fp.LOCAL_COMMUNITY_FOLDER}", "Community"], ["Logs", "Logs"]]
 

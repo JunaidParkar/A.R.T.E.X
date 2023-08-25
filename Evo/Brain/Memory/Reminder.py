@@ -1,10 +1,10 @@
 import os
 import sys
-sys.path.append(os.environ.get('Quantix'))
+sys.path.append(os.environ.get('Evo'))
 import time
 import datetime
-from Quantix.Body.Mouth import speak
-from Quantix.Brain.Community import loadReminder, saveReminder
+from Evo.Body.Mouth import speak
+from Evo.Brain.Community import loadReminder, saveReminder
 
 while True:
     rm = loadReminder()

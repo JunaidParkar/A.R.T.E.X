@@ -3,7 +3,7 @@ import os
 import requests
 import datetime
 import pickle
-from Quantix.Brain.Paths import  TEMP_FOLDER, PRIVATE_4, LOG_FILE, LOG_FOLDER
+from Evo.Brain.Paths import  TEMP_FOLDER, PRIVATE_4, LOG_FILE, LOG_FOLDER
  
 def checkInternet():
     try:

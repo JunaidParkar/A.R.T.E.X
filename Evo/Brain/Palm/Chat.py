@@ -1,6 +1,6 @@
 import google.generativeai as palm
 import json
-import Quantix.Brain.Paths as Filepaths
+import Evo.Brain.Paths as Filepaths
 
 with open(Filepaths.LOCALDATA_CONFIG_FILE, "r") as fpp:
   api = json.load(fpp)["googleAI"]
@@ -24,7 +24,7 @@ def loadChats():
 
 examples = [
     ("Who are you?",
-     "I am Quantix your personal AI assistant created by MR. Junaid Pakar."
+     "I am Evo your personal AI assistant created by MR. Junaid Pakar."
      ),
      ("Who created you?",
       "All credit goes to MR. Junaid Parkar. I am originated by him.")

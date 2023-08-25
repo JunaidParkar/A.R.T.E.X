@@ -4,9 +4,9 @@ import torch
 import random
 import os
 import sys
-sys.path.append(os.environ.get('Quantix'))
-from Quantix.Brain.Paths import LOCALDATA_INTENTS_FILE, TRAINED_DATA_FILE, APPS_FILE, APPS_USER_FILE
-from Quantix.Brain.NeuralNetwork.Base import bag_of_words, tokenize, wordsFilter, wordPercentageCalculator
+sys.path.append(os.environ.get('Evo'))
+from Evo.Brain.Paths import LOCALDATA_INTENTS_FILE, TRAINED_DATA_FILE, APPS_FILE, APPS_USER_FILE
+from Evo.Brain.NeuralNetwork.Base import bag_of_words, tokenize, wordsFilter, wordPercentageCalculator
 
 def TasksExecutor(query):
 

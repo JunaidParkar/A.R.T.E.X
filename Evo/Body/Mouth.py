@@ -1,10 +1,10 @@
 import sys
 import os
-sys.path.append(os.environ.get('Quantix'))
+sys.path.append(os.environ.get('Evo'))
 import pyttsx3
 import json
-from Quantix.Body.Hand import printData
-from Quantix.Brain.Paths import LOCALDATA_CONFIG_FILE
+from Evo.Body.Hand import printData
+from Evo.Brain.Paths import LOCALDATA_CONFIG_FILE
 
 def speak(text):
     try:

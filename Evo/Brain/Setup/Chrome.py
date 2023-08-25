@@ -1,16 +1,16 @@
 import os
 import sys
-sys.path.append(os.environ.get('Quantix'))
+sys.path.append(os.environ.get('Evo'))
 import winreg
-from Quantix.Brain.Paths import TEMP_FOLDER, CHROME_DRIVER_FILE
+from Evo.Brain.Paths import TEMP_FOLDER, CHROME_DRIVER_FILE
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from zipfile import ZipFile
 import requests
 import shutil
-from Quantix.Brain.Links import getDriverLink, GET_LATEST_VERSION, DOWNLOAD_DRIVER, DOWNLOAD_TEST_DRIVER, GET_VERSION
-from Quantix.Body.Mouth import speak
-from Quantix.Brain.Community import writeLog
+from Evo.Brain.Links import getDriverLink, GET_LATEST_VERSION, DOWNLOAD_DRIVER, DOWNLOAD_TEST_DRIVER, GET_VERSION
+from Evo.Body.Mouth import speak
+from Evo.Brain.Community import writeLog
 
 def removeSeleniumBackups():
     dirPaths = [f"C:\\Users\\{os.environ.get('USERNAME')}\\.cache\\selenium", f"C:\\Users\\{os.environ.get('USERNAME')}\\AppData\\Local\\Temp\\selenium", f"C:\\Users\\{os.environ.get('USERNAME')}\\AppData\\Roaming\\Temp\\selenium"]

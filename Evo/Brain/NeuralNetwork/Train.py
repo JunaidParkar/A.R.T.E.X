@@ -5,10 +5,10 @@ import torch
 import numpy as np
 import os
 import sys
-sys.path.append(os.environ.get('Quantix'))
-from Quantix.Brain.Paths import TRAINED_DATA_FILE, TRAINED_DATA_FOLDER, LOCALDATA_INTENTS_FILE
-from Quantix.Brain.NeuralNetwork.Base import bag_of_words, stem, tokenize
-from Quantix.Body.Mouth import speak
+sys.path.append(os.environ.get('Evo'))
+from Evo.Brain.Paths import TRAINED_DATA_FILE, TRAINED_DATA_FOLDER, LOCALDATA_INTENTS_FILE
+from Evo.Brain.NeuralNetwork.Base import bag_of_words, stem, tokenize
+from Evo.Body.Mouth import speak
 
 def TrainAI():
 

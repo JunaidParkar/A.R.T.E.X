@@ -1,10 +1,10 @@
 import sys
 import os
-sys.path.append(os.environ.get('Quantix'))
+sys.path.append(os.environ.get('Evo'))
 import speech_recognition as sr
 import json
-import Quantix.Brain.Paths as fp
-from Quantix.Body.Hand import printSimple, printData
+import Evo.Brain.Paths as fp
+from Evo.Body.Hand import printSimple, printData
 
 def hear():
     try:

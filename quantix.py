@@ -1,42 +1,42 @@
 import os
 os.system("cls" if os.name == "nt" else "clear")
-os.system('title Quantix AI 1.0.1')
+os.system('title Evo AI 1.0.1')
 import subprocess
 import time
 
 def setEnv():
-    os.environ["Quantix"] = os.getcwd()
+    os.environ["Evo"] = os.getcwd()
     try:
-        subprocess.run(['setx', "Quantix", os.getcwd()], check=True)
-        print("Quantix: Your PC will restart in 1 minute. Please save all your pending work. Or you can close me and complete your work and restart your PC manually...")
+        subprocess.run(['setx', "Evo", os.getcwd()], check=True)
+        print("Evo: Your PC will restart in 1 minute. Please save all your pending work. Or you can close me and complete your work and restart your PC manually...")
         time.sleep(60)
         os.system("shutdown /r /t 1")
     except subprocess.CalledProcessError as e:
         print(f"Error occurred while setting the environment variable: {e}")
 
-if os.environ.get("Quantix") is None:
+if os.environ.get("Evo") is None:
     setEnv()
-if not os.environ.get("Quantix") == os.getcwd():
+if not os.environ.get("Evo") == os.getcwd():
     setEnv()
 
 # setup starts
 
-from Quantix.Brain.Setup.Actions import dirSetup, verifyConfig, verifyIntents, getInstalledApps
+from Evo.Brain.Setup.Actions import dirSetup, verifyConfig, verifyIntents, getInstalledApps
 
 dirSetup()
 verifyConfig()
 verifyIntents()
 getInstalledApps()
 
-from Quantix.Body.Mouth import speak
-from Quantix.Brain.NeuralNetwork.Train import TrainAI
+from Evo.Body.Mouth import speak
+from Evo.Brain.NeuralNetwork.Train import TrainAI
 
 TrainAI()
 
-# from Quantix.Brain.Community import checkInternet
+# from Evo.Brain.Community import checkInternet
 # checkInternet()
 
-# from Quantix.Brain.Setup.Chrome import checkChromeSetUp, driverSetup, removeSeleniumBackups
+# from Evo.Brain.Setup.Chrome import checkChromeSetUp, driverSetup, removeSeleniumBackups
 
 # removeSeleniumBackups()
 # # setupManager()
@@ -50,7 +50,7 @@ TrainAI()
 # authenticate
 
 import sys
-from Quantix.Brain.Security.Authentication import Authenticate
+from Evo.Brain.Security.Authentication import Authenticate
 auth = Authenticate()
 if auth is True:
     speak("You are logged in")
@@ -59,19 +59,19 @@ else:
     time.sleep(1)
     sys.exit()
 
-from Quantix.Brain.Paths import REMINDER_FILE
+from Evo.Brain.Paths import REMINDER_FILE
 
 subprocess.Popen(["python", REMINDER_FILE])
 speak("Please do not close the reminder window as it is a part of me...")
 
 # main AI starts
 
-from Quantix.Body.Ear import listen
-from Quantix.Body.Mouth import speak
-from Quantix.Brain.Palm.Chat import chatBot
-from Quantix.Brain.Memory.Remind import addReminder
-from Quantix.Brain.Features.AppOpener import openApp
-from Quantix.Brain.NeuralNetwork.Model import TasksExecutor
+from Evo.Body.Ear import listen
+from Evo.Body.Mouth import speak
+from Evo.Brain.Palm.Chat import chatBot
+from Evo.Brain.Memory.Remind import addReminder
+from Evo.Brain.Features.AppOpener import openApp
+from Evo.Brain.NeuralNetwork.Model import TasksExecutor
 
 
 while True:

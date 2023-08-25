@@ -1,8 +1,8 @@
 import webbrowser
 import os
 import sys
-sys.path.append(os.environ.get('Quantix'))
-from Quantix.Body.Mouth import speak
+sys.path.append(os.environ.get('Evo'))
+from Evo.Body.Mouth import speak
 from urlextract import URLExtract
 
 def visitWebsite(query):

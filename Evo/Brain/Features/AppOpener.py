@@ -5,9 +5,9 @@ import string
 from time import sleep
 import os
 import sys
-sys.path.append(os.environ.get('Quantix'))
-from Quantix.Body.Mouth import speak
-from Quantix.Brain.NeuralNetwork.Model import appFinder
+sys.path.append(os.environ.get('Evo'))
+from Evo.Body.Mouth import speak
+from Evo.Brain.NeuralNetwork.Model import appFinder
 
 def openApp(query: str):
     query = str(query).lower()

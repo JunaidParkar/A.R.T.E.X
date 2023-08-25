@@ -3,10 +3,10 @@ import json
 import shutil
 import pyttsx3
 import winreg
-import Quantix.Brain.Paths as fp
-from Quantix.Body.Hand import printData, takeInput
-from Quantix.Brain.Community import writeLog
-from Quantix.Brain.Setup.Structure import defaultConfig, defaultIntents
+import Evo.Brain.Paths as fp
+from Evo.Body.Hand import printData, takeInput
+from Evo.Brain.Community import writeLog
+from Evo.Brain.Setup.Structure import defaultConfig, defaultIntents
 
 def updateCongif(key: str, value: str):
     with open(fp.SOFTWARE_CONFIG_FILE, "r+") as f:
