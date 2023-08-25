@@ -1,6 +1,10 @@
 import os
 os.system("cls" if os.name == "nt" else "clear")
+<<<<<<< HEAD
 os.system('title Evo AI 1.0.1')
+=======
+os.system('title Quantix AI 2.0.0')
+>>>>>>> b1e4143ef5e8abf5f733ad959b6d92bf767cd6f0
 import subprocess
 import time
 
