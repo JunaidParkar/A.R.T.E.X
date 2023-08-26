@@ -1,6 +1,6 @@
 import os
 
-EVO = os.environ.get('Evo')
+EVO = os.environ.get('EvoAI')
 TEMP_FOLDER = f"{EVO}\\Evo\\Temp"
 
 LOCALAPPDATA = os.environ['LOCALAPPDATA']

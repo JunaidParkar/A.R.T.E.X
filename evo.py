@@ -1,26 +1,22 @@
 import os
 os.system("cls" if os.name == "nt" else "clear")
-<<<<<<< HEAD
 os.system('title Evo AI 1.0.1')
-=======
-os.system('title Quantix AI 2.0.0')
->>>>>>> b1e4143ef5e8abf5f733ad959b6d92bf767cd6f0
 import subprocess
 import time
 
 def setEnv():
-    os.environ["Evo"] = os.getcwd()
+    os.environ["EvoAI"] = os.getcwd()
     try:
-        subprocess.run(['setx', "Evo", os.getcwd()], check=True)
+        subprocess.run(['setx', "EvoAI", os.getcwd()], check=True)
         print("Evo: Your PC will restart in 1 minute. Please save all your pending work. Or you can close me and complete your work and restart your PC manually...")
         time.sleep(60)
         os.system("shutdown /r /t 1")
     except subprocess.CalledProcessError as e:
         print(f"Error occurred while setting the environment variable: {e}")
 
-if os.environ.get("Evo") is None:
+if os.environ.get("EvoAI") is None:
     setEnv()
-if not os.environ.get("Evo") == os.getcwd():
+if not os.environ.get("EvoAI") == os.getcwd():
     setEnv()
 
 # setup starts
@@ -65,7 +61,7 @@ else:
 
 from Evo.Brain.Paths import REMINDER_FILE
 
-subprocess.Popen(["python", REMINDER_FILE])
+subprocess.Popen(["python", REMINDER_FILE], shell=True, start_new_session=True)
 speak("Please do not close the reminder window as it is a part of me...")
 
 # main AI starts

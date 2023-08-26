@@ -4,7 +4,7 @@ import torch
 import random
 import os
 import sys
-sys.path.append(os.environ.get('Evo'))
+sys.path.append(os.environ.get('EvoAI'))
 from Evo.Brain.Paths import LOCALDATA_INTENTS_FILE, TRAINED_DATA_FILE, APPS_FILE, APPS_USER_FILE
 from Evo.Brain.NeuralNetwork.Base import bag_of_words, tokenize, wordsFilter, wordPercentageCalculator
 

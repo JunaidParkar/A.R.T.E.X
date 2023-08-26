@@ -12,7 +12,7 @@ def checkInternet():
     except requests.ConnectionError:
         return False
 
-def writeDataInFile(data, filename):
+def writeDataInFile(data: str, filename: str):
     if os.path.exists(filename):
         if os.path.getsize(filename) == 0:
             with open(filename, 'w') as file:

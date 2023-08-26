@@ -141,5 +141,3 @@ def dirSetup():
         fp.APPS_FOLDER
     ]
     handleStructure(dirs)
-
-# def filesSetup():

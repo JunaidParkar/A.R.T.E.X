@@ -1,6 +1,6 @@
 import sys
 import os
-sys.path.append(os.environ.get('Evo'))
+sys.path.append(os.environ.get('EvoAI'))
 import speech_recognition as sr
 import json
 import Evo.Brain.Paths as fp
@@ -23,8 +23,9 @@ def hear():
                 return ""
             f.close()
             return str(query).lower()
-    except:
-        printData("Error: Unable to load configuration file...")
+    except Exception as e:
+        # printData("Error: Unable to load configuration file...")
+        print(f"Error: {e}")
 
 def listen() :
     query = hear()

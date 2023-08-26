@@ -1,6 +1,6 @@
 import os
 import sys
-sys.path.append(os.environ.get('Evo'))
+sys.path.append(os.environ.get('EvoAI'))
 import time
 import datetime
 from Evo.Body.Mouth import speak

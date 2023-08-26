@@ -1,8 +1,8 @@
-def printData(data):
+def printData(data: str):
     print("")
     print(f"Evo: {data}")
 
-def printSimple(data):
+def printSimple(data: str):
     print("")
     print(data)
 

@@ -1,6 +1,6 @@
 import os
 import sys
-sys.path.append(os.environ.get('Evo'))
+sys.path.append(os.environ.get('EvoAI'))
 import winreg
 from Evo.Brain.Paths import TEMP_FOLDER, CHROME_DRIVER_FILE
 from selenium import webdriver

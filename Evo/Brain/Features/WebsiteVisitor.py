@@ -1,11 +1,11 @@
 import webbrowser
 import os
 import sys
-sys.path.append(os.environ.get('Evo'))
+sys.path.append(os.environ.get('EvoAI'))
 from Evo.Body.Mouth import speak
 from urlextract import URLExtract
 
-def visitWebsite(query):
+def visitWebsite(query: str):
     removableQuery = ["visit", "website", "open", "start", "launch"]
     extractor = URLExtract()
     urls = extractor.find_urls(query)

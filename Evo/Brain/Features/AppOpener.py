@@ -5,7 +5,7 @@ import string
 from time import sleep
 import os
 import sys
-sys.path.append(os.environ.get('Evo'))
+sys.path.append(os.environ.get('EvoAI'))
 from Evo.Body.Mouth import speak
 from Evo.Brain.NeuralNetwork.Model import appFinder
 

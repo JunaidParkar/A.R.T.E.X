@@ -1,12 +1,12 @@
 import sys
 import os
-sys.path.append(os.environ.get('Evo'))
+sys.path.append(os.environ.get('EvoAI'))
 import pyttsx3
 import json
 from Evo.Body.Hand import printData
 from Evo.Brain.Paths import LOCALDATA_CONFIG_FILE
 
-def speak(text):
+def speak(text: str):
     try:
         with open(LOCALDATA_CONFIG_FILE) as f:
             voiceConfig = json.load(f)['voice']
