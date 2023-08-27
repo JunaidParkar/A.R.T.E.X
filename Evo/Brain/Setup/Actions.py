@@ -87,9 +87,9 @@ def getInstalledApps():
     installed_apps = []
     try:
         with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall") as key:
-            try:
-                index = 0
-                while True:
+            index = 0
+            while True:
+                try:
                     subkey_name = winreg.EnumKey(key, index)
                     with winreg.OpenKey(key, subkey_name) as subkey:
                         try:
@@ -97,15 +97,20 @@ def getInstalledApps():
                             install_location = winreg.QueryValueEx(subkey, "InstallLocation")[0]
                             if install_location and not app_name.lower().endswith('.exe'):
                                 installed_apps.append(app_name)
-                        except FileNotFoundError:
-                            writeLog("An unknown error occured")
+                        except FileNotFoundError as r:
+                            writeLog("No DisplayName or InstallLocation found for subkey")
                         except Exception as e:
-                            writeLog(f"Error reading registry key: {e}")
+                            writeLog(f"Error reading registry values: {e}")
                     index += 1
-            except OSError:
-                writeLog("Error while finding the registered apps")
-    except:
-        writeLog("Unable to use windows registry")
+                except FileNotFoundError:
+                    # No more subkeys to enumerate
+                    break
+                except Exception as ee:
+                    writeLog(f"Error enumerating subkeys: {ee}")
+                    break
+    except Exception as eee:
+        writeLog("Unable to access Windows registry")
+
     if len(installed_apps) > 0:
         with open(fp.APPS_FILE, 'w') as json_file:
             json.dump(installed_apps, json_file, indent=4)

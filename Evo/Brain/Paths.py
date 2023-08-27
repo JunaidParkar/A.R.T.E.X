@@ -32,7 +32,7 @@ CHROME_DRIVER_FILE = f"{CHROME_DRIVER_FOLDER}\\Driver.exe"
 LOG_FOLDER = f"{EVO}\\Logs"
 LOG_FILE = f"{LOG_FOLDER}\\log.txt"
 
-REMINDER_FILE = f"{EVO}\\Evo\\Brain\\Memory\\Reminder.py"
+REMINDER_FILE = f"{EVO}\\Evo AI Reminder.exe"
 
 PRIVATE_1 = "Auth.pkl"
 PRIVATE_2 = "Ques.pkl"

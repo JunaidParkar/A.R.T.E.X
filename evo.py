@@ -1,6 +1,6 @@
 import os
 os.system("cls" if os.name == "nt" else "clear")
-os.system('title Evo AI 1.0.1')
+os.system('title Evo AI 2.0.0')
 import subprocess
 import time
 
@@ -61,7 +61,8 @@ else:
 
 from Evo.Brain.Paths import REMINDER_FILE
 
-subprocess.Popen(["python", REMINDER_FILE], shell=True, start_new_session=True)
+# subprocess.Popen(["python", REMINDER_FILE], shell=True, start_new_session=True)
+os.startfile(REMINDER_FILE)
 speak("Please do not close the reminder window as it is a part of me...")
 
 # main AI starts
@@ -80,9 +81,9 @@ while True:
         task = TasksExecutor(query)
         if not task is None:
             task = TasksExecutor(query)
-            if "open" in task:
-                openApp(query)
-            elif "exit" in task:
+            # if "open" in task:
+            #     openApp(query)
+            if "exit" in task:
                 speak("Exiting please wait")
                 break
             elif "sleep" in task:

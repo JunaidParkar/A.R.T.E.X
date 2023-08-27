@@ -17,7 +17,7 @@ def speak(text: str):
             engine.setProperty("voice", voice_id)
             engine.setProperty("rate", voiceConfig['rate'])
             printData(text)
-            engine.say(text)
+            engine.say(text)    
             engine.runAndWait()
     except:
         printData("Unable to load configuration file...")
