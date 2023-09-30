@@ -15,18 +15,25 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    --headerIcons: 15px;
 }
 
 body.small{
     --iconWidth: 30px;
-    --padding: 15px 25px;
+    --padding: 15px 25px;   
+    --elemPadding: 10px 10px;
     --actonBar: 45px;
+    --headingSize:20px;
+    --actionBarHeight: 35px;
 }
 
 body.medium{
     --iconWidth: 45px;
     --padding: 20px 45px;
-    --actionBar: 75px
+    --elemPadding: 15px 15px;
+    --actionBar: 75px;
+    --headingSize: 23px;
+    --actionBarHeight: 50px;
 }
 
 .mainScreen {

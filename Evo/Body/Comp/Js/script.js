@@ -40,4 +40,27 @@ function importHtml(htmlFile) {
         }
     };
     xhr.send();
-}  
+}
+
+importHtml("./Apps/Terminal/terminal.html")
+
+let list = ["terminal"]
+
+const appDragger = ({ movementX, movementY }, wrapper) => {
+    let wrapper = document.querySelector(".terminal")
+    let style = window.getComputedStyle(wrapper)
+    let leftVal = parseInt(style.left)
+    let topVal = parseInt(style.top)
+    wrapper.style.left = `${leftVal + movementX}px`
+    wrapper.style.top = `${topVal + movementY}px`
+}
+
+let wrap = document.querySelector(".terminal")
+let actionBar = wrap.getElementsByTagName("nav")[0]
+
+actionBar.addEventListener("mousedown", () => {
+    actionBar.addEventListener("mousemove", appDragger)
+})
+actionBar.addEventListener("mouseup", () => {
+    actionBar.removeEventListener("mousemove", appDragger)
+})
