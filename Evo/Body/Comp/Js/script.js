@@ -27,3 +27,17 @@
 //     // console.log(newText)
 //     textDiv.textContent = newText;
 // })
+
+function importHtml(htmlFile) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", htmlFile, true);
+    xhr.onload = function () {
+        if (xhr.status === 200) {
+            var html = xhr.responseText;
+            var element = document.createElement("div");
+            element.innerHTML = html;
+            document.body.appendChild(element);
+        }
+    };
+    xhr.send();
+}  
