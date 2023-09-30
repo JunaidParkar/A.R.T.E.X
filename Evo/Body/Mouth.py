@@ -19,5 +19,5 @@ def speak(text: str):
             printData(text)
             engine.say(text)    
             engine.runAndWait()
-    except:
-        printData("Unable to load configuration file...")
+    except Exception as e:
+        printData(f"Unable to load configuration file... ${e}")
