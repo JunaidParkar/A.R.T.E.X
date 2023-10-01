@@ -1,0 +1,41 @@
+.cmd .mainApp #inp,
+.cmd .mainApp #consoletext div{
+    color: #6F55F2;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.cmd .mainApp #consoletext div p:last-child{
+    color: #55F2A4;
+}
+
+.cmd .mainApp #consoletext div.error p:last-child{
+    color: #E53956;
+}
+
+.cmd .mainApp #consoletext {
+    color: white;
+}
+
+.cmd .mainApp .cmdInpWrapper,
+.cmd .mainApp #consoletext div{
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    height: 100%;
+}
+
+#textinput {
+    resize: none;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #55F2A4;
+    font-family: Monospace;
+    width: calc(100% - 20ch);
+    height: 100%;
+}
+
+#textinput::-webkit-scrollbar{
+    width: 0;
+}

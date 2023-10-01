@@ -1,0 +1,40 @@
+.setting .mainApp{
+    display: flex;
+}
+
+.setting .mainApp::-webkit-scrollbar{
+    display: none;
+}
+
+.setting .mainApp .settingOptions,
+.setting .mainApp .settingExpand{
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.setting .mainApp .settingOptions{
+    width: 150px;
+    height: 100%;
+    background: red;
+}
+
+.setting .mainApp .settingExpand{
+    width: calc(100% - 150px);
+    height: 100%;
+    background: green;
+}
+
+.setting .mainApp .settingOptions::-webkit-scrollbar{
+    display: none;
+}
+
+.setting .mainApp .settingExpand::-webkit-scrollbar{
+    width: 10px;
+    border-radius: 25px;
+    background: red;
+}
+
+.setting .mainApp .settingExpand::-webkit-scrollbar-thumb{
+    background: #EAE5FF;
+    border-radius: 25px;
+}

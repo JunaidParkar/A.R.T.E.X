@@ -25,6 +25,7 @@ body.small{
     --actonBar: 45px;
     --headingSize:20px;
     --actionBarHeight: 35px;
+    --contentPadding: 10px 5px;
 }
 
 body.medium{
@@ -34,6 +35,19 @@ body.medium{
     --actionBar: 75px;
     --headingSize: 23px;
     --actionBarHeight: 50px;
+    --contentPadding: 10px 5px;
+}
+
+.cmd.maximize,
+.setting.maximize{
+    width: 100%;
+    height: 100%;
+}
+
+.cmd.minimize,
+.setting.minimize {
+    width: 0;
+    height: 0;
 }
 
 .mainScreen {
@@ -76,12 +90,12 @@ body.medium{
     flex-direction: column;
     text-align: justify;
     /* overflow: hidden; */
+    cursor: pointer;
 }
 
 .mainScreen .iconsList ul li img {
     width: calc(var(--iconWidth) - 10px);
     height: calc(var(--iconWidth) - 10px);
-    cursor: pointer;
 }
 
 .mainScreen .iconsList ul li h1 {
@@ -147,4 +161,81 @@ body.medium{
     width: calc(var(--iconWidth) - 10px);
     height: calc(var(--iconWidth) - 10px);
     cursor: pointer;
+}
+
+.cmd,
+.setting {
+    max-width: 100%;
+    max-height: 100%;
+    min-width: 750px;
+    min-height: 500px;
+    background: gray;
+    position: absolute;
+    z-index: 9;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+nav{
+    padding: var(--elemPadding);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background: #AC9CFF;
+    height: var(--actionBarHeight);
+}
+
+nav:hover{
+    cursor: grab;
+}
+
+nav.active{
+    cursor: grabbing;
+}
+
+/* nav.active:hover{
+    cursor: auto;
+} */
+
+nav h3{
+    font-size: var(--headingSize);
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav div {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+nav div img{
+    /* height: 100%; */
+    /* aspect-ratio: 1/1; */
+    cursor: pointer;
+    width: var(--headerIcons);
+    height: var(--headerIcons);
+}
+
+.mainApp {
+    background: #191919;
+    width: 100%;
+    height: calc(100% - var(--actionBarHeight));
+    padding: var(--contentPadding);
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.mainApp::-webkit-scrollbar{
+    width: 10px;
+    border-radius: 25px;
+    background: transparent;
+}
+
+.mainApp::-webkit-scrollbar-thumb{
+    background: #EAE5FF;
+    border-radius: 25px;
 }

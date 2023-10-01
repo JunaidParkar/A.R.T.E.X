@@ -1,0 +1,13 @@
+<nav>
+    <h3>CMD</h3>
+    <div class="actionBar">
+        <img onclick="resize(this)" src="./assets/resize.png" alt="" srcset="">
+        <img onclick="closeApp(this)" src="./assets/cross.png" alt="" srcset="">
+    </div>
+</nav>
+<div class="mainApp">
+    <p id="consoletext"></p>
+    <div class="cmdInpWrapper">
+        <p id="inp">Evolution AI >> </p><textarea rows="1" id="textinput" onkeydown="checkInput();"></textarea>
+    </div>
+</div>
