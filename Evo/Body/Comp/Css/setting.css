@@ -1,5 +1,6 @@
 .setting .mainApp{
     display: flex;
+    letter-spacing: 1px;
 }
 
 .setting .mainApp::-webkit-scrollbar{
@@ -15,13 +16,14 @@
 .setting .mainApp .settingOptions{
     width: 150px;
     height: 100%;
-    background: red;
 }
 
 .setting .mainApp .settingExpand{
     width: calc(100% - 150px);
     height: 100%;
-    background: green;
+    color: white;
+    display: flex;
+    justify-content: center;
 }
 
 .setting .mainApp .settingOptions::-webkit-scrollbar{
@@ -31,10 +33,94 @@
 .setting .mainApp .settingExpand::-webkit-scrollbar{
     width: 10px;
     border-radius: 25px;
-    background: red;
 }
 
 .setting .mainApp .settingExpand::-webkit-scrollbar-thumb{
     background: #EAE5FF;
     border-radius: 25px;
+}
+
+.setting .mainApp .settingOptions ul{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.setting .mainApp .settingOptions ul li {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    padding: 10px 10px;
+    width: 100%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.setting .mainApp .settingOptions ul li img {
+    width: var(--headingSize);
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+}
+.setting .mainApp .settingOptions ul li img {
+    filter: invert(1);
+}
+
+.setting .mainApp .settingOptions ul li:first-child img {
+    filter: invert(0);
+}
+
+.setting .mainApp .settingOptions ul li:last-child img {
+    border-radius: 0;
+}
+
+.setting .mainApp .settingOptions ul li h3 {
+    font-weight: 400;
+    font-size: calc(var(--headingSize) - 5px);
+    color: #EAE5FF;
+}
+
+.setting .mainApp .settingExpand input:focus {
+    outline: none;
+}
+
+.setting .mainApp .settingExpand .heading{
+    width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid #EAE5FF;
+    margin-bottom: 25px;
+}
+
+.setting .mainApp .settingExpand .heading h4{
+    font-weight: 200;
+    font-size: var(--headingSize);
+}
+
+.setting .mainApp .settingExpand form {
+    display: flex;
+    flex-direction: column;
+}
+
+.setting .mainApp .settingExpand form label {
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+
+.setting .mainApp .settingExpand form input {
+    width: 100%;
+    padding: var(--contentPadding);
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.setting .mainApp .settingExpand form input[type=submit] {
+    width: max-content;
+    padding: var(--contentPadding);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    cursor: pointer;
+    border: 2px solid #E58F39;
+    background: rgba(255, 205, 156, 0.75);
+    margin-top: 10px;
+    color: #191919;
 }

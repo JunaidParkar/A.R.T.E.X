@@ -1,6 +1,19 @@
+let minWidth = 1080, minHeight = 720
+
+window.onresize = function () {
+    if (window.outerWidth < minWidth || window.outerHeight < minHeight) {
+        window.resizeTo(minWidth, minHeight);
+    }
+}
+
+if (window.outerWidth < minWidth || window.outerHeight < minHeight) {
+    window.resizeTo(minWidth, minHeight);
+}
+
 const pt = {
     "cmd": "./Apps/CMD/cmd.html",
-    "setting": "./Apps/Setting/setting.html"
+    "setting": "./Apps/Setting/setting.html",
+    "chat": "./Apps/Chat/chat.html"
 };
 
 let appLists = document.querySelector(".iconsList").getElementsByTagName("ul")[0].querySelectorAll("li")
@@ -70,7 +83,7 @@ const minimize = (e) => {
 const observer = new MutationObserver((mutationsList, observer) => {
     for (let mutation of mutationsList) {
         if (mutation.type === 'childList') {
-            let classes = ["cmd", "setting"]
+            let classes = ["cmd", "setting", "chat"]
             for (let elem of classes) {
                 let e = document.querySelector(`.${elem}`)
                 if (e) {

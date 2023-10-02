@@ -81,7 +81,7 @@ const cmdEngine = (command) => {
                 el = c[fi - 1].toLowerCase()
                 if (el == "evo") {
                     console.log("last")
-                    let d = `<table><tr><th width="100">Flags</th><th width="200">Usage</th></tr><tr><th>--h</th><td>Used to get help with all functionalities of Evolution AI CMD.</td></tr></table>`
+                    let d = `<table><tr><th>Flags</th><th>Usage</th></tr><tr><th>--h</th><td>Used to get help with all functionalities of Evolution AI CMD.</td></tr></table>`
                     addLine(d)
                 }
             }

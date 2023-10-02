@@ -1,0 +1,63 @@
+.chat .mainApp::-webkit-scrollbar {
+    display: none;
+}
+
+.chat .mainApp form {
+    width: 100%;
+    height: 50px;
+    background: white;
+}
+
+.chat .mainApp .inputWrappers {
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0 10px;
+    gap: 15px;
+}
+
+.chat .mainApp .inputWrappers.active {
+    display: flex;
+}
+
+.chat .mainApp .inputWrappers img {
+    height: 50%;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+}
+
+.chat .mainApp .inputWrappers input {
+    width: calc(100% - 25px - 20px - 30px - 20px);
+}
+
+.chat .mainApp .inputWrappers input {
+    height: 50%;
+    border: 0;
+    outline: none;
+}
+
+.chat .mainApp .inputWrappers input,
+.chat .mainApp .inputWrappers img:last-child,
+.chat .mainApp .inputWrappers div {
+    display: none;
+}
+
+.chat .mainApp .inputWrappers.active input,
+.chat .mainApp .inputWrappers.active img:last-child,
+.chat .mainApp .inputWrappers.active div {
+    display: flex;
+}
+
+.chat .mainApp .inputWrappers.active div {
+    height: 50%;
+    width: calc(100% - (25px + 15px));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat .mainApp .inputWrappers.active div img {
+    height: 100%;
+}
