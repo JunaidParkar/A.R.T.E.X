@@ -47,12 +47,12 @@ function addLine(line, author = null, error = false) {
 }
 
 const cmdExe = (c) => {
-    let mc = ["Evo"]
+    let mc = ["Evo", "exit"]
     let imc = c.split(" ")
     if (mc.includes(imc[0])) {
         cmdEngine(c)
     } else {
-        addLine(line = `${imc[0]} : The term '${imc[0]}' is not recognized as the name of a cmdlet, function, script file, or operable program. Check
+        addLine(line = `<br>${imc[0]} : \nThe term '${imc[0]}' is not recognized as the name of a cmdlet, function, script file, or operable program. Check
         the spelling of the name, or if a path was included, verify that the path is correct and try again.<br><br>
         At line:1 char:1<br><br>
         + ${imc[0]}`, null, true)
@@ -65,6 +65,9 @@ const cmdEngine = (command) => {
     let co = {
         "evo": {
             "flags": ["--h"]
+        },
+        "exit": {
+            "flags": []
         }
     }
     for (let word of c) {
@@ -81,10 +84,16 @@ const cmdEngine = (command) => {
                 el = c[fi - 1].toLowerCase()
                 if (el == "evo") {
                     console.log("last")
-                    let d = `<table><tr><th>Flags</th><th>Usage</th></tr><tr><th>--h</th><td>Used to get help with all functionalities of Evolution AI CMD.</td></tr></table>`
+                    let d = `<br><table><tr><th>Flags</th><th>Usage</th></tr><tr><th>--h</th><td>Used to get help with all functionalities of Evolution AI CMD.</td></tr></table><br>`
                     addLine(d)
                 }
             }
         }
+    }
+    if (c[0].toLowerCase() == "exit") {
+        let s = document.querySelector(".cmd").querySelector("nav").querySelector(".actionBar").querySelectorAll("img")[1]
+        console.log(s)
+        closeApp(s)
+            // console.log(document.querySelector("cmd"))
     }
 }

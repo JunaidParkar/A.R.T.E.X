@@ -1,15 +1,15 @@
 .cmd .mainApp #inp,
-.cmd .mainApp #consoletext div{
-    color: #6F55F2;
+.cmd .mainApp #consoletext div {
+    color: var(--primaryColor);
     font-weight: 400;
     letter-spacing: 2px;
 }
 
-.cmd .mainApp #consoletext div p:last-child{
+.cmd .mainApp #consoletext div p:last-child {
     color: #55F2A4;
 }
 
-.cmd .mainApp #consoletext div.error p:last-child{
+.cmd .mainApp #consoletext div.error p:last-child {
     color: #E53956;
 }
 
@@ -18,7 +18,7 @@
 }
 
 .cmd .mainApp .cmdInpWrapper,
-.cmd .mainApp #consoletext div{
+.cmd .mainApp #consoletext div {
     display: flex;
     align-items: start;
     gap: 10px;
@@ -41,7 +41,7 @@
     font-size: calc(var(--headingSize) - 7px);
 }
 
-#textinput::-webkit-scrollbar{
+#textinput::-webkit-scrollbar {
     width: 0;
 }
 
@@ -51,7 +51,7 @@
 
 .cmd .mainApp #consoletext div table tr,
 .cmd .mainApp #consoletext div table th,
-.cmd .mainApp #consoletext div table td{
+.cmd .mainApp #consoletext div table td {
     padding: var(--contentPadding);
     border: 1px solid #EAE5FF;
     text-align: center;

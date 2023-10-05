@@ -8,38 +8,19 @@
     src: url('../assets/jsl.ttf');
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     user-select: none;
+    border: 0;
     box-sizing: border-box;
     text-rendering: optimizeLegibility;
 }
 
-body{
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    background: url("../assets/bg.png");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    --headerIcons: 15px;
-    font-family: jsr;
-}
-
-body.small{
-    --iconWidth: 30px;
-    --padding: 15px 25px;   
-    --elemPadding: 10px 10px;
-    --actonBar: 45px;
-    --headingSize:20px;
-    --actionBarHeight: 35px;
-    --contentPadding: 10px 5px;
-}
-
-body.medium{
+:root {
+    --primaryColor: #E5FFFB;
+    --secondaryColor: #336633;
+    --accentColor: #FF4500;
     --iconWidth: 45px;
     --padding: 20px 45px;
     --elemPadding: 15px 15px;
@@ -49,9 +30,34 @@ body.medium{
     --contentPadding: 10px 5px;
 }
 
+body {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(rgba(0, 0, 0, .3), rgba(0, 0, 0, .3)), url("../assets/bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    --headerIcons: 15px;
+    font-family: jsr;
+}
+
+body.transparent {
+    --appBG: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5));
+    --primaryBG: black;
+    --border: rgba(255, 255, 255, .5);
+}
+
+body.noTransparent {
+    --appBG: #191919;
+    --primaryBG: rgba(90, 90, 90, .5);
+    --border: rgba(255, 255, 255, .5);
+}
+
 .cmd.maximize,
 .setting.maximize,
-.chat.maximize{
+.chat.maximize {
     width: 100%;
     height: 100%;
 }
@@ -77,15 +83,15 @@ body.medium{
 .mainScreen .iconsList {
     height: 100%;
     width: 100%;
+    overflow: hidden;
 }
 
-.mainScreen .iconsList ul{
+.mainScreen .iconsList ul {
     max-width: 100%;
     width: max-content;
     height: 100%;
     display: flex;
     flex-direction: column;
-    /* align-items: start; */
     justify-content: start;
     flex-wrap: wrap;
     row-gap: 50px;
@@ -93,28 +99,44 @@ body.medium{
     list-style-type: none;
 }
 
-.mainScreen .iconsList ul li{
+.mainScreen .iconsList ul li {
     height: max-content;
-    width: var(--iconWidth);
+    width: 60px;
     display: flex;
     gap: 10px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     text-align: justify;
-    /* overflow: hidden; */
     cursor: pointer;
 }
 
-.mainScreen .iconsList ul li img {
-    width: calc(var(--iconWidth) - 10px);
-    height: calc(var(--iconWidth) - 10px);
+.mainScreen .iconsList ul li div:first-child {
+    width: 60px;
+    height: 60px;
+    aspect-ratio: 1/1;
+    padding: 15px;
+    background: var(--primaryColor);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.mainScreen .iconsList ul li h1 {
-    width: var(--iconWidth);
+.mainScreen .iconsList ul li div img {
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+
+.mainScreen .iconsList ul li .p {
+    width: 100%;
+    height: 30px;
+    padding: 0;
+}
+
+.mainScreen .iconsList ul li p {
     font-size: 15px;
-    font-weight: bolder;
+    font-weight: 500;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -122,8 +144,10 @@ body.medium{
     -webkit-box-orient: vertical;
     word-break: break-all;
     word-wrap: normal;
-    hyphens: manual;
+    hyphens: auto;
     text-align: center;
+    color: #191919;
+    line-height: 15px;
 }
 
 .appContainer {
@@ -141,12 +165,12 @@ body.medium{
     height: 100%;
 }
 
-.taskbar{
+.taskbar {
     width: max-content;
     height: max-content;
-    padding: var(--padding);
+    padding: 15px 25px;
     border-radius: 10px;
-    background: rgba(172, 156, 255, 0.75);
+    background: var(--primaryColor);
     box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25), 0px 0px 20px 0px rgba(25, 25, 25, 0.25);
     position: fixed;
     left: 50%;
@@ -155,24 +179,24 @@ body.medium{
     z-index: 9999999999;
 }
 
-.taskbar ul{
+.taskbar ul {
     width: max-content;
-    height: max-content;
+    height: 25px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    gap: 50px;
+    column-gap: 50px;
     list-style-type: none;
 }
 
-.taskbar ul li{
-    height: max-content;
+.taskbar ul li {
+    height: 100%;
     width: max-content;
 }
 
 .taskbar ul li img {
-    width: calc(var(--iconWidth) - 10px);
-    height: calc(var(--iconWidth) - 10px);
+    height: 100%;
+    aspect-ratio: 1/1;
     cursor: pointer;
 }
 
@@ -183,59 +207,77 @@ body.medium{
     max-height: 100%;
     min-width: 750px;
     min-height: 500px;
-    background: gray;
+    background: linear-gradient(var(--appBG), var(--appBG));
     position: absolute;
     z-index: 9;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    resize: both;
 }
 
-nav{
-    padding: var(--elemPadding);
+nav {
     width: 100%;
+    height: 50px;
     display: flex;
     justify-content: space-between;
-    background: #AC9CFF;
+    align-items: center;
     height: var(--actionBarHeight);
+    margin: 0;
 }
 
-nav:hover{
+nav:hover {
     cursor: grab;
 }
 
-nav.active{
+nav.active {
     cursor: grabbing;
 }
 
-/* nav.active:hover{
-    cursor: auto;
-} */
-
-nav h3{
+nav h3 {
+    height: 100%;
+    padding: 0 20px;
     font-size: var(--headingSize);
     font-weight: 700;
     display: flex;
     justify-content: center;
     align-items: center;
+    background: var(--primaryColor);
+    border-bottom-right-radius: 20px;
 }
 
-nav div {
+nav .name {
+    font-weight: bolder;
+    font-size: 20px;
+    color: var(--primaryColor);
+    letter-spacing: 2px;
+}
+
+nav .actionBar {
+    height: 100%;
     display: flex;
     align-items: center;
     gap: 20px;
+    background: var(--primaryColor);
+    padding: 0 20px;
+    border-bottom-left-radius: 20px;
+    /* margin: 0; */
 }
 
-nav div img{
-    /* height: 100%; */
-    /* aspect-ratio: 1/1; */
+nav .actionBar div {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
+}
+
+nav div img {
     width: var(--headerIcons);
     height: var(--headerIcons);
 }
 
 .mainApp {
-    background: #191919;
     width: 100%;
     height: calc(100% - var(--actionBarHeight));
     padding: var(--contentPadding);
@@ -243,13 +285,13 @@ nav div img{
     overflow-y: scroll;
 }
 
-.mainApp::-webkit-scrollbar{
+.mainApp::-webkit-scrollbar {
     width: 10px;
     border-radius: 25px;
     background: transparent;
 }
 
-.mainApp::-webkit-scrollbar-thumb{
+.mainApp::-webkit-scrollbar-thumb {
     background: #EAE5FF;
     border-radius: 25px;
 }

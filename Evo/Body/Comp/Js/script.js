@@ -1,6 +1,24 @@
-let minWidth = 1080, minHeight = 720
+let minWidth = 1080,
+    minHeight = 720
 
-window.onresize = function () {
+// document.addEventListener("keydown", function(e) {
+//     if (e.keyCode === 82 || (e.ctrlKey && e.keyCode === 73)) {
+//         e.preventDefault();
+//     }
+// });
+
+// document.addEventListener("contextmenu", function(e) {
+//     e.preventDefault();
+// });
+
+window.onload = async() => {
+    console.log("opening")
+    await openApp("setting")
+    document.querySelector(`.${"setting"}`).classList.add("maximize");
+    console.log("opened")
+}
+
+window.onresize = function() {
     if (window.outerWidth < minWidth || window.outerHeight < minHeight) {
         window.resizeTo(minWidth, minHeight);
     }
@@ -19,8 +37,8 @@ const pt = {
 let appLists = document.querySelector(".iconsList").getElementsByTagName("ul")[0].querySelectorAll("li")
 
 for (let apps of appLists) {
-    apps.addEventListener("click", async (e) => {
-        let name = apps.getElementsByTagName("h1")[0].textContent.toLowerCase();
+    apps.addEventListener("click", async(e) => {
+        let name = apps.getElementsByTagName("p")[0].textContent.toLowerCase();
         if (!document.querySelector(`.${name}`)) {
             await openApp(name);
             document.querySelector(`.${name}`).classList.add("minimize");
@@ -28,7 +46,7 @@ for (let apps of appLists) {
     });
 }
 
-const openApp = async (n) => {
+const openApp = async(n) => {
     let p = pt[n]
     const f = await fetch(p)
     if (f.ok) {
@@ -41,43 +59,44 @@ const openApp = async (n) => {
 }
 
 const closeApp = (e) => {
-    let el = e.parentElement.parentElement.parentElement.querySelector("h3").textContent.toLowerCase()
+    let el = e.parentElement.parentElement.parentElement.parentElement.querySelector("h3").textContent.toLowerCase()
     let h = document.querySelector(`.${el}`)
     document.body.removeChild(h)
 }
 
 const resize = (e) => {
-    if (e.parentElement.parentElement.parentElement.classList.contains("maximize")) {
-        minimize(e)
+    let s = e.parentElement.parentElement.parentElement
+    if (s.classList.contains("maximize")) {
+        minimize(s)
     } else {
-        maximize(e)
+        maximize(s)
     }
 }
 
 const maximize = (e) => {
-    if (e.parentElement.parentElement.parentElement.classList.contains("minimize")) {
-        e.parentElement.parentElement.parentElement.classList.remove("minimize")
+    if (e.classList.contains("minimize")) {
+        e.classList.remove("minimize")
     }
-    if (e.parentElement.parentElement.parentElement.classList.contains("maximize")) {
+    if (e.classList.contains("maximize")) {
         return
     }
-    e.parentElement.parentElement.parentElement.classList.add("maximize")
-    e.parentElement.parentElement.parentElement.style.left = "50%"
-    e.parentElement.parentElement.parentElement.style.top = "50%"
-    e.parentElement.parentElement.parentElement.style.transform = "translate(-50%, -50%)"
+    e.classList.add("maximize")
+    e.style.left = "50%"
+    e.style.top = "50%"
+    e.style.transform = "translate(-50%, -50%)"
 }
 
 const minimize = (e) => {
-    if (e.parentElement.parentElement.parentElement.classList.contains("maximize")) {
-        e.parentElement.parentElement.parentElement.classList.remove("maximize")
+    if (e.classList.contains("maximize")) {
+        e.classList.remove("maximize")
     }
-    if (e.parentElement.parentElement.parentElement.classList.contains("minimize")) {
+    if (e.classList.contains("minimize")) {
         return
     }
-    e.parentElement.parentElement.parentElement.classList.add("minimize")
-    e.parentElement.parentElement.parentElement.style.left = "50%"
-    e.parentElement.parentElement.parentElement.style.top = "50%"
-    e.parentElement.parentElement.parentElement.style.transform = "translate(-50%, -50%)"
+    e.classList.add("minimize")
+    e.style.left = "50%"
+    e.style.top = "50%"
+    e.style.transform = "translate(-50%, -50%)"
 }
 
 const observer = new MutationObserver((mutationsList, observer) => {
@@ -88,7 +107,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
                 let e = document.querySelector(`.${elem}`)
                 if (e) {
                     let n = e.querySelector("nav")
-                    const mouseMoveHandler = function (e) { appDragger(e, elem); }.bind(e);
+                    const mouseMoveHandler = function(e) { appDragger(e, elem); }.bind(e);
                     n.onmouseenter = () => {
                         n.onmousedown = () => {
                             if (!document.querySelector(`.${elem}`).querySelector("nav").classList.contains("active")) {
