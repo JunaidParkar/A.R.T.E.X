@@ -22,37 +22,45 @@
     display: none;
 }
 
-.setting .mainApp .settingOptions {
+.setting.maximize .mainApp .settingOptions {
     width: 20%;
     height: 100%;
-    /* background: red; */
 }
 
-.setting .mainApp .settingExpand {
+.setting.maximize .mainApp .settingExpand {
     width: calc(100% - 20%);
     height: 100%;
-    /* background: yellow; */
 }
 
-@media (max-width: 1080px) {
-    .setting .mainApp .settingOptions {
-        width: 25%;
-    }
-    .setting .mainApp .settingExpand {
-        width: calc(100% - 25%);
-    }
+.setting.minimize .mainApp .settingOptions {
+    width: 25%;
+    height: 100%;
+}
+
+.setting.minimize .mainApp .settingExpand {
+    width: calc(100% - 25%);
+    height: 100%;
 }
 
 .setting .mainApp .settingOptions .account {
     width: 100%;
-    height: 50px;
     margin-top: 25px;
-    /* background-color: grey; */
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    /* padding: 0 10px; */
+}
+
+.setting.maximize .mainApp .settingOptions .account {
+    height: 50px;
+    margin-top: 25px;
+    gap: 10px;
+}
+
+.setting.minimize .mainApp .settingOptions .account {
+    height: 40px;
+    margin-top: 25px;
+    gap: 10px;
 }
 
 .setting .mainApp .settingOptions .account img {
@@ -61,9 +69,12 @@
     border-radius: 50%;
 }
 
-.setting .mainApp .settingOptions .account .info {
+.setting.maximize .mainApp .settingOptions .account .info {
     width: calc(100% - 60px);
-    /* background: green; */
+}
+
+.setting.minimize .mainApp .settingOptions .account .info {
+    width: calc(100% - 50px);
 }
 
 .setting .mainApp .settingOptions .account .info h4,
@@ -74,21 +85,36 @@
     text-overflow: ellipsis;
     color: var(--primaryColor);
     text-transform: capitalize;
-    font-size: 17px;
     font-weight: bold;
+}
+
+.setting.maximize .mainApp .settingOptions .account .info h4,
+.setting.maximize .mainApp .settingOptions .account .info p {
+    font-size: 17px;
+}
+
+.setting.minimize .mainApp .settingOptions .account .info h4,
+.setting.minimize .mainApp .settingOptions .account .info p {
+    font-size: 15px;
 }
 
 .setting .mainApp .settingOptions .account .info p {
     opacity: .7;
     text-transform: lowercase;
-    font-size: 15px;
     font-weight: 400;
+}
+
+.setting.maximize .mainApp .settingOptions .account .info p {
+    font-size: 15px;
+}
+
+.setting.minimize .mainApp .settingOptions .account .info p {
+    font-size: 12px;
 }
 
 .setting .mainApp .settingOptions .searchField {
     width: 100%;
     height: max-content;
-    /* padding: 0 10px; */
     margin-top: 25px;
 }
 
@@ -103,6 +129,15 @@
     border-radius: 5px;
 }
 
+.setting.maximize .mainApp .settingOptions .searchField input {
+    font-size: 17px;
+}
+
+.setting.minimize .mainApp .settingOptions .searchField input {
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
 .setting .mainApp .settingOptions .searchField input::placeholder {
     color: rgba(255, 255, 255, .5);
 }
@@ -114,18 +149,24 @@
     flex-direction: column;
     gap: 5px;
     margin-top: 25px;
-    /* padding: 0 10px; */
 }
 
 .setting .mainApp .settingOptions ul li {
     width: 100%;
-    height: 40px;
     display: flex;
     align-items: center;
     gap: 10px;
     padding: 7px;
     cursor: pointer;
     border-radius: 5px;
+}
+
+.setting.maximize .mainApp .settingOptions ul li {
+    height: 40px;
+}
+
+.setting.minimize .mainApp .settingOptions ul li {
+    height: 30px;
 }
 
 .setting .mainApp .settingOptions ul li:hover,
@@ -145,6 +186,8 @@
 
 .setting .mainApp .settingOptions ul li:first-child div img {
     border-radius: 50%;
+    height: 100%;
+    aspect-ratio: 1/1;
 }
 
 .setting .mainApp .settingOptions ul li div img {
@@ -197,4 +240,77 @@
 .setting .mainApp .settingExpand .settingContent::-webkit-scrollbar-thumb {
     background: #EAE5FF;
     border-radius: 25px;
+}
+
+.setting .mainApp .settingExpand .settingContent .settingPage {
+    width: 100%;
+    font-size: 20px;
+    color: white;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding-bottom: 35px;
+}
+
+.setting .mainApp .settingExpand .settingContent .homeOptions {
+    width: 100%;
+}
+
+.setting .mainApp .settingExpand .settingContent .homeOptions .homeMain {
+    width: 100%;
+    height: 150px;
+    /* background: green; */
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* .setting .mainApp .settingExpand .settingContent .homeOptions .homeMain {
+    max-width: 500px;
+    width: 30%;
+    min-width: 300px;
+    background: var(--primaryBG);
+} */
+
+
+/* .setting .mainApp .settingExpand .settingContent .homeOptions .transperancyOption h4 {
+    font-size: 18px;
+    color: rgba(255, 255, 255, .5);
+}
+
+.setting .mainApp .settingExpand .settingContent .homeOptions .transperancyOption .appTransparent {
+    width: 100%;
+    height: 50px;
+    background: red;
+} */
+
+.setting .mainApp .settingExpand .settingContent .homeOptions .homeMain .mainHome {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.setting .mainApp .settingExpand .settingContent .homeOptions .homeMain .mainHome img {
+    height: 100px;
+    aspect-ratio: 16/9;
+    border-radius: 10px;
+}
+
+.setting .mainApp .settingExpand .settingContent .homeOptions .homeMain .mainHome .bsc {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+
+.setting .mainApp .settingExpand .settingContent .homeOptions .homeMain .mainHome .bsc .name {
+    color: white;
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-transform: capitalize;
+}
+
+.setting .mainApp .settingExpand .settingContent .homeOptions .homeMain .mainHome .bsc .version {
+    color: rgba(255, 255, 255, .5);
 }
