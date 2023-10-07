@@ -55,20 +55,6 @@ body.noTransparent {
     --border: rgba(255, 255, 255, .5);
 }
 
-.cmd.maximize,
-.setting.maximize,
-.chat.maximize {
-    width: 100%;
-    height: 100%;
-}
-
-.cmd.minimize,
-.setting.minimize,
-.chat.minimize {
-    width: 0;
-    height: 0;
-}
-
 .mainScreen {
     height: calc(100% - 110px);
     width: 100%;
@@ -214,6 +200,20 @@ body.noTransparent {
     top: 50%;
     transform: translate(-50%, -50%);
     resize: both;
+}
+
+.cmd.maximize,
+.setting.maximize,
+.chat.maximize {
+    width: 100%;
+    height: 100%;
+}
+
+.cmd.minimize,
+.setting.minimize,
+.chat.minimize {
+    width: 750px;
+    height: 500px;
 }
 
 nav {

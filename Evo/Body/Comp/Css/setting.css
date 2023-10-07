@@ -228,7 +228,6 @@
 .setting .mainApp .settingExpand .settingContent {
     width: 95%;
     height: 100%;
-    /* background: red; */
 }
 
 .setting .mainApp .settingExpand .settingContent::-webkit-scrollbar {
@@ -257,11 +256,21 @@
 
 .setting .mainApp .settingExpand .settingContent .homeOptions .homeMain {
     width: 100%;
-    height: 150px;
-    /* background: green; */
     overflow: hidden;
     display: flex;
     justify-content: space-between;
+    /* background: green; */
+}
+
+.setting.maximize .mainApp .settingExpand .settingContent .homeOptions .homeMain {
+    height: 150px;
+    flex-direction: row;
+}
+
+.setting.minimize .mainApp .settingExpand .settingContent .homeOptions .homeMain {
+    height: 175px;
+    flex-direction: column;
+    gap: 25px;
 }
 
 
@@ -288,10 +297,21 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    height: 100%;
+}
+
+.setting.maximize .mainApp .settingExpand .settingContent .homeOptions .homeMain .mainHome {
+    height: 100%;
+}
+
+.setting.minimize .mainApp .settingExpand .settingContent .homeOptions .homeMain .mainHome {
+    height: 75px;
+    /* padding-bottom: 20px;
+    border-bottom: 2px solid var(--border); */
 }
 
 .setting .mainApp .settingExpand .settingContent .homeOptions .homeMain .mainHome img {
-    height: 100px;
+    height: 100%;
     aspect-ratio: 16/9;
     border-radius: 10px;
 }
@@ -313,4 +333,84 @@
 
 .setting .mainApp .settingExpand .settingContent .homeOptions .homeMain .mainHome .bsc .version {
     color: rgba(255, 255, 255, .5);
+}
+
+.setting .mainApp .settingExpand .settingContent .homeOptions .homeMain .basic {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    font-weight: 400;
+}
+
+.setting.maximize .mainApp .settingExpand .settingContent .homeOptions .homeMain .basic {
+    flex-direction: column;
+}
+
+.setting.minimize .mainApp .settingExpand .settingContent .homeOptions .homeMain .basic {
+    flex-direction: row;
+    /* height: calc(100% - 95px); */
+    height: 50%;
+    width: 100%;
+}
+
+.setting .mainApp .settingExpand .settingContent .homeOptions .homeMain .basic .basicOption {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+}
+
+.setting.maximize .mainApp .settingExpand .settingContent .homeOptions .homeMain .basic .basicOption {
+    width: 300px;
+}
+
+.setting.minimize .mainApp .settingExpand .settingContent .homeOptions .homeMain .basic .basicOption {
+    width: 40%;
+}
+
+.setting .mainApp .settingExpand .settingContent .homeOptions .homeMain .basic .basicOption h4 {
+    line-height: 15px;
+}
+
+.setting .mainApp .settingExpand .settingContent .homeOptions .homeMain .basic .basicOption>div {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background: red; */
+}
+
+.setting .mainApp .settingExpand .settingContent .homeOptions .homeMain .basic .basicOption .appTransparent {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.setting .mainApp .settingExpand .settingContent .homeOptions .homeMain .basic .basicOption .appTransparent .transparentCheckbox {
+    width: 75px;
+    height: 35px;
+    border-radius: 35px;
+    /* background: yellow; */
+    background: var(--primaryBG);
+    border: 2px solid var(--border);
+    padding: 5px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    cursor: pointer;
+    transition: justify ease-in-out .2s;
+}
+
+.setting .mainApp .settingExpand .settingContent .homeOptions .homeMain .basic .basicOption .appTransparent .transparentCheckbox.active {
+    justify-content: end;
+}
+
+.setting .mainApp .settingExpand .settingContent .homeOptions .homeMain .basic .basicOption .appTransparent .transparentCheckbox div {
+    width: 25px;
+    height: 25px;
+    background: var(--primaryColor);
+    border-radius: 50%;
 }
