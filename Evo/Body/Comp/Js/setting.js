@@ -1,9 +1,3 @@
-// let ttcb = document.querySelector(".transparentCheckbox").addEventListener('')
-
-// ttcb.addEventListener('click', () => {
-//     console.log("hy")
-// })
-
 const appTranperacyToggle = () => {
     let ttcb = document.querySelector(".transparentCheckbox").classList
     if (ttcb.contains("active")) {
@@ -16,6 +10,7 @@ const appTranperacyToggle = () => {
             bc.remove("transparent")
         }
         bc.add("noTransparent")
+        eel.updateSetting("appTransperacy", false)
     } else {
         ttcb.add("active")
         let bc = document.body.classList
@@ -26,5 +21,19 @@ const appTranperacyToggle = () => {
             return
         }
         bc.add("transparent")
+        eel.updateSetting("appTransperacy", true)
+    }
+}
+
+const calibrateSettings = () => {
+    let cl = document.querySelector(".transparentCheckbox")
+    if (cl) {
+        if (document.body.classList.contains("noTransparent")) {
+            cl.classList.contains("active") ? cl.classList.remove("active") : ""
+            console.log("1")
+        } else {
+            cl.classList.contains("active") ? "" : cl.classList.add("active")
+            console.log("2")
+        }
     }
 }

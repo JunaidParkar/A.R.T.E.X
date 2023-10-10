@@ -1,5 +1,7 @@
-let minWidth = 1080,
-    minHeight = 720
+let minWidth = 1080
+let minHeight = 607.5
+
+// loadfn();
 
 // document.addEventListener("keydown", function(e) {
 //     if (e.keyCode === 82 || (e.ctrlKey && e.keyCode === 73)) {
@@ -11,18 +13,29 @@ let minWidth = 1080,
 //     e.preventDefault();
 // });
 
-window.onload = async() => {
-    console.log("opening")
-    await openApp("setting")
-    document.querySelector(`.${"setting"}`).classList.add("maximize");
-    console.log("opened")
-}
+// window.onload = async() => {
+//     console.log("opening")
+//     await openApp("setting")
+//     document.querySelector(`.${"setting"}`).classList.add("maximize");
+//     console.log("opened")
+// }
 
 window.onresize = function() {
-    if (window.outerWidth < minWidth || window.outerHeight < minHeight) {
-        window.resizeTo(minWidth, minHeight);
+    // Calculate the new window size based on a 16:9 aspect ratio
+    var newWidth = window.outerWidth;
+    var newHeight = newWidth * 9 / 16;
+
+    // Prevent the window from getting smaller than the minimum size
+    if (newWidth < minWidth) {
+        newWidth = minWidth;
     }
-}
+    if (newHeight < minHeight) {
+        newHeight = minHeight;
+    }
+
+    // Set the new window size
+    window.resizeTo(newWidth, newHeight);
+};
 
 if (window.outerWidth < minWidth || window.outerHeight < minHeight) {
     window.resizeTo(minWidth, minHeight);
@@ -104,7 +117,6 @@ const observer = new MutationObserver((mutationsList, observer) => {
         if (mutation.type === 'childList') {
             let classes = ["cmd", "setting", "chat"]
             for (let elem of classes) {
-                let e = document.querySelector(`.${elem}`)
                 if (e) {
                     let n = e.querySelector("nav")
                     const mouseMoveHandler = function(e) { appDragger(e, elem); }.bind(e);
@@ -128,6 +140,18 @@ const observer = new MutationObserver((mutationsList, observer) => {
                         n.removeEventListener("mouseup", mouseMoveHandler)
                         n.removeEventListener("mouseleave", mouseMoveHandler)
                     }
+                }
+                // setting calibrations
+                let e = document.querySelector(`.${elem}`)
+                if (elem == classes[1]) {
+                    if (document.querySelector(`.${classes[1]}`)) {
+                        calibrateSettings()
+                        console.log("done")
+                    } else {
+                        console.log("not")
+                    }
+                    calibrateSettings()
+                    console.log("done")
                 }
             }
         }

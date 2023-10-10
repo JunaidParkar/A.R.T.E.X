@@ -27,13 +27,13 @@
     height: 100%;
 }
 
-.setting.maximize .mainApp .settingExpand {
-    width: calc(100% - 20%);
+.setting.minimize .mainApp .settingOptions {
+    width: 25%;
     height: 100%;
 }
 
-.setting.minimize .mainApp .settingOptions {
-    width: 25%;
+.setting.maximize .mainApp .settingExpand {
+    width: calc(100% - 20%);
     height: 100%;
 }
 
@@ -259,7 +259,6 @@
     overflow: hidden;
     display: flex;
     justify-content: space-between;
-    /* background: green; */
 }
 
 .setting.maximize .mainApp .settingExpand .settingContent .homeOptions .homeMain {
@@ -273,25 +272,11 @@
     gap: 25px;
 }
 
-
-/* .setting .mainApp .settingExpand .settingContent .homeOptions .homeMain {
-    max-width: 500px;
-    width: 30%;
-    min-width: 300px;
-    background: var(--primaryBG);
-} */
-
-
-/* .setting .mainApp .settingExpand .settingContent .homeOptions .transperancyOption h4 {
-    font-size: 18px;
-    color: rgba(255, 255, 255, .5);
+@media (max-width: 1080px) {
+    .setting.maximize .mainApp .settingExpand .settingContent .homeOptions .homeMain {
+        height: 100px;
+    }
 }
-
-.setting .mainApp .settingExpand .settingContent .homeOptions .transperancyOption .appTransparent {
-    width: 100%;
-    height: 50px;
-    background: red;
-} */
 
 .setting .mainApp .settingExpand .settingContent .homeOptions .homeMain .mainHome {
     display: flex;
@@ -306,8 +291,6 @@
 
 .setting.minimize .mainApp .settingExpand .settingContent .homeOptions .homeMain .mainHome {
     height: 75px;
-    /* padding-bottom: 20px;
-    border-bottom: 2px solid var(--border); */
 }
 
 .setting .mainApp .settingExpand .settingContent .homeOptions .homeMain .mainHome img {
@@ -348,7 +331,6 @@
 
 .setting.minimize .mainApp .settingExpand .settingContent .homeOptions .homeMain .basic {
     flex-direction: row;
-    /* height: calc(100% - 95px); */
     height: 50%;
     width: 100%;
 }
@@ -360,9 +342,10 @@
     height: 100%;
 }
 
-.setting.maximize .mainApp .settingExpand .settingContent .homeOptions .homeMain .basic .basicOption {
+
+/* .setting.maximize .mainApp .settingExpand .settingContent .homeOptions .homeMain .basic .basicOption {
     width: 300px;
-}
+} */
 
 .setting.minimize .mainApp .settingExpand .settingContent .homeOptions .homeMain .basic .basicOption {
     width: 40%;
@@ -370,15 +353,30 @@
 
 .setting .mainApp .settingExpand .settingContent .homeOptions .homeMain .basic .basicOption h4 {
     line-height: 15px;
+    text-transform: capitalize;
 }
 
 .setting .mainApp .settingExpand .settingContent .homeOptions .homeMain .basic .basicOption>div {
-    height: 50px;
+    /* height: 50px; */
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background: red; */
+}
+
+.setting .mainApp .settingExpand .settingContent .homeOptions .homeMain .basic .basicOption:last-child {
+    width: max-content;
+    justify-content: start;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.setting .mainApp .settingExpand .settingContent .homeOptions .homeMain .basic .basicOption .update {
+    width: max-content;
+    padding: 10px 20px;
+    background: var(--primaryBG);
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .setting .mainApp .settingExpand .settingContent .homeOptions .homeMain .basic .basicOption .appTransparent {
@@ -393,10 +391,9 @@
     width: 75px;
     height: 35px;
     border-radius: 35px;
-    /* background: yellow; */
     background: var(--primaryBG);
     border: 2px solid var(--border);
-    padding: 5px;
+    padding: 0 5px;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -413,4 +410,15 @@
     height: 25px;
     background: var(--primaryColor);
     border-radius: 50%;
+}
+
+@media (max-width: 1080px) {
+    .setting .mainApp .settingExpand .settingContent .homeOptions .homeMain .basic .basicOption .appTransparent .transparentCheckbox {
+        height: 25px;
+        width: 50px;
+    }
+    .setting .mainApp .settingExpand .settingContent .homeOptions .homeMain .basic .basicOption .appTransparent .transparentCheckbox div {
+        height: 15px;
+        width: 15px;
+    }
 }
