@@ -13,12 +13,12 @@ let minHeight = 607.5
 //     e.preventDefault();
 // });
 
-// window.onload = async() => {
-//     console.log("opening")
-//     await openApp("setting")
-//     document.querySelector(`.${"setting"}`).classList.add("maximize");
-//     console.log("opened")
-// }
+window.onload = async() => {
+    console.log("opening")
+    await openApp("setting")
+    document.querySelector(`.${"setting"}`).classList.add("maximize");
+    console.log("opened")
+}
 
 window.onresize = function() {
     // Calculate the new window size based on a 16:9 aspect ratio
@@ -117,6 +117,7 @@ const observer = new MutationObserver((mutationsList, observer) => {
         if (mutation.type === 'childList') {
             let classes = ["cmd", "setting", "chat"]
             for (let elem of classes) {
+                let e = document.querySelector(`.${elem}`)
                 if (e) {
                     let n = e.querySelector("nav")
                     const mouseMoveHandler = function(e) { appDragger(e, elem); }.bind(e);
@@ -142,16 +143,11 @@ const observer = new MutationObserver((mutationsList, observer) => {
                     }
                 }
                 // setting calibrations
-                let e = document.querySelector(`.${elem}`)
                 if (elem == classes[1]) {
                     if (document.querySelector(`.${classes[1]}`)) {
                         calibrateSettings()
-                        console.log("done")
-                    } else {
-                        console.log("not")
                     }
-                    calibrateSettings()
-                    console.log("done")
+                    // calibrateSettings()
                 }
             }
         }
@@ -168,3 +164,50 @@ const appDragger = ({ movementX, movementY }, elem) => {
     wrapper.style.left = `${leftVal + movementX}px`
     wrapper.style.top = `${topVal + movementY}px`
 }
+
+const showNotification = (heading, content) => {
+    let no = document.querySelector(".notification")
+    if (no) {
+        closeNotification()
+    }
+    let n = document.createElement("div");
+    n.classList.add("notification");
+
+    let not = document.createElement("div");
+    not.classList.add("navbar");
+
+    let h = document.createElement("h3");
+    h.innerHTML = heading;
+    not.appendChild(h);
+
+    let cncl = document.createElement("div");
+    cncl.classList.add("cancelNotification");
+    cncl.onclick = closeNotification;
+
+    let i = document.createElement("img");
+    i.src = "./assets/cross.png";
+    cncl.appendChild(i);
+
+    not.appendChild(cncl);
+
+    let p = document.createElement("p");
+    p.innerHTML = content;
+
+    n.appendChild(not);
+    n.appendChild(p);
+
+    document.body.appendChild(n); // append the notification to the body
+
+    setTimeout(function() {
+        closeNotification(); // pass the notification element to the function
+    }, 5000);
+}
+
+const closeNotification = () => {
+    let n = document.querySelector(".notification")
+    if (n) {
+        document.body.removeChild(n)
+    }
+}
+
+showNotification("head", "trial")

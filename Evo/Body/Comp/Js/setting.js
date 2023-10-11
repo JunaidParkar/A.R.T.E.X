@@ -10,7 +10,7 @@ const appTranperacyToggle = () => {
             bc.remove("transparent")
         }
         bc.add("noTransparent")
-        eel.updateSetting("appTransperacy", false)
+            // eel.updateSetting("appTransperacy", false)
     } else {
         ttcb.add("active")
         let bc = document.body.classList
@@ -21,7 +21,7 @@ const appTranperacyToggle = () => {
             return
         }
         bc.add("transparent")
-        eel.updateSetting("appTransperacy", true)
+            // eel.updateSetting("appTransperacy", true)
     }
 }
 
@@ -36,4 +36,12 @@ const calibrateSettings = () => {
             console.log("2")
         }
     }
+}
+
+const checkUpdate = () => {
+    let u = document.querySelector("#updateBtn")
+    let ur = document.querySelector(".updateResult")
+    u.classList.add("none")
+    ur.classList.remove("none")
+    showNotification("Update", "Please do not close Evolution AI untill update is completed.")
 }

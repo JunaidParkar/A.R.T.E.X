@@ -85,11 +85,30 @@
                             </div>
                         </div>
                         <div class="basicOption">
-                            <div class="update">
+                            <div class="update" onclick="checkUpdate()">
                                 <h4>check update</h4>
                             </div>
+                            <p>Last checked: 02/16, 15:00</p>
                         </div>
                     </div>
+                </div>
+                <div class="mainMenu">
+                    <div class="container update">
+                        <h3 class="heading">Updates</h3>
+                        <p class="subHeading">current version: 3.0.0</p>
+                        <div class="updateContent">
+                            <div class="checkUpdate" id="updateBtn" onclick="checkUpdate()">
+                                <h4>Check Update</h4>
+                            </div>
+                            <div class="updateResult none">
+                                <div class="checkUpdate">
+                                    <h4>Download & install</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="error">Install patch updates via settings. For other updates, uninstall, then reinstall from the downloaded installer. Follow usual steps for manual setup.</p>
+                    </div>
+                    <div class="updateInfo"></div>
                 </div>
             </div>
         </div>
