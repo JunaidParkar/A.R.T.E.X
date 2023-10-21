@@ -15,8 +15,8 @@ let minHeight = 607.5
 
 window.onload = async() => {
     console.log("opening")
-    await openApp("setting")
-    document.querySelector(`.${"setting"}`).classList.add("maximize");
+    await openApp("cmd")
+    document.querySelector(`.${"cmd"}`).classList.add("maximize");
     console.log("opened")
 }
 
@@ -149,6 +149,12 @@ const observer = new MutationObserver((mutationsList, observer) => {
                     }
                     // calibrateSettings()
                 }
+                // CMD input focus
+                if (elem == classes[0]) {
+                    if (document.querySelector("#textinput")) {
+                        document.querySelector("#textinput").focus()
+                    }
+                }
             }
         }
     }
@@ -209,5 +215,3 @@ const closeNotification = () => {
         document.body.removeChild(n)
     }
 }
-
-showNotification("head", "trial")

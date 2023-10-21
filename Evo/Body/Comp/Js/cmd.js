@@ -1,3 +1,14 @@
+let engine = CREngine.getCMD();
+
+engine.addCommand("Evo", [{ flag: "--u", requireValue: true }, { flag: "--p", requireValue: true }], true, (flags) => {
+    console.log(flags);
+});
+
+engine.addCommand("Evo", [{ flag: "--h", requireValue: false }], true, (flags) => {
+    console.log(flags);
+});
+
+
 var commandHistory = [];
 var commandIndex = -1;
 
@@ -50,7 +61,11 @@ const cmdExe = (c) => {
     let mc = ["Evo", "exit"]
     let imc = c.split(" ")
     if (mc.includes(imc[0])) {
-        cmdEngine(c)
+        document.querySelector(".cmdInpWrapper").style.display = "none"
+            // cmdEngine(c)
+        engine.executeCommand("Evo --u username --p password");
+
+        document.querySelector(".cmdInpWrapper").style.display = "flex"
     } else {
         addLine(line = `<br>${imc[0]} : \nThe term '${imc[0]}' is not recognized as the name of a cmdlet, function, script file, or operable program. Check
         the spelling of the name, or if a path was included, verify that the path is correct and try again.<br><br>
