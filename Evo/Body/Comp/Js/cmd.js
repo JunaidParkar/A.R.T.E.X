@@ -1,12 +1,12 @@
-let engine = CREngine.getCMD();
+let engine = new CREngine();
 
-engine.addCommand("Evo", [{ flag: "--u", requireValue: true }, { flag: "--p", requireValue: true }], true, (flags) => {
-    console.log(flags);
-});
+// engine.addCommand("Evo", [{ flag: "--u", requireValue: true }, { flag: "--p", requireValue: true }], true, (flags) => {
+//     console.log(flags);
+// });
 
-engine.addCommand("Evo", [{ flag: "--h", requireValue: false }], true, (flags) => {
-    console.log(flags);
-});
+// engine.addCommand("Evo", [{ flag: "--h", requireValue: false }], true, (flags) => {
+//     console.log(flags);
+// });
 
 
 var commandHistory = [];
@@ -110,5 +110,44 @@ const cmdEngine = (command) => {
         console.log(s)
         closeApp(s)
             // console.log(document.querySelector("cmd"))
+    }
+}
+
+class cmdParser {
+    constructor() {
+        this.engine = engine
+        this.commandHistory = this.engine.commandHistory
+        this.commandIndex = this.engine.historyIndex
+        this.addResponse = addLine
+    }
+
+    handleCommand() {
+        var event = window.event || event.which;
+        if (event.keyCode == 13) {
+            event.preventDefault();
+            var command = document.getElementById("textinput").value;
+            // addLine(command, "self");
+            this.commandHistory.push(command);
+            this.commandIndex = this.commandHistory.length;
+            this.engine.executeCommand(command)
+                // cmdExe(command)
+                // document.getElementById("textinput").value = "";
+                // document.getElementById("textinput").style.height = "1em";
+        } else if (event.keyCode == 38) {
+            if (this.commandIndex > 0) {
+                this.commandIndex--;
+                document.getElementById("textinput").value = this.commandHistory[this.commandIndex];
+            }
+            event.preventDefault();
+        } else if (event.keyCode == 40) {
+            if (this.commandIndex < this.commandHistory.length - 1) {
+                this.commandIndex++;
+                document.getElementById("textinput").value = this.commandHistory[this.commandIndex];
+            }
+            event.preventDefault();
+        } else {
+            document.getElementById("textinput").style.height = "";
+            document.getElementById("textinput").style.height = document.getElementById("textinput").scrollHeight + "px";
+        }
     }
 }

@@ -37,17 +37,30 @@ class CREngine {
         // console.log(JSON.stringify(formattedCommands, null, 2));
         let inpArray = input.split(" ")
         let inpCMDName = inpArray[0]
-        console.log(this.verifyFlags(input))
-
-
+        let aaa = this.verifyFlags(input)
+        if (aaa[0]) {
+            let val = this.verifyValues(aaa[1], input)
+            val.forEach(elm => {
+                if (elm.requiredValue) {
+                    if (elm.value) {
+                        console.log(elm.flag, elm.value)
+                    } else {
+                        console.log(`value not provided for ${elm.flag}`)
+                    }
+                } else {
+                    console.log("no value needed")
+                }
+            })
+        } else {
+            console.log("error")
+        }
     }
 
     verifyFlags(inputCommand) {
         let inp = inputCommand.split(" ")
         let dataset = this.commands[inp[0]]
         if (!dataset) {
-            console.error(`Command ${inp[0]} not available`)
-            return false
+            return [false, `Command ${inp[0]} not available`]
         }
         let inpFlags = []
         for (const c of inp) {
@@ -58,8 +71,7 @@ class CREngine {
         let flagIndex = this.getFlagIndex(dataset.operations, inpFlags)
 
         if (flagIndex === undefined) {
-            console.error(`Incorrect flags. Please Enter ${inp[0]} --h for help`)
-            return false
+            return [false, `Incorrect flags. Please Enter ${inp[0]} --h for help`]
         }
 
         let av = []
@@ -72,15 +84,14 @@ class CREngine {
             }
         })
 
-        let allFlagsPresent = true;
+        let allFlagsPresent = [true, flagIndex];
 
         av.forEach((stmt, ind) => {
             if (stmt == "f") {
-                console.error(`Flag ${dataset.operations[flagIndex].flags[ind]} is missing`)
-                allFlagsPresent = false;
+                allFlagsPresent = [false, `Flag ${dataset.operations[flagIndex].flags[ind]} is missing`];
             }
         })
-        return allFlagsPresent
+        if (allFlagsPresent) { return allFlagsPresent } else { return allFlagsPresent }
     }
 
     getFlagIndex(operation, inputFlags) {
@@ -93,6 +104,35 @@ class CREngine {
                 }
             }
         }
+    }
+
+    verifyValues(index, input) {
+        let inp = input.split(" ")
+        let dataset = this.commands[inp[0]]
+        let inpFlags = []
+        let values = []
+        for (const c of inp) {
+            if (c.startsWith("--")) {
+                inpFlags.push(c);
+            }
+        }
+        let af = dataset.operations[index].flags
+        for (let i = 0; i < af.length; i++) {
+            let d = dataset.operations[index].requiredValue[i]
+            if (d) {
+                let ind = inp.indexOf(af[i])
+                if (ind + 1 > inp.length - 1) {
+                    values.push({ flag: af[i], value: undefined, requiredValue: true })
+                } else if (inp[ind + 1].startsWith("--")) {
+                    values.push({ flag: af[i], value: undefined, requiredValue: true })
+                } else {
+                    values.push({ flag: af[i], value: inp[ind + 1], requiredValue: true })
+                }
+            } else {
+                values.push({ flag: af[i], value: undefined, requiredValue: false })
+            }
+        }
+        return values
     }
 }
 
@@ -108,10 +148,11 @@ aa.addCommand("Evo", [{ flag: "--u", requiredValue: true }, { flag: "--p", requi
     console.log("Hey from function2");
 });
 
-aa.executeCommand("Evo --p --u");
-// aa.executeCommand("Evo --u username");
+// aa.executeCommand("Evo --h")
+// aa.executeCommand("Evo --p parkar --u junaid");
+// aa.executeCommand("Evo --u username --p");
 // aa.executeCommand("Evo --u username --p password");
-
+aa.executeCommand("Evo --i")
 
 var storedData = {
     "Evo": {
