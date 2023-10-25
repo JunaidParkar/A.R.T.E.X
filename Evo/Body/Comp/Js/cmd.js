@@ -1,5 +1,56 @@
 let engine = new CREngine();
 
+engine.addCommand("Evo", [{ flag: "--h", requiredValue: false }], args => {
+    let table = document.createElement("table")
+    let row1 = document.createElement("tr")
+    let tr1th1 = document.createElement("th")
+    tr1th1.textContent = "Flags"
+    let tr1th2 = document.createElement("th")
+    tr1th2.textContent = "Usage"
+    row1.appendChild(tr1th1)
+    row1.appendChild(tr1th2)
+    let row2 = document.createElement("tr")
+    let tr2th1 = document.createElement("th")
+    tr2th1.textContent = "--h"
+    let tr2td2 = document.createElement("td")
+    tr2td2.textContent = "Used to get help with all functionalities of Evolution AI CMD."
+    row2.appendChild(tr2th1)
+    row2.appendChild(tr2td2)
+    table.appendChild(row1)
+    table.appendChild(row2)
+    console.log(table)
+    addLine(table, true)
+}, error => {
+    addLine(error, false, null, true)
+})
+
+engine.addCommand("Evo", [{ flag: "--getVoices", requiredValue: false }], args => {
+    eel.get_available_voices()().then(function(voices) {
+        let table = document.createElement("table")
+        let row1 = document.createElement("tr")
+        let tr1th1 = document.createElement("th")
+        tr1th1.textContent = "Id"
+        let tr1th2 = document.createElement("th")
+        tr1th2.textContent = "Name"
+        row1.appendChild(tr1th1)
+        row1.appendChild(tr1th2)
+        table.appendChild(row1)
+        voices.forEach(function(voice) {
+            let row2 = document.createElement("tr")
+            let tr2th1 = document.createElement("th")
+            tr2th1.textContent = voice.index
+            let tr2td2 = document.createElement("td")
+            tr2td2.textContent = voice.name
+            row2.appendChild(tr2th1)
+            row2.appendChild(tr2td2)
+            table.appendChild(row2)
+        });
+        addLine(table, true)
+    })
+}, error => {
+    addLine(error, false, null, true)
+})
+
 // engine.addCommand("Evo", [{ flag: "--u", requireValue: true }, { flag: "--p", requireValue: true }], true, (flags) => {
 //     console.log(flags);
 // });
@@ -16,10 +67,11 @@ function checkInput() {
     var event = window.event || event.which;
     if (event.keyCode == 13) {
         var command = document.getElementById("textinput").value;
-        addLine(command, "self");
+        addLine(command, false, "self");
         commandHistory.push(command);
         commandIndex = commandHistory.length;
-        cmdExe(command)
+        // cmdExe(command)
+        engine.executeCommand(command)
         document.getElementById("textinput").value = "";
         document.getElementById("textinput").style.height = "1em";
         event.preventDefault();
@@ -41,21 +93,34 @@ function checkInput() {
     }
 }
 
-function addLine(line, author = null, error = false) {
-    var d = document.createElement("div"),
-        p = document.createElement("p")
+function addLine(line, isHTML = false, author = null, error = false) {
+    let d = document.createElement("div");
+    let p = document.createElement("p");
+
     if (error) {
-        d.classList.add("error")
+        d.classList.add("error");
     }
+
     if (author == "self") {
-        let p2 = document.createElement("p")
-        p2.textContent = "Evolution AI >> "
-        d.appendChild(p2)
+        let p2 = document.createElement("p");
+        p2.textContent = "Evolution AI >> ";
+        d.appendChild(p2);
     }
-    p.innerHTML = line;
-    d.appendChild(p)
+
+    if (isHTML) {
+        p.appendChild(line);
+    } else {
+        p.innerHTML = line;
+    }
+    d.appendChild(p);
+
+    console.log(line)
+    console.log(p)
+
     document.getElementById("consoletext").appendChild(d);
 }
+
+
 
 const cmdExe = (c) => {
     let mc = ["Evo", "exit"]
@@ -131,8 +196,8 @@ class cmdParser {
             this.commandIndex = this.commandHistory.length;
             this.engine.executeCommand(command)
                 // cmdExe(command)
-                // document.getElementById("textinput").value = "";
-                // document.getElementById("textinput").style.height = "1em";
+            document.getElementById("textinput").value = "";
+            document.getElementById("textinput").style.height = "1em";
         } else if (event.keyCode == 38) {
             if (this.commandIndex > 0) {
                 this.commandIndex--;

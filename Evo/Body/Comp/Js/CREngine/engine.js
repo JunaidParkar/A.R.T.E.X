@@ -5,7 +5,7 @@ class CREngine {
         this.historyIndex = 0;
     }
 
-    addCommand(name, flags, action) {
+    addCommand(name, flags, action, error) {
         let f = [];
         let r = [];
         flags.forEach(cmd => {
@@ -13,44 +13,41 @@ class CREngine {
             r.push(cmd.requiredValue);
         });
 
-        // Check if the command already exists, if not, initialize an empty array
         this.commands[name] = this.commands[name] || { operations: [] };
 
         this.commands[name].operations.push({
             flags: f,
             requiredValue: r,
-            action: action // Store the function directly
+            action: action,
+            error: error
         });
     }
 
     executeCommand(input) {
-        // const formattedCommands = {};
-        // for (const command in this.commands) {
-        //     formattedCommands[command] = {
-        //         operations: this.commands[command].operations.map(op => ({
-        //             flags: op.flags,
-        //             requiredValue: op.requiredValue,
-        //             action: op.action.toString()
-        //         }))
-        //     };
-        // }
-        // console.log(JSON.stringify(formattedCommands, null, 2));
         let inpArray = input.split(" ")
         let inpCMDName = inpArray[0]
+        let ds = this.commands[inpArray[0]]
         let aaa = this.verifyFlags(input)
         if (aaa[0]) {
             let val = this.verifyValues(aaa[1], input)
+            let callBackArgs = []
+            console.log(val)
             val.forEach(elm => {
                 if (elm.requiredValue) {
                     if (elm.value) {
-                        console.log(elm.flag, elm.value)
+                        callBackArgs.push({ flag: elm.flag, value: elm.value })
                     } else {
-                        console.log(`value not provided for ${elm.flag}`)
+                        callBackArgs = []
+                        console.log(ds.operations[aaa[1]])
+                        ds.operations[aaa[1]].error(`value not provided for ${elm.flag}`)
                     }
                 } else {
-                    console.log("no value needed")
+                    callBackArgs.push({ flag: elm.flag, value: elm.value })
                 }
             })
+            if (callBackArgs.length > 0) {
+                ds.operations[aaa[1]].action(callBackArgs)
+            }
         } else {
             console.log("error")
         }
@@ -60,6 +57,7 @@ class CREngine {
         let inp = inputCommand.split(" ")
         let dataset = this.commands[inp[0]]
         if (!dataset) {
+            dataset.operations[0].error(`Command ${inp[0]} not available`)
             return [false, `Command ${inp[0]} not available`]
         }
         let inpFlags = []
@@ -71,6 +69,7 @@ class CREngine {
         let flagIndex = this.getFlagIndex(dataset.operations, inpFlags)
 
         if (flagIndex === undefined) {
+            dataset.operations[flagIndex].error(`Incorrect flags. Please Enter ${inp[0]} --h for help`)
             return [false, `Incorrect flags. Please Enter ${inp[0]} --h for help`]
         }
 
@@ -88,10 +87,11 @@ class CREngine {
 
         av.forEach((stmt, ind) => {
             if (stmt == "f") {
+                dataset.operations[flagIndex].error(`Flag ${dataset.operations[flagIndex].flags[ind]} is missing`)
                 allFlagsPresent = [false, `Flag ${dataset.operations[flagIndex].flags[ind]} is missing`];
             }
         })
-        if (allFlagsPresent) { return allFlagsPresent } else { return allFlagsPresent }
+        return allFlagsPresent
     }
 
     getFlagIndex(operation, inputFlags) {
@@ -136,36 +136,46 @@ class CREngine {
     }
 }
 
-var aa = new CREngine();
+// let engine = new CREngine();
 
-aa.addCommand("Evo", [{ flag: "--h", requiredValue: false }], args => {
-    // do something
-    console.log("Hey from function");
-});
+// engine.addCommand("Evo", [{ flag: "--u", requiredValue: true }, { flag: "--p", requiredValue: true }], args => {
+//     console.log(args, "from args")
+// }, error => {
+//     console.log(error, "from error")
+// })
 
-aa.addCommand("Evo", [{ flag: "--u", requiredValue: true }, { flag: "--p", requiredValue: true }], args => {
-    // do something
-    console.log("Hey from function2");
-});
+// engine.executeCommand("Evo --u username")
+
+// var aa = new CREngine();
+
+// aa.addCommand("Evo", [{ flag: "--h", requiredValue: false }], args => {
+//     // do something
+//     console.log("Hey from function");
+// });
+
+// aa.addCommand("Evo", [{ flag: "--u", requiredValue: true }, { flag: "--p", requiredValue: true }], args => {
+//     // do something
+//     console.log("Hey from function2");
+// });
 
 // aa.executeCommand("Evo --h")
 // aa.executeCommand("Evo --p parkar --u junaid");
 // aa.executeCommand("Evo --u username --p");
 // aa.executeCommand("Evo --u username --p password");
-aa.executeCommand("Evo --i")
+// aa.executeCommand("Evo --i")
 
-var storedData = {
-    "Evo": {
-        "operations": [{
-                "flags": ["--h"],
-                "requiredValue": [false],
-                "action": "args => {\r\n    // do something\r\n    console.log(\"Hey from function\");\r\n}"
-            },
-            {
-                "flags": ["--u", "--p"],
-                "requiredValue": [true, true],
-                "action": "args => {\r\n    // do something\r\n    console.log(\"Hey from function2\");\r\n}"
-            }
-        ]
-    }
-}
+// var storedData = {
+//     "Evo": {
+//         "operations": [{
+//                 "flags": ["--h"],
+//                 "requiredValue": [false],
+//                 "action": "args => {\r\n    // do something\r\n    console.log(\"Hey from function\");\r\n}"
+//             },
+//             {
+//                 "flags": ["--u", "--p"],
+//                 "requiredValue": [true, true],
+//                 "action": "args => {\r\n    // do something\r\n    console.log(\"Hey from function2\");\r\n}"
+//             }
+//         ]
+//     }
+// }

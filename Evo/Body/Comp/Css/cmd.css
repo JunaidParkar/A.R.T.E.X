@@ -25,6 +25,10 @@
     height: 100%;
 }
 
+.cmd .mainApp #consoletext div {
+    margin-bottom: 20px;
+}
+
 .cmd .mainApp #consoletext div p {
     font-size: calc(var(--headingSize) - 7px);
 }
