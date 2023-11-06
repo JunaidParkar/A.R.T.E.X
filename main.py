@@ -2,7 +2,7 @@ import eel
 import json
 import pyttsx3
 
-eel.init("./Evo/Body/Comp")
+eel.init("./Fun/Body/Comp")
 
 @eel.expose
 def getSetting():
