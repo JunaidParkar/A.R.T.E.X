@@ -9,12 +9,12 @@
 
 @font-face {
     font-family: kanitSB;
-    src: url(./stuffs/Kanit/Kanit-SemiBold.ttf);
+    src: url(./assets/Kanit/Kanit-SemiBold.ttf);
 }
 
 @font-face {
     font-family: kanitR;
-    src: url(./stuffs/Kanit/Kanit-Regular.ttf);
+    src: url(./assets/Kanit/Kanit-Regular.ttf);
 }
 
 :root {

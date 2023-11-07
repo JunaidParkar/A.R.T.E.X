@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    border: 0;
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+}
+
+@font-face {
+    font-family: kanitR;
+    src: url(../assets/Kanit/Kanit-Regular.ttf);
+}
+
+:root {
+    --padding: 50px;
+    --black: #000000;
+}
+
+body {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    color: rgba(255, 255, 255, .7);
+}
+
+#root {
+    background: var(--black);
+    z-index: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#navbar {
+    width: 100%;
+    height: 75px;
+    position: relative;
+    padding: 0px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid rgba(255, 255, 255, .1);
+    box-shadow: rgba(255, 255, 255, 0.16) 0px 1px 4px;
+}
+
+#navbar #back {
+    position: absolute;
+    width: max-content;
+    height: 100%;
+    bottom: 0;
+    left: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#navbar #back img {
+    width: 25px;
+    filter: invert(1);
+}
+
+#navbar h3 {
+    font-family: kanitR;
+    font-size: 25px;
+    letter-spacing: 5px;
+    color: white;
+}
+
+#cmd {
+    width: 100%;
+    height: calc(100% - 75px);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 50px var(--padding);
+}
+
+#cmd::-webkit-scrollbar {
+    width: 10px;
+    /* border-radius: var(--borderRadius); */
+}
+
+#cmd::-webkit-scrollbar-track {
+    /* background-color: var(--greyColor); */
+    background: transparent;
+    /* border-radius: var(--borderRadius); */
+}
+
+#cmd::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.16);
+    /* background-color: var(--blueColor); */
+    border-radius: 2px;
+}
+
+#cmd::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(255, 255, 255, .5);
+}
+
+#cmd #history {
+    margin-top: 25px;
+}
+
+#cmd #history p span {
+    margin-left: 5px;
+}
+
+#cmd #inputs {
+    margin-top: 20px;
+    display: flex;
+    gap: 5px;
+}
+
+#cmd #inputs input {
+    background: transparent;
+    color: rgba(255, 255, 255, .7);
+    outline: 0;
+    border: 0;
+    width: max-content;
+    caret-shape: underscore;
+    padding: 0;
+}
+
+#cmd .regularFont {
+    font-family: kanitR;
+    letter-spacing: 1px;
+    font-weight: 300;
+    font-size: 17px;
+}
+
+
+/* output css */
+
+.error {
+    color: red;
+}
