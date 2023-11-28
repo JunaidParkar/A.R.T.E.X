@@ -5,8 +5,8 @@ import random
 import os
 import sys
 sys.path.append(os.environ.get('EvoAI'))
-from Fun.Brain.Paths import LOCALDATA_INTENTS_FILE, TRAINED_DATA_FILE, APPS_FILE, APPS_USER_FILE
-from Fun.Brain.NeuralNetwork.Base import bag_of_words, tokenize, wordsFilter, wordPercentageCalculator
+from Management.Paths.DataPath import LOCALDATA_INTENTS_FILE, TRAINED_DATA_FILE, APPS_FILE, APPS_USER_FILE
+from NeuralNetwork.Base import bag_of_words, tokenize, wordsFilter, wordPercentageCalculator
 
 def TasksExecutor(query):
 

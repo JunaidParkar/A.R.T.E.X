@@ -6,8 +6,8 @@ from time import sleep
 import os
 import sys
 sys.path.append(os.environ.get('EvoAI'))
-from Fun.Body.Mouth import speak
-from Fun.Brain.NeuralNetwork.Model import appFinder
+from Base.Functionalities import speak
+from NeuralNetwork.Model import appFinder
 
 def openApp(query: str):
     query = str(query).lower()

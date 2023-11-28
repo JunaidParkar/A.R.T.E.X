@@ -6,9 +6,9 @@ import os
 import sys
 import subprocess
 sys.path.append(os.environ.get('EvoAI'))
-from Fun.Brain.Paths import TEMP_FOLDER, PRIVATE_1, PRIVATE_2, PRIVATE_3
+from Management.Paths.DataPath import TEMP_FOLDER, PRIVATE_1, PRIVATE_2, PRIVATE_3
 from Fun.Body.Hand import takeInput, printSimple
-from Fun.Body.Mouth import speak
+from Base.Functionalities import speak
 
 pvt = os.path.join(os.path.split(TEMP_FOLDER)[0], "Brain", "Datasets", ".private")
 

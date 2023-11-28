@@ -2,7 +2,7 @@ import webbrowser
 import os
 import sys
 sys.path.append(os.environ.get('EvoAI'))
-from Fun.Body.Mouth import speak
+from Base.Functionalities import speak
 from urlextract import URLExtract
 
 def visitWebsite(query: str):

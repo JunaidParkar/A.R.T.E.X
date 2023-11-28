@@ -1,0 +1,15 @@
+pyttsx3
+pyaudio
+speechrecognition
+nltk
+requests
+cryptography
+flask
+keyboard
+pyautogui
+urlextract
+selenium
+google.generativeai
+torch
+eel
+numpy

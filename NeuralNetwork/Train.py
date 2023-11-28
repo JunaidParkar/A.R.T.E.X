@@ -6,9 +6,9 @@ import numpy as np
 import os
 import sys
 sys.path.append(os.environ.get('EvoAI'))
-from Fun.Brain.Paths import TRAINED_DATA_FILE, TRAINED_DATA_FOLDER, LOCALDATA_INTENTS_FILE
-from Fun.Brain.NeuralNetwork.Base import bag_of_words, stem, tokenize
-from Fun.Body.Mouth import speak
+from Management.Paths.DataPath import TRAINED_DATA_FILE, TRAINED_DATA_FOLDER, LOCALDATA_INTENTS_FILE
+from NeuralNetwork.Base import bag_of_words, stem, tokenize
+from Base.Functionalities import speak
 
 def TrainAI():
 

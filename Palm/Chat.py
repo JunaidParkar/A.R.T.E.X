@@ -1,6 +1,6 @@
 import google.generativeai as palm
 import json
-import Fun.Brain.Paths as Filepaths
+import Management.Paths.DataPath as Filepaths
 
 with open(Filepaths.LOCALDATA_CONFIG_FILE, "r") as fpp:
   api = json.load(fpp)["googleAI"]

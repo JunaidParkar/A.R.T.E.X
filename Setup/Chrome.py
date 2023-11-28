@@ -2,14 +2,14 @@ import os
 import sys
 sys.path.append(os.environ.get('EvoAI'))
 import winreg
-from Fun.Brain.Paths import TEMP_FOLDER, CHROME_DRIVER_FILE
+from Management.Paths.DataPath import TEMP_FOLDER, CHROME_DRIVER_FILE
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from zipfile import ZipFile
 import requests
 import shutil
 from Fun.Brain.Links import getDriverLink, GET_LATEST_VERSION, DOWNLOAD_DRIVER, DOWNLOAD_TEST_DRIVER, GET_VERSION
-from Fun.Body.Mouth import speak
+from Base.Functionalities import speak
 from Fun.Brain.Community import writeLog
 
 def removeSeleniumBackups():

@@ -10,7 +10,7 @@ import pyttsx3
 import pickle
 import json
 sys.path.append(os.environ.get('EvoAI'))
-from Fun.Brain.Paths import TEMP_FOLDER, PRIVATE_4, LOCALDATA_CONFIG_FILE
+from Management.Paths.DataPath import TEMP_FOLDER, PRIVATE_4, LOCALDATA_CONFIG_FILE
 print("fl imp")
 
 def printData(data: str):

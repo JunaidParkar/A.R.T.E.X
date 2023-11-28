@@ -3,9 +3,9 @@ import sys
 sys.path.append(os.environ.get('EvoAI'))
 import re
 import datetime
-from Fun.Body.Ear import listen
-from Fun.Body.Mouth import speak
-from Fun.Brain.NeuralNetwork.Base import tokenize
+from Base.Functionalities import listen
+from Base.Functionalities import speak
+from NeuralNetwork.Base import tokenize
 from Fun.Brain.Community import saveReminder, loadReminder
 
 def verify_time_format(time_str: str):

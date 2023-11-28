@@ -1,0 +1,9 @@
+[11/22/2023, 17:53:27] Creating folder C:\Users\verix\AppData\Local\Artex
+[11/22/2023, 17:53:27] Creating folder C:\Users\verix\AppData\Local\Artex\Community
+[11/22/2023, 17:53:27] Creating folder C:\Users\verix\AppData\Local\Artex\Dataset
+[11/22/2023, 17:53:27] Creating folder C:\Users\verix\AppData\Local\Artex\Database
+[11/22/2023, 17:53:27] Creating folder C:\Users\verix\AppData\Local\Artex\Database\Chats
+[11/22/2023, 17:53:27] Creating folder C:\Users\verix\AppData\Local\Artex\Database\Train
+[11/22/2023, 17:53:27] Creating folder C:\Users\verix\AppData\Local\Artex\Database\Apps
+[11/22/2023, 17:53:27] Creating config file at C:\Users\verix\Documents\xampp\htdocs\A.R.T.E.X\Artex\Data\Config.json
+[11/22/2023, 17:57:30] Creating config file at C:\Users\verix\Documents\xampp\htdocs\A.R.T.E.X\Artex\Data\Config.json

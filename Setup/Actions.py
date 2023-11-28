@@ -3,10 +3,10 @@ import json
 import shutil
 import pyttsx3
 import winreg
-import Fun.Brain.Paths as fp
-from Fun.Body.Hand import printData, takeInput
-from Fun.Brain.Community import writeLog
-from Fun.Brain.Setup.Structure import defaultConfig, defaultIntents
+import Management.Paths.DataPath as fp
+# from Fun.Body.Hand import printData, takeInput
+# from Fun.Brain.Community import writeLog
+from Setup.Structure import defaultConfig, defaultIntents
 
 def updateCongif(key: str, value: str):
     with open(fp.SOFTWARE_CONFIG_FILE, "r+") as f:
@@ -17,22 +17,23 @@ def updateCongif(key: str, value: str):
         f.truncate()
 
 def moveFile(filepath: str, dest: str):
-    writeLog(f"moving {filepath} to {dest}")
+    # writeLog(f"moving {filepath} to {dest}")
     shutil.move(filepath, dest)
-    writeLog(f"moved {filepath} to {dest}")
+    # writeLog(f"moved {filepath} to {dest}")
 
 def copyFile(file: str, dest: str):
-    writeLog(f"Copying {file} at {dest}")
+    # writeLog(f"Copying {file} at {dest}")
     try:
         shutil.copyfile(file, dest)
-        writeLog(f"Copied {file} successfully at {dest}")
+        # writeLog(f"Copied {file} successfully at {dest}")
     except:
-        writeLog(f"Failed to copy {file} File at {dest}")
+        # writeLog(f"Failed to copy {file} File at {dest}")
+        pass
     
 def setVoice(ind: int):
     engine = pyttsx3.init()
     voices = engine.getProperty('voices')
-    writeLog("Setting up voice index")
+    # writeLog("Setting up voice index")
     if ind > len(voices) or ind < 0:
         return 0
     return ind
@@ -40,12 +41,12 @@ def setVoice(ind: int):
 
 def verifyConfig():
     if not os.path.exists(fp.SOFTWARE_CONFIG_FILE):
-        writeLog(f"Creating config file at {fp.SOFTWARE_CONFIG_FILE}")
+        # writeLog(f"Creating config file at {fp.SOFTWARE_CONFIG_FILE}")
         with open(fp.SOFTWARE_CONFIG_FILE, 'w') as configF:
                 json.dump(defaultConfig(), configF)
                 configF.close()
-        writeLog(f"Created config file successfully at {fp.SOFTWARE_CONFIG_FILE}")
-    writeLog("Checking config file for any remaining settings")
+        # writeLog(f"Created config file successfully at {fp.SOFTWARE_CONFIG_FILE}")
+    # writeLog("Checking config file for any remaining settings")
     with open(fp.SOFTWARE_CONFIG_FILE, "r+") as f:
         config_data = json.load(f)
         try:
@@ -57,8 +58,8 @@ def verifyConfig():
         except:
             config_data["googleAI"] = ''
         if config_data['googleAI'] == '':
-            writeLog("Storing googleAI api")
-            printData("Enter your GoogleAI api key. If you dont set it then you can't use full features like chatting or any research. If you dont know how to get it then kindly visit forum at xyz. To skip this step enter '0'")
+            # writeLog("Storing googleAI api")
+            # printData("Enter your GoogleAI api key. If you dont set it then you can't use full features like chatting or any research. If you dont know how to get it then kindly visit forum at xyz. To skip this step enter '0'")
             api = takeInput("Enter your GoogleAI api key.")
             if (api == 0) or (api == "0"):
                 config_data['googleAI'] = ""
@@ -68,8 +69,8 @@ def verifyConfig():
             json.dump(config_data, f, indent=4)
             f.truncate()
             f.close()
-            writeLog("Storing googleAI api successful")
-    writeLog("Checked config file for any remaining settings successful")
+            # writeLog("Storing googleAI api successful")
+    # writeLog("Checked config file for any remaining settings successful")
     copyFile(fp.SOFTWARE_CONFIG_FILE, fp.LOCALDATA_CONFIG_FILE)
 
 def verifyIntents():
@@ -83,7 +84,7 @@ def verifyIntents():
         copyFile(fp.SOFTWARE_INTENTS_FILE, fp.LOCALDATA_INTENTS_FILE)
 
 def getInstalledApps():
-    writeLog("Fetching installed apps")
+    # writeLog("Fetching installed apps")
     installed_apps = []
     try:
         with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE, r"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall") as key:
@@ -98,25 +99,29 @@ def getInstalledApps():
                             if install_location and not app_name.lower().endswith('.exe'):
                                 installed_apps.append(app_name)
                         except FileNotFoundError as r:
-                            writeLog("No DisplayName or InstallLocation found for subkey")
+                            # writeLog("No DisplayName or InstallLocation found for subkey")
+                            pass
                         except Exception as e:
-                            writeLog(f"Error reading registry values: {e}")
+                            # writeLog(f"Error reading registry values: {e}")
+                            pass
                     index += 1
                 except FileNotFoundError:
                     # No more subkeys to enumerate
                     break
                 except Exception as ee:
-                    writeLog(f"Error enumerating subkeys: {ee}")
+                    # writeLog(f"Error enumerating subkeys: {ee}")
                     break
     except Exception as eee:
-        writeLog("Unable to access Windows registry")
+        # writeLog("Unable to access Windows registry")
+        pass
 
     if len(installed_apps) > 0:
         with open(fp.APPS_FILE, 'w') as json_file:
             json.dump(installed_apps, json_file, indent=4)
-            writeLog("Fetched installed apps successfully")
+            # writeLog("Fetched installed apps successfully")
     else:
-        writeLog("No installed apps fetched")
+        # writeLog("No installed apps fetched")
+        pass
 
 def basicSetup():
     logPth = [fp.LOG_FILE]
@@ -132,7 +137,7 @@ def basicSetup():
 def handleStructure(paths: list):
     for folder in paths:
         if not os.path.isdir(folder):
-            writeLog(f"Creating folder {folder}")
+            # writeLog(f"Creating folder {folder}")
             os.mkdir(folder)
 
 def dirSetup():

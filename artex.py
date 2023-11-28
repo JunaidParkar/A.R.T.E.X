@@ -21,15 +21,15 @@ if not os.environ.get("ARTEX") == os.getcwd():
 
 # setup starts
 
-from Fun.Brain.Setup.Actions import dirSetup, verifyConfig, verifyIntents, getInstalledApps
+# from Setup.Actions import dirSetup, verifyConfig, verifyIntents, getInstalledApps
 
-dirSetup()
-verifyConfig()
-verifyIntents()
-getInstalledApps()
+# dirSetup()
+# verifyConfig()
+# verifyIntents()
+# getInstalledApps()
 
 from Fun.Body.Mouth import speak
-from Fun.Brain.NeuralNetwork.Train import TrainAI
+from NeuralNetwork.Train import TrainAI
 
 TrainAI()
 
@@ -50,7 +50,7 @@ TrainAI()
 # authenticate
 
 import sys
-from Fun.Brain.Security.Authentication import Authenticate
+from Authority.Authentication import Authenticate
 auth = Authenticate()
 if auth is True:
     speak("You are logged in")
@@ -69,10 +69,10 @@ speak("Please do not close the reminder window as it is a part of me...")
 
 from Fun.Body.Ear import listen
 from Fun.Body.Mouth import speak
-from Fun.Brain.Palm.Chat import chatBot
-from Fun.Brain.Memory.Remind import addReminder
-from Fun.Brain.Features.AppOpener import openApp
-from Fun.Brain.NeuralNetwork.Model import TasksExecutor
+from Palm.Chat import chatBot
+from Memory.Remind import addReminder
+from Workers.AppOpener import openApp
+from NeuralNetwork.Model import TasksExecutor
 
 
 while True:
