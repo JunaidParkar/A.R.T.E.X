@@ -1,12 +1,15 @@
+import os
+import sys
+sys.path.append(os.environ.get('ARTEX'))
 import torch.nn as nn
 import json
 import torch
 import random
-import os
-import sys
-sys.path.append(os.environ.get('EvoAI'))
-from Management.Paths.DataPath import LOCALDATA_INTENTS_FILE, TRAINED_DATA_FILE, APPS_FILE, APPS_USER_FILE
-from NeuralNetwork.Base import bag_of_words, tokenize, wordsFilter, wordPercentageCalculator
+# from Management.Paths.DataPath import LOCALDATA_INTENTS_FILE, TRAINED_DATA_FILE, APPS_FILE, APPS_USER_FILE
+# from Base import bag_of_words, tokenize, wordsFilter, wordPercentageCalculator
+from NeuralNetwork.Base import bag_of_words, tokenize
+
+LOCALDATA_INTENTS_FILE = "NeuralNetwork/intents.json"
 
 def TasksExecutor(query):
 
@@ -29,10 +32,11 @@ def TasksExecutor(query):
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-    with open(LOCALDATA_INTENTS_FILE,'r') as json_data:
+    with open("NeuralNetwork/intents.json",'r') as json_data:
         intents = json.load(json_data)
 
-    FILE = TRAINED_DATA_FILE
+    # FILE = TRAINED_DATA_FILE
+    FILE = "set.pth"
     data = torch.load(FILE)
 
     input_size = data["input_size"]
@@ -73,23 +77,23 @@ def TasksExecutor(query):
                 return reply
             
 
-def appFinder(query: str):
-    with open(APPS_FILE, 'r') as f:
-        # with open(APPS_USER_FILE, 'r') as uf:
-            apps = json.load(f)
-            if apps is None:
-                apps = []
-            # userApps = json.load(uf)
-            # for userApp in userApps:
-            #     apps.append(userApp)
-            tokenised_apps = []
-            tokenised_query = tokenize(query)
-            for app in apps:
-                tokenised_apps.append(tokenize(app))
-            filtered_word = wordsFilter(tokenised_apps, tokenised_query)
-            percentile = wordPercentageCalculator(tokenised_query, filtered_word)
-            if len(percentile) == 1 and percentile[0] == -1:
-                return False
-            else:
-                maxIndex = percentile.index(max(percentile))
-                return apps[maxIndex]
+# def appFinder(query: str):
+#     with open(APPS_FILE, 'r') as f:
+#         # with open(APPS_USER_FILE, 'r') as uf:
+#             apps = json.load(f)
+#             if apps is None:
+#                 apps = []
+#             # userApps = json.load(uf)
+#             # for userApp in userApps:
+#             #     apps.append(userApp)
+#             tokenised_apps = []
+#             tokenised_query = tokenize(query)
+#             for app in apps:
+#                 tokenised_apps.append(tokenize(app))
+#             filtered_word = wordsFilter(tokenised_apps, tokenised_query)
+#             percentile = wordPercentageCalculator(tokenised_query, filtered_word)
+#             if len(percentile) == 1 and percentile[0] == -1:
+#                 return False
+#             else:
+#                 maxIndex = percentile.index(max(percentile))
+#                 return apps[maxIndex]

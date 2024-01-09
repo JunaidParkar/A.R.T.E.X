@@ -1,3 +1,2 @@
-Driver.exe
-chromeDriver.exe
-ARTEX
+artex/*
+__pycache__/*
