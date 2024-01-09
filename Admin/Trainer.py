@@ -30,7 +30,6 @@ def bag_of_words(tokenized_sentence: list,words: list):
     return bag
 
 def TrainAI():
-    print("hy" if torch.cuda.is_available() else "")
     print("Let me have some seconds to get trained\n")
 
     class NeuralNet(nn.Module):
@@ -115,7 +114,7 @@ def TrainAI():
     model = NeuralNet(input_size,hidden_size,output_size).to(device=device)
     criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(),lr=learning_rate)
-    print(device.type)
+
     for epoch in range(num_epochs):
         for (words,labels)  in train_loader:
             words = words.to(device)
@@ -140,8 +139,6 @@ def TrainAI():
     "tags":tags
     }
 
-    # if not os.path.isdir(savepath):
-    #     os.mkdir(savepath)
     torch.save(data,"set.pth")
 
     print("Training completed succesfully")
