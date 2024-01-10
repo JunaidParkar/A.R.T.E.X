@@ -3,31 +3,12 @@ import sys
 sys.path.append(os.environ.get('ARTEX'))
 from torch.utils.data import Dataset,DataLoader
 import torch.nn as nn
-import json
 import torch
 import numpy as np
-import nltk
 import os
-from nltk.stem.porter import PorterStemmer
+from Trainer.Base import tokenize, stem, bag_of_words, read_binary_file
+from Variables.Envirenments import DATASET_FILE, TRAINED_DATASET_FILE
 
-Stemmer = PorterStemmer()
-
-savepath = os.path.join(os.getcwd(), "set1.pth")
-inpath = os.path.join(os.getcwd(), "intents.json")
-
-def tokenize(sentence: str):
-    return nltk.word_tokenize(sentence)
-
-def stem(word: str):
-    return Stemmer.stem(word.lower())
-
-def bag_of_words(tokenized_sentence: list,words: list):
-    sentence_word = [stem(word) for word in tokenized_sentence]
-    bag = np.zeros(len(words),dtype=np.float32)
-    for idx , w in enumerate(words):
-        if w in sentence_word:
-            bag[idx] = 1
-    return bag
 
 def TrainAI():
     print("Let me have some seconds to get trained\n")
@@ -49,8 +30,7 @@ def TrainAI():
             out = self.l3(out)
             return out
 
-    with open("Admin/intents.json",'r') as f:
-        intents = json.load(f)
+    intents = read_binary_file(DATASET_FILE)
 
     all_words = []
     tags = []
@@ -139,6 +119,6 @@ def TrainAI():
     "tags":tags
     }
 
-    torch.save(data,"set.pth")
+    torch.save(data, TRAINED_DATASET_FILE)
 
-    print("Training completed succesfully")
+    print("Training completed successfully")

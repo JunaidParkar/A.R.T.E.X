@@ -1,6 +1,7 @@
 import numpy as np
 import nltk
 from nltk.stem.porter import PorterStemmer
+import pickle
 
 Stemmer = PorterStemmer()
 
@@ -38,3 +39,9 @@ def wordPercentageCalculator(tokenised_query: list, filtered_query: list):
     if all(num == 0 for num in percentile_list):
         return [-1]
     return percentile_list
+
+def read_binary_file(filename):
+    with open(filename, 'rb') as file:
+        serialized_data = file.read()
+    data = pickle.loads(serialized_data)
+    return data

@@ -7,9 +7,8 @@ import torch
 import random
 # from Management.Paths.DataPath import LOCALDATA_INTENTS_FILE, TRAINED_DATA_FILE, APPS_FILE, APPS_USER_FILE
 # from Base import bag_of_words, tokenize, wordsFilter, wordPercentageCalculator
-from NeuralNetwork.Base import bag_of_words, tokenize
-
-LOCALDATA_INTENTS_FILE = "NeuralNetwork/intents.json"
+from NeuralNetwork.Base import bag_of_words, tokenize, read_binary_file
+from Variables.Envirenments import DATASET_FILE, TRAINED_DATASET_FILE
 
 def TasksExecutor(query):
 
@@ -32,12 +31,10 @@ def TasksExecutor(query):
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-    with open("NeuralNetwork/intents.json",'r') as json_data:
-        intents = json.load(json_data)
+    intents = read_binary_file(DATASET_FILE)
 
     # FILE = TRAINED_DATA_FILE
-    FILE = "set.pth"
-    data = torch.load(FILE)
+    data = torch.load(TRAINED_DATASET_FILE)
 
     input_size = data["input_size"]
     hidden_size = data["hidden_size"]
