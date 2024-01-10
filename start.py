@@ -37,7 +37,7 @@ from Functions.Base import speak
 
 import shutil
 from Variables.Envirenments import DATASET_FILE, TRAINED_DATASET_FILE
-from Google.Palm import chatBot
+from NeuralNetwork.Palm import chatBot
 import re
 
 def move_specific_file(destination_folder, file_name):
