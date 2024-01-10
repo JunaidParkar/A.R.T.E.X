@@ -1,3 +1,6 @@
 torch
 numpy
 nltk
+pyttsx3
+google.generativeai
+markdown

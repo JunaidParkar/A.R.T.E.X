@@ -1,3 +1,8 @@
-from Trainer.Train import TrainAI
+# from Trainer.Train import TrainAI
 
-TrainAI()
+# TrainAI()
+
+import markdown
+
+html = markdown.markdown("hello world")
+print(html)

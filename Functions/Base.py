@@ -1,0 +1,14 @@
+import pyttsx3
+import json
+from Variables.Envirenments import SETTING_CONFIGURATIONS
+
+def speak(text):
+    with open(SETTING_CONFIGURATIONS, 'r') as setting:
+        voice_conf = json.load(setting)['text-to-speech']
+    engine = pyttsx3.init()
+    engine.setProperty("voices", engine.getProperty('voices')[voice_conf['voice']])
+    engine.setProperty('rate', voice_conf['rate'])  # Adjust speaking rate for clarity
+    engine.setProperty('volume', 1.0)  # Ensure full volume for better understanding
+    engine.setProperty('voice', voice_conf['language'])
+    engine.say(text=text)
+    engine.runAndWait()

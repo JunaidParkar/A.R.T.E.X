@@ -63,7 +63,7 @@ def TasksExecutor(query):
     probs = torch.softmax(output,dim=1)
     prob = probs[0][predicted.item()]
     
-    if prob.item() > 0.75:
+    if prob.item() > 0.90:
 
         for intent in intents['intents']:
             
