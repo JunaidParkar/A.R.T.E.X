@@ -39,6 +39,8 @@ import shutil
 from Variables.Envirenments import DATASET_FILE, TRAINED_DATASET_FILE
 from NeuralNetwork.Palm import chatBot
 import re
+import markdown
+from markdown.extensions.fenced_code import FencedCodeExtension
 
 def move_specific_file(destination_folder, file_name):
     try:
@@ -49,15 +51,15 @@ def move_specific_file(destination_folder, file_name):
         print(f"Error: {e}")
 
 
-# destination_directory = "Systems/Datasets"
-# specific_file_name = "Intents.bin"
-# specific_file_name1 = "Trained_intents.pth"
+destination_directory = "Systems/Datasets"
+specific_file_name = "Intents.bin"
+specific_file_name1 = "Trained_intents.pth"
 
-# move_specific_file(destination_directory, specific_file_name)
+move_specific_file(destination_directory, specific_file_name)
 
-# TrainAI()
+TrainAI()
 
-# move_specific_file(destination_directory, specific_file_name)
+move_specific_file(destination_directory, specific_file_name1)
         
 def remove_markdown(text):
     text = re.sub(r'\*\*(.*?)\*\*', r'\1', text)
@@ -73,6 +75,10 @@ while True:
         ans = TasksExecutor(inp)
         if not ans:
             ans = chatBot(inp)
-            print(ans)
+            try:
+                answ = markdown.markdown(ans, extensions=[FencedCodeExtension()])
+            except:
+                answ = "I am sorry, I am unable to answer your query as i am still learning stuffs."
+            print(answ)
         ans = remove_markdown(ans)
         speak(ans)

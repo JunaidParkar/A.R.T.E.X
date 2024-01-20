@@ -1,34 +1,35 @@
 import os
 import sys
 sys.path.append(os.environ.get('ARTEX'))
-import torch.nn as nn
 import json
-import torch
 import random
 # from Management.Paths.DataPath import LOCALDATA_INTENTS_FILE, TRAINED_DATA_FILE, APPS_FILE, APPS_USER_FILE
 # from Base import bag_of_words, tokenize, wordsFilter, wordPercentageCalculator
 from NeuralNetwork.Base import bag_of_words, tokenize, read_binary_file
 from Variables.Envirenments import DATASET_FILE, TRAINED_DATASET_FILE
+import torch
+import torch.nn as nn
+import torch.optim as optim
+from torch.utils.data import Dataset, DataLoader
+import numpy as np
+
+class NeuralNet(nn.Module):
+    def __init__(self, input_size, hidden_size, num_classes):
+        super(NeuralNet, self).__init__()
+        self.l1 = nn.Linear(input_size, hidden_size)
+        self.l2 = nn.Linear(hidden_size, hidden_size)
+        self.l3 = nn.Linear(hidden_size, num_classes)
+        self.relu = nn.ReLU()
+
+    def forward(self, x):
+        out = self.l1(x)
+        out = self.relu(out)
+        out = self.l2(out)
+        out = self.relu(out)
+        out = self.l3(out)
+        return out
 
 def TasksExecutor(query):
-
-    class NeuralNet(nn.Module):
-
-        def __init__(self,input_size,hidden_size,num_classes):
-            super(NeuralNet,self).__init__()
-            self.l1 = nn.Linear(input_size,hidden_size)
-            self.l2 = nn.Linear(hidden_size,hidden_size)
-            self.l3 = nn.Linear(hidden_size,num_classes)
-            self.relu = nn.ReLU()
-
-        def forward(self,x):
-            out = self.l1(x)
-            out = self.relu(out)
-            out = self.l2(out)
-            out = self.relu(out)
-            out = self.l3(out)
-            return out
-
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
     intents = read_binary_file(DATASET_FILE)
@@ -43,35 +44,97 @@ def TasksExecutor(query):
     tags = data["tags"]
     model_state = data["model_state"]
 
-    model = NeuralNet(input_size,hidden_size,output_size).to(device)
+    model = NeuralNet(input_size, hidden_size, output_size).to(device)
     model.load_state_dict(model_state)
     model.eval()
 
     sentence = str(query)
 
     sentence = tokenize(sentence)
-    X = bag_of_words(sentence,all_words)
-    X = X.reshape(1,X.shape[0])
+    X = bag_of_words(sentence, all_words)
+    X = X.reshape(1, X.shape[0])
     X = torch.from_numpy(X).to(device)
 
     output = model(X)
-
-    _ , predicted = torch.max(output,dim=1)
+    _, predicted = torch.max(output / 0.01, dim=1)
 
     tag = tags[predicted.item()]
-
-    probs = torch.softmax(output,dim=1)
+    print(f"predicted {predicted.item()}")
+    probs = torch.softmax(output / 0.8, dim=1)
     prob = probs[0][predicted.item()]
-    
-    if prob.item() > 0.90:
 
+    print(prob.item())
+
+    if prob.item() > 0.95:
         for intent in intents['intents']:
-            
             if tag == intent["tag"]:
-
                 reply = random.choice(intent["responses"])
-                
                 return reply
+    return "Unable to determine intent"
+
+# def TasksExecutor(query):
+
+#     class NeuralNet(nn.Module):
+
+#         def __init__(self,input_size,hidden_size,num_classes):
+#             super(NeuralNet,self).__init__()
+#             self.l1 = nn.Linear(input_size,hidden_size)
+#             self.l2 = nn.Linear(hidden_size,hidden_size)
+#             self.l3 = nn.Linear(hidden_size,num_classes)
+#             self.relu = nn.ReLU()
+
+#         def forward(self,x):
+#             out = self.l1(x)
+#             out = self.relu(out)
+#             out = self.l2(out)
+#             out = self.relu(out)
+#             out = self.l3(out)
+#             return out
+
+#     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+
+#     intents = read_binary_file(DATASET_FILE)
+
+#     # FILE = TRAINED_DATA_FILE
+#     data = torch.load(TRAINED_DATASET_FILE)
+
+#     input_size = data["input_size"]
+#     hidden_size = data["hidden_size"]
+#     output_size = data["output_size"]
+#     all_words = data["all_words"]
+#     tags = data["tags"]
+#     model_state = data["model_state"]
+
+#     model = NeuralNet(input_size,hidden_size,output_size).to(device)
+#     model.load_state_dict(model_state)
+#     model.eval()
+
+#     sentence = str(query)
+
+#     sentence = tokenize(sentence)
+#     X = bag_of_words(sentence,all_words)
+#     X = X.reshape(1,X.shape[0])
+#     X = torch.from_numpy(X).to(device)
+
+#     output = model(X)
+#     _ , predicted = torch.max(output/0.01,dim=1)
+
+#     tag = tags[predicted.item()]
+#     print(f"predicted {predicted.item()}")
+#     probs = torch.softmax(output/0.8,dim=1)
+#     prob = probs[0][predicted.item()]
+
+#     print(prob.item())
+    
+#     if prob.item() > 0.95:
+
+#         for intent in intents['intents']:
+            
+#             if tag == intent["tag"]:
+
+#                 reply = random.choice(intent["responses"])
+                
+#                 return reply
             
 
 # def appFinder(query: str):
