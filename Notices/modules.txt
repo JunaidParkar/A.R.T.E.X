@@ -4,3 +4,4 @@ nltk
 pyttsx3
 google.generativeai
 markdown
+beautifulsoup4

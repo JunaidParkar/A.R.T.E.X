@@ -70,7 +70,7 @@ def TasksExecutor(query):
             if tag == intent["tag"]:
                 reply = random.choice(intent["responses"])
                 return reply
-    return "Unable to determine intent"
+    return None
 
 # def TasksExecutor(query):
 

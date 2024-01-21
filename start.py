@@ -41,6 +41,7 @@ from NeuralNetwork.Palm import chatBot
 import re
 import markdown
 from markdown.extensions.fenced_code import FencedCodeExtension
+from bs4 import BeautifulSoup
 
 def move_specific_file(destination_folder, file_name):
     try:
@@ -76,9 +77,9 @@ while True:
         if not ans:
             ans = chatBot(inp)
             try:
-                answ = markdown.markdown(ans, extensions=[FencedCodeExtension()])
+                ans = markdown.markdown(ans, extensions=[FencedCodeExtension()])
             except:
-                answ = "I am sorry, I am unable to answer your query as i am still learning stuffs."
-            print(answ)
-        ans = remove_markdown(ans)
-        speak(ans)
+                ans = "I am sorry, I am unable to answer your query as i am still learning stuffs."
+        html = markdown.markdown(ans)
+        soup = BeautifulSoup(html, features='html.parser')
+        speak(soup.get_text().replace("|", "").replace("-", "").replace("#", "").replace("*", ""))

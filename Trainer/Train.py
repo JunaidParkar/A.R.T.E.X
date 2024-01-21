@@ -209,8 +209,8 @@ def TrainAI():
     x_train = np.array(x_train)
     y_train = np.array(y_train)
 
-    num_epochs = 350
-    batch_size = 5
+    num_epochs = 900
+    batch_size = 2
     learning_rate = 0.001
     input_size = len(x_train[0])
     hidden_size = 5

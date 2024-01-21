@@ -3,12 +3,11 @@ import json
 from Variables.Envirenments import SETTING_CONFIGURATIONS
 # import Management.Paths.DataPath as Filepaths
 
-# with open(SETTING_CONFIGURATIONS, "r") as fpp:
-#   api = json.load(fpp)["google-ai"]
-#   fpp.close()
+with open(SETTING_CONFIGURATIONS, "r") as fpp:
+  api = json.load(fpp)["google-ai"]
+  fpp.close()
 
-# palm.configure(api_key=api)
-palm.configure(api_key="AIzaSyDn4rF3xtlyKhicnZlsCx4KMWtzat6Neww")
+palm.configure(api_key=api)
 
 # def saveChats(conv):
 #   with open(Filepaths.CHAT_DATA_FILE, 'w') as f:
