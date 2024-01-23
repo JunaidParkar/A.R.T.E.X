@@ -20,7 +20,8 @@
                 "Artex, it's bedtime",
                 "Sleep now, Artex",
                 "Rest mode on",
-                "Let's take a break"
+                "Let's take a break",
+                "its sleeping time"
             ],
             "responses": [
                 "Switching to sleep mode, Call me whenever needed.",
@@ -46,7 +47,8 @@
                 "Artex, it's time to rest",
                 "Switch off, buddy",
                 "Take a break, Artex",
-                "Time to power down"
+                "Time to power down",
+                "its off time"
             ],
             "responses": [
                 "Turn me back on whenever you want",

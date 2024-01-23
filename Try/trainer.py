@@ -27,6 +27,6 @@ def train():
         dataset2[intents['tag']] = responses
     write_binary_file(dataset1, "db1.bin")
     write_binary_file(dataset2, "db2.bin")
-    print(dataset2)
+    print("Completed successfully")
 
 train()
