@@ -47,8 +47,7 @@
                 "Artex, it's time to rest",
                 "Switch off, buddy",
                 "Take a break, Artex",
-                "Time to power down",
-                "its off time"
+                "Time to power down"
             ],
             "responses": [
                 "Turn me back on whenever you want",
@@ -89,6 +88,15 @@
                 "Training in progress, I'll be smarter in a moment",
                 "Updating my knowledge base, be right back",
                 "Learning new things to better assist you"
+            ]
+        },
+        {
+            "tag": "creator",
+            "patterns": [
+                "who created you?",
+                "You were created by whom?",
+                "Who is your developer?",
+                "Who is your programmer?"
             ]
         }
     ]
