@@ -1,5 +1,16 @@
 import pickle
 import nltk
+import random
+from nltk.stem.porter import PorterStemmer
+
+stem = PorterStemmer()
+
+Stemmer = PorterStemmer()
+
+def stem(word: str):
+    return Stemmer.stem(word.lower())
+
+accuracy = 75
 
 def tokenise(sentence: str):
     return nltk.word_tokenize(sentence)
@@ -42,7 +53,6 @@ def artex(query: str):
                 filtered_responses_1.append([index, dataset[1]])
                 found_response.append(dataset[1])
 
-    #  Writing to text file
     with open("text.txt", 'w+') as file:
         for item in filtered_responses_1:
             file.write(f"{item}\n")
@@ -50,23 +60,35 @@ def artex(query: str):
 
     percentages = wordPercentageCalculator(query, filtered_responses_1)
     if percentages[0] == -1:
-        print("Invalid query")
         return -1
     max_index, max_percentage = max(enumerate(percentages), key=lambda x: x[1])
-    print(percentages)
     max_percentage = max(percentages)
-    
-    # Find all indices with the maximum percentage
-    indices_with_max_percentage = [index for index, percentage in enumerate(percentages) if percentage == max_percentage]
-    # print(percentages)
-    print(f"\n {indices_with_max_percentage}")
-    # print(indices_with_max_percentage)
-    # Print the results
-    # for index in indices_with_max_percentage:
-    #     print(f"Highest Similarity: Index {index}, Percentage {max_percentage}%")
 
-    # print(filtered_responses_1)
-    tags = [filtered_responses_1[ind] for ind in indices_with_max_percentage]
-    # print(tags)
+    if max_percentage >= accuracy:
+        indices_with_max_percentage = [index for index, percentage in enumerate(percentages) if percentage == max_percentage]
+        tags_index = [filtered_responses_1[ind] for ind in indices_with_max_percentage]
+        tag = []
+        quest = []
+        for tag_index in tags_index:
+            tag.append(datasets[tag_index[0]][0])
+            quest.append(datasets[tag_index[0]][1])
+        tag = list(set(tag))
+        if len(tag) > 1:
+            resp = [' '.join(qu) + " or" if idx < len(quest) - 1 else ' '.join(qu) for idx, qu in enumerate(quest)]
+            respond = [f"{' '.join(resp)}"]
+            return [None, f"Do you say, {respond[0]}"]
+        return [tag[0], random.choice(responses[tag[0]])]
+    else:
+        return [-1]
 
-artex("its time to")
+while False:
+    inp = input(">> ")
+    if inp == "e":
+        break
+    else:
+        respd = artex(inp)
+
+        if respd == [-1]:
+            print("Searching from google")
+        else:
+            print(respd[1])
