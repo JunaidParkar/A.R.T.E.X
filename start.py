@@ -18,7 +18,6 @@ if os.environ.get("ARTEX") is None:
 if not os.environ.get("ARTEX") == os.getcwd():
     setEnv()
 from NeuralNetwork.Model import TasksExecutor
-from Trainer.Train import TrainAI
 
 folders = ["Systems", "Systems/Datasets"]
 
@@ -58,7 +57,6 @@ specific_file_name1 = "Trained_intents.pth"
 
 move_specific_file(destination_directory, specific_file_name)
 
-TrainAI()
 
 move_specific_file(destination_directory, specific_file_name1)
         

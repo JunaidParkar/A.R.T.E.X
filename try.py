@@ -1,27 +1,35 @@
-# from Trainer.Train import TrainAI
-
-# TrainAI()
-
-# import markdown
-
-# html = markdown.markdown("hello world")
-# print(html)
-
-# from torch import cuda
-
-# print(cuda.is_available())
-
-# from NeuralNetwork.Palm import chatBot
 # import markdown
 # from markdown.extensions.fenced_code import FencedCodeExtension
 
-# while True:
-#     inp = input(">> ")
-#     if inp == "exit()":
-#         break
-#     else:
-#         print(markdown.markdown(chatBot(inp), extensions=[FencedCodeExtension()]))
 
-from Trainer.Train import TrainAI
+data = """```python
+# This code prints any data.
 
-TrainAI()
+# Define a function to print data
+def print_data(data):
+
+  # Print the data
+  print(data)
+
+# Driver code
+data = "Hello World!"
+print_data(data)
+```
+
+This code will print the following output:
+
+```
+Hello World!
+```"""
+
+# html = markdown.markdown("hello world", extensions=[FencedCodeExtension()])
+# print(html)
+
+import markdown
+from markdown.extensions.fenced_code import FencedCodeExtension
+text = """
+```python
+print('Hello, world')
+```
+"""
+print(markdown.markdown(data, extensions=[FencedCodeExtension()]))

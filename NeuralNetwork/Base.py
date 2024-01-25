@@ -11,37 +11,21 @@ def tokenize(sentence: str):
 def stem(word: str):
     return Stemmer.stem(word.lower())
 
-def bag_of_words(tokenized_sentence: list,words: list):
-    sentence_word = [stem(word) for word in tokenized_sentence]
-    bag = np.zeros(len(words),dtype=np.float32)
-    for idx , w in enumerate(words):
-        if w in sentence_word:
-            bag[idx] = 1
-    return bag
-
-def wordsFilter(apps_list: list, query_app: list):
-    comm = []
-    for index, each_app in enumerate(apps_list):
-        wrd = []
-        for word in query_app:
-            if word.lower() in each_app:
-                wrd.append(word)
-        comm.append(wrd)
-    return comm
-
-def wordPercentageCalculator(tokenised_query: list, filtered_query: list):
-    query_length = len(tokenised_query)
-    percentile_list = []
-    for list in filtered_query:
-        list_length = len(list)
-        percentage = (list_length / query_length) * 100
-        percentile_list.append(percentage)
-    if all(num == 0 for num in percentile_list):
-        return [-1]
-    return percentile_list
-
 def read_binary_file(filename):
     with open(filename, 'rb') as file:
         serialized_data = file.read()
     data = pickle.loads(serialized_data)
     return data
+
+def wordPercentageCalculator(query_tokenised: str, responses_filtered: str):
+    set1 = set(query_tokenised)
+    percentile_list = []
+    for response in responses_filtered:
+        set2 = set(response[1])
+        intersection = len(set2.intersection(set1))
+        union = len(set2.union(set1))
+        similarity_percentage = (intersection / union) * 100
+        percentile_list.append(similarity_percentage)
+    if all(num == 0 for num in percentile_list):
+        return [-1]
+    return percentile_list
