@@ -1,0 +1,658 @@
+body,
+#root {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#root {
+    background-image: url("../assets/system/bg/bg4.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+}
+
+ul li {
+    cursor: pointer;
+}
+
+
+/* context menu starts */
+
+.context-menu {
+    position: fixed;
+    text-align: center;
+    background: rgba(56, 56, 56, 0.167);
+    -webkit-backdrop-filter: blur(25px);
+    backdrop-filter: blur(6px);
+    border-radius: 5px;
+    z-index: 501;
+    width: -moz-max-content;
+    width: max-content;
+    border: 1px solid rgba(128, 128, 128, 0.241);
+}
+
+.context-menu ul {
+    padding: 5px 5px;
+    margin: 0px;
+    list-style: none;
+}
+
+.context-menu ul li {
+    padding-bottom: 7px;
+    padding-top: 7px;
+    border-radius: 5px;
+}
+
+.context-menu ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 200;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 12px;
+    padding: 0 5px;
+    padding-right: 20px;
+    gap: 10px;
+}
+
+.context-menu ul li a img {
+    width: 20px;
+}
+
+.context-menu ul li:hover {
+    background: rgba(169, 169, 169, 0.301);
+}
+
+
+/* context menu ends */
+
+
+/* notification starts */
+
+.notification {
+    min-width: 200px;
+    max-width: 400px;
+    min-height: auto;
+    max-height: 80px;
+    background: rgba(0, 0, 0, 0.682);
+    backdrop-filter: blur(6px);
+    backdrop-filter: blur(20px);
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translate(-50%, -0%);
+    z-index: 600;
+    color: white;
+    font-size: 13px;
+    border: 1px solid rgba(128, 128, 128, 0.449);
+    padding: 10px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    border-radius: 50px;
+    transition: 0.2s all ease-in;
+    box-shadow: 0px -10px 100px rgb(0, 0, 0);
+}
+
+.notification .icon {
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.614);
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    aspect-ratio: 1/1;
+}
+
+.notification .icon img {
+    width: 100%;
+    height: 100%;
+}
+
+.notification p {
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight: 200;
+}
+
+
+/* notification ends */
+
+
+/* confirm box starts */
+
+.mainAlert {
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.599);
+    backdrop-filter: blur(20px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mainAlert .alert {
+    min-width: 250px;
+    max-width: 300px;
+    background: rgba(0, 0, 0, 0.637);
+    border-radius: 5px;
+    padding: 10px;
+    border: 1px solid rgba(128, 128, 128, 0.24);
+}
+
+.mainAlert .alert .heading {
+    font-size: 13px;
+    margin-bottom: 5px;
+    color: white;
+    width: 100%;
+}
+
+.mainAlert .alert .heading p {
+    color: white;
+}
+
+.mainAlert .alert .message {
+    width: 100%;
+}
+
+.mainAlert .alert .buttons {
+    display: flex;
+    gap: 7px;
+    margin-top: 15px;
+}
+
+.mainAlert .alert .heading p,
+.mainAlert .alert .message p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: 200;
+    font-size: 16px;
+}
+
+.mainAlert .alert .message p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.325);
+    border: 0;
+    font-weight: 400;
+}
+
+.mainAlert .alert .buttons button {
+    width: 50%;
+    padding: 7px;
+    border-radius: 3px;
+    border: 1px solid rgba(128, 128, 128, 0.375);
+    color: rgba(255, 255, 255, 0.407);
+    text-transform: capitalize;
+    margin-bottom: 3px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.mainAlert .alert .buttons button:first-child {
+    background: transparent;
+}
+
+.mainAlert .alert .buttons button:last-child {
+    color: black;
+}
+
+
+/* confirm box ends */
+
+
+/* sidebar starts */
+
+#sidebar {
+    width: 60px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.534);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+#sidebar #actions,
+#sidebar #search {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+}
+
+#sidebar #actions img,
+#sidebar #search img {
+    width: 30px;
+}
+
+#sidebar #actions ul,
+#sidebar #search ul {
+    width: 50px;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    padding: 10px;
+    margin: 5px;
+    background: rgba(0, 0, 0, 0.182);
+    backdrop-filter: blur(6px);
+    border-radius: 5px;
+}
+
+#sidebar #actions ul li,
+#sidebar #search ul li {
+    width: 30px;
+    height: 30px;
+    position: relative;
+}
+
+#sidebar #actions ul li.select {
+    overflow: visible;
+    transition: 0.1s all ease-in-out;
+}
+
+#sidebar #actions ul li.select::before {
+    content: "";
+    width: 2px;
+    height: 100%;
+    background: rgba(72, 255, 179, 0.503);
+    position: absolute;
+    margin-left: -10px;
+    margin-top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#sidebar #actions ul.overlap li {
+    margin-top: -20px;
+}
+
+#sidebar #actions ul.overlap li img {
+    filter: drop-shadow(0 -3px 15px black);
+}
+
+#sidebar #actions ul.overlap li:hover {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+#sidebar #actions ul.overlap li:last-child:hover {
+    margin-bottom: 0;
+}
+
+#sidebar #actions ul.overlap li:first-child {
+    margin-top: 0;
+}
+
+#sidebar #search-menu {
+    width: calc(100% - 85px);
+    height: calc(100% - 25px);
+    position: fixed;
+    top: 12.5px;
+    right: 12.5px;
+    z-index: 99;
+    background: transparent;
+    backdrop-filter: blur(15px);
+    display: none;
+}
+
+#sidebar #search-menu #menus {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: calc(100% - 60px);
+}
+
+#sidebar #search-menu #menus>div,
+#sidebar #search-menu #menus>ul {
+    background: rgba(4, 4, 4, 0.8);
+    width: calc(40% - 10px);
+    height: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.156);
+    backdrop-filter: blur(10000px);
+    padding: 7px 10px;
+}
+
+#sidebar #search-menu #menus #app-list,
+#sidebar #search-menu #menus #out-of-box {
+    width: calc(30% - 10px);
+    padding-inline: 0;
+}
+
+#sidebar #search-menu #search-inp {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: end;
+}
+
+#sidebar #search-menu #search-inp input {
+    height: 50px;
+    width: 100%;
+    padding: 13px;
+    background: rgba(0, 0, 0, 0.534);
+    border-radius: 5px;
+    color: white;
+}
+
+#sidebar #search-menu #search-inp input::placeholder {
+    color: rgba(255, 255, 255, 0.637);
+}
+
+#sidebar #search-menu #menus #app-list h3,
+#sidebar #search-menu #menus #out-of-box h3 {
+    font-size: 20px;
+    line-height: 20px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#sidebar #search-menu #menus #app-list ul#appMatched {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.528);
+    color: red;
+    margin-bottom: 10px;
+}
+
+#sidebar #search-menu #menus #app-list ul#appMatched li.error img {
+    filter: grayscale(1) brightness(2);
+}
+
+#sidebar #search-menu #menus #app-list ul:last-child {
+    width: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#sidebar #search-menu #menus #app-list ul::-webkit-scrollbar,
+#sidebar #search-menu #news-container::-webkit-scrollbar {
+    display: none;
+}
+
+#sidebar #search-menu #menus #app-list ul li {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+}
+
+#sidebar #search-menu #menus #app-list ul li img {
+    width: 25px;
+}
+
+#sidebar #search-menu #menus #app-list ul li p {
+    font-size: 15px;
+    line-height: 25px;
+    color: rgba(255, 255, 255, 0.729);
+    width: calc(100% - 30px);
+    height: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+}
+
+#sidebar #search-menu #news-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+    gap: 15px;
+}
+
+#sidebar #search-menu #news-container .article {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+#sidebar #search-menu #news-container .article img {
+    width: 100%;
+}
+
+#sidebar #search-menu #news-container .article h2 {
+    font-size: 1.5em;
+    color: rgba(211, 211, 211, 1);
+    font-weight: 900;
+}
+
+#sidebar #search-menu #news-container .article p {
+    font-size: 14px;
+    font-weight: 400;
+    color: rgba(211, 211, 211, 0.726);
+}
+
+#sidebar #search-menu #news-container .article p {
+    margin-bottom: 10px;
+}
+
+#sidebar #search-menu #news-container .article a {
+    display: none;
+}
+
+#sidebar #search-menu #news-container .articlePreloader {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+#sidebar #search-menu #news-container .articlePreloader .loader {
+    display: block;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 80px;
+    height: 80px;
+    margin: -40px 0 0 -40px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #9370db;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+    background: transparent;
+}
+
+#sidebar #search-menu #news-container .articlePreloader .loader:before {
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #ba55d3;
+    -webkit-animation: spin 3s linear infinite;
+    animation: spin 3s linear infinite;
+}
+
+#sidebar #search-menu #news-container .articlePreloader .loader:after {
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #ff00ff;
+    -webkit-animation: spin 1.5s linear infinite;
+    animation: spin 1.5s linear infinite;
+}
+
+#sidebar #search-menu #out-of-box .notify {
+    padding: 10px;
+}
+
+#sidebar #search-menu #out-of-box h3 button {
+    float: right;
+    background: rgba(255, 255, 255, 0.126);
+    padding: 7px;
+    font-size: 11px;
+    border-radius: 5px;
+    color: rgba(255, 255, 255, 0.541);
+    cursor: pointer;
+}
+
+#sidebar #search-menu #out-of-box .notify li {
+    background: rgba(255, 255, 255, 0.126);
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-weight: 100;
+    font-size: 13px;
+}
+
+@media (width < 700px) {
+    #sidebar #search-menu #menus {
+        display: block;
+        overflow: scroll;
+    }
+    #sidebar #search-menu #menus>#app-list,
+    #sidebar #search-menu #menus #news-container,
+    #sidebar #search-menu #menus #out-of-box {
+        width: 100%;
+        max-width: 100%;
+        height: 33.33%;
+        margin-bottom: 10px;
+        overflow: scroll;
+    }
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+
+/* sidebar ends */
+
+
+/* main apps starts */
+
+#apps {
+    width: calc(100% - 60px);
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+}
+
+#apps .app {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#apps .app iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    padding: 0;
+}
+
+#apps .app.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#apps .app.main .desktop-date {
+    scale: 1.1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    flex-direction: column;
+}
+
+#apps .app.main .desktop-date h1 {
+    font-size: 85px;
+}
+
+#apps .app.main .desktop-date span {
+    position: relative;
+    margin-top: -40px;
+}
+
+#apps .app.main .desktop-date span p {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(0%, -50%);
+    text-transform: uppercase;
+    font-weight: var(--title);
+}
+
+#apps .app.main .desktop-date span h1 {
+    opacity: 20%;
+    font-size: 85px;
+}
+
+.app button {
+    background: rgba(255, 0, 0, 0.799);
+    /* position: fixed;
+  right: 5px;
+  top: 5px; */
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    font-size: 8px;
+    margin-top: 9.5px;
+    float: left;
+    margin-left: 15px;
+    transition: 0.2s;
+    display: grid;
+    place-items: center;
+}
+
+.app button:hover {
+    scale: 1.2;
+}
+
+.app>p {
+    float: left;
+    font-size: 11px;
+    background: rgba(128, 128, 128, 0.344);
+    padding: 2px 7px;
+    border-radius: 10px;
+    margin-top: 7px;
+    margin-left: 5px;
+    text-transform: capitalize;
+    letter-spacing: 0.8px;
+}
+
+
+/* main apps ends */

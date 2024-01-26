@@ -1,7 +1,7 @@
-torch
 numpy
 nltk
 pyttsx3
 google.generativeai
 markdown
 beautifulsoup4
+eel

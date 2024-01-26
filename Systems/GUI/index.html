@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/common.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+  <div id="root">
+    <!-- context menu starts -->
+
+    <div id="contextMenu" class="context-menu" style="display: none">
+      <ul>
+        <li>
+          <a onclick="document.querySelector('#app-list-terminal').click()"><img
+              src="./assets/apps/default/terminal/icon/logo.png" alt="" />Terminal</a>
+        </li>
+        <li>
+          <a target="_blank" href=""><img src="https://img.icons8.com/?size=48&id=UiBLNa8BF2DH&format=png"
+              alt="" />Duplicate</a>
+        </li>
+        <li>
+          <a onclick="window.location.reload()"><img src="https://img.icons8.com/?size=48&id=l9jAYs17iNqZ&format=png"
+              alt="" />Refresh</a>
+        </li>
+        <li>
+          <a href="#"><img src="https://img.icons8.com/?size=48&id=A0GP25NseAaQ&format=png" alt="" />Signout</a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- context menu ends -->
+    <!-- sidebar starts -->
+
+    <div id="sidebar">
+      <div id="actions">
+        <ul id="speaker">
+          <li><img src="./assets/system/icons/mute.png" alt="" /></li>
+        </ul>
+        <ul id="default-apps" data-applist></ul>
+        <ul id="other-apps" data-applist></ul>
+      </div>
+      <div id="search">
+        <ul id="searchBtn">
+          <li>
+            <img src="./assets/system/icons/search.png" alt="" srcset="" />
+          </li>
+        </ul>
+      </div>
+      <div id="search-menu">
+        <div id="menus">
+          <div id="app-list">
+            <h3>Apps</h3>
+            <ul id="appMatched"></ul>
+            <ul id="appList" data-applist></ul>
+          </div>
+          <ul id="news-container">
+            <div class="articlePreloader">
+              <div class="loader"></div>
+            </div>
+          </ul>
+          <div id="out-of-box">
+            <h3>Notification <button>Clear all</button></h3>
+            <div class="notify">
+              <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, ipsum!</li>
+              <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, ipsum!</li>
+              <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, ipsum!</li>
+              <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, ipsum!</li>
+              <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam, ipsum!</li>
+            </div>
+          </div>
+        </div>
+        <div id="search-inp">
+          <input id="searchAppInput" type="text" name="" id="" placeholder="Search your app here..." />
+        </div>
+      </div>
+    </div>
+
+    <!-- sidebar starts -->
+
+    <!-- app starts -->
+
+    <div id="apps">
+      <div class="app main">
+        <div class="desktop-date">
+          <h1><span id="date"></span>/<span id="month"></span></h1>
+          <span>
+            <p id="day"></p>
+            <h1 id="year"></h1>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- app starts -->
+  </div>
+
+  <script src="./js/popUps.js"></script>
+  <script src="./js/basics.js"></script>
+  <script src="./js/appManagement.js"></script>
+  <script src="./js/script.js"></script>
+</body>
+
+</html>
