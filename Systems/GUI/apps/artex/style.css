@@ -261,9 +261,11 @@ body {
   width: 16px;
   height: 16px;
   margin-right: 5px;
+  pointer-events: none;
 }
 
 #copy p {
+  pointer-events: none;
   margin: 0;
 }
 
