@@ -18,7 +18,7 @@ const copyCode = async (event) => {
   }
 }
 
-const add_message = (msg) => {
+const add_message = (msg, user = false) => {
   const parser = new DOMParser();
 
   const doc = parser.parseFromString(msg, 'text/html');
@@ -66,17 +66,23 @@ const add_message = (msg) => {
   
   let md = document.createElement("div")
   md.classList.add("ai")
+  user? md.classList.add("user") : ""
   let imgm = document.createElement("img")
-  imgm.src = "../../assets/apps/default/artex/assets/bot.png"
+  imgm.src = user ? "../../assets/apps/default/artex/assets/user.png" : "../../assets/apps/default/artex/assets/bot.png"
   md.appendChild(imgm)
   md.appendChild(p)
   messages_box.appendChild(md)
+  return md;
 }
 
 const takeInput = async () => {
   let query = chat_input.value
+  chat_input.value = ""
+  add_message(query, true)
   let response = await eel.getResponse(query)()
-  add_message(response)
+  const newMessage = add_message(response)
+  messages_box.scrollTop = messages_box.scrollHeight;
+  newMessage.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 // eel.expose(add_message)
@@ -86,3 +92,11 @@ submit_query.onclick = async () => {
     await takeInput()
   }
 }
+
+chat_input.addEventListener('keydown', async (event) => {
+  if (event.keyCode === 13) {
+    if (chat_input.value != "") {
+      await takeInput()
+    }
+  }
+});
