@@ -97,6 +97,11 @@ body {
 .app .chat .messages .ai>div {
   display: flex;
   flex-direction: column;
+}
+
+.app .chat .messages .ai div,
+.app .chat .messages .ai div ul,
+.app .chat .messages .ai div ol {
   gap: 15px;
 }
 

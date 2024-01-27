@@ -19,63 +19,75 @@ const copyCode = async (event) => {
 }
 
 const add_message = (msg, user = false) => {
-  const parser = new DOMParser();
-
-  const doc = parser.parseFromString(msg, 'text/html');
+  // console.log(msg);
 
   let p = document.createElement("div");
-  p.innerHTML = doc.body.innerHTML;
+  p.innerHTML = msg;
+
+  // console.log(p);
 
   let code = p.querySelectorAll("code");
 
   if (code.length >= 1) {
-      code.forEach(cd => {
-          let tg = cd.parentElement;
-          let div = document.createElement("div");
-          div.classList.add("code-block");
-          let header = document.createElement("div");
-          header.classList.add("header");
-          let header_p1 = document.createElement("p");
-          console.log(cd.classList[0])
+    code.forEach(cd => {
+      let tg = cd.parentNode && cd.parentNode.tagName === 'PRE' ? cd.parentElement.parentElement : cd.parentElement;
+      console.log(cd.parentNode)
 
-          try {header_p1.textContent = cd.classList[0].split("-")[1];} catch {header_p1.textContent = "None"}
-          let copy = document.createElement("div");
-          copy.id = "copy";
-          copy.addEventListener("click", async (e) => await copyCode(e))
-          let img = document.createElement("img");
-          img.src = "../../assets/apps/default/artex/assets/copy.png";
-          let copy_text = document.createElement("p");
-          copy_text.textContent = "copy";
-          copy.appendChild(img);
-          copy.appendChild(copy_text);
-          copy.addEventListener("click", copyCode);
-          header.appendChild(header_p1);
-          header.appendChild(copy);
-          let block = document.createElement("div");
-          block.classList.add("block");
-          let pre = document.createElement("pre");
-          let code_tg = document.createElement("code");
-          code_tg.innerHTML = cd.innerHTML;
-          pre.appendChild(code_tg);
-          block.appendChild(pre);
-          div.appendChild(header);
-          div.appendChild(block);
-          tg.replaceWith(div);
-      });
+      // Check if the parent and child are directly related
+      // if (tg.contains(cd)) {
+        let div = document.createElement("div");
+        div.classList.add("code-block");
+        let header = document.createElement("div");
+        header.classList.add("header");
+        let header_p1 = document.createElement("p");
+        try {
+          header_p1.textContent = cd.classList[0].split("-")[1];
+        } catch {
+          header_p1.textContent = "None";
+        }
+        let copy = document.createElement("div");
+        copy.id = "copy";
+        copy.addEventListener("click", async (e) => await copyCode(e));
+        let img = document.createElement("img");
+        img.src = "../../assets/apps/default/artex/assets/copy.png";
+        let copy_text = document.createElement("p");
+        copy_text.textContent = "copy";
+        copy.appendChild(img);
+        copy.appendChild(copy_text);
+        copy.addEventListener("click", copyCode);
+        header.appendChild(header_p1);
+        header.appendChild(copy);
+        let block = document.createElement("div");
+        block.classList.add("block");
+        let pre = document.createElement("pre");
+        let code_tg = document.createElement("code");
+        code_tg.innerHTML = cd.innerHTML;
+        pre.appendChild(code_tg);
+        block.appendChild(pre);
+        div.appendChild(header);
+        div.appendChild(block);
+        // tg.replaceChild(div, cd);
+        tg.innerHTML = ''
+        tg.innerHTML = div
+      // }
+    });
   }
-  
-  let md = document.createElement("div")
-  md.classList.add("ai")
-  user? md.classList.add("user") : ""
-  let imgm = document.createElement("img")
-  imgm.src = user ? "../../assets/apps/default/artex/assets/user.png" : "../../assets/apps/default/artex/assets/bot.png"
-  md.appendChild(imgm)
-  md.appendChild(p)
-  messages_box.appendChild(md)
+
+  let md = document.createElement("div");
+  md.classList.add("ai");
+  user ? md.classList.add("user") : "";
+  let imgm = document.createElement("img");
+  imgm.src = user ? "../../assets/apps/default/artex/assets/user.png" : "../../assets/apps/default/artex/assets/bot.png";
+  md.appendChild(imgm);
+  md.appendChild(p);
+  messages_box.appendChild(md);
+  // console.log(md);
   return md;
-}
+};
+
 
 const takeInput = async () => {
+  chat_input.disabled = true
   let query = chat_input.value
   chat_input.value = ""
   add_message(query, true)
@@ -83,6 +95,9 @@ const takeInput = async () => {
   const newMessage = add_message(response)
   messages_box.scrollTop = messages_box.scrollHeight;
   newMessage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // console.log(response)
+  await eel.say(response)()
+  chat_input.disabled = false
 }
 
 // eel.expose(add_message)
