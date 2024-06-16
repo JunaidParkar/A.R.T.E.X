@@ -1,0 +1,296 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background: #120e13;
+  color: rgb(211, 211, 211);
+  overflow: auto;
+  width: 100vw;
+  height: 100vh;
+}
+
+.app {
+  display: flex;
+  padding: 10px 0;
+  width: 100%;
+  height: 100%;
+}
+
+.app .sidebar {
+  background: #181519;
+  padding: 10px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.app .sidebar img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.app .sidebar img.avatar {
+  background: white;
+  border-radius: 50%;
+}
+
+.app .chat {
+  width: 100%;
+  height: 100%;
+}
+
+.app .chat header {
+  background: #181519;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: static;
+  top: 0;
+  height: 60px;
+  padding: 0 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.app .chat header i {
+  display: none;
+}
+
+.app .chat .messages {
+  height: calc(100% - 120px);
+  overflow: auto;
+  letter-spacing: 0.5px;
+  font-weight: 300;
+}
+
+.app .chat .messages .ai {
+  background: #181519;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  padding: 20px;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 200;
+}
+
+.app .chat .messages .ai img {
+  width: 30px;
+  background: white;
+  border-radius: 50%;
+  object-fit: contain;
+}
+
+.app .chat .messages .ai>div {
+  display: flex;
+  flex-direction: column;
+}
+
+.app .chat .messages .ai div,
+.app .chat .messages .ai div ul,
+.app .chat .messages .ai div ol {
+  gap: 15px;
+}
+
+.app .chat .messages .user {
+  background: transparent;
+}
+
+.app .chat .input {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  gap: 10px;
+  padding: 20px;
+}
+
+.app .chat .input input {
+  width: 100%;
+  padding: 10px;
+  background: #ffffff17;
+  border-radius: 5px;
+  outline: none;
+  color: rgb(232, 232, 232);
+}
+
+.app .chat .input i {
+  font-size: 25px;
+}
+
+.app .options {
+  background: #181519;
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  padding-top: 18px;
+}
+
+.app .options .optionsTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app .options .optionsTitle i {
+  background: rgba(255, 0, 0, 0.656);
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  color: black;
+  border-radius: 50%;
+  font-weight: 600;
+  display: none;
+}
+
+.app .options ul {
+  max-height: 50vh;
+  overflow: scroll;
+  margin-top: 20px;
+}
+
+.app .options ul li {
+  background: #292729;
+  list-style: none;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 300;
+  margin-bottom: 15px;
+  color: rgb(198, 198, 198);
+  border-radius: 5px;
+}
+
+.app .options .card {
+  background: linear-gradient(234deg, #530d91 29.07%, #9861c8 93.08%);
+  padding: 10px;
+  text-align: center;
+  margin-top: 40px;
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.app .options .card p b {
+  font-size: 16px;
+  color: rgb(255, 255, 255);
+  text-transform: capitalize;
+  font-weight: 400;
+}
+
+.app .options .card p span {
+  font-size: 18px;
+  color: gold;
+  padding-left: 5px;
+}
+
+.app .options .card p {
+  font-size: 13px;
+  color: rgb(198, 198, 198);
+  margin-bottom: 10px;
+}
+
+.app .options .card button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.278);
+  color: white;
+  text-transform: uppercase;
+}
+
+@media (max-width: 450px) {
+  .app .options {
+    display: none;
+  }
+
+  .app .sidebar {
+    display: none;
+  }
+
+  .app .options .optionsTitle i {
+    display: grid;
+  }
+
+  .app .chat header i {
+    display: flex;
+  }
+}
+
+.code-block {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.header p {
+  margin: 0;
+  font-weight: bold;
+}
+
+.header img {
+  background: transparent !important;
+}
+
+#copy {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+#copy img {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  pointer-events: none;
+}
+
+#copy p {
+  pointer-events: none;
+  margin: 0;
+}
+
+.block {
+  padding: 10px 0;
+}
+
+pre {
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px 10px;
+  overflow: auto;
+}
+
+code {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 10px;
+  color: black;
+}
