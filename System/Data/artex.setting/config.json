@@ -1,0 +1,7 @@
+{
+    "name": "Setting",
+    "version": "1.0.0",
+    "requiredLibraries": ["Codereducer/cursor.js", "remixicon.css", "chart.js"],
+    "packageName": "artex.setting",
+    "publisher": "A.R.T.E.X Corporation"
+}

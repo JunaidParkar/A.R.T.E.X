@@ -1,0 +1,7 @@
+{
+    "name": "Terminal",
+    "version": "1.0.0",
+    "requiredLibraries": ["Codereducer/CREngine.js", "Codereducer/cursor.js", "Codereducer/dkit.js"],
+    "packageName": "artex.cmd",
+    "publisher": "A.R.T.E.X Corporation"
+}
