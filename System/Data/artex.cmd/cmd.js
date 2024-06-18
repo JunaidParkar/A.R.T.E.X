@@ -15,9 +15,33 @@ engine.addTerm("cloud");
 // here for flag --u and --p for both flags values are required. So for this the second argument will look like [{flag: "--u", requiredValue: true}, {flag: "--p", requiredValue: true}]
 // third argument is an callback to define a function which  should execute on trigerring that specific command. it returns an argument which is the values of that flags which is set to true. examples are given below in second command
 engine.addCommand("artex", [{ flag: "--h", requiredValue: false }], (args) => {
-  let p1 = document.createElement("p");
-  p1.textContent = "artex help here";
-  submitResponse(p1);
+  let table = document.createElement("table")
+
+  let tr1 = document.createElement("tr")
+  let th11 = document.createElement("th")
+  th11.textContent = "Command name"
+  let th12 = document.createElement("th")
+  th12.textContent = "flags"
+  let th13 = document.createElement("th")
+  th13.textContent = "uses"
+  tr1.appendChild(th11)
+  tr1.appendChild(th12)
+  tr1.appendChild(th13)
+
+  let tr2 = document.createElement("tr")
+  let td21 = document.createElement("td")
+  td21.textContent = "artex"
+  let td22 = document.createElement("td")
+  td22.textContent = "--h for help"
+  let td23 = document.createElement("td")
+  td23.textContent = "artex --h"
+  tr2.appendChild(td21)
+  tr2.appendChild(td22)
+  tr2.appendChild(td23)
+
+  table.appendChild(tr1)
+  table.appendChild(tr2)
+  submitResponse(table);
 });
 
 engine.addCommand(
@@ -43,14 +67,17 @@ function checkInput() {
   var event = window.event || event.which;
   // if enter is pressed
   if (event.keyCode == 13) {
+    event.preventDefault()
     var command = document.getElementById("cmdInp").value;
-    submitResponse(command, true);
-    commandHistory.push(command);
+    console.log(command.split(""))
+    let spliced = command.split("").splice(0, command.split("").length - 1)
+    console.log(spliced)
+    submitResponse(spliced.join(""), true);
+    commandHistory.push(spliced.join(""));
     commandIndex = commandHistory.length;
-    engine.executeCommand(command); // Execute command from codereducer
+    engine.executeCommand(spliced.join("")); // Execute command from codereducer
     document.getElementById("cmdInp").value = "";
     document.getElementById("cmdInp").style.height = "1em";
-    event.preventDefault();
   } else if (event.keyCode == 38) {
     // if up arrow is pressed
     if (commandIndex > 0) {
