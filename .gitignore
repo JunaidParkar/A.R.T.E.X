@@ -1,2 +1,4 @@
 /ar/*
 ar/*
+/__pycache__/*
+__pycache__/*
