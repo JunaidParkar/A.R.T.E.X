@@ -6,3 +6,6 @@ nltk
 numpy
 eel 
 cryptography
+selenium
+webdriver-manager
+mtranslate

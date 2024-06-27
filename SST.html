@@ -1,0 +1,58 @@
+Skip to content
+ 
+Search…
+All gists
+Back to GitHub
+Please configure another 2FA method to reduce your risk of permanent account lockout. We strongly recommend against SMS as it is prone to fraud and delivery may be unreliable depending on your region.
+
+
+@KaushikShresth07
+KaushikShresth07/FastestSpeechRecognition.html
+Created 3 months ago • Report abuse
+Code
+Revisions
+1
+Stars
+2
+Forks
+3
+Clone this repository at &lt;script src=&quot;https://gist.github.com/KaushikShresth07/6cbeb81516bf561d7ee5e82e208e071b.js&quot;&gt;&lt;/script&gt;
+<script src="https://gist.github.com/KaushikShresth07/6cbeb81516bf561d7ee5e82e208e071b.js"></script>
+FastestSpeechRecognition.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <title>Speech Recognition</title>
+</head>
+<body>
+      <button id = "start" onclick="startRecognition()">Start Recognition</button>
+      <button id = "end" onclick="stopRecognition()">Stop Recognition</button>
+      <p id = "output"></p>
+
+      <script>
+            const output = document.getElementById('output');
+            let recognition;
+
+            function startRecognition() {
+                  recognition = new webkitSpeechRecognition() || new SpeechRecognition();
+                  recognition.lang = 'en-US';
+                  recognition.continuous = true;
+
+                  recognition.onresult = function(event) {
+                  const transcript = event.results[event.results.length - 1][0].transcript; 
+                  output.textContent += transcript;                       
+                  };
+
+            recognition.onend = function() {
+                  recognition.start();
+            };
+            recognition.start();
+            }
+
+            function stopRecognition() {
+                  recognition.stop();
+                  output.innerHTML = ""
+            }
+      </script>
+</body>
+</html>
