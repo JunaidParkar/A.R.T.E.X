@@ -9,3 +9,4 @@ cryptography
 selenium
 webdriver-manager
 mtranslate
+nltk
