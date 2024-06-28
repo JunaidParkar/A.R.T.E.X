@@ -263,7 +263,7 @@
                 "fuck you"
             ],
             "responses": [
-                "Well that hurts :(",
+                "Well that hurts.",
                 "I'm sorry to hear that.",
                 "That's hurtful.",
                 "Ouch, that stings.",
@@ -329,11 +329,11 @@
         {
             "tag": "weather",
             "patterns": [
-                "weather",
-                "climate",
                 "What's the temperature like today",
                 "Tell me about the weather conditions",
                 "How hot is it right now",
+                "How's the weather today?",
+                "How is the weather today?",
                 "Give me the current weather report",
                 "Is it going to rain today",
                 "Tell me the forecast for tomorrow",
@@ -341,7 +341,10 @@
                 "Give me an update on the weather",
                 "Can you tell me about today's weather",
                 "what's the temperature today",
-                "What's the forecast for the week"
+                "What's the forecast for the week",
+                "what's the weather forecast for tomorrow",
+                "What's the weather today",
+                "What is the weather today"
             ],
             "responses": [
                 "Sure! What city would you like the weather forecast for?",  
@@ -641,10 +644,8 @@
                 "Create a new task",
                 "Add an item to my task list",
                 "Remind me to do something",
-                "Put [task] on my to-do list",
-                "Make a note of [task]",
-                "I need to [task]",
-                "Schedule [task]"
+                "Add a task",
+                "Add a task in my bucket"
             ],
             "responses": [
                 "Sure! What task would you like to add?",
@@ -658,126 +659,39 @@
             ]
         },
         {
-            "tag": "copyfiles",
-            "patterns": [
-                "Copy file [source] to [destination]",
-                "Duplicate [source] and save as [destination]",
-                "Make a copy of [source] in [destination]",
-                "Copy [source] file",
-                "Duplicate [source]",
-                "Copy [source] to [destination] directory"
-            ],
-            "responses": [
-                "Got it! Copying [source] to [destination].",
-                "Copying file [source] to [destination].",
-                "Making a duplicate of [source] and saving it as [destination].",
-                "Sure! I'll copy [source] to [destination].",
-                "Making a copy of [source] file.",
-                "Copying [source] to [destination] directory."
-            ]
-        },
-        {
-            "tag": "movefiles",
-            "patterns": [
-                "Move file [source] to [destination]",
-                "Transfer [source] to [destination]",
-                "Relocate [source] file to [destination]",
-                "Move [source] file",
-                "Transfer [source]",
-                "Move [source] to [destination] directory"
-            ],
-            "responses": [
-                "Moving [source] to [destination].",
-                "Transferring file [source] to [destination].",
-                "Relocating [source] file to [destination].",
-                "Sure! I'll move [source] to [destination].",
-                "Moving [source] file.",
-                "Moving [source] to [destination] directory."
-            ]
-        },
-        {
             "tag": "setreminder",
             "patterns": [
-                "Remind me to [task] at [time]",
-                "Set a reminder for [task] at [time]",
-                "Remind me about [task] at [time]",
-                "Create a reminder for [task] at [time]",
-                "Reminder: [task] at [time]",
-                "Remind me at [time] to [task]"
+                "Set me a reminder",
+                "Remind me to do some work",
+                "Set a reminder",
+                "Note a reminder for me",
+                "Note a reminder"
             ],
             "responses": [
-                "Sure! I'll remind you to [task] at [time].",
-                "Setting a reminder for [task] at [time].",
-                "Got it! I'll remind you about [task] at [time].",
-                "Creating a reminder for [task] at [time].",
-                "Reminder set: [task] at [time].",
-                "I'll remind you at [time] to [task]."
-            ]
-        },
-        {
-            "tag": "searchinfo",
-            "patterns": [
-                "Search for [query]",
-                "Find information about [query]",
-                "Look up [query]",
-                "Google search: [query]",
-                "What is [query]?",
-                "Tell me about [query]"
-            ],
-            "responses": [
-                "Searching for information about [query]...",
-                "Finding details about [query]...",
-                "Looking up [query]...",
-                "Let me Google that for you: [query]",
-                "Here's what I found about [query]:",
-                "Sure! I'll search for information about [query]."
-            ]
-        },
-        {
-            "tag": "manageplaylist",
-            "patterns": [
-                "Create a new playlist",
-                "Add [video] to playlist [name]",
-                "Remove [video] from playlist [name]",
-                "Delete playlist [name]",
-                "Rename playlist [name] to [new name]",
-                "Show my playlists"
-            ],
-            "responses": [
-                "Creating a new playlist...",
-                "Adding [video] to playlist [name]...",
-                "Removing [video] from playlist [name]...",
-                "Deleting playlist [name]...",
-                "Renaming playlist [name] to [new name]...",
-                "Here are your playlists:"
-            ]
-        },
-        {
-            "tag": "createshortcut",
-            "patterns": [
-                "Create shortcut for [application]",
-                "Add shortcut for [application]",
-                "Bookmark [application]",
-                "Make a shortcut for [application]",
-                "Save [application] shortcut"
-            ],
-            "responses": [
-                "Sure! Creating a shortcut for [application]...",
-                "Adding shortcut for [application]...",
-                "Bookmarking [application]...",
-                "Making a shortcut for [application]...",
-                "Saving [application] shortcut..."
+                "Sure! I can set a reminder for you",
+                "On the way sir!",
+                "As you wish sir!",
+                "Setting a reminder.",
+                "Got it!"
             ]
         },
         {
             "tag": "Sleep",
             "patterns": [
-                "Sleep the device",
-                "Go to sleep mode",
-                "Sleep device"
+                "Have some sleep...",
+                "Sleep is necessary for every one.",
+                "Get some rest now.",
+                "Have some rest",
+                "Activate sleep mode",
+                "Go to sleep",
+                "Go for rest",
+                "May be you need sleep",
+                "Take some rest"
             ],
             "responses": [
-                "Sure! Turning the device to sleep mode..."
+                "Sure! Activating sleep mode...",
+                "Thank your sir, Wake me up whenever you needed",
+                "I wanted to take rest, thank you for allowing me sir. Call me whenever you want"
             ]
         },
         {
@@ -819,19 +733,21 @@
             ]
         },
         {
-            "tag": "Open_Application",
+            "tag": "Shutdown",
             "patterns": [
-                "Open",  
-                "Launch", 
-                "Start", 
-                "Run",
-                "Can you open",  
-                "Can you launch", 
-                "Can you start", 
-                "Can you run"
+                "shutdown device",  
+                "close device", 
+                "shutdown my laptop", 
+                "shutdown my computer",
+                "my device need some rest now",  
+                "Please shutdown my device"
             ],
             "responses": [
-                "Opening the application..."
+                "Sure sir! shutting down your device",
+                "As you say",
+                "On your mark",
+                "Roger that",
+                "Shutting down sir"
             ]
         }
     ]
