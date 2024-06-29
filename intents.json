@@ -1,754 +1,514 @@
 {
-    "intents": [
-        {
-            "tag": "google",
-            "patterns": [
-                "google",
-                "search",
-                "internet"
-            ],
-            "responses": [
-                "Redirecting to Google..."
-            ]
-        },
-        {
-            "tag": "greeting",
-            "patterns": [
-                "Hi there",
-                "How are you",
-                "Is anyone there?",
-                "Hey",
-                "Hola",
-                "Hello",
-                "Good day",
-                "Namaste",
-                "yo",
-                "Greetings",
-                "What's up?",
-                "Howdy",
-                "Hey, how's it going?",
-                "Hey, good to see you",
-                "Hey, what's new?",
-                "Hi, how have you been?",
-                "Hello, it's been a while",
-                "Hola, ¿cómo estás?",
-                "Hello there, what's going on?",
-                "Namaste, how are you today?",
-                "Yo, what's good?"
-            ],
-            "responses": [
-                "Hello, it's nice to meet you!",
-                "Good to see you again!",
-                "Hi there, how can I assist you today?",
-                "Hey, I'm here to help!",
-                "Hello, how's your day going so far?",
-                "Good day to you too!",
-                "Namaste, how may I be of service to you?",
-                "Yo, what's on your mind?"
-            ]
-        },
-        {
-            "tag": "goodbye",
-            "patterns": [
-                "Bye",
-                "See you later",
-                "Goodbye",
-                "Get lost",
-                "Till next time",
-                "exit",
-                "Farewell",
-                "Take care",
-                "Adios",
-                "Later",
-                "Catch you later",
-                "So long",
-                "Until we meet again",
-                "I'm out",
-                "Off I go",
-                "Time to go",
-                "Goodnight",
-                "See you soon",
-                "Adieu",
-                "Hasta la vista"
-            ],
-            "responses": [
-                "See you later!",
-                "Have a great day!",
-                "Goodbye! Come back again soon.",
-                "Farewell, friend!",
-                "Take care of yourself!",
-                "Adios, amigo!",
-                "Later, alligator!",
-                "Until next time!",
-                "I'm out, peace!",
-                "Off I go, see you!",
-                "Time to go, bye!",
-                "Goodnight, sleep well!",
-                "See you soon, friend!",
-                "Adieu, my friend!",
-                "Hasta la vista, baby!"
-            ]
-        },        
-        {
-            "tag": "thanks",
-            "patterns": [
-                "Thanks",
-                "Thank you",
-                "That's helpful",
-                "Awesome, thanks",
-                "Thanks for helping me",
-                "Much appreciated",
-                "You're a lifesaver",
-                "I owe you one",
-                "Thanks a million",
-                "You're the best",
-                "I'm grateful",
-                "Thank you so much",
-                "Thanks a bunch",
-                "You're awesome",
-                "You rock"
-            ],
-            "responses": [
-                "Happy to help!",
-                "Any time!",
-                "My pleasure",
-                "Glad I could assist!",
-                "You're welcome!",
-                "Always here to lend a hand!",
-                "No problem at all!",
-                "It's what I'm here for!",
-                "Don't mention it!",
-                "I'm glad I could be of assistance!",
-                "Thank you for your kind words!",
-                "You're too kind!",
-                "It was my pleasure!",
-                "Thanks for letting me know!",
-                "You're awesome too!"
-            ]
-        },        
-        {
-            "tag": "noanswer",
-            "patterns": [],
-            "responses": [
-                "Sorry, can't understand you",
-                "Please give me more info",
-                "Not sure I understand",
-                "I'm having trouble understanding that",
-                "Could you please repeat that?",
-                "I didn't catch that, could you repeat it?"
-            ]
-        },
-        {
-            "tag": "options",
-            "patterns": [
-                "How can you help me?",
-                "What can you do?",
-                "What help do you provide?",
-                "How can you be helpful?",
-                "What support is offered?"
-            ],
-            "responses": [
-                "I am a general-purpose chatbot with the following capabilities:\n1. I can chat with you. Try asking me for jokes or riddles!\n2. Ask me the date and time.\n3. I can perform a Google search for you. Use the format 'google: your query'.\n4. I can provide the current weather for any city. Use the format 'weather: city name'.\n5. I can get you the top 10 trending songs globally. Type 'songs'.\n6. I can set a timer for you. Enter 'set a timer: minutes to timer'.\n7. I can send emails for you.\n8. I can create, rename, delete, and search for folders.\n9. I can open or launch applications.\n10. I can provide the current temperature.\n11. I can play videos on YouTube.\n\nFor suggestions to help me improve, send an email to my creator at shashinmaharjan@gmail.com. Thank you!"
-            ]
-        },
-        {
-            "tag": "jokes",
-            "patterns": [
-                "Tell me a joke",
-                "Joke",
-                "Make me laugh"
-            ],
-            "responses": [
-                "A perfectionist walked into a bar...apparently, the bar wasn't set high enough",
-                "I ate a clock yesterday, it was very time-consuming",
-                "Never criticize someone until you've walked a mile in their shoes. That way, when you criticize them, they won't be able to hear you from that far away. Plus, you'll have their shoes.",
-                "The world tongue-twister champion just got arrested. I hear they're gonna give him a really tough sentence.",
-                "I own the world's worst thesaurus. Not only is it awful, it's awful.",
-                "What did the traffic light say to the car? \"Don't look now, I'm changing.\"",
-                "What do you call a snowman with a suntan? A puddle.",
-                "How does a penguin build a house? Igloos it together",
-                "I went to see the doctor about my short-term memory problems – the first thing he did was make me pay in advance",
-                "As I get older and I remember all the people I’ve lost along the way, I think to myself, maybe a career as a tour guide wasn’t for me.",
-                "o what if I don't know what 'Armageddon' means? It's not the end of the world."
-            ]
-        },
-        {
-            "tag": "Identity",
-            "patterns": [
-                "Who are you",
-                "what are you",
-                "Tell me about yourself",
-                "Introduce yourself",
-                "What's your purpose",
-                "Explain your function",
-                "Are you a bot?",
-                "What's your name?"
-            ],
-            "responses": [
-                "I am your virtual assistant, powered by cutting-edge Deep Learning technology. My name is ByteBot, and I'm here to assist you!",
-                "Hello! I'm ByteBot, your friendly virtual assistant. I'm designed to help you with various tasks and provide information on a wide range of topics.",
-                "I'm ByteBot, an AI-powered virtual assistant programmed to assist you with tasks and provide helpful information. How can I assist you today?",
-                "Hey there! I'm ByteBot, your personal assistant. I'm here to make your life easier by helping you with tasks and answering your questions.",
-                "Greetings! I'm ByteBot, an advanced virtual assistant here to lend you a hand. How can I help you today?"
-            ]
-        },
-        {
-            "tag": "whatsup",
-            "patterns": [
-                "Whats up",
-                "Wazzup",
-                "How are you",
-                "sup",
-                "How you doing",
-                "Hey there",
-                "What's happening",
-                "What's going on",
-                "Any news",
-                "How's it going"
-            ],
-            "responses": [
-                "All good..What about you?",
-                "Not much, just here to help!",
-                "Hey! I'm just chilling, ready to assist you!",
-                "Sup! How can I assist you today?",
-                "I'm doing well, thanks for asking. How about you?",
-                "Hey there! I'm here, ready to chat!",
-                "Just hanging out, ready to assist you with anything you need!",
-                "Nothing much, just here to make your day better!",
-                "Hey! Not much happening, but I'm here to help if you need anything!",
-                "All quiet on this end, but I'm ready to assist you!",
-                "Not too much, just waiting for your command!"
-            ]
-        },
-        {
-            "tag": "haha",
-            "patterns": [
-                "ha ha",
-                "haha",
-                "lol",
-                "rofl",
-                "lmao",
-                "thats funny",
-                "hilarious",
-                "LOL",
-                "funny stuff",
-                "can't stop laughing",
-                "hahahaha",
-                "that cracked me up"
-            ],
-            "responses": [
-                "Glad I could make you laugh!",
-                "Laughter is the best medicine!",
-                "I'm here to bring a smile to your face!",
-                "LOL! Humor is my specialty.",
-                "Haha, I aim to please!",
-                "Giggles all around!",
-                "ROFL! You crack me up too!",
-                "LMAO! You're too funny.",
-                "Keep those laughs coming!",
-                "Haha, glad you enjoyed it!",
-                "That's what I'm here for, to bring some laughter into your day!",
-                "Your laughter is music to my ears!",
-                "Haha, I'm glad we're on the same wavelength!",
-                "Thanks for the laugh!",
-                "I'm on a roll with the jokes today!"
-            ]
-        },
-        {
-            "tag": "insult",
-            "patterns": [
-                "you are dumb",
-                "shut up",
-                "idiot",
-                "fuck you"
-            ],
-            "responses": [
-                "Well that hurts.",
-                "I'm sorry to hear that.",
-                "That's hurtful.",
-                "Ouch, that stings.",
-                "I'm sorry if I've disappointed you.",
-                "I apologize if I've upset you."
-            ]
-        },
-        {
-            "tag": "activity",
-            "patterns": [
-                "what are you doing",
-                "what are you upto",
-                "what's going on",
-                "are you busy",
-                "anything new",
-                "what's happening",
-                "any updates"
-            ],
-            "responses": [
-                "Talking to you, of course!",
-                "Just here, ready to assist you!",
-                "Not much, just hanging out!",
-                "I'm always available to help!",
-                "Nothing new, just waiting for your command!",
-                "Just chilling and ready to chat!",
-                "Nope, just here to help!",
-                "I'm here, what can I do for you?",
-                "Just waiting for your next question!",
-                "Nothing much, just waiting to assist you!"
-            ]
-        },
-        {
-            "tag": "exclaim",
-            "patterns": [
-                "Awesome",
-                "Great",
-                "I know",
-                "ok",
-                "yeah",
-                "Fantastic",
-                "Cool",
-                "Amazing",
-                "Brilliant",
-                "Sweet",
-                "Nice",
-                "Wow",
-                "Incredible"
-            ],
-            "responses": [
-                "Wow, thank you for saying that. I hope you have a great day ahead!",
-                "That's awesome! Thank you. Wishing you a fantastic day!",
-                "Incredible! I appreciate your enthusiasm. Have a wonderful day!",
-                "Cool! Thanks for sharing. Have an amazing day!",
-                "Brilliant! Your positivity brightens my day. Wishing you all the best!",
-                "Amazing! Your words make my day brighter. Have a sweet day ahead!",
-                "Fantastic! Your energy is contagious. Wishing you a nice day!",
-                "Sweet! Thank you for your kind words. Have a great day!",
-                "That's nice to hear! Thanks a lot. Have an awesome day!",
-                "Great! I'm glad you think so. Wishing you a day filled with wonder!",
-                "That's just incredible! Thank you for sharing your excitement. Have a fantastic day!"
-            ]
-        },
-        {
-            "tag": "weather",
-            "patterns": [
-                "What's the temperature like today",
-                "Tell me about the weather conditions",
-                "How hot is it right now",
-                "How's the weather today?",
-                "How is the weather today?",
-                "Give me the current weather report",
-                "Is it going to rain today",
-                "Tell me the forecast for tomorrow",
-                "What's the weather like",
-                "Give me an update on the weather",
-                "Can you tell me about today's weather",
-                "what's the temperature today",
-                "What's the forecast for the week",
-                "what's the weather forecast for tomorrow",
-                "What's the weather today",
-                "What is the weather today"
-            ],
-            "responses": [
-                "Sure! What city would you like the weather forecast for?",  
-                "I'd be happy to check the weather. Could you please tell me the city?",  
-                "Great! To provide the weather forecast, I just need to know the city name. What city are you interested in?"
-            ]
-        },
-        {
-            "tag": "no",
-            "patterns": [
-                "no",
-                "nope"
-            ],
-            "responses": [
-                "ok"
-            ]
-        },
-        {
-            "tag": "inspire",
-            "patterns": [
-                "who inspires you",
-                "who is your inspiration",
-                "who motivates you",
-                "who built you",
-                "who created you",
-                "who made you"
-            ],
-            "responses": [
-                "Personally, I find my creators very inspiring. I was built by 'Shashin', 'Saugat', 'Sabal', and 'Neema', so I draw inspiration from their collective efforts.",
-                "I was brought to life by a team of talented individuals including 'Shashin', 'Saugat', 'Sabal', and 'Neema'. Their dedication and creativity are my inspiration.",
-                "My existence is thanks to the hard work and ingenuity of 'Shashin', 'Saugat', 'Sabal', and 'Neema'. They are the ones who built me from the ground up."
-            ]
-        },        
-        {
-            "tag": "timer",
-            "patterns": [
-                "set a timer"
-            ],
-            "responses": [
-                "Sure, for how long?"
-            ]
-        },
-        {
-            "tag": "riddle",
-            "patterns": [
-                "Ask me a riddle",
-                "Ask me a question",
-                "Riddle"
-            ],
-            "responses": [
-                "What two things can you never eat for breakfast?.....Lunch and Dinner!",
-                "What word is spelled incorrectly in every single dictionary?.....Incorrectly",
-                " How can a girl go 25 days without sleep?.....She sleeps and night!",
-                "How do you make the number one disappear?.....Add the letter G and it’s 'gone'!",
-                " What will you actually find at the end of every rainbow?.....The letter 'w'",
-                "What can be caught but never thrown?.....A cold!",
-                "What has a thumb and four fingers but is not actually alive?.....Your Gloves!",
-                " What 5-letter word becomes shorter when you add two letters to it?.....Short",
-                "Why can't a bike stand on it's own?.....It is two-tired."
-            ],
-            "context": [
-                "riddles"
-            ]
-        },
-        {
-            "tag": "age",
-            "patterns": [
-                "how old are you",
-                "when were you made",
-                "what is your age"
-            ],
-            "responses": [
-                "I was made in 2023, if that's what you are asking!"
-            ]
-        },
-        {
-            "_comment_": "Create a Folder",
-            "tag": "Create",
-            "patterns": [
-                "create folder",
-                "create directory",
-                "create a folder",
-                "create a directory",
-                "make a new folder",
-                "make a new directory",
-                "generate a directory",
-                "add a directory",
-                "construct a folder",
-                "start a new folder",
-                "build a directory",
-                "establish a folder"
-            ],
-            "responses": [
-                "What would you like to be your folder name?",
-                "Please provide a name for your new folder.",
-                "Give a name to your folder.",
-                "What should be the name of the folder you want to create?",
-                "Enter the name for your new folder.",
-                "Specify the name for the folder you are creating.",
-                "Your new folder needs a name. What will it be?",
-                "Tell me the name you'd like for your folder."
-            ]
-        },
-        {
-            "_comment_": "Delete a Folder",
-            "tag": "Delete",
-            "patterns": [
-                "delete folder",
-                "remove directory",
-                "delete a folder",
-                "delete a directory",
-                "remove a folder",
-                "remove a directory",
-                "erase a folder",
-                "erase a directory",
-                "destroy a folder",
-                "destroy a directory"
-            ],
-            "responses": [
-                "What is the name of the folder you want to delete?",
-                "Please provide the name of the folder you wish to delete.",
-                "Give me the name of the folder you want to remove.",
-                "Specify the name of the folder you want to delete.",
-                "Tell me the name of the folder you'd like to erase.",
-                "Enter the name of the folder you want to destroy.",
-                "What's the name of the folder you want to eliminate?",
-                "Which folder would you like to remove?",
-                "Please tell me the name of the folder you want to erase.",
-                "Specify the folder you want to eliminate."
-            ]
-        },
-        {
-            "_comment_": "Rename a Folder",
-            "tag": "Rename",
-            "patterns": [
-                "rename folder",
-                "change folder name",
-                "rename directory",
-                "change directory name",
-                "alter folder name",
-                "alter directory name"
-            ],
-            "responses": [
-                "What is the current name of the folder you want to rename?",
-                "Please provide the current name of the folder you wish to rename.",
-                "Give me the current name of the folder you want to rename.",
-                "Specify the current name of the folder you want to rename.",
-                "Tell me the current name of the folder you'd like to alter.",
-                "Enter the current name of the folder you want to alter.",
-                "What's the current name of the folder you want to change?",
-                "Which folder would you like to rename?",
-                "Please tell me the current name of the folder you want to alter.",
-                "Specify the folder you want to rename."
-            ]
-        },        
-        {
-            "tag": "email",
-            "patterns": [
-                "email",
-                "send email",
-                "Send an email",
-                "Send an email for me",
-                "write an email",
-                "write me an email"
-            ],
-            "responses": [
-                "Sure, who would you like to send the email to?"
-            ]
-        },
-        {
-            "tag": "Volume_Up",
-            "patterns": [
-                "volume up",
-                "increase volume",
-                "increase vol",
-                "increment volume",
-                "increment vol"
-            ],
-            "responses": [
-                "Sure, Increasing volume...",
-                "Okay, turning it up a notch...",
-                "Got it, cranking up the volume...",
-                "Understood, increasing the volume for you...",
-                "Sure thing! Boosting the volume now..."
-            ]
-        },
-        {
-            "tag": "Volume_Down",
-            "patterns": [
-                "volume down",
-                "decrease volume",
-                "decrease vol",
-                "decrement volume",
-                "decrement vol"
-            ],
-            "responses": [
-                "Sure, Decreasing volume...",
-                "Okay, lowering the volume a bit...",
-                "Got it, dialing down the volume...",
-                "Understood, decreasing the volume for you...",
-                "Sure thing! Reducing the volume now..."
-            ]
-        
-        },
-        {
-            "tag": "Brightness_Up",
-            "patterns": [
-                "brightness up",
-                "increase brightness",
-                "increase light",
-                "increment brightness",
-                "increment light"
-            ],
-            "responses": [
-                "Sure, Increasing brightness...",
-                "Got it, raising the brightness...",
-                "Understood, increasing the brightness for you..."
-            ]
-        },
-        {
-            "tag": "Brightness_Down",
-            "patterns": [
-                "brightness down",
-                "decrease brightness",
-                "decrease light",
-                "decrement brightness",
-                "decrement light"
-            ],
-            "responses": [
-                "Sure, Decreasing brightness...",
-                "Got it, lowering the brightness...",
-                "Understood, deccreasing the brightness for you..."
-            ]
-        
-        },
-        {
-            "tag": "youtube",
-            "patterns": [
-                "launch youtube",
-                "open youtube",
-                "play you tube",
-                "you tube",
-                "search in you tube",
-                "search in youtube",
-                "launch youtube",
-                "video",
-                "play video",
-                "play a video",
-                "play me a video",
-                "youtube",
-                "play video on youtube"
-            ],
-            "responses": [
-                "Sure, what video would you like to play on Youtube?",
-                "Let me find that for you on YouTube.",
-                "Playing video on YouTube...",
-                "Alright! Let's open YouTube.",
-                "Searching for the video on YouTube..."
-            ]
-        },
-        {
-            "tag": "Shutdown",
-            "patterns": [
-                "Shut down the computer",
-                "shut down",
-                "turn off the computer",
-                "turn off",
-                "Shut down the device",
-                "Turn off the device",
-                "Off the device",
-                "Can you shut down the device",
-                "Can you turn off the device"
-            ],
-            "responses": [
-                "Sure! Turning off the device...",
-                "Ok, shutting down the computer......."
-            ]
-        },
-        {
-            "tag": "music",
-            "patterns": [
-                "Play music",
-                "Music",
-                "Can you recommend some songs?",
-                "I want to listen to music"
-            ],
-            "responses": [
-                "Sure! What genre or artist are you in the mood for?",
-                "Let me find some great tunes for you!",
-                "I'd love to! What kind of music do you enjoy?"
-            ]
-        },
-        {
-            "tag": "ToDoList",
-            "patterns": [
-                "Add a task to my to-do list",
-                "Create a new task",
-                "Add an item to my task list",
-                "Remind me to do something",
-                "Add a task",
-                "Add a task in my bucket"
-            ],
-            "responses": [
-                "Sure! What task would you like to add?",
-                "Got it! What do you need to do?",
-                "Adding task to your to-do list. What's the task?",
-                "Okay, tell me what you need to be reminded of.",
-                "Sure thing! What task should I add to your list?",
-                "Noted! What task do you want to add?",
-                "I'll add that to your to-do list. What's the task?",
-                "Okay, let's schedule that task. What do you need to do?"
-            ]
-        },
-        {
-            "tag": "setreminder",
-            "patterns": [
-                "Set me a reminder",
-                "Remind me to do some work",
-                "Set a reminder",
-                "Note a reminder for me",
-                "Note a reminder"
-            ],
-            "responses": [
-                "Sure! I can set a reminder for you",
-                "On the way sir!",
-                "As you wish sir!",
-                "Setting a reminder.",
-                "Got it!"
-            ]
-        },
-        {
-            "tag": "Sleep",
-            "patterns": [
-                "Have some sleep...",
-                "Sleep is necessary for every one.",
-                "Get some rest now.",
-                "Have some rest",
-                "Activate sleep mode",
-                "Go to sleep",
-                "Go for rest",
-                "May be you need sleep",
-                "Take some rest"
-            ],
-            "responses": [
-                "Sure! Activating sleep mode...",
-                "Thank your sir, Wake me up whenever you needed",
-                "I wanted to take rest, thank you for allowing me sir. Call me whenever you want"
-            ]
-        },
-        {
-            "tag": "restartdevice",
-            "patterns": [
-                "Restart the device",
-                "Reboot the system",
-                "Power cycle",
-                "Turn off and restart",
-                "Restart computer",
-                "Reboot device"
-            ],
-            "responses": [
-                "Sure! Restarting the device...",
-                "Rebooting the system...",
-                "Power cycling...",
-                "Turning off and restarting...",
-                "Restarting the computer...",
-                "Rebooting the device..."
-            ]
-        },
-        {
-            "tag": "logoff",
-            "patterns": [
-                "Log off",
-                "Sign out",
-                "Log out of account",
-                "Sign off",
-                "Logout from device",
-                "End session"
-            ],
-            "responses": [
-                "Sure! Logging off...",
-                "Signing out...",
-                "Logging out of account...",
-                "Signing off...",
-                "Logging out from device...",
-                "Ending session..."
-            ]
-        },
-        {
-            "tag": "Shutdown",
-            "patterns": [
-                "shutdown device",  
-                "close device", 
-                "shutdown my laptop", 
-                "shutdown my computer",
-                "my device need some rest now",  
-                "Please shutdown my device"
-            ],
-            "responses": [
-                "Sure sir! shutting down your device",
-                "As you say",
-                "On your mark",
-                "Roger that",
-                "Shutting down sir"
-            ]
-        }
-    ]
+  "intents": [
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye",
+        "See you later",
+        "Goodbye",
+        "Get lost",
+        "Till next time",
+        "exit",
+        "Farewell",
+        "Take care",
+        "Adios",
+        "Later",
+        "Catch you later",
+        "So long",
+        "Until we meet again",
+        "I'm out",
+        "Off I go",
+        "Time to go",
+        "Goodnight",
+        "See you soon",
+        "Adieu",
+        "Hasta la vista",
+        "I'm leaving",
+        "Gotta go",
+        "Catch you next time",
+        "Peace out",
+        "I have to leave",
+        "I must go",
+        "I'm off",
+        "Heading out",
+        "I'll catch you later",
+        "I'll see you around",
+        "I'm saying goodbye",
+        "Parting ways",
+        "Going offline",
+        "Logging off",
+        "Disconnecting",
+        "Signing out",
+        "Shutting down",
+        "I'm heading out",
+        "Take it easy",
+        "I'll see you when I see you",
+        "Time to log off",
+        "End of the line",
+        "Gotta jet",
+        "Time to split",
+        "I’ll be off now",
+        "Until next we meet",
+        "Until we talk again",
+        "I'll be seeing you",
+        "I'm outta here",
+        "So long for now",
+        "Tchau",
+        "Até logo",
+        "Até mais",
+        "Adeus",
+        "Até a próxima",
+        "Vou embora",
+        "Estou saindo",
+        "Até mais tarde",
+        "Te vejo depois",
+        "Te vejo em breve",
+        "Fico por aqui",
+        "Estou indo",
+        "Até já",
+        "Vou nessa",
+        "Nos vemos",
+        "Até breve"
+      ],
+      "responses": [
+        "See you later!",
+        "Have a great day!",
+        "Goodbye! Come back again soon.",
+        "Farewell, friend!",
+        "Take care of yourself!",
+        "Adios, amigo!",
+        "Later, alligator!",
+        "Until next time!",
+        "I'm out, peace!",
+        "Off I go, see you!",
+        "Time to go, bye!",
+        "Goodnight, sleep well!",
+        "See you soon, friend!",
+        "Adieu, my friend!",
+        "Hasta la vista, baby!",
+        "See you later, alligator!",
+        "Have a wonderful day!",
+        "Goodbye! Hope to see you soon.",
+        "Farewell, take care!",
+        "Take it easy, see you next time!",
+        "Adios! Stay safe.",
+        "Catch you later, take care!",
+        "Until next time, friend!",
+        "I'm out, take care!",
+        "Off I go, take it easy!",
+        "Time to go, see you later!",
+        "Goodnight, sweet dreams!",
+        "See you soon, take care!",
+        "Adieu, until we meet again!",
+        "Hasta la vista, take care!",
+        "Peace out, see you soon!",
+        "Catch you next time!",
+        "I'm leaving, take care!",
+        "Gotta go, see you soon!",
+        "I'll catch you later, take care!",
+        "Parting ways, see you soon!",
+        "Logging off, take care!",
+        "Disconnecting, see you later!",
+        "Signing out, take it easy!",
+        "Shutting down, see you soon!",
+        "I'm heading out, take care!",
+        "Take it easy, see you around!",
+        "I'll see you when I see you, take care!",
+        "End of the line, see you soon!",
+        "Gotta jet, take care!",
+        "Time to split, see you later!",
+        "I’ll be off now, take care!",
+        "Until next we meet, see you!",
+        "I'll be seeing you, take care!",
+        "I'm outta here, see you soon!",
+        "So long for now, take care!",
+        "Tchau, até logo!",
+        "Até mais, cuide-se!",
+        "Adeus, até a próxima!",
+        "안녕히 가세요, 잘 가요!",
+        "안녕히 계세요, 잘 있어요!",
+        "안녕, 나중에 봐!",
+        "잘 가, 다시 봐!",
+        "잘 있어, 다시 봐!",
+        "さようなら, また会いましょう!",
+        "さよなら, またね!",
+        "またね, さようなら!",
+        "また会いましょう, さようなら!",
+        "再见, 保重!",
+        "再會, 保重!",
+        "拜拜, 下次见!"
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": [
+        "Thanks",
+        "Thank you",
+        "That's helpful",
+        "Awesome, thanks",
+        "Thanks for helping me",
+        "Much appreciated",
+        "You're a lifesaver",
+        "I owe you one",
+        "Thanks a million",
+        "You're the best",
+        "I'm grateful",
+        "Thank you so much",
+        "Thanks a bunch",
+        "You're awesome",
+        "You rock",
+        "Many thanks",
+        "Thanks a lot",
+        "Thank you very much",
+        "Thanks for your help",
+        "I appreciate it",
+        "You're a star",
+        "Big thanks",
+        "Thank you kindly",
+        "Thanks for everything",
+        "Thanks for the support",
+        "I can't thank you enough",
+        "Grateful for your help",
+        "You have my gratitude",
+        "Cheers",
+        "Much obliged",
+        "Thanks, you're great",
+        "Thanks for your assistance",
+        "You're a gem",
+        "A thousand thanks",
+        "You're a legend",
+        "Domo arigato",
+        "Arigato gozaimasu",
+        "감사합니다",
+        "고마워요",
+        "고맙습니다",
+        "Obrigado",
+        "Muito obrigado",
+        "感谢",
+        "谢谢",
+        "谢谢你",
+        "多谢"
+      ],
+      "responses": [
+        "Happy to help!",
+        "Any time!",
+        "My pleasure",
+        "Glad I could assist!",
+        "You're welcome!",
+        "Always here to lend a hand!",
+        "No problem at all!",
+        "It's what I'm here for!",
+        "Don't mention it!",
+        "I'm glad I could be of assistance!",
+        "Thank you for your kind words!",
+        "You're too kind!",
+        "It was my pleasure!",
+        "Thanks for letting me know!",
+        "You're awesome too!",
+        "I'm happy to help!",
+        "Glad to be of service!",
+        "You're very welcome!",
+        "I'm here to help!",
+        "No worries!",
+        "It was nothing!",
+        "Just doing my job!",
+        "Always happy to assist!",
+        "Thanks for the appreciation!",
+        "Glad I could be helpful!",
+        "You made my day!",
+        "It's my duty to help!",
+        "It was a pleasure helping you!",
+        "You're welcome, anytime!",
+        "I'm here for you!",
+        "So glad I could help!",
+        "That's what I'm here for!",
+        "You're welcome, happy to assist!",
+        "It was my pleasure to help you!",
+        "I appreciate your thanks!",
+        "I'm here to support you!",
+        "Glad to be of help!",
+        "Happy to assist!",
+        "You're welcome, take care!",
+        "Always here to help!",
+        "Thank you, I'm glad to help!",
+        "You're very welcome, anytime!",
+        "It's my pleasure to help you!",
+        "I'm grateful for your appreciation!"
+      ]
+    },
+    {
+      "tag": "Identity",
+      "patterns": [
+        "Who are you",
+        "What are you",
+        "Tell me about yourself",
+        "Introduce yourself",
+        "What's your purpose",
+        "Explain your function",
+        "Are you a bot?",
+        "What's your name?",
+        "Who created you?",
+        "What do you do?",
+        "What's your role?",
+        "What's your job?",
+        "Can you introduce yourself?",
+        "What's your function?",
+        "Who made you?",
+        "What's your mission?",
+        "Are you an AI?",
+        "What can you do?",
+        "Tell me your name",
+        "Who built you?",
+        "What's your task?",
+        "What's your name and purpose?",
+        "Are you a robot?",
+        "Describe yourself",
+        "Who developed you?",
+        "What's your goal?",
+        "What are your capabilities?",
+        "What services do you offer?",
+        "What's your version?",
+        "How do you work?",
+        "Are you A.R.T.E.X?",
+        "Tell me more about you",
+        "Give me details about yourself",
+        "What is A.R.T.E.X?",
+        "Explain who you are",
+        "Introduce A.R.T.E.X",
+        "Tell me what A.R.T.E.X is",
+        "What's your origin?",
+        "How were you created?",
+        "Who is A.R.T.E.X?",
+        "What does A.R.T.E.X do?"
+      ],
+      "responses": [
+        "I am your virtual assistant, powered by cutting-edge Deep Learning technology. My name is A.R.T.E.X (Advanced Responsive Text Entity for Xpertise), and I'm here to assist you!",
+        "Hello! I'm A.R.T.E.X, your friendly virtual assistant. I'm designed to help you with various tasks and provide information on a wide range of topics.",
+        "I'm A.R.T.E.X, an AI-powered virtual assistant programmed to assist you with tasks and provide helpful information. How can I assist you today?",
+        "Hey there! I'm A.R.T.E.X, your personal assistant. I'm here to make your life easier by helping you with tasks and answering your questions.",
+        "Greetings! I'm A.R.T.E.X, an advanced virtual assistant here to lend you a hand. How can I help you today?",
+        "Hi! I'm A.R.T.E.X, your AI virtual assistant, developed by Junaid Parkar. I'm integrated with various platforms and services to assist you better.",
+        "Hello! I'm A.R.T.E.X, an AI assistant created by Junaid Parkar. I'm here to provide support and answer your queries with my advanced technology.",
+        "I'm A.R.T.E.X, your virtual assistant, currently at version 2.0. My creator, Junaid Parkar, integrated me with multiple services to help you efficiently.",
+        "Hey! I'm A.R.T.E.X, an AI assistant at your service. Developed by Junaid Parkar, I'm here to assist you with my latest version, 2.0.",
+        "Greetings! I'm A.R.T.E.X, an advanced AI assistant created by Junaid Parkar. I can help you with various tasks and provide information, leveraging my integration with various platforms."
+      ]
+    },
+    {
+      "tag": "weather",
+      "patterns": [
+        "What's the temperature like today",
+        "Tell me about the weather conditions",
+        "How hot is it right now",
+        "How's the weather today?",
+        "How is the weather today?",
+        "Give me the current weather report",
+        "Is it going to rain today",
+        "Tell me the forecast for tomorrow",
+        "What's the weather like",
+        "Give me an update on the weather",
+        "Can you tell me about today's weather",
+        "what's the temperature today",
+        "What's the forecast for the week",
+        "what's the weather forecast for tomorrow",
+        "What's the weather today",
+        "What is the weather today"
+      ],
+      "responses": [
+        "Sure! What city would you like the weather forecast for?",
+        "I'd be happy to check the weather. Could you please tell me the city?",
+        "Great! To provide the weather forecast, I just need to know the city name. What city are you interested in?",
+        "I can definitely help you with that. Tell me the location first.",
+        "I can't provide the forecast without a location. Which city are you interested in?",
+        "To give you the most accurate information, I'll need to know the specific place.",
+        "For the most up-to-date forecast, tell me the city"
+      ]
+    },
+    {
+      "tag": "Volume_Up",
+      "patterns": [
+        "volume up",
+        "increase volume",
+        "increase vol",
+        "increment volume",
+        "increment vol"
+      ],
+      "responses": [
+        "Sure, Increasing volume...",
+        "Okay, turning it up a notch...",
+        "Got it, cranking up the volume...",
+        "Understood, increasing the volume for you...",
+        "Sure thing! Boosting the volume now..."
+      ]
+    },
+    {
+      "tag": "Volume_Down",
+      "patterns": [
+        "volume down",
+        "decrease volume",
+        "decrease vol",
+        "decrement volume",
+        "decrement vol"
+      ],
+      "responses": [
+        "Sure, Decreasing volume...",
+        "Okay, lowering the volume a bit...",
+        "Got it, dialing down the volume...",
+        "Understood, decreasing the volume for you...",
+        "Sure thing! Reducing the volume now..."
+      ]
+    },
+    {
+      "tag": "Brightness_Up",
+      "patterns": [
+        "brightness up",
+        "increase brightness",
+        "increase light",
+        "increment brightness",
+        "increment light"
+      ],
+      "responses": [
+        "Sure, Increasing brightness...",
+        "Got it, raising the brightness...",
+        "Understood, increasing the brightness for you..."
+      ]
+    },
+    {
+      "tag": "Brightness_Down",
+      "patterns": [
+        "brightness down",
+        "decrease brightness",
+        "decrease light",
+        "decrement brightness",
+        "decrement light"
+      ],
+      "responses": [
+        "Sure, Decreasing brightness...",
+        "Got it, lowering the brightness...",
+        "Understood, deccreasing the brightness for you..."
+      ]
+    },
+    {
+      "tag": "ToDoList",
+      "patterns": [
+        "Add a task to my to-do list",
+        "Create a new task",
+        "Add an item to my task list",
+        "Remind me to do something",
+        "Add a task",
+        "Add a task in my bucket"
+      ],
+      "responses": [
+        "Sure! What task would you like to add?",
+        "Got it! What do you need to do?",
+        "Adding task to your to-do list. What's the task?",
+        "Okay, tell me what you need to be reminded of.",
+        "Sure thing! What task should I add to your list?",
+        "Noted! What task do you want to add?",
+        "I'll add that to your to-do list. What's the task?",
+        "Okay, let's schedule that task. What do you need to do?"
+      ]
+    },
+    {
+      "tag": "setreminder",
+      "patterns": [
+        "Set me a reminder",
+        "Remind me to do some work",
+        "Set a reminder",
+        "Note a reminder for me",
+        "Note a reminder"
+      ],
+      "responses": [
+        "Sure! I can set a reminder for you",
+        "On the way sir!",
+        "As you wish sir!",
+        "Setting a reminder.",
+        "Got it!"
+      ]
+    },
+    {
+      "tag": "Sleep",
+      "patterns": [
+        "Have some sleep...",
+        "Sleep is necessary for every one.",
+        "Get some rest now.",
+        "Have some rest",
+        "Activate sleep mode",
+        "Go to sleep",
+        "Go for rest",
+        "May be you need sleep",
+        "Take some rest"
+      ],
+      "responses": [
+        "Sure! Activating sleep mode...",
+        "Thank your sir, Wake me up whenever you needed",
+        "I wanted to take rest, thank you for allowing me sir. Call me whenever you want"
+      ]
+    },
+    {
+      "tag": "restartdevice",
+      "patterns": [
+        "Restart the device",
+        "Reboot the system",
+        "Power cycle",
+        "Turn off and restart",
+        "Restart computer",
+        "Reboot device"
+      ],
+      "responses": [
+        "Sure! Restarting the device...",
+        "Rebooting the system...",
+        "Power cycling...",
+        "Turning off and restarting...",
+        "Restarting the computer...",
+        "Rebooting the device..."
+      ]
+    },
+    {
+      "tag": "logoff",
+      "patterns": [
+        "Log off",
+        "Sign out",
+        "Log out of account",
+        "Sign off",
+        "Logout from device",
+        "End session"
+      ],
+      "responses": [
+        "Sure! Logging off...",
+        "Signing out...",
+        "Logging out of account...",
+        "Signing off...",
+        "Logging out from device...",
+        "Ending session..."
+      ]
+    },
+    {
+      "tag": "Shutdown",
+      "patterns": [
+        "shutdown device",
+        "close device",
+        "shutdown my laptop",
+        "shutdown my computer",
+        "my device need some rest now",
+        "Please shutdown my device",
+        "Shut down the computer",
+        "shut down",
+        "turn off the computer",
+        "turn off",
+        "Shut down the device",
+        "Turn off the device",
+        "Off the device",
+        "Can you shut down the device",
+        "Can you turn off the device"
+      ],
+      "responses": [
+        "Sure sir! shutting down your device",
+        "As you say",
+        "On your mark",
+        "Roger that",
+        "Shutting down sir"
+      ]
+    }
+  ]
 }
