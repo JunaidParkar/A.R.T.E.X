@@ -1,5 +1,5 @@
 import eel
-from sq import AppRegistry
+from ProgramFiles.sq import AppRegistry
 import threading
 import time
 
