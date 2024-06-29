@@ -1,37 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-      <title>Speech Recognition</title>
+  <title>Speech Recognition</title>
 </head>
 <body>
-      <button id = "start" onclick="startRecognition()">Start Recognition</button>
-      <button id = "end" onclick="stopRecognition()">Stop Recognition</button>
-      <p id = "output"></p>
+  <button id="start">Start Recognition</button>
+  <button id="end">Stop Recognition</button>
+  <p id="output"></p>
 
-      <script>
-            const output = document.getElementById('output');
-            let recognition;
+  <script>
+    const output = document.getElementById('output');
+    let recognition;
 
-            function startRecognition() {
-                  recognition = new webkitSpeechRecognition() || new SpeechRecognition();
-                  recognition.lang = 'en-US';
-                  recognition.continuous = true;
+    const startButton = document.getElementById('start');
+    startButton.addEventListener('click', async () => {
+      try {
+        const permission = await navigator.permissions.query({ name: 'microphone' });
+        if (permission.state !== 'granted') {
+          output.textContent = "Microphone permission is required.";
+          return;
+        }
+        startRecognition();
+      } catch (error) {
+        console.error("Error requesting microphone permission:", error);
+        output.textContent = "Error: " + error;
+      }
+    });
 
-                  recognition.onresult = function(event) {
-                  const transcript = event.results[event.results.length - 1][0].transcript; 
-                  output.textContent += transcript;                       
-                  };
+    function startRecognition() {
+      recognition = new webkitSpeechRecognition() || new SpeechRecognition();
+      recognition.lang = 'en-US';
+      recognition.continuous = true;
 
-            recognition.onend = function() {
-                  recognition.start();
-            };
-            recognition.start();
-            }
+      recognition.onresult = function(event) {
+        const transcript = event.results[event.results.length - 1][0].transcript;
+        output.textContent += transcript + " "; // Add space after transcript
+      };
 
-            function stopRecognition() {
-                  recognition.stop();
-                  output.innerHTML = ""
-            }
-      </script>
+      recognition.onerror = function(event) {
+        console.error("Speech recognition error:", event.error);
+        output.textContent = "Error: " + event.error;
+      };
+
+      recognition.start();
+    }
+
+    function stopRecognition() {
+      recognition.stop();
+      output.innerHTML = ""; // Clear output on stop
+    }
+
+    const endButton = document.getElementById('end');
+    endButton.addEventListener('click', stopRecognition);
+  </script>
 </body>
 </html>
