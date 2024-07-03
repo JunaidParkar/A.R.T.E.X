@@ -1,0 +1,178 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  background: #1a121c;
+  color: rgb(211, 211, 211);
+  overflow: auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: 10px;
+  padding-top: 15px;
+  gap: 10px;
+  height: 60px;
+  background: #271a2a73;
+}
+
+.header img {
+  width: 35px;
+}
+
+.header h3 {
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.header ul {
+  margin-left: 30px;
+  float: right;
+  display: none;
+}
+
+.header ul li {
+  list-style: none;
+  background: rgba(255, 255, 255, 0.145);
+  padding: 5px 13px;
+  border-radius: 5px;
+  font-size: 11px;
+  letter-spacing: 0.8px;
+  font-weight: 400;
+  color: rgb(186, 186, 186);
+}
+
+.commands {
+  padding: 10px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.commands .user {
+  display: flex;
+  align-items: start;
+  gap: 5px;
+}
+
+.commands .user span {
+  color: rgb(197, 134, 255);
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  font-size: 13px;
+}
+
+.commands .user span big {
+  font-size: 13px;
+  margin-left: 3px;
+}
+
+.commands .user p {
+  width: 100%;
+  outline: none;
+  font-size: 13px;
+  letter-spacing: 1px;
+  outline: none;
+  color: rgb(184, 184, 184);
+}
+
+.commands .computer {
+  margin-top: 10px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: rgb(119, 119, 119);
+  margin-bottom: 10px;
+}
+
+.commands {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  height: calc(100vh - 60px);
+}
+
+#history {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#inputs,
+#history .inp {
+  display: flex;
+  gap: 10px;
+  align-items: start;
+}
+
+#inputs p,
+textarea,
+#history .inp p,
+.output {
+  font-size: 13px;
+  line-height: 15px;
+  letter-spacing: 1px;
+  font-weight: 300;
+  color: rgb(197, 134, 255);
+}
+
+.output {
+  color: white;
+}
+
+.output table tr td, .output table tr th {
+  padding: 15px 12px;
+  border: 1px dashed rgb(255, 255, 255);
+  color: rgba(255, 255, 255, 0.77);
+  font-size: 12px;
+  font-weight: lighter;
+}
+
+.output table tr th {
+  font-weight: bold;
+  color: rgba(255, 0, 0, 0.721);
+}
+
+.output table {
+  border-collapse: collapse;
+  margin: 20px 0;
+  margin-bottom: 0;
+}
+
+.output ul,
+.output ol {
+  margin: 20px 0 0 20px;
+}
+
+.output ul li,
+.output ol li {
+  padding: 10px;
+  color: rgba(255, 255, 255, 0.77);
+  font-size: 12px;
+}
+
+.error {
+  color: rgba(255, 0, 0, 0.721);
+}
+
+textarea {
+  background: transparent;
+  border: 0;
+  outline: none;
+  resize: none;
+  width: 90%;
+}

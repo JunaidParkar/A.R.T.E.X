@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Speech Recognition</title>
+</head>
+<body>
+  <button id="start">Start Recognition</button>
+  <button id="end">Stop Recognition</button>
+  <p id="output"></p>
+
+  <script>
+    const output = document.getElementById('output');
+    let recognition;
+
+    const startButton = document.getElementById('start');
+    startButton.addEventListener('click', async () => {
+      try {
+        const permission = await navigator.permissions.query({ name: 'microphone' });
+        if (permission.state !== 'granted') {
+          output.textContent = "Microphone permission is required.";
+          return;
+        }
+        startRecognition();
+      } catch (error) {
+        console.error("Error requesting microphone permission:", error);
+        output.textContent = "Error: " + error;
+      }
+    });
+
+    function startRecognition() {
+      recognition = new webkitSpeechRecognition() || new SpeechRecognition();
+      recognition.lang = 'en-US';
+      recognition.continuous = true;
+
+      recognition.onresult = function(event) {
+        const transcript = event.results[event.results.length - 1][0].transcript;
+        output.textContent += transcript + " "; // Add space after transcript
+      };
+
+      recognition.onerror = function(event) {
+        console.error("Speech recognition error:", event.error);
+        output.textContent = "Error: " + event.error;
+      };
+
+      recognition.start();
+    }
+
+    function stopRecognition() {
+      recognition.stop();
+      output.innerHTML = ""; // Clear output on stop
+    }
+
+    const endButton = document.getElementById('end');
+    endButton.addEventListener('click', stopRecognition);
+  </script>
+</body>
+</html>

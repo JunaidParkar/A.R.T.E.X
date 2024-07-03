@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Artex</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../css/common.css" />
+    <link
+      href="../../Common/remixicon.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="app">
+      <div class="sidebar" id="sidebar">
+        <img
+          src="./assets/logo.png"
+          alt=""
+          class="logo"
+        />
+        <img
+          src="./assets/user.png"
+          alt=""
+          class="avatar"
+        />
+      </div>
+      <div class="chat" id="chat">
+        <header>
+          Chats <i class="ri-menu-4-line" onclick="open_sidebar_options()"></i>
+        </header>
+
+        <div class="messages" id="messages-box">
+          <div class="ai">
+            <img src="./assets/bot.png" alt="" />
+            <div>
+              <p>hello world</p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit
+              quasi nulla porro animi sint nihil totam esse illum tempore
+              voluptates.
+            </div>
+          </div>
+        </div>
+
+        <div class="input">
+          <i class="ri-mic-fill"></i>
+          <input type="text" id="chat-input" placeholder="Type your query here" />
+          <i class="ri-send-plane-2-fill" id="sendQuery" style="cursor: pointer;"></i>
+        </div>
+      </div>
+      <div class="options" id="options">
+        <p class="optionsTitle">
+          Quick Questions
+          <i class="ri-close-fill" onclick="close_sidebar_options()"></i>
+        </p>
+
+        <ul>
+          <li>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Exercitationem, temporibus.
+          </li>
+          <li>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias,
+            sunt.
+          </li>
+          <li>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus,
+            vitae!.
+          </li>
+          <li>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Incidunt,
+            totam!
+          </li>
+        </ul>
+
+        <div class="card">
+          <p>
+            <b>visit out portfolio</b>
+            <span><i class="ri-sparkling-fill"></i></span>
+          </p>
+          <p>
+            Lorem, ipsum dolor sit amet consec adipisicing elit. Commodi, esse?
+            Corrupti voluptatum consectetu
+          </p>
+          <button>Visit now</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      function open_sidebar_options() {
+        document.getElementById("chat").style.display = "none";
+        document.getElementById("sidebar").style.display = "flex";
+        document.getElementById("options").style.display = "block";
+      }
+    
+      function close_sidebar_options() {
+        document.getElementById("chat").style.display = "block";
+        document.getElementById("sidebar").style.display = "none";
+        document.getElementById("options").style.display = "none";
+      }
+    </script>
+    <!-- <script src="../../eel.js"></script> -->
+    <script src="./script.js"></script>
+  </body>
+</html>

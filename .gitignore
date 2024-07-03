@@ -1,0 +1,6 @@
+/ar/*
+ar/*
+/__pycache__/*
+__pycache__/*
+.env
+server/node_modules/*

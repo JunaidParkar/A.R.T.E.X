@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terminal</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="app">
+    <!-- header starts -->
+    <div class="header">
+      <img src="./assets/logo.png" alt="" class="logo" />
+      <h3>Terminal</h3>
+      <ul>
+        <li>command</li>
+      </ul>
+    </div>
+    <!-- header ends -->
+
+    <!-- command prompt container starts -->
+    <div id="cmdContainer" class="commands">
+      <!-- history and outputs here -->
+      <div id="history">
+        <!-- input history by user -->
+        <div class="inp">
+          <p>artex ></p>
+          <p>artex --h</p>
+        </div>
+        <!-- output result here -->
+        <div class="output">
+          <p class="error">
+            'artex --h' is not recognized as an internal or external command,
+            operable program or batch file.
+          </p>
+        </div>
+        <!-- output result here -->
+        <div class="output">
+          <table>
+            <tr>
+              <td>hello Lorem ipsum dolor sit.</td>
+              <td>\Lorem.</td>
+              <td>Lorem ipsum dolor sit amet consectetur.</td>
+            </tr>
+            <tr>
+              <td>Lorem, ipsum dolor.</td>
+              <td>Lorem ipsum dolor sit.</td>
+              <td>Lorem ipsum dolor sit amet consectetur.</td>
+            </tr>
+            <tr>
+              <td>Lorem ipsum dolor sit, amet consectetur </td>
+              <td>Lorem ipsum dolor sit amet consectetur.</td>
+              <td>Lorem ipsum dolor sit amet consectetur.</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="output">
+          <ul>
+            <li>Lorem, ipsum dolor.</li>
+            <li>Lorem, ipsum dolor.</li>
+            <li>Lorem, ipsum dolor.</li>
+            <li>Lorem, ipsum dolor.</li>
+            <li>Lorem, ipsum dolor.</li>
+          </ul>
+        </div>
+
+        <div class="output">
+          <ol>
+            <li>Lorem, ipsum dolor.</li>
+            <li>Lorem, ipsum dolor.</li>
+            <li>Lorem, ipsum dolor.</li>
+            <li>Lorem, ipsum dolor.</li>
+            <li>Lorem, ipsum dolor.</li>
+          </ol>
+        </div>
+
+      </div>
+      <div id="inputs">
+        <p>artex ></p>
+        <textarea rows="1" cols="1" type="text" name="" id="cmdInp" onkeyup="checkInput()" autocomplete="off"
+          autofocus></textarea>
+      </div>
+    </div>
+    <!-- command prompt container ends -->
+  </div>
+
+  <script src="./CREngine.js"></script>
+  <script src="./cmd.js"></script>
+  <script src="./script.js"></script>
+</body>
+
+</html>
