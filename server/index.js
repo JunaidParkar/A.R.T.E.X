@@ -1,34 +1,23 @@
-// const { GoogleGenerativeAI } = require("@google/generative-ai");
-// import { GoogleGenerativeAI } from '@google/generative-ai';
-import { config as cfg } from 'dotenv';
-cfg()
+import express from 'express';
+import { GAN } from "./ai.js"
+import bodyParser from 'body-parser';
 
-// Access your API key as an environment variable (see "Set up your API key" above)
-// const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+// Create an instance of an Express application
+const app = express();
 
-// const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-// console.log(genAI.getGenerativeModel())
+app.use(bodyParser.json())
 
-import axios from 'axios';
+// Define a port to listen on
+const port = process.env.PORT || 3000;
 
-async function getModels() {
-    try {
-        const response = await axios.get('https://api.makersuit.com/generative-ai/models', {
-            // Add any necessary headers or authentication tokens
-            headers: {
-                'Authorization': 'Bearer YOUR_ACCESS_TOKEN',
-                'Content-Type': 'application/json'
-            }
-        });
+// Define a route handler for the default home page
+app.post('/generateResponse', async(req, res) => {
+    console.log(req.headers)
+    let response = await GAN(req.body.prompt)
+    res.json({ "response": response });
+});
 
-        console.log('List of available models:');
-        console.log(response.data);
-
-    } catch (error) {
-        console.error('Error fetching models:', error.response ? error.response.data : error.message);
-    }
-}
-
-console.log(process.env.ABC)
-
-getModels();
+// Start the server and listen on the specified port
+app.listen(port, () => {
+    console.log(`Server is running at http://localhost:${port}`);
+});
