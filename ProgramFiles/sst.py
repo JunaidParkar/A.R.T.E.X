@@ -18,22 +18,26 @@ service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=chrome_options)
 driver.get(Link)
 
-def translate_to_english(text):
-      return translate(to_translate=text, to_language="en-us")
+def translate_to(text):
+      return translate(text, "en-us")
 
 def SpeechRecognitionModel():
       driver.find_element(by=By.ID,value="start").click()
-      print("Listening...", flush=True)
+      print("Listening...")
       while True:
             try:
                   Text = driver.find_element(by=By.ID,value="output").text
                   if Text:
-                        print(translate_to_english(Text))
                         driver.find_element(by=By.ID,value="end").click()
-                        return translate_to_english(Text)
-
+                        print(translate_to(Text))
+                        # return Text
+                        sleep(0.333)
                   else:
+                        # print("no text")
                         sleep(0.333)
 
-            except:
-                  pass
+            except Exception as e:
+                  print(e)
+                  return
+
+SpeechRecognitionModel()

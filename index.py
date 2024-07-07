@@ -19,11 +19,15 @@ def startApp():
 
 if __name__ == "__main__":
     # Run Eel in a separate thread
-    gui_thread = threading.Thread(target=startApp)
+    # gui_thread = threading.Thread(target=startApp)
+    ev = threading.Event()
     sst_thread = threading.Thread(target=SpeechRecognitionModel)
-    print("Eel window started in a separate thread")
-    gui_thread.start()
+    # print("Eel window started in a separate thread")
+    # gui_thread.start()
     sst_thread.start()
+    eel.start("artex.ui/index.html")
+    # ev.set()
+    # sst_thread.join()
     # Main thread continues to run other tasks if needed
-    while True:
-        time.sleep(1)
+    # while True:
+    #     time.sleep(1)
