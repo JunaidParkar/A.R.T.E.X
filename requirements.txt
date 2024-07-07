@@ -1,14 +1,12 @@
 pyzipper
-google.generativeai
-pyttsx3
 markdown
 nltk
 numpy
-eel 
+eel
 cryptography
 selenium
 webdriver-manager
 mtranslate
 nltk
 requests
-pyqrcode
+pillow

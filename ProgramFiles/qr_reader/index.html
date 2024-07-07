@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Reader</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>QR Code Reader</h1>
+    <input type="file" id="fileInput" accept="image/png, image/jpeg">
+    <img id="qrImage" alt="QR Code Image" style="display: none;">
+    <canvas id="canvas" hidden></canvas>
+    <p id="result"></p>
+    <script src="./jsqr.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -44,22 +44,19 @@ class Model():
 
     def getResponse(self, query: str):
         query = [self.stem(wrd) for wrd in self.tokenize(query)]
-        print(query)
         filtered_query = self.filter_words(query)
         percentile = self.wordPercentageCalculator(filtered_query)
 
         if percentile[0] == -1:
-            return -1
+            return None
         max_percentage = max(percentile, key=lambda x: x[0])
-        print(max_percentage)
         if max_percentage[0] >= float(75):
             tag = max_percentage[1]
-            print(tag)
             response = random.choice(self.response[0][tag])
-            print(response)
-        else: print(None)
+            return response
+        else: return None
 
 a = Model()
 a.loadData()
 # a.getResponse("what is the update on weather tomorrow")
-a.getResponse("go to sleep")
+a.getResponse("go to sleepinklfinw q3 fk.wn fw ")
