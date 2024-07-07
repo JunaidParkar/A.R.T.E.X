@@ -91,9 +91,10 @@ const rightClick = (e) => {
 
 // get colour from image
 
-const getMaximumColorFromBackgroundAndSetText = (element, textElement) => {
+const getMaximumColorFromBackgroundAndSetText = (element, textElement, searchBtn) => {
     element = document.querySelector(element);
     textElement = document.getElementById(textElement);
+    searchBtn = document.getElementById(searchBtn)
     const backgroundImage = getComputedStyle(element).backgroundImage;
     const imageUrl = backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/, "$1");
     const img = new Image();
@@ -116,6 +117,7 @@ const getMaximumColorFromBackgroundAndSetText = (element, textElement) => {
             }
         }
         textElement.style.color = `rgb(${maxBrightnessPixel[0]}, ${maxBrightnessPixel[1]}, ${maxBrightnessPixel[2]})`;
+        searchBtn.style.background = `rgb(${maxBrightnessPixel[0]}, ${maxBrightnessPixel[1]}, ${maxBrightnessPixel[2]})`;
     };
 };
 
@@ -140,7 +142,7 @@ const time = function() {
 
     var dayIndex = currentDate.getDay();
     document.getElementById("day").innerHTML = dayNames[dayIndex];
-    getMaximumColorFromBackgroundAndSetText(".mainwindow", "date");
+    getMaximumColorFromBackgroundAndSetText(".mainwindow", "date", "sidebarToggler");
 };
 
 // toggle sidebar

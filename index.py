@@ -1,5 +1,6 @@
 import eel
 from ProgramFiles.sq import AppRegistry
+from ProgramFiles.sst import SpeechRecognitionModel
 import threading
 import time
 
@@ -18,9 +19,11 @@ def startApp():
 
 if __name__ == "__main__":
     # Run Eel in a separate thread
-    threading.Thread(target=startApp).start()
+    gui_thread = threading.Thread(target=startApp)
+    sst_thread = threading.Thread(target=SpeechRecognitionModel)
     print("Eel window started in a separate thread")
-
+    gui_thread.start()
+    sst_thread.start()
     # Main thread continues to run other tasks if needed
     while True:
         time.sleep(1)
