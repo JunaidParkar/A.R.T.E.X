@@ -41,3 +41,8 @@ window.addEventListener("click", leftClick)
 setInterval(time(), 1000);
 
 // display date on home screen end
+
+window.onbeforeunload = e => {
+    e.preventDefault()
+    eel.closeApp()
+}

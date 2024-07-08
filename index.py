@@ -1,8 +1,9 @@
 import eel
 from ProgramFiles.sq import AppRegistry
-from ProgramFiles.sst import SpeechRecognitionModel
+from ProgramFiles.sst import SpeechRecognitionModel, StopRecognition
 import threading
 import time
+import sys
 
 eel.init("./System/Data")
 
@@ -12,22 +13,20 @@ def getAllAppsForDisplay():
     app_list = apps.get_allApps()
     print(app_list)
 
-# allApps = getAllAppsForDisplay()
+def run_sst():
+    try:
+        SpeechRecognitionModel()
+    except Exception as e:
+        print(f"Error in SST thread: {e}")
 
-def startApp():
-    eel.start("artex.ui/index.html")
+@eel.expose
+def closeApp():
+    StopRecognition()
+    sst_thread
+    sys.exit()
 
 if __name__ == "__main__":
-    # Run Eel in a separate thread
-    # gui_thread = threading.Thread(target=startApp)
-    ev = threading.Event()
-    sst_thread = threading.Thread(target=SpeechRecognitionModel)
-    # print("Eel window started in a separate thread")
-    # gui_thread.start()
+    sst_thread = threading.Thread(target=run_sst)
+
     sst_thread.start()
     eel.start("artex.ui/index.html")
-    # ev.set()
-    # sst_thread.join()
-    # Main thread continues to run other tasks if needed
-    # while True:
-    #     time.sleep(1)

@@ -17,14 +17,22 @@ chrome_options.add_argument("--use-fake-device-for-media-stream")
 service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=chrome_options)
 driver.get(Link)
+work = True
 
 def translate_to(text):
       return translate(text, "en-us")
 
+def StopRecognition():
+      global work
+      work = False
+      driver.quit()
+
 def SpeechRecognitionModel():
+      global work
       driver.find_element(by=By.ID,value="start").click()
       print("Listening...")
-      while True:
+      while work:
+            print(work)
             try:
                   Text = driver.find_element(by=By.ID,value="output").text
                   if Text:
@@ -38,6 +46,7 @@ def SpeechRecognitionModel():
 
             except Exception as e:
                   print(e)
+                  work = False
                   return
-
-SpeechRecognitionModel()
+      print("stopping")
+      driver.quit()
