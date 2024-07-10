@@ -1,4 +1,5 @@
-from ProgramFiles import Speaker, EnvironmentDatabase, Model
+from ProgramFiles import Speaker, EnvironmentDatabase, Model, LogWritter
+
 
 
 import eel
@@ -37,7 +38,9 @@ if __name__ == "__main__":
     # env.create_variable("Intent_quotions", r"C:\Users\verix\Documents\xampp\htdocs\A.R.T.E.X\System\Community\intent_quotions.bin")
     # env.create_variable("Intent_answers", r"C:\Users\verix\Documents\xampp\htdocs\A.R.T.E.X\System\Community\intent_answers.bin")
     # env.close_connection()
-    ar = Model()
-    ar.loadData()
-    print(ar.getResponse("hello"))
+    # ar = Model()
+    # ar.loadData()
+    # print(ar.getResponse("hello"))
+    l = LogWritter("hy.txt")
+    print(l.__fileName)
     pass

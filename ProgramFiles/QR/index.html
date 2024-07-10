@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Scanner</title>
+</head>
+<body>
+    <h1>QR Code Scanner</h1>
+    
+    <!-- Video stream from camera -->
+    <video id="qr-video" width="300" height="300" autoplay style="display: none;"></video>
+    
+    <!-- Canvas for drawing QR code and highlight -->
+    <canvas id="qr-canvas" width="300" height="300"></canvas>
+    
+    <!-- Input for uploading QR code image -->
+    <input type="file" id="qr-input">
+    
+    <!-- Display scanned QR code text -->
+    <div id="qr-result"></div>
+    
+    <!-- Script to use jsQR library -->
+    <script src="jsqr.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
