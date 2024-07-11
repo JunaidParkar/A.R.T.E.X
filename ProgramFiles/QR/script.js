@@ -10,11 +10,16 @@ let scanning = false;
 
 // Function to start camera-based scanning
 function startCamera() {
-    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } })
         .then(function (stream) {
             video.srcObject = stream;
-            scanning = true;
-            scanCode();
+            video.play();
+            video.addEventListener('loadedmetadata', function() {
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                scanning = true;
+                scanCode();
+            });
         })
         .catch(function (error) {
             console.error('Error accessing camera:', error);
@@ -38,9 +43,9 @@ function scanCode() {
         qrResult.textContent = code.data;
         scanning = false;
         video.pause();
+    } else {
+        requestAnimationFrame(scanCode);
     }
-
-    requestAnimationFrame(scanCode);
 }
 
 // Function to draw a line on the canvas

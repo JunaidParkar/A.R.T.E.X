@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>File Drag and Drop</title>
+  <style>
+    #dropzone {
+      width: 300px;
+      height: 200px;
+      border: 2px dashed #000;
+      text-align: center;
+      line-height: 200px;
+      margin: 20px auto;
+      color: #aaa;
+    }
+    #dropzone.dragover {
+      border-color: #00f;
+      color: #00f;
+    }
+  </style>
+</head>
+<body>
+  <div id="dropzone">Drop files here</div>
+  <ul id="fileList"></ul>
+
+  <script>
+    const dropzone = document.getElementById('dropzone');
+    const fileList = document.getElementById('fileList');
+
+    dropzone.addEventListener('dragover', (event) => {
+      event.preventDefault();
+      dropzone.classList.add('dragover');
+    });
+
+    dropzone.addEventListener('dragleave', () => {
+      dropzone.classList.remove('dragover');
+    });
+
+    dropzone.addEventListener('drop', (event) => {
+      event.preventDefault();
+      dropzone.classList.remove('dragover');
+
+      const files = event.dataTransfer.files;
+      handleFiles(files);
+    });
+
+    function handleFiles(files) {
+      fileList.innerHTML = ''; // Clear any existing file list
+
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const li = document.createElement('li');
+        li.textContent = `File: ${file.name} (${file.type}, ${file.size} bytes)`;
+        fileList.appendChild(li);
+      }
+    }
+  </script>
+</body>
+</html>

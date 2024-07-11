@@ -4,15 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QR Code Scanner</title>
+    <style>
+        #qr-video, #qr-canvas {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            max-height: 500px;
+        }
+    </style>
 </head>
 <body>
     <h1>QR Code Scanner</h1>
     
     <!-- Video stream from camera -->
-    <video id="qr-video" width="300" height="300" autoplay style="display: none;"></video>
+    <video id="qr-video" autoplay style="display: none;"></video>
     
     <!-- Canvas for drawing QR code and highlight -->
-    <canvas id="qr-canvas" width="300" height="300"></canvas>
+    <canvas id="qr-canvas"></canvas>
     
     <!-- Input for uploading QR code image -->
     <input type="file" id="qr-input">
