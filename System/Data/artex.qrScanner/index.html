@@ -8,17 +8,20 @@
 </head>
 <body>
     
-    <div class="main_container">
+    <div class="main_container drag" id="main_camera">
         <div></div>
         <div></div>
         <div></div>
         <div></div>
         <video id="video"></video>
         <canvas id="canvas"></canvas>
+        <input type="file" name="" id="file_inp">
+        <ul id="file_list"></ul>
+        <p>Drag your file or click here</p>
     </div>
     <div id="qr_result"></div>
     <div id="scan_with_img_btn">
-        <p>Scan with QR image</p>
+        <p></p>
     </div>
 
     <script src="jsqr.js"></script>
