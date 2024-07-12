@@ -2,7 +2,7 @@ import sqlite3
 
 class EnvironmentDatabase:
     def __init__(self):
-        self.__db_name = r"C:\Users\verix\Documents\xampp\htdocs\A.R.T.E.X\System\Config\variables.db"
+        self.__db_name = r"C:\Users\verix\Documents\xampp\htdocs\A.R.T.E.X\System\Config\registry.db"
         self.__connection = sqlite3.connect(self.__db_name)
         self.__cursor = self.__connection.cursor()
         self.__create_table()
@@ -10,7 +10,7 @@ class EnvironmentDatabase:
     def __create_table(self):
         create_table_sql = """
         CREATE TABLE IF NOT EXISTS environment (
-            id INTEGER PRIMARY KEY,
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
             variable_name TEXT NOT NULL,
             file_path TEXT NOT NULL
         );

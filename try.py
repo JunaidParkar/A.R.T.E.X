@@ -1,7 +1,5 @@
-from ProgramFiles import AppRegistry
-import eel
+from ProgramFiles.AppManager.registry import AppRegistry
 
-@eel.expose
 def get_all_apps():
     a = AppRegistry()
     print(a.read_apps())
@@ -21,6 +19,3 @@ def register_app(app_name, package_name, version, default=0):
 def update_app(id, app_name=None, app_package_name=None, version=None, is_default_app=None):
     a = AppRegistry()
     a.update_app(id, app_name, app_package_name, version, is_default_app)
-
-if __name__ == "__main__":
-    pass

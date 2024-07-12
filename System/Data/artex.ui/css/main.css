@@ -167,8 +167,10 @@ body.main {
     font-weight: normal;
 }
 
-.mainwindow .appWindow .header p {
+.mainwindow .appWindow .header img {
     cursor: pointer;
+    height: 30px;
+    width: 30px;
 }
 
 .mainwindow .appWindow iframe {
@@ -327,13 +329,13 @@ body.main {
     background: rgba(0, 0, 0, .5);
 }
 
-#menuScreen .menu .appList ul li div {
-    width: 30px;
-    height: 30px;
-    background: brown;
+#menuScreen .menu .appList ul li img {
+    width: 25px;
+    height: 25px;
     border-radius: 5px;
-    pointer-events: all;
     cursor: pointer;
+    margin-left: 5px;
+    object-fit: cover;
 }
 
 #menuScreen .menu .appList ul li p {
@@ -346,8 +348,11 @@ body.main {
     font-size: 17px;
     font-weight: normal;
     letter-spacing: 0.3px;
-    pointer-events: all;
     cursor: pointer;
+}
+
+#menuScreen .menu .appList ul li * {
+    pointer-events: none !important;
 }
 
 #menuScreen .menu .otherMenu {

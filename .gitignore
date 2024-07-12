@@ -4,3 +4,4 @@ ar/*
 __pycache__/*
 .env
 server/node_modules/*
+*/__pycache__/*

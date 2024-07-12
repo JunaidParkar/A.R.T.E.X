@@ -1,63 +1,14 @@
-// alphabetical sorting function
 
-const sortAppList = () => {
-    let ul = document.getElementById("sidebarAppList");
-    let lis = Array.from(ul.querySelectorAll("li"));
-    lis.sort((a, b) => {
-        let aText = a.querySelector("p").innerText;
-        let bText = b.querySelector("p").innerText;
-        return aText.localeCompare(bText);
-    });
-    ul.innerHTML = "";
-    lis.forEach(li => {
-        ul.appendChild(li);
-    });
-}
 
-// Search app from list starts
 
-const debounce = (func, wait) => {
-    let timeout;
-    return function(...args) {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, args), wait);
-    };
-};
 
-const searchAppList = (query) => {
-    let ul = document.getElementById("sidebarAppList");
-    let lis = Array.from(ul.querySelectorAll("li"));
-    query = query.toLowerCase();
 
-    if (query === "") {
-        sortAppList();
-        return;
-    }
-
-    lis.sort((a, b) => {
-        let aText = a.querySelector("p").innerText.toLowerCase();
-        let bText = b.querySelector("p").innerText.toLowerCase();
-        let aIndex = aText.indexOf(query);
-        let bIndex = bText.indexOf(query);
-        if (aIndex === -1) return 1;
-        if (bIndex === -1) return -1;
-        return aIndex - bIndex;
-    });
-    ul.innerHTML = "";
-    lis.forEach(li => {
-        ul.appendChild(li);
-    });
-}
-
-const handleSearchInput = debounce((e) => {
-    searchAppList(e.target.value);
-}, 300);
 
 // Search app from list ends
 
 // left click function
 
-const leftClick = async() => {
+const leftClick = async () => {
     document.getElementById("contextMenu").style.display = "none";
 };
 
@@ -99,7 +50,7 @@ const getMaximumColorFromBackgroundAndSetText = (element, textElement, searchBtn
     const imageUrl = backgroundImage.replace(/url\(['"]?(.*?)['"]?\)/, "$1");
     const img = new Image();
     img.src = imageUrl;
-    img.onload = function() {
+    img.onload = function () {
         const canvas = document.createElement("canvas");
         canvas.width = img.width;
         canvas.height = img.height;
@@ -123,7 +74,7 @@ const getMaximumColorFromBackgroundAndSetText = (element, textElement, searchBtn
 
 // get date
 
-const time = function() {
+const time = function () {
     var currentDate = new Date();
     var dayNames = [
         "Sunday",

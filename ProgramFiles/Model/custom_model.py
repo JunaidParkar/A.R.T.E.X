@@ -7,8 +7,8 @@ class Model():
     
     def __init__(self):
         self.__env = EnvironmentDatabase()
-        self.__intent_q = self.__env.get_variable_path("Intent_quotions")
-        self.__intent_a = self.__env.get_variable_path("Intent_answers")
+        self.__intent_q = self.__env.get_variable_path("INTENT_QUOTIONS")
+        self.__intent_a = self.__env.get_variable_path("INTENT_ANSWERS")
         self.__env.close_connection()
 
         self.__db1 = self.__intent_q

@@ -13,8 +13,8 @@ class Speaker():
     def __init__(self):
         self.__env = EnvironmentDatabase()
         self.__html = self.__env.get_variable_path("TTS_HTML")
-        self.__initiator = self.__env.get_variable_path("TTS_Initiator")
-        self.__data_file = self.__env.get_variable_path("TTS_Data")
+        self.__initiator = self.__env.get_variable_path("TTS_INITIATOR")
+        self.__data_file = self.__env.get_variable_path("TTS_DATA")
         self.__env.close_connection()
 
         self.__chrome_options = Options()
