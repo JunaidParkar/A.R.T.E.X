@@ -1,0 +1,7 @@
+{
+    "name": "QR Scanner",
+    "version": "1.0.0",
+    "requiredLibraries": [],
+    "packageName": "artex.qrScanner",
+    "publisher": "A.R.T.E.X Corporation"
+}
