@@ -360,16 +360,16 @@ body.main {
     height: 100%;
     background: rgba(255, 255, 255, .5);
     backdrop-filter: blur(10px);
-    padding: 50px 0;
+    padding: 50px 10px;
     border-radius: 10px;
     display: flex;
-    justify-content: space-around;
-    /* align-items: center; */
+    /* justify-content: space-around; */
     flex-wrap: wrap;
     gap: 30px;
     overflow-y: auto;
     overflow-x: hidden;
 }
+
 
 #menuScreen .menu .otherMenu::-webkit-scrollbar {
     width: 10px;
@@ -384,13 +384,17 @@ body.main {
 }
 
 #menuScreen .menu .otherMenu .recentApp {
-    width: calc(100%/3);
-    aspect-ratio: 2/1;
+    width: calc((100% / 3) - 20px);
+    aspect-ratio: 13 / 9;
     border-radius: 10px;
     background: rgba(0, 0, 0, .5);
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; */
+    flex-grow: 0 !important;
+    flex-shrink: 0 !important;
+    /* flex-flow: ; */
+    /* max-height: 200px; Ensure the height is calculated based on the aspect ratio */
 }
 
 #menuScreen .menu .otherMenu .recentApp div:first-child {
@@ -405,12 +409,16 @@ body.main {
 #menuScreen .menu .otherMenu .recentApp div:first-child h3 {
     font-size: 17px;
     font-weight: normal;
+    color: white;
+    letter-spacing: 1px;
 }
 
-#menuScreen .menu .otherMenu .recentApp div:first-child p {
-    font-size: 17px;
+#menuScreen .menu .otherMenu .recentApp div:first-child img {
+    /* font-size: 17px;
     font-weight: normal;
-    font-family: cursive;
+    font-family: cursive; */
+    height: 100%;
+    aspect-ratio: 1/1;
     cursor: pointer;
 }
 
@@ -419,6 +427,14 @@ body.main {
     height: calc(100% - 35px);
     border-radius: 10px;
     background: white;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+#menuScreen .menu .otherMenu .recentApp div:last-child iframe {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
 }
 
 #menuScreen .menu .otherMenu .noAppsOpened {

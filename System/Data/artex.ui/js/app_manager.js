@@ -1,3 +1,5 @@
+let active_apps = []
+
 // alphabetical sorting function
 
 const sortAppList = () => {
@@ -83,9 +85,32 @@ const app_window_maker = (name, path) => {
     return div1
 }
 
+const recent_app_update = (data) => {
+    let div = document.createElement("div")
+    div.classList.add("recentApp")
+    let div1 = document.createElement("div")
+    let h3 = document.createElement("h3")
+    h3.textContent = data[1]
+    let img = document.createElement("img")
+    img.src = "./assets/icons/close.png"
+    let div2 = document.createElement("div")
+    let iframe = document.createElement("iframe")
+    iframe.src = `../${data[2]}/index.html`
+
+    div1.appendChild(h3)
+    div1.appendChild(img)
+    div2.appendChild(iframe)
+
+    div.appendChild(div1)
+    div.appendChild(div2)
+    document.getElementById("recentMenu").appendChild(div)
+}
+
 const app_opener = (e) => {
-    console.log(e.target.dataset.name)
+    let data = [e.target.dataset.id, e.target.dataset.name, e.target.dataset.package, e.target.dataset.version]
+    active_apps.push(data)
     document.getElementById("app_container").appendChild(app_window_maker(e.target.dataset.name, `../${e.target.dataset.package}/index.html`))
+    recent_app_update(data)
 }
 
 const add_app_to_menubar = () => {
