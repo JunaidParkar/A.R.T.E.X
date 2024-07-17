@@ -10,3 +10,4 @@ mtranslate
 nltk
 requests
 pillow
+ArtexTTS
