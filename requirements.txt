@@ -11,3 +11,5 @@ nltk
 requests
 pillow
 ArtexTTS
+ArtexPing
+ArtexSTT
