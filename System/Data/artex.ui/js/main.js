@@ -1,7 +1,7 @@
 // sidebar toggler start
 
 sidebarToggler()
-sortAppList()
+app.sort_app()
 
 document.getElementById("sidebarToggler").onclick = () => {
     sidebarActive = !sidebarActive
