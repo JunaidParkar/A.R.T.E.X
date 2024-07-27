@@ -13,3 +13,4 @@ pillow
 ArtexTTS
 ArtexPing
 ArtexSTT
+ArtexConfigure
