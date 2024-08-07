@@ -13,30 +13,58 @@ import { config } from "dotenv";
 config()
 
 const apiKey = process.env.ABC;
-const genAI = new GoogleGenerativeAI(apiKey);
 
-const model = genAI.getGenerativeModel({
-    model: "gemini-1.5-flash",
-});
 
-const generationConfig = {
-    temperature: 1,
-    topP: 0.95,
-    topK: 64,
-    maxOutputTokens: 8192,
-    responseMimeType: "text/plain",
-};
-
-async function GAN(prompt) {
-    const chatSession = model.startChat({
+const GAN = async(prompt) => {
+    let genAI = new GoogleGenerativeAI(apiKey);
+    let model = genAI.getGenerativeModel({
+        model: "gemini-1.5-flash",
+    });
+    let generationConfig = {
+        temperature: 1,
+        topP: 0.95,
+        topK: 64,
+        maxOutputTokens: 8192,
+        responseMimeType: "text/plain",
+    };
+    let chatSession = model.startChat({
         generationConfig,
-        // safetySettings: Adjust safety settings
-        // See https://ai.google.dev/gemini-api/docs/safety-settings
         history: [],
     });
-
-    const result = await chatSession.sendMessage(prompt);
+    let result = await chatSession.sendMessage(prompt);
     return result.response.text();
 }
 
-export { GAN }
+const extractInformation = async(userInput) => {
+    let genAI = new GoogleGenerativeAI(apiKey);
+    let model = genAI.getGenerativeModel({
+        model: "gemini-1.5-flash",
+    });
+    const prompt = `
+    Extract the task, date, and time from the following input. If the date is not specified, write null. If time is not specified write null. If task is not specified write null. Time should be in 24 hours format
+    
+    Input: ${userInput}
+    
+    Output:
+    Task: 
+    Date: 
+    Time: 
+    `;
+    let generationConfig = {
+        temperature: 1,
+        topP: 0.95,
+        topK: 64,
+        maxOutputTokens: 8192,
+        responseMimeType: "application/json",
+    };
+    let session = model.startChat({ generationConfig, history: [] });
+    const response = await session.sendMessage(prompt)
+    const outputText = JSON.parse(response.response.text());
+    const task = outputText["Task"];
+    const date = outputText["Date"]
+    const time = outputText["Time"]
+
+    return { task, date, time };
+}
+
+export { GAN, extractInformation }
