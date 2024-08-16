@@ -41,7 +41,7 @@ const extractInformation = async(userInput) => {
         model: "gemini-1.5-flash",
     });
     const prompt = `
-    Extract the task, date, and time from the following input. If the date is not specified, write null. If time is not specified write null. If task is not specified write null. Time should be in 24 hours format
+    Extract the task, date, and time from the following input. If the date is not specified, write unspecified as string or if date is 'today or 'tomorrow' write it as it is and if the date and month is give then consider the year as 2024 and format as yyyy-mm-dd. If time is not specified write unspecified as string. If task is not specified write unspecified as string. Time should be in 24 hours format.
     
     Input: ${userInput}
     

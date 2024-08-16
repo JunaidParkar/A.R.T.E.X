@@ -27,12 +27,14 @@ class AppRegistry:
                 VALUES (?, ?, ?, ?)
             ''', (app_name, app_package_name, version, is_default_app))
             conn.commit()
+            conn.close()
 
     def get_app(self, app_package_name):
         with sqlite3.connect(self.__db_name) as conn:
             cursor = conn.cursor()
             cursor.execute('SELECT * FROM apps WHERE app_package_name = ?', (app_package_name,))
             app = cursor.fetchone()
+            conn.close()
             return app
 
     def read_apps(self):
@@ -40,6 +42,7 @@ class AppRegistry:
             cursor = conn.cursor()
             cursor.execute('SELECT * FROM apps')
             apps = cursor.fetchall()
+            conn.close()
             return apps
 
     def update_app(self, app_id, app_name=None, app_package_name=None, version=None, is_default_app=None):
@@ -70,9 +73,11 @@ class AppRegistry:
                     WHERE id = ?
                 ''', (is_default_app, app_id))
             conn.commit()
+            conn.close()
 
     def delete_app(self, packageName):
         with sqlite3.connect(self.__db_name) as conn:
             cursor = conn.cursor()
             cursor.execute('DELETE FROM apps WHERE app_package_name = ?', (packageName,))
             conn.commit()
+            conn.close()
