@@ -1,2 +1,2 @@
 from .registry import AppRegistry
-from .pkgInstaller import Installer
+from .pkgInstaller import pkgManager

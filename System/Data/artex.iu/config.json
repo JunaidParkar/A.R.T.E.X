@@ -1,8 +1,0 @@
-{
-    "name": "ui",
-    "version": "1.0.0",
-    "requiredLibraries": ["cursor.js", "chart.js", "gsap.js"],
-    "packageName": "artex.ui",
-    "publisher": "A.R.T.E.X Corporation",
-    "includeDir": ["js", "src", "css"]
-}

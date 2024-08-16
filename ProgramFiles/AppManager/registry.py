@@ -71,8 +71,8 @@ class AppRegistry:
                 ''', (is_default_app, app_id))
             conn.commit()
 
-    def delete_app(self, app_id):
+    def delete_app(self, packageName):
         with sqlite3.connect(self.__db_name) as conn:
             cursor = conn.cursor()
-            cursor.execute('DELETE FROM apps WHERE id = ?', (app_id,))
+            cursor.execute('DELETE FROM apps WHERE app_package_name = ?', (packageName,))
             conn.commit()
