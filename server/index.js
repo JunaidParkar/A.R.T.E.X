@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.json())
 
 // Define a port to listen on
-const port = process.env.PORT || 3000;
+const port = 3000;
 
 // Define a route handler for the default home page
 app.post('/generateResponse', async(req, res) => {
