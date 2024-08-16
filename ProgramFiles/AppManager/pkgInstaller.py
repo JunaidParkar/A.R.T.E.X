@@ -6,7 +6,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).parent.parent))
 from EnvPaths.editor import EnvironmentDatabase
 from AppManager.registry import AppRegistry
-from Zipper.z import unzip_folder
+from ProgramFiles.Zipper.zip import unzip_folder
 
 class pkgManager:
     def __init__(self) -> None:
