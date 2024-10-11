@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100dvh;
+    background: black;
+    color: white;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    position: relative;
+}
+
+.bg1 {
+    background: url(../assets/bg/bg1.png);
+}
+.bg2 {
+    background: url(../assets/bg/bg2.png);
+}
+.bg3 {
+    background: url(../assets/bg/bg3.png);
+}
+.bg4 {
+    background: url(../assets/bg/bg4.png);
+}
+
+/* taskbar starts */
+
+#taskbar {
+    width: 100%;
+    height: 70px;
+    background: white;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 499;
+}
+
+/* taskbar ends */
