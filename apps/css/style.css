@@ -1,3 +1,17 @@
+@font-face {
+    font-family: 'poppins_regular'; /* Give your font a name */
+    src: url('../assets/fonts/Poppins-Regular.ttf') format('truetype'); /* Adjust the path as needed */
+    font-weight: normal; /* Normal weight */
+    /* font-style: normal; Normal style */
+}
+
+@font-face {
+    font-family: 'poppins_light'; /* Give your font a name */
+    src: url('../assets/fonts/Poppins-Regular.ttf') format('truetype'); /* Adjust the path as needed */
+    font-weight: light; /* Normal weight */
+    /* font-style: normal; Normal style */
+}
+
 *{
     margin: 0;
     padding: 0;
@@ -112,16 +126,18 @@ body {
     height: 500px;
     background: red;
     position: fixed;
+    z-index: 499;
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
     border-radius: 10px;
-    padding: 15px;
+    padding: 5px;
 }
 
 #search_innput_section {
     width: 100%;
     height: 50px;
+    padding: 10px;
     padding-bottom: 15px;
 }
 
@@ -133,4 +149,131 @@ body {
     background: transparent;
 }
 
+#all_apps_container {
+    width: 100%;
+    height: calc(100% - 50px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px;
+}
+
+#all_apps_container::-webkit-scrollbar {
+    width: 10px;
+    height: 100%;
+    margin-right: 10px;
+}
+
+#all_apps_container::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+#all_apps_container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, .7);
+    border-radius: 50px;
+}
+
+#app_container {
+    width: 250px;
+    height: 50px;
+    border-radius: 200px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+#app_container img {
+    width: 30px;
+    height: 30px;
+}
+
+#app_information {
+    width: calc(100% - 10px - 35px);
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+#app_information p, 
+#app_information span {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#app_information p {
+    font-family: poppins_regular;
+    line-height: 17px;
+    font-size: 17px;
+}
+
+#app_information span {
+    font-family: poppins_light;
+    font-size: 13px;
+    line-height: 13px;
+    color: rgba(255, 255, 255, .7);
+}
+
 /* menu screen screen ends */
+
+/* context menu starts */
+
+#contextMenu {
+    position: fixed;
+    text-align: center;
+    background: rgba(56, 56, 56, 0.167);
+    -webkit-backdrop-filter: blur(25px);
+    backdrop-filter: blur(6px);
+    border-radius: 5px;
+    z-index: 501;
+    width: -moz-max-content;
+    width: max-content;
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid rgba(128, 128, 128, 0.241);
+}
+
+#contextMenu ul {
+    padding: 5px 5px;
+    margin: 0px;
+    list-style: none;
+}
+
+#contextMenu ul li {
+    padding-bottom: 7px;
+    padding-top: 7px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#contextMenu ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 200;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 12px;
+    padding: 0 5px;
+    padding-right: 20px;
+    gap: 10px;
+    pointer-events: all;
+}
+
+#contextMenu ul li a img {
+    width: 20px;
+    pointer-events: all;
+}
+
+#contextMenu ul li:hover {
+    background: rgba(169, 169, 169, 0.301);
+}
+
+
+/* context menu ends */

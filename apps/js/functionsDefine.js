@@ -1,3 +1,30 @@
+document.oncontextmenu = e => e.preventDefault()
+document.getElementById("window_screen").oncontextmenu = e => {
+    let menu = document.getElementById("contextMenu");
+    if (menu.style.display == "block") document.getElementById("contextMenu").style.display = "none"
+    let clickX = e.clientX;
+    let clickY = e.clientY;
+    let gap = 5;
+    let windowWidth = document.getElementById("window_screen").clientWidth;
+    let windowHeight = document.getElementById("window_screen").clientHeight;
+    menu.style.opacity = 0;
+    menu.style.display = "block";
+    menu.style.left = `${clickX + gap}px`;
+    menu.style.top = `${clickY + gap}px`;
+    let rect = menu.getBoundingClientRect();
+    if (rect.right > windowWidth) {
+        menu.style.left = `${clickX - (rect.width + gap)}px`;
+    }
+    if (rect.bottom > windowHeight) {
+        menu.style.top = `${clickY - (rect.height + gap)}px`;
+    }
+    menu.style.opacity = 1;
+}
+
+window.onclick = () => {
+    document.getElementById("contextMenu").style.display = "none"
+}
+
 const map_numbers = (current, minimum_output, maximum_output, minimum_input, maximum_input) => {
     if (maximum_input === minimum_input) {
         throw new Error("Minimum input and maximum input cannot be the same.");
