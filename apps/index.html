@@ -7,10 +7,41 @@
     <title>ARTEX</title>
 </head>
 <body>
-    <h1>Hello</h1>
 
-    <div id="taskbar"></div>
+    <!-- menu_screen section starts -->
 
+    <div id="menu_screen_section">
+        <div id="search_innput_section">
+            <input type="text" placeholder="Search for apps">
+        </div>
+        <div id="all_apps_container"></div>
+    </div>
+
+    <!-- menu_screen section ends -->
+
+    <!-- main screen starts -->
+
+    <div id="screen">
+        <div id="window_screen"></div>
+        <div id="taskbar">
+            <div id="pinned-apps" >
+                <!-- Default pinned apps -->
+                <div class="taskbar-icon pinned">
+                    <img src="./assets/icons/logo.png" alt="Home" title="Home">
+                </div>
+                <div class="taskbar-icon pinned">
+                    <img src="https://img.icons8.com/fluency/48/000000/chrome.png" alt="Browser" title="Browser">
+                </div>
+                <div class="taskbar-icon pinned">
+                    <img src="https://img.icons8.com/fluency/48/000000/file-explorer.png" alt="Explorer" title="File Explorer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- main screen ends -->
+
+    <script src="./js/functionsDefine.js"></script>
     <script src="./js/script.js"></script>
 </body>
-</html>
+</html> 

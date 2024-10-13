@@ -1,0 +1,1 @@
+let taskbar = document.getElementById("taskbar")
