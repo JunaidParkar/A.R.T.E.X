@@ -38,7 +38,7 @@ setInterval(updateTime, 1000);
 updateTime();
 
 const screenMenuToggler = () => {
-    document.getElementById("menu_screen_section").style.display = document.getElementById("menu_screen_section").style.display == "none" ? "block" : "none"
+    document.getElementById("menu_main_section").style.display = document.getElementById("menu_main_section").style.display == "none" ? "flex" : "none"
 }
 
 let c = getCursorPosition("window_screen")
