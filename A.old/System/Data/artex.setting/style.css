@@ -1,0 +1,442 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+:root {
+    --dark: #213153;
+    --accent-color: rgba(60, 161, 255, 1);
+    --accent-tr-color: rgba(60, 161, 255, 0.179);
+}
+
+body {
+    background: #213153;
+    color: rgba(211, 211, 211, 0.696);
+    height: 100vh;
+    max-height: 100dvh;
+    overflow: hidden;
+}
+
+.app {
+    display: flex;
+}
+
+.app .sidebar {
+    background: var(--dark);
+    padding: 10px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.app .sidebar img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.app .sidebar img.avatar {
+    background: white;
+    border-radius: 50%;
+}
+
+.app .setting {
+    width: 100%;
+    max-width: 450px;
+    height: 100%;
+    overflow: scroll;
+    max-height: 90vh;
+}
+
+.app .setting header {
+    background: var(--dark);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: static;
+    top: 0;
+    height: 60px;
+    padding: 0 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.app .setting header i {
+    display: none;
+}
+
+.app .setting ul {
+    background: rgba(255, 255, 255, 0.095);
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 10px;
+    margin-top: 20px;
+}
+
+.app .setting ul li {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 7px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.app .setting ul li .button {
+    width: 40px;
+    background: rgba(255, 255, 255, 0.179);
+    height: 20px;
+    display: block;
+    border-radius: 25px;
+    position: relative;
+    cursor: pointer;
+}
+
+.app .setting ul li .button.active {
+    background: var(--accent-tr-color);
+}
+
+.app .setting ul li .button .circle {
+    height: 100%;
+    width: 20px;
+    background: rgba(255, 255, 255, 0.559);
+    border-radius: 25px;
+    position: absolute;
+    left: 0;
+    right: auto;
+    top: 0;
+}
+
+.app .setting ul li .button.active .circle {
+    right: 0;
+    left: auto;
+    background: var(--accent-color);
+}
+
+.app .setting ul li .percentage {
+    width: 60px;
+    height: 25px;
+    background: linear-gradient(to right, rgba(144, 238, 144, 0.396) 60%, rgba(255, 255, 255, 0.188) 40%);
+    display: grid;
+    place-items: center;
+    color: white;
+}
+
+.app .setting ul li .opensubsetting img {
+    color: white;
+    height: 20px;
+    aspect-ratio: 1/1;
+    opacity: .7;
+    cursor: pointer;
+}
+
+.app .setting ul li .value {
+    width: 50px;
+    height: 25px;
+    background: rgba(255, 255, 255, 0.2);
+    text-align: center;
+    color: white;
+    outline: none;
+    /* accent-color: var(--accent-color); */
+    accent-color: var(--accent-color);
+}
+
+
+/*  */
+
+.app .subsetting {
+    width: 100%;
+    position: relative;
+}
+
+.app .subsetting main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+    position: relative;
+}
+
+.app .subsetting main .logo {
+    width: 40%;
+    min-width: 300px;
+    position: relative;
+    z-index: 1;
+}
+
+.app .subsetting main h2 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.app .subsetting main .circle {
+    background: #3ca1ff;
+    border-radius: 50%;
+    filter: blur(160px);
+    height: 200px;
+    width: 200px;
+    top: 50%;
+    left: 20%;
+    position: absolute;
+    z-index: 0;
+}
+
+.app .subsetting main .circle2 {
+    background: rgb(202, 19, 181);
+    border-radius: 50%;
+    filter: blur(150px);
+    height: 200px;
+    width: 200px;
+    top: 10%;
+    right: 20%;
+    position: absolute;
+    z-index: 0;
+}
+
+
+/*  */
+
+.app .subsetting .moresetting {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    padding: 0px 30px;
+    margin-top: 15px;
+}
+
+.app .subsetting .moresetting>div {
+    backdrop-filter: blur(100px);
+    width: 100%;
+    height: 80%;
+    overflow: scroll;
+    padding-top: 20px;
+    display: none;
+}
+
+.app .subsetting .moresetting>div p {
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.app .subsetting .moresetting>div p img {
+    height: 25px;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    margin-right: 10px;
+    filter: invert(1);
+    cursor: pointer;
+}
+
+.app .subsetting .moresetting #setting-background ul {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.app .subsetting .moresetting #setting-background ul li {
+    list-style: none;
+}
+
+.app .subsetting .moresetting #setting-background ul li img {
+    width: 200px;
+    border-radius: 5px;
+    aspect-ratio: 1/0.6;
+}
+
+.app .subsetting .moresetting #setting-background ul li img.selected {
+    border: 2px solid white;
+}
+
+.app .subsetting .moresetting #setting-account ul {
+    margin-top: 40px;
+}
+
+.app .subsetting .moresetting #setting-account ul .account-info img {
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+}
+
+.app .subsetting .moresetting #setting-account ul .account-info {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: start;
+}
+
+.app .subsetting .moresetting #setting-account ul .account-info .account-info-details {
+    width: 100%;
+    font-size: 13px;
+}
+
+.app .subsetting .moresetting #setting-account ul .account-info .account-info-details p {
+    height: 5ch;
+}
+
+.app .subsetting .moresetting #setting-account ul .account-info .account-info-logout button {
+    padding: 9px 20px;
+    background: rgba(255, 255, 255, 0.173);
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.app .subsetting .moresetting #setting-account ul .account-info-setting-options {
+    margin-top: 50px;
+}
+
+.app .subsetting .moresetting #setting-account ul .account-info-setting-options a span img {
+    margin-right: 10px;
+    height: 15px;
+    aspect-ratio: 1/1;
+}
+
+.app .subsetting .moresetting #setting-account ul .account-info-setting-options a img {
+    height: 17px;
+    aspect-ratio: 1/1;
+}
+
+.app .subsetting .moresetting #setting-account ul .account-info-setting-options {
+    background: rgba(255, 255, 255, 0.095);
+    border-radius: 10px;
+}
+
+.app .subsetting .moresetting #setting-account ul .account-info-setting-options a {
+    width: 100%;
+    display: block;
+    color: inherit;
+    padding: 15px;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+
+/*  */
+
+.app .subsetting .moresetting #setting-about ul .about-info-setting-options {
+    margin-top: 50px;
+}
+
+.app .subsetting .moresetting #setting-about ul .about-info-setting-options a span i {
+    margin-right: 10px;
+    font-size: 15px;
+}
+
+.app .subsetting .moresetting #setting-about ul .about-info-setting-options a img {
+    height: 17px;
+    aspect-ratio: 1/1;
+}
+
+.app .subsetting .moresetting #setting-about ul .about-info-setting-options {
+    background: rgba(255, 255, 255, 0.095);
+    border-radius: 10px;
+}
+
+.app .subsetting .moresetting #setting-about ul .about-info-setting-options a {
+    width: 100%;
+    display: block;
+    color: inherit;
+    padding: 15px;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    /* background: rgba(255, 255, 255, 0.095);  */
+}
+
+
+/*  */
+
+.app .subsetting .moresetting #setting-system ul .system-info-setting-options {
+    margin-top: 50px;
+}
+
+.app .subsetting .moresetting #setting-system ul .system-info-setting-options a span img {
+    margin-right: 10px;
+    height: 15px;
+    aspect-ratio: 1/1;
+}
+
+.app .subsetting .moresetting #setting-system ul .system-info-setting-options a img {
+    height: 17px;
+    aspect-ratio: 1/1;
+}
+
+.app .subsetting .moresetting #setting-system ul .system-info-setting-options {
+    background: rgba(255, 255, 255, 0.095);
+    border-radius: 10px;
+}
+
+.app .subsetting .moresetting #setting-system ul .system-info-setting-options a {
+    width: 100%;
+    display: block;
+    color: inherit;
+    padding: 15px;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    /* background: rgba(255, 255, 255, 0.095);  */
+}
+
+.app .subsetting .moresetting #setting-system ul canvas {
+    background: rgba(255, 255, 255, 0.056);
+    color: white;
+}
+
+
+/*  */
+
+.app .subsetting .moresetting #setting-apikey ul .apikey-info-setting-options {
+    margin-top: 50px;
+}
+
+.app .subsetting .moresetting #setting-apikey ul .apikey-info-setting-options a span img {
+    margin-right: 10px;
+    height: 15px;
+    aspect-ratio: 1/1;
+}
+
+.app .subsetting .moresetting #setting-apikey ul .apikey-info-setting-options a img {
+    height: 15px;
+    aspect-ratio: 1/1;
+}
+
+.app .subsetting .moresetting #setting-apikey ul .apikey-info-setting-options {
+    background: rgba(255, 255, 255, 0.095);
+    border-radius: 10px;
+}
+
+.app .subsetting .moresetting #setting-apikey ul .apikey-info-setting-options a {
+    width: 100%;
+    display: block;
+    color: inherit;
+    padding: 15px;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    /* background: rgba(255, 255, 255, 0.095);  */
+}

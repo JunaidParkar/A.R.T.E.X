@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>ARTEX</title>
+</head>
+
+<body>
+
+    <!-- context menu start -->
+
+    <div id="contextMenu" style="display: none;">
+        <ul>
+            <li>
+                <a onclick="document.querySelector('#app-list-terminal').click()"><img src="../artex.cmd/logo.png" alt="" />Terminal</a>
+            </li>
+            <li>
+                <a target="_blank" href=""><img src="https://img.icons8.com/?size=48&id=UiBLNa8BF2DH&format=png" alt="" />Duplicate</a>
+            </li>
+            <li>
+                <a onclick="window.location.reload()"><img src="https://img.icons8.com/?size=48&id=l9jAYs17iNqZ&format=png" alt="" />Refresh</a>
+            </li>
+            <li>
+                <a href="#"><img src="https://img.icons8.com/?size=48&id=A0GP25NseAaQ&format=png" alt="" />Signout</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- context menu ends -->
+
+    <!-- menu_screen section starts -->
+
+    <div id="menu_main_section" style="display: none;">
+        <div id="menu_screen_section">
+            <div id="search_innput_section">
+                <input type="text" placeholder="Search for apps">
+            </div>
+            <div id="all_apps_container">
+                <div id="app_container">
+                    <img src="./assets/icons/logo.png" alt="">
+                    <div id="app_information">
+                        <p>A.R.T.E.X Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus, culpa!</p>
+                        <span>1.0.0</span>
+                    </div>
+                </div>
+                <div id="app_container">
+                    <img src="./assets/icons/logo.png" alt="">
+                    <div id="app_information">
+                        <p>A.R.T.E.X Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus, culpa!</p>
+                        <span>1.0.0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- menu_screen section ends -->
+
+    <!-- main screen starts -->
+
+    <div id="screen">
+        <div id="window_screen">
+            <div class="app_frame def">
+                <div class="time">
+                    <h3 id="time">22:30 am</h3>
+                    <p id="date">24 March 2024</p>
+                </div>
+            </div>
+            <!-- <div class="app_frame">
+                <div class="header">
+                    <h3>Sleek pad</h3>
+                    <div class="control_center">
+                        <img src="./assets/icons/close.svg" alt="" srcset="">
+                    </div>
+                </div>
+                <div class="frame">
+                    <iframe src="https://sleekpad-0.web.app" frameborder="0"></iframe>
+                </div>
+            </div> -->
+            <!-- <div class="app_frame" id="Zestlark" data-app-window="Zestlark">
+                <div class="header">
+                    <h3>Zestlark</h3>
+                    <div class="control_center">
+                        <img src="./assets/icons/close.svg" alt="" srcset="" onclick="closeApp('Zestlark')" />
+                    </div>
+                </div>
+                <div class="frame">
+                    <iframe src="https://zestlark-0.web.app/" frameborder="0"></iframe>
+                </div>
+            </div>
+            <div class="app_frame" id="Junaid" data-app-window="Junaid">
+                <div class="header">
+                    <h3>Junaid Parkar</h3>
+                    <div class="control_center">
+                        <img src="./assets/icons/close.svg" alt="" srcset="" onclick="closeApp('Junaid')">
+                    </div>
+                </div>
+                <div class="frame">
+                    <iframe src="https://junaid-parkar.web.app" frameborder="0"></iframe>
+                </div>
+            </div> -->
+        </div>
+        <div id="taskbar">
+            <div id="pinned-apps">
+                <!-- Default pinned apps -->
+                <div class="taskbar-icon pinned" onclick="screenMenuToggler()">
+                    <img src="./assets/icons/logo.png" alt="Home" title="Home">
+                </div>
+                <div class="taskbar-icon pinned">
+                    <img src="https://img.icons8.com/fluency/48/000000/chrome.png" alt="Browser" title="Browser">
+                </div>
+                <div class="taskbar-icon pinned">
+                    <img src="https://img.icons8.com/fluency/48/000000/file-explorer.png" alt="Explorer" title="File Explorer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- main screen ends -->
+
+    <script src="./js/lib/codereducer/cursor.js"></script>
+    <script src="./js/Apps/functions.js"></script>
+    <script src="./js/functions.js"></script>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>

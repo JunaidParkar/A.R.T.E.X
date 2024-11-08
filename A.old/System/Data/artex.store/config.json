@@ -1,0 +1,7 @@
+{
+    "name": "Artex store",
+    "version": "1.0.0",
+    "requiredLibraries": ["Codereducer/cursor.js", "remixicon.css"],
+    "packageName": "artex.store",
+    "publisher": "A.R.T.E.X Corporation"
+}

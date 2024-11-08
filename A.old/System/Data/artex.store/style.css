@@ -1,0 +1,407 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+::-webkit-scrollbar {
+  display: none;
+  display: none;
+}
+
+:root {
+  --text: 200;
+  --desktop-background: url(../assets/bg1.png);
+  --font-size: 16px;
+  --icon-size: 40px;
+  --heading: 900;
+  --text: 200;
+  --title: 400;
+}
+
+body {
+  background: rgb(0, 0, 0);
+  color: rgb(211, 211, 211);
+  overflow: auto;
+}
+
+.app header {
+  display: flex;
+  padding: 15px;
+  justify-content: space-between;
+  font-weight: var(--text);
+  font-size: 14px;
+  background: #00000096;
+  backdrop-filter: blur(10px);
+  height: 70px;
+  position: relative;
+  z-index: 2;
+}
+
+.app header img {
+  width: 30px;
+}
+
+.app header span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.app header .profile img {
+  background: rgb(255, 255, 255);
+  border-radius: 20px;
+}
+
+.app .banner {
+  background: url(../../assets/apps/default/artexStore/assets/bg.avif);
+  height: 500px;
+  background-size: 120%;
+  background-position: center center;
+  margin-top: -70px;
+  filter: saturate(2);
+}
+
+@media (max-width: 768px) {
+  .app .banner {
+    background-size: cover;
+  }
+}
+
+@media (max-width: 480px) {
+  .app .banner {
+    background-size: cover;
+  }
+}
+
+.app .banner .gradient-layer {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000 81.15%);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 40px;
+  padding: 0 20px;
+}
+
+.app .banner .gradient-layer h1 {
+  font-size: 40px;
+  color: white;
+  margin-top: -80px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .app .banner .gradient-layer h1 {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app .banner .gradient-layer h1 {
+    font-size: 20px;
+  }
+}
+
+.app .banner .gradient-layer input {
+  padding: 15px 15px;
+  width: 100%;
+  max-width: 500px;
+  outline: none;
+  background-color: rgba(117, 117, 117, 0.329);
+  border-radius: 3px;
+  backdrop-filter: blur(10px);
+  color: white;
+  box-shadow: 0px 15px 40px 0px rgba(243, 243, 243, 0.144);
+}
+
+.searchlist {
+  background-color: rgba(42, 42, 42, 0.329);
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  z-index: 2;
+  width: 100%;
+  max-width: 500px;
+  display: none;
+  backdrop-filter: blur(20px);
+  font-size: 14px;
+  font-weight: 400;
+  list-style: none;
+  padding: 5px;
+  padding-bottom: 0;
+  border-radius: 5px;
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
+@media (max-width: 480px) {
+  .searchlist {
+    width: calc(100% - 40px);
+  }
+}
+
+.searchlist li {
+  padding: 10px;
+  background: rgba(42, 42, 42, 0.329);
+  margin-bottom: 5px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+.searchlist li img {
+  width: 30px;
+}
+
+.searchlist li i {
+  right: 5px;
+  position: absolute;
+  padding: 10px;
+}
+
+
+.app .applist {
+  margin: 50px;
+  margin-top: -150px;
+  z-index: 2;
+  position: relative;
+}
+
+@media (max-width: 480px) {
+  .app .applist {
+    margin: 20px;
+    margin-top: -150px;
+  }
+}
+
+.app .applist2 {
+  margin-top: 0;
+}
+
+.app .applist p {
+  margin-bottom: 20px;
+}
+
+.app .applist .card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.app .applist .card-list li {
+  flex: 0 0 calc(16.66% - 16.6px);
+  margin-bottom: 20px;
+  background: rgb(18, 18, 18);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.app .applist .card-list li .app-banner {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+}
+
+.app .applist .card-list li .info {
+  text-align: center;
+  margin-top: -30px;
+}
+
+.app .applist .card-list li .info img {
+  width: 60px;
+  border-radius: 50%;
+  border: 5px solid rgb(18, 18, 18);
+  object-fit: cover;
+}
+
+.app .applist .card-list li .info h4 {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.app .applist .card-list li .info p {
+  font-size: 13px;
+  margin-top: 0;
+  padding: 0;
+}
+
+@media (max-width: 1024px) {
+  .app .applist .card-list li {
+    flex: 0 0 calc(25% - 15px);
+  }
+}
+
+@media (max-width: 768px) {
+  .app .applist .card-list li {
+    flex: 0 0 calc(33.33% - 14px);
+  }
+}
+
+@media (max-width: 400px) {
+  .app .applist .card-list li {
+    flex: 0 0 calc(50% - 10px);
+  }
+}
+
+@media (max-width: 300px) {
+  .app .applist .card-list li {
+    flex: 0 0 calc(50% - 10px);
+  }
+}
+
+@media (max-width: 200px) {
+  .app .applist .card-list li {
+    flex: 0 0 calc(100% - 20px);
+  }
+}
+
+.app .banner-secondary {
+  background: url(../../assets/apps/default/artexStore/assets/midautum.png);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  height: 200px;
+  margin: 50px;
+  background-position: center center;
+  border-radius: 7px;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+}
+
+.app .banner-secondary h2 {
+  font-size: 30px;
+  text-transform: capitalize;
+  color: white;
+}
+
+.app .banner-secondary p {
+  font-weight: 100;
+  letter-spacing: 0.12rem;
+}
+
+@media (max-width: 768px) {
+  .app .banner-secondary {
+    padding: 20px;
+  }
+
+  .app .banner-secondary h2 {
+    font-size: 24px;
+  }
+
+  .app .banner-secondary p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app .banner-secondary {
+    padding: 15px;
+  }
+
+  .app .banner-secondary h2 {
+    font-size: 20px;
+  }
+
+  .app .banner-secondary p {
+    font-size: 12px;
+  }
+}
+
+
+#download-page {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.353);
+  backdrop-filter: blur(6px);
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#download-page .download-box {
+  max-width: 450px;
+  max-height: 90vh;
+  background: rgb(0, 0, 0);
+  overflow: scroll;
+  position: relative;
+}
+
+#download-page .download-box i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 20px;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.601);
+  padding: 10px;
+  backdrop-filter: blur(6px);
+}
+
+#download-page .download-box .banner {
+  width: 100%;
+  height: fit-content;
+}
+
+#download-page .download-box .download-info {
+  display: flex;
+  list-style: none;
+  padding: 0 20px;
+  align-items: center;
+  gap: 10px;
+  margin-top: -60px;
+  position: relative;
+}
+
+#download-page .download-box .download-info li img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid black;
+}
+
+#download-page .download-box .download-info li h3 {
+  margin-top: 50px;
+  color: white;
+  text-transform: capitalize;
+}
+
+#download-page .download-box ul {
+  padding: 25px;
+}
+
+#download-page .download-box ul button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 30px;
+}
+
+#download-page .download-box ul p small {
+  opacity: 70%;
+}
+
+#download-page .download-box ul.download-desc {
+  margin-top: -20px;
+}

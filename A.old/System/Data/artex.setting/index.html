@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="../../Common/remixicon.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="app">
+        <div class="sidebar" id="sidebar">
+            <img src="./assets/logo.png" alt="" class="logo" />
+            <img src="./assets/user.png" alt="" class="avatar" />
+        </div>
+
+        <div class="setting">
+            <header>Setting</header>
+
+            <ul>
+                <li onclick="openMoreSetting(this)" data-moresetting="setting-background">
+                    Background
+                    <span class="opensubsetting"><img src="./assets/right.png" alt="" srcset=""></span>
+                </li>
+            </ul>
+
+            <ul>
+                <li>
+                    Camera
+                    <span class="button">
+            <div class="circle"></div>
+          </span>
+                </li>
+                <li>
+                    Microphone
+                    <span class="button">
+            <div class="circle"></div>
+          </span>
+                </li>
+                <li>Battery <span class="percentage">60%</span></li>
+            </ul>
+
+            <ul>
+                <li onclick="openMoreSetting(this)" data-moresetting="setting-apikey">
+                    Api keys
+                    <span class="opensubsetting"><img src="./assets/right.png" alt="" srcset=""></span>
+                </li>
+                <li>
+                    Voice Index Number
+                    <input class="value" type="number" name="" id="" value="5" />
+                </li>
+                <li>
+                    Speech Rate
+                    <input class="value" type="range" name="" id="" value="5" />
+                </li>
+            </ul>
+
+            <ul>
+                <li onclick="openMoreSetting(this)" data-moresetting="setting-account">
+                    Account
+                    <span class="opensubsetting"><img src="./assets/right.png" alt="" srcset=""></span>
+                </li>
+                <li onclick="openMoreSetting(this)" data-moresetting="setting-about">
+                    About
+                    <span class="opensubsetting"><img src="./assets/right.png" alt="" srcset=""></span>
+                </li>
+                <li onclick="openMoreSetting(this)" data-moresetting="setting-system">
+                    System
+                    <span class="opensubsetting"><img src="./assets/right.png" alt="" srcset=""></span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="subsetting">
+            <main>
+                <img src="./assets/appicon.png" alt="" class="logo" />
+                <h2>ARTEX</h2>
+                <p>v 2.0.0</p>
+
+                <div class="circle"></div>
+                <div class="circle2"></div>
+            </main>
+            <div class="moresetting">
+                <div id="setting-background">
+                    <p>
+                        <img src="./assets/left.png" onclick="this.parentNode.parentNode.style.display = 'none'"></ing> Background
+                    </p>
+                    <ul id="imageList">
+                        <li>
+                            <img src="../artex.ui/assets/bg/bg1.png" alt="" onclick="setBackground(this)" />
+                        </li>
+                        <li>
+                            <img src="../artex.ui/assets/bg/bg2.png" alt="" onclick="setBackground(this)" />
+                        </li>
+                        <li>
+                            <img src="../artex.ui/assets/bg/bg3.png" alt="" onclick="setBackground(this)" />
+                        </li>
+                        <li>
+                            <img src="../artex.ui/assets/bg/bg4.png" alt="" onclick="setBackground(this)" />
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="setting-apikey">
+                    <p>
+                        <img src="./assets/left.png" onclick="this.parentNode.parentNode.style.display = 'none'"></img> Api key
+                    </p>
+                    <ul>
+                        <li class="apikey-info-setting-options">
+                            <a href=""><span>Palm Api key</span>
+                <span>iudhgkjngnl;gklgs</span>
+              </a>
+                            <a href=""><span> Delle 2 apikey</span>
+                <span>iulbgujhbgbkdk.njksdfjk</span>
+              </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="setting-account">
+                    <p>
+                        <img src="./assets/left.png" onclick="this.parentNode.parentNode.style.display = 'none'"></img> Account
+                    </p>
+                    <ul>
+                        <li class="account-info">
+                            <img src="./assets/user.png" alt="">
+                            <span class="account-info-details">
+                <p><b>user name</b>
+                  <br>email.user@gmail.com
+                  <br><small>Last login : 10/12/24</small>
+                </p>
+              </span>
+                            <span class="account-info-logout"><button>Logout</button></span>
+                        </li>
+                        <li class="account-info-setting-options">
+                            <a href=""><span><i class="ri-pass-valid-line"></i> Change Password</span> <i
+                  class="ri-arrow-right-s-line"></i></a>
+                            <a href=""><span><i class="ri-file-list-3-line"></i> News Setting</span> <i
+                  class="ri-arrow-right-s-line"></i></a>
+                            <a href=""><span><i class="ri-text-spacing"></i> Login Activity</span> <i
+                  class="ri-arrow-right-s-line"></i></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="setting-about">
+                    <p>
+                        <img src="./assets/left.png" onclick="this.parentNode.parentNode.style.display = 'none'"></img> About
+                    </p>
+
+                    <ul>
+                        <li class="about-info-setting-options">
+                            <a href=""><span><i class="ri-pass-valid-line"></i> Software Version</span>
+                <span>V1.2.3</span>
+              </a>
+                            <a href=""><span><i class="ri-file-list-3-line"></i> Opearting System</span>
+                <span>Artex WebOS</span>
+              </a>
+                            <a href=""><span><i class="ri-text-spacing"></i> Device Id</span>
+                <span>ML:OU:OU:OJ:UI</span>
+              </a>
+                            <a href=""><span><i class="ri-text-spacing"></i> Device Name</span>
+                <span>Windows</span>
+              </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div id="setting-system">
+                    <p>
+                        <img src="./assets/left.png" onclick="this.parentNode.parentNode.style.display = 'none'"></img> system
+                    </p>
+                    <ul>
+                        <li class="system-info-setting-options">
+                            <a href=""><span> Windows Version</span>
+                <span>w11</span>
+              </a>
+                            <a href=""><span> CPU</span>
+                <span>8gb</span>
+              </a>
+                            <a href=""><span>Ram</span>
+                <span>8gb</span>
+              </a>
+                            <a href=""><span>Storage</span>
+                <span>512</span>
+              </a>
+                        </li>
+                    </ul>
+
+                    <ul>
+                        <br>
+                        <small>Network log</small>
+                        <canvas id="myChart" style="width:100%; max-height: 250px;margin-top: 5px;"></canvas>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+    <script src="../../Common/chart.js">
+    </script>
+    <script>
+        // document.getElementById('testsusetting').click()
+
+        var xyValues = [{
+            x: 50,
+            y: 7
+        }, {
+            x: 60,
+            y: 8
+        }, {
+            x: 70,
+            y: 8
+        }, {
+            x: 80,
+            y: 9
+        }, {
+            x: 90,
+            y: 9
+        }, {
+            x: 100,
+            y: 9
+        }, {
+            x: 110,
+            y: 10
+        }, {
+            x: 120,
+            y: 11
+        }, {
+            x: 130,
+            y: 14
+        }, {
+            x: 140,
+            y: 14
+        }, {
+            x: 150,
+            y: 15
+        }];
+
+        new Chart("myChart", {
+            type: "scatter",
+            data: {
+                datasets: [{
+                    pointRadius: 4,
+                    pointBackgroundColor: "rgb(225,0,0)",
+                    data: xyValues
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            min: 40,
+                            max: 160
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            min: 6,
+                            max: 16
+                        }
+                    }],
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

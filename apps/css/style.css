@@ -1,0 +1,384 @@
+@font-face {
+    font-family: 'poppins_regular';
+    src: url('../assets/fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'poppins_light';
+    src: url('../assets/fonts/Poppins-Regular.ttf') format('truetype');
+    font-weight: light;
+}
+
+@font-face {
+    font-family: 'roboto_bold';
+    src: url('../assets/fonts/Roboto-Bold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100dvh;
+    background: black;
+    color: white;
+}
+
+
+/* main screen starts */
+
+#screen {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* main screen ends */
+
+
+/* window screen starts */
+
+#window_screen {
+    width: 100%;
+    height: calc(100dvh - 70px);
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    position: relative;
+}
+
+.bg1 {
+    background: url(../assets/bg/bg1.png);
+}
+
+.bg2 {
+    background: url(../assets/bg/bg2.png);
+}
+
+.bg3 {
+    background: url(../assets/bg/bg3.png);
+}
+
+.bg4 {
+    background: url(../assets/bg/bg4.png);
+}
+
+.app_frame {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.app_frame.def {
+    display: grid;
+    place-items: center;
+    text-align: start;
+    font-family: poppins_regular;
+}
+
+.app_frame.def .time h3 {
+    font-size: 55px;
+    line-height: 55px;
+    width: 100%;
+    transform: translateX(-20px);
+}
+
+.app_frame.def .time p {
+    font-size: 35px;
+    width: 100%;
+    line-height: 35px;
+    margin-top: -5px;
+    transform: translateX(20px);
+}
+
+.header {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px;
+    background: rgba(50, 50, 50, 1);
+}
+
+.header h3 {
+    font-size: 23px;
+    font-family: roboto_bold;
+    letter-spacing: 1px;
+}
+
+.header .control_center {
+    display: flex;
+    gap: 10px;
+}
+
+.header .control_center img {
+    height: 40px;
+    cursor: pointer;
+    filter: invert(1);
+}
+
+.frame {
+    width: 100%;
+    height: calc(100% - 50px);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.frame iframe {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* window screen ends */
+
+
+/* taskbar starts */
+
+#taskbar {
+    width: 100%;
+    height: 70px;
+    background-color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 500;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.5);
+    padding: 0 10px;
+}
+
+#pinned-apps {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+}
+
+.taskbar-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    /* background: red; */
+    padding: 5px;
+}
+
+.taskbar-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+    pointer-events: all;
+}
+
+.taskbar-icon:hover {
+    background-color: #555;
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+    .taskbar-icon {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+/* taskbar ends */
+
+
+/* menu screen screen starts */
+
+#menu_main_section {
+    width: 100%;
+    height: 100dvh;
+    backdrop-filter: blur(20px);
+    position: fixed;
+    z-index: 499;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#menu_screen_section {
+    width: 850px;
+    height: 500px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+#search_innput_section {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    padding-bottom: 15px;
+}
+
+#search_innput_section input {
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    letter-spacing: 1px;
+    background: transparent;
+    color: rgba(255, 255, 255, 1);
+}
+
+#search_innput_section input::placeholder {
+    color: rgba(255, 255, 255, .5);
+}
+
+#all_apps_container {
+    width: 100%;
+    height: auto;
+    max-height: calc(100% - 50px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    gap: 20px;
+    padding: 10px;
+}
+
+#all_apps_container::-webkit-scrollbar {
+    width: 10px;
+    height: 100%;
+    margin-right: 10px;
+}
+
+#all_apps_container::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+#all_apps_container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, .7);
+    border-radius: 50px;
+}
+
+#app_container {
+    width: 250px;
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#app_container img {
+    width: 30px;
+    height: 30px;
+}
+
+#app_information {
+    width: calc(100% - 10px - 35px);
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+#app_information p,
+#app_information span {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#app_information p {
+    font-family: poppins_regular;
+    line-height: 17px;
+    font-size: 17px;
+}
+
+#app_information span {
+    font-family: poppins_light;
+    font-size: 13px;
+    line-height: 13px;
+    color: rgba(255, 255, 255, .7);
+}
+
+
+/* menu screen screen ends */
+
+
+/* context menu starts */
+
+#contextMenu {
+    position: fixed;
+    text-align: center;
+    background: rgba(56, 56, 56, 0.167);
+    -webkit-backdrop-filter: blur(25px);
+    backdrop-filter: blur(6px);
+    border-radius: 5px;
+    z-index: 501;
+    width: -moz-max-content;
+    width: max-content;
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid rgba(128, 128, 128, 0.241);
+}
+
+#contextMenu ul {
+    padding: 5px 5px;
+    margin: 0px;
+    list-style: none;
+}
+
+#contextMenu ul li {
+    padding-bottom: 7px;
+    padding-top: 7px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#contextMenu ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 200;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 12px;
+    padding: 0 5px;
+    padding-right: 20px;
+    gap: 10px;
+    pointer-events: all;
+}
+
+#contextMenu ul li a img {
+    width: 20px;
+    pointer-events: all;
+}
+
+#contextMenu ul li:hover {
+    background: rgba(169, 169, 169, 0.301);
+}
+
+
+/* context menu ends */

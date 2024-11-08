@@ -1,0 +1,475 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+    border: 0;
+    outline: none;
+    list-style-type: none;
+}
+
+
+/* context menu starts */
+
+.context-menu {
+    position: fixed;
+    text-align: center;
+    background: rgba(56, 56, 56, 0.167);
+    -webkit-backdrop-filter: blur(25px);
+    backdrop-filter: blur(6px);
+    border-radius: 5px;
+    z-index: 501;
+    width: -moz-max-content;
+    width: max-content;
+    font-size: 17px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid rgba(128, 128, 128, 0.241);
+}
+
+.context-menu ul {
+    padding: 5px 5px;
+    margin: 0px;
+    list-style: none;
+}
+
+.context-menu ul li {
+    padding-bottom: 7px;
+    padding-top: 7px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.context-menu ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 200;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    font-size: 12px;
+    padding: 0 5px;
+    padding-right: 20px;
+    gap: 10px;
+    pointer-events: all;
+}
+
+.context-menu ul li a img {
+    width: 20px;
+    pointer-events: all;
+}
+
+.context-menu ul li:hover {
+    background: rgba(169, 169, 169, 0.301);
+}
+
+
+/* context menu ends */
+
+body.main {
+    width: 100%;
+    height: 100dvh;
+}
+
+.flex {
+    display: flex;
+}
+
+.justifyCenter {
+    justify-content: center;
+}
+
+.itemsCenter {
+    align-items: center;
+}
+
+.flexColumn {
+    flex-direction: column;
+}
+
+.window {
+    width: 100%;
+    height: 100%;
+}
+
+.mainwindow {
+    width: 100%;
+    height: 100%;
+    background: url(../assets/bg/bg3.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: hidden;
+    position: relative;
+}
+
+.windowa {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.windowa .desktop-date {
+    scale: 1.1;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: cursive;
+}
+
+.windowa .desktop-date h1 {
+    font-size: 85px;
+}
+
+.windowa .desktop-date span {
+    position: relative;
+    margin-top: -40px;
+}
+
+.windowa .desktop-date span p {
+    position: absolute;
+    top: 50%;
+    left: 0%;
+    transform: translate(0%, -50%);
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.windowa .desktop-date span h1 {
+    opacity: 20%;
+    font-size: 85px;
+}
+
+.mainwindow .appWindow {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 3;
+}
+
+.mainwindow .appWindow .header {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    background: #191919;
+    padding: 0 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+
+.mainwindow .appWindow .header img {
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+}
+
+.mainwindow .appWindow iframe {
+    width: 100%;
+    height: calc(100% - 50px);
+}
+
+#sidebar {
+    position: absolute;
+    z-index: 500 !important;
+    /* background: rgba(255, 255, 255, .5); */
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+#sidebar * {
+    pointer-events: all;
+    cursor: auto;
+    color: black;
+}
+
+#sidebar .bottomMenu {
+    width: max-content;
+    height: 65px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, .5);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    padding: 0 30px;
+    gap: 20px;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#artexlogobtn {
+    font-family: cursive;
+    font-size: 15px;
+    line-height: 15px;
+}
+
+#sidebar .sidebarBtn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+#sidebar .sidebarBtn svg,
+#sidebar .sidebarBtn img {
+    width: 30px;
+    height: 30px;
+}
+
+#sidebar .sidebarBtn * {
+    cursor: inherit;
+    pointer-events: none;
+}
+
+.sidebarBtn.active {
+    background: rgba(0, 0, 0, .5);
+}
+
+#sidebarToggler {
+    position: fixed;
+    z-index: 999;
+    right: 30px;
+    bottom: 30px;
+    background: rgba(82, 10, 10, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#sidebarToggler img {
+    width: 25px;
+    height: 25px;
+}
+
+#menuScreen {
+    width: 1200px;
+    height: 70%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#menuScreen .menu {
+    width: 1200px;
+    height: calc(100% - 75px);
+    display: flex;
+    justify-content: space-between;
+}
+
+#menuScreen .menu .appList {
+    width: calc(30% - 25px);
+    height: 100%;
+    background: rgba(255, 255, 255, .5);
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+    padding: 15px;
+}
+
+#menuScreen .menu .appList h3 {
+    height: 50px;
+    font-size: 23px;
+    font-weight: 600;
+}
+
+#menuScreen .menu .appList ul {
+    overflow: hidden;
+    width: 100%;
+    height: calc(100% - 50px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#menuScreen .menu .appList ul::-webkit-scrollbar {
+    width: 10px;
+    height: 100%;
+    border-radius: 10px;
+    background: transparent;
+}
+
+#menuScreen .menu .appList ul::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, .5);
+    border-radius: 50px;
+}
+
+#menuScreen .menu .appList ul li {
+    width: calc(100% - 20px);
+    height: 50px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#menuScreen .menu .appList ul li:hover {
+    background: rgba(0, 0, 0, .5);
+}
+
+#menuScreen .menu .appList ul li img {
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+    object-fit: cover;
+}
+
+#menuScreen .menu .appList ul li p {
+    width: calc(100% - 40px);
+    line-height: 20px;
+    overflow: hidden;
+    text-wrap: nowrap;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 17px;
+    font-weight: normal;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+}
+
+#menuScreen .menu .appList ul li * {
+    pointer-events: none !important;
+}
+
+#menuScreen .menu .otherMenu {
+    width: 70%;
+    height: 100%;
+    background: rgba(255, 255, 255, .5);
+    backdrop-filter: blur(10px);
+    padding: 50px 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 30px;
+    /* justify-content: space-around; */
+    flex-wrap: wrap;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#menuScreen .menu .otherMenu::-webkit-scrollbar {
+    width: 10px;
+    height: 100%;
+    border-radius: 10px;
+    background: transparent;
+}
+
+#menuScreen .menu .otherMenu::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, .5);
+    border-radius: 50px;
+}
+
+#menuScreen .menu .otherMenu .recentApp {
+    width: 250px;
+    height: 200px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, .5);
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+    flex-grow: 0 !important;
+    flex-shrink: 0 !important;
+    /* flex-flow: ; */
+    /* max-height: 200px; Ensure the height is calculated based on the aspect ratio */
+}
+
+#menuScreen .menu .otherMenu .recentApp div:first-child {
+    width: 100%;
+    height: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+
+#menuScreen .menu .otherMenu .recentApp div:first-child h3 {
+    font-size: 17px;
+    font-weight: lighter;
+    color: white;
+    letter-spacing: 1px;
+}
+
+#menuScreen .menu .otherMenu .recentApp div:first-child img {
+    /* font-size: 17px;
+    font-weight: normal;
+    font-family: cursive; */
+    height: 80%;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+}
+
+#menuScreen .menu .otherMenu .recentApp div:last-child {
+    width: calc(100% - 10px);
+    height: calc(100% - 45px);
+    border-radius: 10px;
+    background: white;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+#menuScreen .menu .otherMenu .recentApp div:last-child iframe {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+#menuScreen .menu .otherMenu .noAppsOpened {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#menuScreen .menu .otherMenu .noAppsOpened h3 {
+    font-size: 20px;
+    font-weight: normal;
+}
+
+#menuScreen .menuSearch {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#menuScreen .menuSearch input {
+    width: 100%;
+    height: 50px;
+    padding: 0 15px;
+    font-size: 18px;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .5);
+    color: black;
+}
+
+#menuScreen .menuSearch input::placeholder {
+    color: rgba(0, 0, 0, .5);
+}

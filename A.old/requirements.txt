@@ -1,0 +1,16 @@
+pyzipper
+markdown
+nltk
+numpy
+eel
+cryptography
+selenium
+webdriver-manager
+mtranslate
+nltk
+requests
+pillow
+ArtexTTS
+ArtexPing
+ArtexSTT
+ArtexConfigure
