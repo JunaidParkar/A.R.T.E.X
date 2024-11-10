@@ -1,0 +1,35 @@
+2024-11-10 16:08:35 - ERROR - hello error
+2024-11-10 16:08:35 - CRITICAL - hello critical
+2024-11-10 16:08:35 - DEBUG - hello debug
+2024-11-10 16:08:35 - ERROR - hello Exception
+NoneType: None
+2024-11-10 16:08:35 - CRITICAL - hello fatal
+2024-11-10 16:08:35 - WARNING - hello warning
+2024-11-10 16:09:43 - ERROR - hello error
+2024-11-10 16:09:43 - CRITICAL - hello critical
+2024-11-10 16:09:43 - DEBUG - hello debug
+2024-11-10 16:09:43 - ERROR - hello Exception
+NoneType: None
+2024-11-10 16:09:43 - CRITICAL - hello fatal
+2024-11-10 16:09:43 - WARNING - hello warning
+2024-11-10 16:09:48 - ERROR - hello error
+2024-11-10 16:09:48 - CRITICAL - hello critical
+2024-11-10 16:09:48 - DEBUG - hello debug
+2024-11-10 16:09:48 - ERROR - hello Exception
+NoneType: None
+2024-11-10 16:09:48 - CRITICAL - hello fatal
+2024-11-10 16:09:48 - WARNING - hello warning
+2024-11-10 16:09:49 - ERROR - hello error
+2024-11-10 16:09:49 - CRITICAL - hello critical
+2024-11-10 16:09:49 - DEBUG - hello debug
+2024-11-10 16:09:49 - ERROR - hello Exception
+NoneType: None
+2024-11-10 16:09:49 - CRITICAL - hello fatal
+2024-11-10 16:09:49 - WARNING - hello warning
+2024-11-10 16:09:50 - ERROR - hello error
+2024-11-10 16:09:50 - CRITICAL - hello critical
+2024-11-10 16:09:50 - DEBUG - hello debug
+2024-11-10 16:09:50 - ERROR - hello Exception
+NoneType: None
+2024-11-10 16:09:50 - CRITICAL - hello fatal
+2024-11-10 16:09:50 - WARNING - hello warning
